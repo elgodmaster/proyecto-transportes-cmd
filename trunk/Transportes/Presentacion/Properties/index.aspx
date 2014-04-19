@@ -10,6 +10,7 @@
 <body>
     <form id="frmPrueba" runat="server">
         <asp:TextBox ID="txtPrueba" runat="server"></asp:TextBox>
+        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
         <asp:HyperLink ID="btnPrueba" runat="server">Registrar</asp:HyperLink>
     </form>
 </body>
