@@ -1,0 +1,254 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6FC3325F-79BC-44C6-8A27-787D0EC95F5E}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Presentacion</RootNamespace>
+    <AssemblyName>Presentacion</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\css\layout.css" />
+    <Content Include="assets\css\reset.css" />
+    <Content Include="assets\css\style.css" />
+    <Content Include="assets\images\bg_bot.jpg" />
+    <Content Include="assets\images\bg_box1.jpg" />
+    <Content Include="assets\images\bg_img.jpg" />
+    <Content Include="assets\images\bg_img2.png" />
+    <Content Include="assets\images\bg_testimonials.gif" />
+    <Content Include="assets\images\bg_top.jpg" />
+    <Content Include="assets\images\button1_bg.gif" />
+    <Content Include="assets\images\button2_bg.gif" />
+    <Content Include="assets\images\button_top.jpg" />
+    <Content Include="assets\images\button_top_active.jpg" />
+    <Content Include="assets\images\img1.gif" />
+    <Content Include="assets\images\img2.gif" />
+    <Content Include="assets\images\img3.gif" />
+    <Content Include="assets\images\line_top.gif" />
+    <Content Include="assets\images\logo.jpg" />
+    <Content Include="assets\images\marker_1.gif" />
+    <Content Include="assets\images\page2_img1.jpg" />
+    <Content Include="assets\images\page2_img2.jpg" />
+    <Content Include="assets\images\page3_img1.jpg" />
+    <Content Include="assets\images\page3_img2.jpg" />
+    <Content Include="assets\images\page4_img1.jpg" />
+    <Content Include="assets\images\page4_img2.jpg" />
+    <Content Include="assets\js\cufon-replace.js" />
+    <Content Include="assets\js\cufon-yui.js" />
+    <Content Include="intranet\assets\css\customize-template.css" />
+    <Content Include="intranet\assets\js\fnVentaPasaje.js" />
+    <Content Include="assets\js\html5.js" />
+    <Content Include="assets\js\jquery-1.4.2.js" />
+    <Content Include="assets\js\Myriad_Pro_400.font.js" />
+    <Content Include="assets\js\Myriad_Pro_italic_400.font.js" />
+    <Content Include="assets\js\Myriad_Pro_italic_600.font.js" />
+    <Content Include="assets\js\PIE.htc" />
+    <Content Include="intranet\frmMantenedorBus.aspx" />
+    <Content Include="intranet\pruebas\chosen-sprite.png" />
+    <Content Include="intranet\pruebas\chosen.css" />
+    <Content Include="intranet\pruebas\chosen.jquery.js" />
+    <Content Include="intranet\pruebas\jquery-ui-1.8.1.css" />
+    <Content Include="intranet\pruebas\jquery-ui-1.8.1.min.js" />
+    <Content Include="intranet\pruebas\prism.css" />
+    <Content Include="intranet\pruebas\prism.js" />
+    <Content Include="intranet\pruebas\style.css" />
+    <Content Include="intranet\assets\css\css_roque.css" />
+    <Content Include="intranet\assets\font\fontawesome-webfont.svg" />
+    <Content Include="intranet\assets\images\glyphicons-halflings-white.png" />
+    <Content Include="intranet\assets\images\glyphicons-halflings.png" />
+    <Content Include="intranet\assets\images\pattern\black-linen.png" />
+    <Content Include="intranet\assets\images\pattern\concrete-wall.png" />
+    <Content Include="intranet\assets\images\pattern\deep-blue.png" />
+    <Content Include="intranet\assets\images\pattern\dust.png" />
+    <Content Include="intranet\assets\images\pattern\gray-dark.png" />
+    <Content Include="intranet\assets\images\pattern\gray-squares.png" />
+    <Content Include="intranet\assets\images\pattern\green-fibers.png" />
+    <Content Include="intranet\assets\images\pattern\sandstone.png" />
+    <Content Include="intranet\assets\images\pattern\white-grid.png" />
+    <Content Include="intranet\assets\images\pattern\white-linen.png" />
+    <Content Include="intranet\assets\js\bootstrap\bootstrap-affix.js" />
+    <Content Include="intranet\assets\js\bootstrap\bootstrap-alert.js" />
+    <Content Include="intranet\assets\js\bootstrap\bootstrap-button.js" />
+    <Content Include="intranet\assets\js\bootstrap\bootstrap-carousel.js" />
+    <Content Include="intranet\assets\js\bootstrap\bootstrap-collapse.js" />
+    <Content Include="intranet\assets\js\bootstrap\bootstrap-datepicker.js" />
+    <Content Include="intranet\assets\js\bootstrap\bootstrap-dropdown.js" />
+    <Content Include="intranet\assets\js\bootstrap\bootstrap-modal.js" />
+    <Content Include="intranet\assets\js\bootstrap\bootstrap-popover.js" />
+    <Content Include="intranet\assets\js\bootstrap\bootstrap-scrollspy.js" />
+    <Content Include="intranet\assets\js\bootstrap\bootstrap-tab.js" />
+    <Content Include="intranet\assets\js\bootstrap\bootstrap-tooltip.js" />
+    <Content Include="intranet\assets\js\bootstrap\bootstrap-transition.js" />
+    <Content Include="intranet\assets\js\bootstrap\bootstrap-typeahead.js" />
+    <Content Include="intranet\assets\js\jquery\jquery-1.8.2.min.js" />
+    <Content Include="intranet\assets\js\jquery\jquery-chosen.js" />
+    <Content Include="intranet\assets\js\jquery\jquery-tablesorter.js" />
+    <Content Include="intranet\assets\js\jquery\virtual-tour.js" />
+    <Content Include="index.aspx" />
+    <Content Include="intranet\frmPrincipal.aspx" />
+    <Content Include="intranet\frmPruebas.aspx" />
+    <Content Include="intranet\frmVentaPasaje.aspx" />
+    <Content Include="intranet\index.aspx" />
+    <Content Include="intranet\wsVentaPasaje.asmx" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="intranet\frmMantenedorBus.aspx.cs">
+      <DependentUpon>frmMantenedorBus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="intranet\frmMantenedorBus.aspx.designer.cs">
+      <DependentUpon>frmMantenedorBus.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="intranet\frmPrincipal.aspx.cs">
+      <DependentUpon>frmPrincipal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="intranet\frmPrincipal.aspx.designer.cs">
+      <DependentUpon>frmPrincipal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="intranet\frmPruebas.aspx.cs">
+      <DependentUpon>frmPruebas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="intranet\frmPruebas.aspx.designer.cs">
+      <DependentUpon>frmPruebas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="intranet\frmVentaPasaje.aspx.cs">
+      <DependentUpon>frmVentaPasaje.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="intranet\frmVentaPasaje.aspx.designer.cs">
+      <DependentUpon>frmVentaPasaje.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="intranet\index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="intranet\index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="intranet\MDI.Master.cs">
+      <DependentUpon>MDI.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="intranet\MDI.Master.designer.cs">
+      <DependentUpon>MDI.Master</DependentUpon>
+    </Compile>
+    <Compile Include="intranet\wsVentaPasaje.asmx.cs">
+      <DependentUpon>wsVentaPasaje.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="intranet\assets\font\fontawesome-webfont.eot" />
+    <Content Include="intranet\assets\font\fontawesome-webfont.ttf" />
+    <Content Include="intranet\assets\font\fontawesome-webfont.woff" />
+    <Content Include="intranet\MDI.Master" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Entidades\Entidades.csproj">
+      <Project>{1cd7835d-680a-4a07-9c4c-e299b79ece70}</Project>
+      <Name>Entidades</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Negocio\Negocio.csproj">
+      <Project>{4f15c05c-af46-4955-bcc3-008d089daa75}</Project>
+      <Name>Negocio</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:11179/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
