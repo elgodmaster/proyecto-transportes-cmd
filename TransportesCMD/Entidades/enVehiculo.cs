@@ -8,7 +8,8 @@ namespace Entidades
 {
     public class enVehiculo
     {
-        public int veh_id {get;set;}        
+        public int veh_id {get;set;}
+        public String veh_placa { get; set; }
         public String veh_modelo {get;set;}
         public int veh_numAsiPrimer {get;set;}
         public int veh_numAsiSegundo {get;set;}
@@ -16,5 +17,6 @@ namespace Entidades
         public DateTime veh_fecRegistro {get;set;}
         public String veh_estado { get; set; }
         public enVehiculoMarca vehiculoMarca { get; set; }
+        public enServicioEspecial servicioEspecial { get; set; }
     }
 }

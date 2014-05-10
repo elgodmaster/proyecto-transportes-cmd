@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class enItinerarioPersonaPersonal
+    public class enItinerarioPersonal
     {
         public int itiPerPer_id {get;set;}
         public DateTime itiPerPer_fecRegistro {get;set;}
         public String itiPerPer_estado  {get;set;}
-        public enPersonaPersonal personal  {get;set;}
+        public enPersonal personal  {get;set;}
         public enItinerario itinerario { get; set; }
     }
 }

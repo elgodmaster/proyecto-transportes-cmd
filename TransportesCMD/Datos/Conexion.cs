@@ -15,11 +15,11 @@ namespace Datos
             try
             {
                 cn = new SqlConnection();
-                cn.ConnectionString = @"Data Source=.;Initial Catalog=bdTransportes;Integrated Security=True";
+                cn.ConnectionString = @"Data Source=.;Initial Catalog=bdTransportesCMD;Integrated Security=True";
             }
             catch (Exception e)
             {
-
+                System.Console.Write("Error de Conexion "+e.Message);
             }
             return cn;
         }

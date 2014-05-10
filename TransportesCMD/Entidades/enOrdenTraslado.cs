@@ -10,14 +10,14 @@ namespace Entidades
     {
         public int ordTra_id {get;set;}
         public DateTime ordTra_fecEnvio {get;set;}
-        public DateTime ordTra_fecEntrega {get;set;}
-        public int ordTra_origen_id  {get;set;}
-        public int ordTra_destino_id  {get;set;}
-        public int ordTra_remitente_id  {get;set;}
-        public int ordTra_destinatario_id  {get;set;}
+        public DateTime ordTra_fecEntrega {get;set;}  
         public DateTime ordTra_fecRegistro {get;set;}
         public int ordTra_estado {get;set;}
-        public enPersonaPersonal personal  {get;set;}
-        public enOrdenTrasladoSerie serie { get; set; }
+        public enSucursal sucursalOrigen { get; set; }
+        public enSucursal sucursalDestino { get; set; }
+        public enPersona remitente { get; set; }
+        public enPersona destinatario { get; set; }
+        public enPersonal personal  {get;set;}
+        public enComprobanteSerie serie { get; set; }
     }
 }

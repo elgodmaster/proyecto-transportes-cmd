@@ -10,8 +10,6 @@ namespace Entidades
     {
         public int ciu_id {get;set;}
         public String ciu_nomCiudad {get;set;}
-        public DateTime ciu_fecRegistro {get;set;}
-        public String ciu_estado {get;set;}
         public enDepartamento departamento { get; set; }
     }
 }

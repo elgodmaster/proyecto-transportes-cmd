@@ -286,7 +286,7 @@
 
         $(document).ready(function () {
             var salOrigen = $("#salidaOrigen");
-            obtenerListaSalida(salOrigen);
+            spIntinerarioOrigenXNombre(salOrigen);
         });
 
         $("#salidaOrigen").change(function () {
@@ -295,7 +295,7 @@
             $("#itinerarioHora").find("option").remove();
             var salDestino = $("#salidaDestino");
             var prmIdOrigen = $('#salidaOrigen').val();
-            obtenerListaDestinos(salDestino, prmIdOrigen);
+            spIntinerarioDestinoXIdOrigen(salDestino, prmIdOrigen);
 
         });
 
@@ -306,7 +306,7 @@
             var salFecha = $("#itinerarioFecha");
             var prmIdOrigen = $('#salidaOrigen').val();
             var prmIdDestino = $('#salidaDestino').val();
-            itinerarioOrigenDestinoFechaLista(salFecha, prmIdOrigen, prmIdDestino);
+            spIntinerarioFechaSalidaXIdOrigenIdDestino(salFecha, prmIdOrigen, prmIdDestino);
         });
 
         $("#itinerarioFecha").change(function () {
@@ -316,7 +316,11 @@
             var prmIdOrigen = $('#salidaOrigen').val();
             var prmIdDestino = $('#salidaDestino').val();
             var prmFecha = $('#itinerarioFecha').val();
-            itinerarioOrigenDestinoFechaHoraLista(salHora, prmIdOrigen, prmIdDestino, prmFecha);
+            spIntinerarioHoraSalidaXIdOrigenIdDestinoFecha(salHora, prmIdOrigen, prmIdDestino, prmFecha);
+        });
+        $("#itinerarioHora").change(function () {
+            var prmIdOrigen = $('#itinerarioHora').val();
+            alert("Ha seleccionado "+prmIdOrigen);
         });
 
     </script>
