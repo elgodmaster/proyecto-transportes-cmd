@@ -143,6 +143,8 @@
     <Content Include="intranet\frmVentaPasaje.aspx" />
     <Content Include="intranet\index.aspx" />
     <Content Include="intranet\wsVentaPasaje.asmx" />
+    <Content Include="SQL\PSTransCMD - bd, tablas.sql" />
+    <Content Include="SQL\PSTransCMD - sp, fn.sql" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
