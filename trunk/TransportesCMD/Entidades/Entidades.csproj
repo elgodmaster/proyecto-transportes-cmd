@@ -44,20 +44,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="enBoletoViaje.cs" />
-    <Compile Include="enBoletoViajeSerie.cs" />
+    <Compile Include="enComprobanteSerie.cs" />
     <Compile Include="enCiudad.cs" />
+    <Compile Include="enComprobante.cs" />
     <Compile Include="enControlAsiento.cs" />
     <Compile Include="enDepartamento.cs" />
+    <Compile Include="enDocumentoIdentidad.cs" />
     <Compile Include="enItinerario.cs" />
-    <Compile Include="enItinerarioPersonaPersonal.cs" />
+    <Compile Include="enItinerarioPersonal.cs" />
     <Compile Include="enOrdenTraslado.cs" />
     <Compile Include="enOrdenTrasladoDetalle.cs" />
-    <Compile Include="enOrdenTrasladoSerie.cs" />
     <Compile Include="enPersona.cs" />
-    <Compile Include="enPersonaDocumentoIdentidad.cs" />
-    <Compile Include="enPersonaPersonal.cs" />
-    <Compile Include="enPersonaPersonalCargo.cs" />
-    <Compile Include="enPersonaUsuario.cs" />
+    <Compile Include="enPersonal.cs" />
+    <Compile Include="enCargo.cs" />
+    <Compile Include="enUsuario.cs" />
     <Compile Include="enServicioEspecial.cs" />
     <Compile Include="enSucursal.cs" />
     <Compile Include="enVehiculo.cs" />

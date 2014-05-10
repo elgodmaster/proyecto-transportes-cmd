@@ -11,7 +11,7 @@ namespace Datos
 {
     public class daSucursal
     {
-        public static List<enSucursal> sucursalOrigenLista(String prmNomSucursal)
+        public static List<enSucursal> spIntinerarioOrigenXNombre(String prmNomSucursal)
         { 
             SqlConnection cn = null;
             SqlCommand cmd = null;
@@ -21,7 +21,7 @@ namespace Datos
             try
             {
                 cn = Conexion.ConexionSQL();
-                cmd = new SqlCommand("spIntinerarioOrigenBusquedaNombre", cn);
+                cmd = new SqlCommand("spIntinerarioOrigenXNombre", cn);
                 cmd.Parameters.AddWithValue("@iti_origen",prmNomSucursal);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cn.Open();
@@ -37,7 +37,7 @@ namespace Datos
             }
             catch (Exception e)
             {
-
+                System.Console.Write("Error Itinerario Salida "+e.Message);
             }
             finally {
                 cn.Close();
@@ -46,7 +46,7 @@ namespace Datos
     
         }
 
-        public static List<enSucursal> sucursalDestinoLista(int prmIdOrigen)
+        public static List<enSucursal> spIntinerarioDestinoXIdOrigen(int prmIdOrigen)
         {
             SqlConnection cn = null;
             SqlCommand cmd = null;
@@ -56,8 +56,8 @@ namespace Datos
             try
             {
                 cn = Conexion.ConexionSQL();
-                cmd = new SqlCommand("spIntinerarioDestinoBusquedaIdOrigen", cn);
-                cmd.Parameters.AddWithValue("@iti_origen_id", prmIdOrigen);
+                cmd = new SqlCommand("spIntinerarioDestinoXIdOrigen", cn);
+                cmd.Parameters.AddWithValue("@sucursal_origen_id", prmIdOrigen);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cn.Open();
                 dr = cmd.ExecuteReader();
@@ -83,41 +83,5 @@ namespace Datos
 
         }
 
-        public static List<enSucursal> sucursalSalidaHoraLista(int prmIdOrigen, int prmIdDestino)
-        {
-            SqlConnection cn = null;
-            SqlCommand cmd = null;
-            SqlDataReader dr = null;
-            enSucursal sucursal = null;
-            List<enSucursal> lstSucursalSalida = null;
-            try
-            {
-                cn = Conexion.ConexionSQL();
-                cmd = new SqlCommand("spIntinerarioDestinoBusquedaIdOrigen", cn);
-                cmd.Parameters.AddWithValue("@iti_origen_id", prmIdOrigen);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cn.Open();
-                dr = cmd.ExecuteReader();
-                lstSucursalSalida = new List<enSucursal>();
-                while (dr.Read())
-                {
-                    sucursal = new enSucursal();
-                    sucursal.suc_id = Convert.ToInt32(dr[0].ToString());
-                    sucursal.suc_nombre = dr[1].ToString();
-                    lstSucursalSalida.Add(sucursal);
-                }
-
-            }
-            catch (Exception e)
-            {
-
-            }
-            finally
-            {
-                cn.Close();
-            }
-            return lstSucursalSalida;
-
-        }
     }
 }

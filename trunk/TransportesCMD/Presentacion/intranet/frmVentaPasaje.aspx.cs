@@ -15,7 +15,7 @@ namespace Presentacion
         {
             List<enSucursal> lstSucursal = new List<enSucursal>();
             // enviar vacio "" significa que va a devolver todo
-            lstSucursal = neSucursal.sucursalOrigenLista("");
+            lstSucursal = neSucursal.spIntinerarioOrigenXNombre("");
 
             
         }

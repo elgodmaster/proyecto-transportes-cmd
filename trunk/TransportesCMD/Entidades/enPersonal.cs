@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class enPersonaPersonal
+    public class enPersonal
     {
 
         public int perPer_id {get;set;}
@@ -15,7 +15,7 @@ namespace Entidades
         public DateTime perPer_fecFinContrato { get; set; }
         public DateTime perPer_fecRegistro { get; set; }
         public String perPer_estado  {get;set;}
-        public enPersonaPersonalCargo personaPersonalCargo {get;set;}
+        public enCargo cargo {get;set;}
         public enPersona persona {get;set;}
         public enSucursal sucursal  {get;set;}
 

@@ -12,8 +12,6 @@ namespace Entidades
         public String suc_nombre {get;set;}
         public String suc_direccion {get;set;}
         public String suc_telefono  {get;set;}
-        public DateTime suc_fecRegistro  {get;set;}
-        public String suc_estado  {get;set;}
         public enCiudad ciudad { get; set; }
     }
 }

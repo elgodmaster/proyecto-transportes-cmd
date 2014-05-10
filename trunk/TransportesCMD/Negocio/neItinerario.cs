@@ -10,12 +10,12 @@ namespace Negocio
 {
     public class neItinerario
     {
-        public static List<enItinerario> itinerarioOrigenDestinoFechaLista(int prmIdOrigen, int prmIdDestino) {
-            return daItinerario.itinerarioOrigenDestinoFechaLista(prmIdOrigen, prmIdDestino);
+        public static List<enItinerario> spIntinerarioFechaSalidaXIdOrigenIdDestino(int prmIdOrigen, int prmIdDestino) {
+            return daItinerario.spIntinerarioFechaSalidaXIdOrigenIdDestino(prmIdOrigen, prmIdDestino);
         }
 
-        public static List<enItinerario> itinerarioOrigenDestinoFechaHoraLista(int prmIdOrigen, int prmIdDestino, String prmFecha) {
-            return daItinerario.itinerarioOrigenDestinoFechaHoraLista( prmIdOrigen,  prmIdDestino,  prmFecha);
+        public static List<enItinerario> spIntinerarioHoraSalidaXIdOrigenIdDestinoFecha(int prmIdOrigen, int prmIdDestino, String prmFecha) {
+            return daItinerario.spIntinerarioHoraSalidaXIdOrigenIdDestinoFecha( prmIdOrigen,  prmIdDestino,  prmFecha);
         }
     }
 }

@@ -1,8 +1,8 @@
-﻿function obtenerListaSalida(salOrigen) {   
+﻿function spIntinerarioOrigenXNombre(salOrigen) {
     
     $.ajax({
         type: "POST",
-        url: "wsVentaPasaje.asmx/sucursalOrigenLista",
+        url: "wsVentaPasaje.asmx/spIntinerarioOrigenXNombre",
         data: "{}",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
@@ -19,10 +19,10 @@
     });
 }
 
-function obtenerListaDestinos(salDestino, prmIdOrigen) {
+function spIntinerarioDestinoXIdOrigen(salDestino, prmIdOrigen) {
     $.ajax({
         type: "POST",
-        url: "wsVentaPasaje.asmx/sucursalDestinoLista",
+        url: "wsVentaPasaje.asmx/spIntinerarioDestinoXIdOrigen",
         data: "{ 'prmIdOrigen': '" + prmIdOrigen + "' }",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
@@ -40,10 +40,10 @@ function obtenerListaDestinos(salDestino, prmIdOrigen) {
     });
 }
 
-function itinerarioOrigenDestinoFechaLista(itiFecha, prmIdOrigen, prmIdDestino) {
+function spIntinerarioFechaSalidaXIdOrigenIdDestino(itiFecha, prmIdOrigen, prmIdDestino) {
     $.ajax({
         type: "POST",
-        url: "wsVentaPasaje.asmx/itinerarioOrigenDestinoFechaLista",
+        url: "wsVentaPasaje.asmx/spIntinerarioFechaSalidaXIdOrigenIdDestino",
         data: "{ 'prmIdOrigen': '" + prmIdOrigen + "','prmIdDestino': '" + prmIdDestino + "' }",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
@@ -60,10 +60,10 @@ function itinerarioOrigenDestinoFechaLista(itiFecha, prmIdOrigen, prmIdDestino) 
     });
 }
 
-function itinerarioOrigenDestinoFechaHoraLista(itiHora, prmIdOrigen, prmIdDestino, prmFecha) {
+function spIntinerarioHoraSalidaXIdOrigenIdDestinoFecha(itiHora, prmIdOrigen, prmIdDestino, prmFecha) {
     $.ajax({
         type: "POST",
-        url: "wsVentaPasaje.asmx/itinerarioOrigenDestinoFechaHoraLista",
+        url: "wsVentaPasaje.asmx/spIntinerarioHoraSalidaXIdOrigenIdDestinoFecha",
         data: "{ 'prmIdOrigen': '" + prmIdOrigen + "','prmIdDestino': '" + prmIdDestino + "' ,'prmFecha':'" + prmFecha + "'}",
         contentType: "application/json; charset=utf-8",
         dataType: "json",

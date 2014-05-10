@@ -10,12 +10,12 @@ namespace Negocio
 {
     public class neSucursal
     {
-        public static List<enSucursal> sucursalOrigenLista(String prmNomSucursal) {
-            return daSucursal.sucursalOrigenLista(prmNomSucursal);
+        public static List<enSucursal> spIntinerarioOrigenXNombre(String prmNomSucursal) {
+            return daSucursal.spIntinerarioOrigenXNombre(prmNomSucursal);
         }
-        public static List<enSucursal> sucursalDestinoLista(int prmIdOrigen)
+        public static List<enSucursal> spIntinerarioDestinoXIdOrigen(int prmIdOrigen)
         {
-            return daSucursal.sucursalDestinoLista(prmIdOrigen);
+            return daSucursal.spIntinerarioDestinoXIdOrigen(prmIdOrigen);
         }
     }
 }

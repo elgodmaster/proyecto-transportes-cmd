@@ -11,7 +11,7 @@ namespace Entidades
         public int per_id {get;set;}
         public String per_nombres {get;set;}
         public String per_apellidos { get; set; }
-        public String per_nic { get; set; }
+        public String per_numDocIdentidad { get; set; }
         public String per_telefono { get; set; }
         public String per_sexo { get; set; }
         public String per_direccion { get; set; }
@@ -19,6 +19,6 @@ namespace Entidades
         public String per_img { get; set; }
         public DateTime per_fecRegistro {get;set;}
         public String per_estado { get; set; }
-        public enPersonaDocumentoIdentidad documentoIdentidad { get; set; }
+        public enDocumentoIdentidad documentoIdentidad { get; set; }
     }
 }

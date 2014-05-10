@@ -8,14 +8,13 @@ namespace Entidades
 {
     public class enBoletoViaje
     {
-        public int venPas_id {get;set;}
-        public enPersona cliente {get;set;}
-        public enPersonaPersonal personal  {get;set;}
+        public int venPas_id {get;set;}        
         public DateTime venPas_fecha  {get;set;}
-        public int venPas_numAsiento  {get;set;}
         public DateTime venPas_fecRegistro  {get;set;}
         public String venPas_estado  {get;set;}
-        public enItinerario iti_id  {get;set;}
-        public enBoletoViajeSerie serie { get; set; }
+        public enPersona cliente { get; set; }
+        public enPersonal personal { get; set; }
+        public enControlAsiento controlAsiento  {get;set;}
+        public enComprobanteSerie serie { get; set; }
     }
 }
