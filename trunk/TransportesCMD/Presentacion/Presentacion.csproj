@@ -143,8 +143,10 @@
     <Content Include="intranet\frmVentaPasaje.aspx" />
     <Content Include="intranet\index.aspx" />
     <Content Include="intranet\wsVentaPasaje.asmx" />
-    <Content Include="SQL\PSTransCMD - bd, tablas.sql" />
-    <Content Include="SQL\PSTransCMD - sp, fn.sql" />
+    <Content Include="SQL y Recursos\PSTransCMD - bd, tablas.sql" />
+    <Content Include="SQL y Recursos\PSTransCMD - Consultas Frecuentes.sql" />
+    <Content Include="SQL y Recursos\PSTransCMD - sp, fn.sql" />
+    <Content Include="SQL y Recursos\Venta_Pasaje %282%29.png" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -208,6 +210,7 @@
     <Content Include="intranet\assets\font\fontawesome-webfont.ttf" />
     <Content Include="intranet\assets\font\fontawesome-webfont.woff" />
     <Content Include="intranet\MDI.Master" />
+    <Content Include="SQL y Recursos\Modelo\Modelo.emf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
