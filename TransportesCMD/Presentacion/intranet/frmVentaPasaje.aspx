@@ -3,67 +3,19 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="assets/css/css_roque.css" type="text/css" media="screen, projection" rel="stylesheet" />
     <link rel="stylesheet" href="pruebas/chosen.css" />
+    <style>
+#tbSalidasCss tbody tr:nth-child(odd):hover,#tbSalidasCss tbody tr:nth-child(even):hover{ 
+    color:red;
+    font-weight:100;
+    cursor: pointer;
+}
+
+    </style>
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cuerpo" runat="server">
     <div class="row">
-        <div class="span8">
-            <div class="box pattern pattern-sandstone">                          
-                <div class="box-header">
-                    <i class="icon-list"></i>
-                    <h5>Venta de Pasajes</h5>
-                    <button class="btn btn-box-right" data-toggle="collapse" data-target=".box-list">
-                        <i class="icon-reorder"></i>
-                    </button>
-                </div>
-                <div class="box-content box-list collapse in">                    
-                    <div class="box-content">
-                        <div class="row-fluid">
-                            <fieldset>
-                                <legend></legend>
-                                <div class="span8">
-                                    <table>
-                                        <thead>
-                                            <tr>
-                                                <td>Origen</td>
-                                                <td>Origen</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="tbodyOrigenDestino">
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="span2">Origen:</div>
-                                <div class="control-group">
-                                    <select id="salidaOrigen" data-placeholder="Seleccione Origen" class="span5" tabindex="2">
-                                        <%-- Aqui Javascript JSON --%>
-                                    </select>
-                                    
-                                </div>
-                                <div class="span2">Destino:</div>
-                                <div class="control-group">
-                                    <select class="span5" id="salidaDestino">
-                                        <%-- Aqui Javascript JSON --%>
-                                    </select>
-                                </div>
-                                <div class="span2">Fecha/Hora:</div>
-                                <div class="control-group">
-                                    <select class="span2" id="itinerarioFecha" multiple="multiple" size="7">
-                                        <%-- Aqui Javascript JSON --%>
-                                    </select>
-                                    <select class="span3" id="itinerarioHora" multiple="multiple" size="7">
-                                        <%-- Aqui Javascript JSON --%>
-                                    </select>
-                                    <textarea id="lista"></textarea>   
-                                </div>
-                            </fieldset>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="span8">
+        <div class="span16">
             <div class="box pattern pattern-sandstone">
                 <div class="box-header">
                     <i class="icon-list"></i>
@@ -74,7 +26,67 @@
                 </div>
                 <div class="box-content box-list collapse in">
                     <div class="box-content">
+                        <div class="row-fluid">
 
+                            <div class="control-group span15">
+                                <div class="span2"></div>
+                                <span >Origen: </span>
+                                <select id="salidaOrigen" data-placeholder="Seleccione Origen" class="span3" tabindex="1">
+                                    <%-- Aqui Javascript JSON --%>
+                                </select>                              
+                                <span>Destino: </span>
+                                <select class="span3" id="salidaDestino" tabindex="2">
+                                    <%-- Aqui Javascript JSON --%>
+                                </select>
+
+                                <span>Fecha: </span>
+                                <select class="span3" id="itinerarioFecha" tabindex="3">
+                                    <%-- Aqui Javascript JSON --%>
+                                </select>
+                            </div>
+                            <div class="span1"></div>
+                            <div id="tbSalidas" class="span13">  
+                                <div id="Person-1" class="box">                                    
+                                    <div class="box-content box-table">
+                                        <div style="width:100%; ">
+                                        <table id="tbSalidasCss" class="table table-hover tablesorter">
+                                            <thead>
+                                                <tr>
+                                                    <%--<th>Origen</th>
+                                                    <th>Destino</th>
+                                                    <th>Fecha</th>--%>
+                                                    <th>N°</th>
+                                                    <th>Hora</th>                                                   
+                                                    <th>Precio</th>
+                                                    <th>Disponibles</th>
+                                                    <th>Servicio Especial</th>                                  
+                                                </tr>
+                                            </thead>
+                                            <tbody id="tbBodyItinerario">                                                                      
+                                                <%-- Aqui Javascript JSON --%>                          
+                                            </tbody>
+                                        </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="span2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="span8">
+            <div class="box pattern pattern-sandstone">
+                <div class="box-header">
+                    <i class="icon-list"></i>
+                    <h5>Venta de Pasajes</h5>
+                    <button class="btn btn-box-right" data-toggle="collapse" data-target=".box-cliente">
+                        <i class="icon-reorder"></i>
+                    </button>
+                </div>
+                <div class="box-content box-cliente collapse in">
+                    <div class="box-content">
                         <div class="row-fluid">
                             <fieldset>
                                 <legend></legend>
@@ -132,7 +144,6 @@
                             <div class="mr-asiento"></div>
                             <div class="mr-asiento"><a class="mr-asiento-d" data-toggle="modal" href="#chat_modal" onclick="fn">3</a></div>
                             <div class="mr-asiento"><a class="mr-asiento-d" data-toggle="modal" href="#chat_modal" onclick="fn">4</a></div>
-
                         </div>
                         <div class="mr-fila">
                             <div class="mr-asiento"><a class="mr-asiento-d" data-toggle="modal" href="#chat_modal" onclick="fn">5</a></div>
@@ -147,199 +158,13 @@
                             <div class="mr-asiento"></div>
                             <div class="mr-asiento"></div>
                             <div class="mr-asiento"></div>
-                        </div>
-                        <div class="mr-fila">
-                            <div class="mr-asiento"><a class="mr-asiento-o" data-toggle="modal" href="#chat_modal" onclick="fn">5</a></div>
-                            <div class="mr-asiento"><a class="mr-asiento-o" data-toggle="modal" href="#chat_modal" onclick="fn">6</a></div>
-                            <div class="mr-asiento"></div>
-                            <div class="mr-asiento"></div>
-                            <div class="mr-asiento"></div>
-                        </div>
-                        <div class="mr-fila">
-                            <div class="mr-asiento"><a class="mr-asiento-d" data-toggle="modal" href="#chat_modal" onclick="fn">1</a></div>
-                            <div class="mr-asiento"><a class="mr-asiento-d" data-toggle="modal" href="#chat_modal" onclick="fn">2</a></div>
-                            <div class="mr-asiento"></div>
-                            <div class="mr-asiento"><a class="mr-asiento-d" data-toggle="modal" href="#chat_modal" onclick="fn">3</a></div>
-                            <div class="mr-asiento"><a class="mr-asiento-d" data-toggle="modal" href="#chat_modal" onclick="fn">4</a></div>
-
-                        </div>
-                        <div class="mr-fila">
-                            <div class="mr-asiento"><a class="mr-asiento-d" data-toggle="modal" href="#chat_modal" onclick="fn">1</a></div>
-                            <div class="mr-asiento"><a class="mr-asiento-d" data-toggle="modal" href="#chat_modal" onclick="fn">2</a></div>
-                            <div class="mr-asiento"></div>
-                            <div class="mr-asiento"><a class="mr-asiento-d" data-toggle="modal" href="#chat_modal" onclick="fn">3</a></div>
-                            <div class="mr-asiento"><a class="mr-asiento-d" data-toggle="modal" href="#chat_modal" onclick="fn">4</a></div>
-
-                        </div>
-                        <div class="mr-fila">
-                            <div class="mr-asiento"><a class="mr-asiento-d" data-toggle="modal" href="#chat_modal" onclick="fn">1</a></div>
-                            <div class="mr-asiento"><a class="mr-asiento-d" data-toggle="modal" href="#chat_modal" onclick="fn">2</a></div>
-                            <div class="mr-asiento"></div>
-                            <div class="mr-asiento"><a class="mr-asiento-d" data-toggle="modal" href="#chat_modal" onclick="fn">3</a></div>
-                            <div class="mr-asiento"><a class="mr-asiento-d" data-toggle="modal" href="#chat_modal" onclick="fn">4</a></div>
-
-                        </div>
-                        <div class="mr-fila">
-                            <div class="mr-asiento"><a class="mr-asiento-d" data-toggle="modal" href="#chat_modal" onclick="fn">1</a></div>
-                            <div class="mr-asiento"><a class="mr-asiento-d" data-toggle="modal" href="#chat_modal" onclick="fn">2</a></div>
-                            <div class="mr-asiento"></div>
-                            <div class="mr-asiento"><a class="mr-asiento-d" data-toggle="modal" href="#chat_modal" onclick="fn">3</a></div>
-                            <div class="mr-asiento"><a class="mr-asiento-d" data-toggle="modal" href="#chat_modal" onclick="fn">4</a></div>
-
-                        </div>
-                        <div class="mr-fila">
-                            <div class="mr-asiento"><a class="mr-asiento-d" data-toggle="modal" href="#chat_modal" onclick="fn">1</a></div>
-                            <div class="mr-asiento"><a class="mr-asiento-d" data-toggle="modal" href="#chat_modal" onclick="fn">2</a></div>
-                            <div class="mr-asiento"></div>
-                            <div class="mr-asiento"><a class="mr-asiento-d" data-toggle="modal" href="#chat_modal" onclick="fn">3</a></div>
-                            <div class="mr-asiento"><a class="mr-asiento-d" data-toggle="modal" href="#chat_modal" onclick="fn">4</a></div>
-
-                        </div>
+                        </div>                        
                     </div>
                 </div>
             </div>
-        </div>
-       <!-- <div class="span8">
-            <div class="box">
-                <div class="box-header">
-                    <i class="icon-book"></i>
-                    <h5>Selección de Asientos - Vuelta</h5>
-                </div>
-                <div class="box-content">
-                    <div id="intinerario-vuelta">
-                        <div class="mr-fila">
-                            <div class="mr-asiento"><a class="mr-asiento-o" data-toggle="modal" href="#chat_modal" onclick="fn">1</a></div>
-                            <div class="mr-asiento"><a class="mr-asiento-o" data-toggle="modal" href="#chat_modal" onclick="fn">2</a></div>
-                            <div class="mr-asiento"></div>
-                            <div class="mr-asiento"><a class="mr-asiento-o" data-toggle="modal" href="#chat_modal" onclick="fn">3</a></div>
-                            <div class="mr-asiento"><a class="mr-asiento-o" data-toggle="modal" href="#chat_modal" onclick="fn">4</a></div>
-
-                        </div>
-                        <div class="mr-fila">
-                            <div class="mr-asiento"><a class="mr-asiento-o" data-toggle="modal" href="#chat_modal" onclick="fn">5</a></div>
-                            <div class="mr-asiento"><a class="mr-asiento-o" data-toggle="modal" href="#chat_modal" onclick="fn">6</a></div>
-                            <div class="mr-asiento"></div>
-                            <div class="mr-asiento"><a class="mr-asiento-o" data-toggle="modal" href="#chat_modal" onclick="fn">7</a></div>
-                            <div class="mr-asiento"><a class="mr-asiento-o" data-toggle="modal" href="#chat_modal" onclick="fn">8</a></div>
-                        </div>
-                        <div class="mr-fila">
-                            <div class="mr-asiento"><a class="mr-asiento-o" data-toggle="modal" href="#chat_modal" onclick="fn">5</a></div>
-                            <div class="mr-asiento"><a class="mr-asiento-o" data-toggle="modal" href="#chat_modal" onclick="fn">6</a></div>
-                            <div class="mr-asiento"></div>
-                            <div class="mr-asiento"></div>
-                            <div class="mr-asiento"></div>
-                        </div>
-                        <div class="mr-fila">
-                            <div class="mr-asiento"><a class="mr-asiento-o" data-toggle="modal" href="#chat_modal" onclick="fn">5</a></div>
-                            <div class="mr-asiento"><a class="mr-asiento-o" data-toggle="modal" href="#chat_modal" onclick="fn">6</a></div>
-                            <div class="mr-asiento"></div>
-                            <div class="mr-asiento"></div>
-                            <div class="mr-asiento"></div>
-                        </div>
-                        <div class="mr-fila">
-                            <div class="mr-asiento"><a class="mr-asiento-o" data-toggle="modal" href="#chat_modal" onclick="fn">1</a></div>
-                            <div class="mr-asiento"><a class="mr-asiento-o" data-toggle="modal" href="#chat_modal" onclick="fn">2</a></div>
-                            <div class="mr-asiento"></div>
-                            <div class="mr-asiento"><a class="mr-asiento-o" data-toggle="modal" href="#chat_modal" onclick="fn">3</a></div>
-                            <div class="mr-asiento"><a class="mr-asiento-o" data-toggle="modal" href="#chat_modal" onclick="fn">4</a></div>
-
-                        </div>
-                        <div class="mr-fila">
-                            <div class="mr-asiento"><a class="mr-asiento-o" data-toggle="modal" href="#chat_modal" onclick="fn">1</a></div>
-                            <div class="mr-asiento"><a class="mr-asiento-o" data-toggle="modal" href="#chat_modal" onclick="fn">2</a></div>
-                            <div class="mr-asiento"></div>
-                            <div class="mr-asiento"><a class="mr-asiento-o" data-toggle="modal" href="#chat_modal" onclick="fn">3</a></div>
-                            <div class="mr-asiento"><a class="mr-asiento-o" data-toggle="modal" href="#chat_modal" onclick="fn">4</a></div>
-
-                        </div>
-                        <div class="mr-fila">
-                            <div class="mr-asiento"><a class="mr-asiento-o" data-toggle="modal" href="#chat_modal" onclick="fn">1</a></div>
-                            <div class="mr-asiento"><a class="mr-asiento-o" data-toggle="modal" href="#chat_modal" onclick="fn">2</a></div>
-                            <div class="mr-asiento"></div>
-                            <div class="mr-asiento"><a class="mr-asiento-o" data-toggle="modal" href="#chat_modal" onclick="fn">3</a></div>
-                            <div class="mr-asiento"><a class="mr-asiento-o" data-toggle="modal" href="#chat_modal" onclick="fn">4</a></div>
-
-                        </div>
-                        <div class="mr-fila">
-                            <div class="mr-asiento"><a class="mr-asiento-o" data-toggle="modal" href="#chat_modal" onclick="fn">1</a></div>
-                            <div class="mr-asiento"><a class="mr-asiento-o" data-toggle="modal" href="#chat_modal" onclick="fn">2</a></div>
-                            <div class="mr-asiento"></div>
-                            <div class="mr-asiento"><a class="mr-asiento-o" data-toggle="modal" href="#chat_modal" onclick="fn">3</a></div>
-                            <div class="mr-asiento"><a class="mr-asiento-o" data-toggle="modal" href="#chat_modal" onclick="fn">4</a></div>
-
-                        </div>
-                        <div class="mr-fila">
-                            <div class="mr-asiento"><a class="mr-asiento-o" data-toggle="modal" href="#chat_modal" onclick="fn">1</a></div>
-                            <div class="mr-asiento"><a class="mr-asiento-o" data-toggle="modal" href="#chat_modal" onclick="fn">2</a></div>
-                            <div class="mr-asiento"></div>
-                            <div class="mr-asiento"><a class="mr-asiento-d" data-toggle="modal" href="#chat_modal" onclick="fn">3</a></div>
-                            <div class="mr-asiento"><a class="mr-asiento-r" data-toggle="modal" href="#chat_modal" onclick="fn">4</a></div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>-->
+        </div>        
     </div>
-    <script src="assets/js/fnVentaPasaje.js"></script>
-    <script type="text/javascript">
-
-        $(document).ready(function () {
-            var salOrigen = $("#salidaOrigen");
-            spIntinerarioOrigenXNombre(salOrigen);
-        });
-
-        $("#salidaOrigen").change(function () {
-            $("#salidaDestino").find("option").remove();
-            $("#itinerarioFecha").find("option").remove();
-            $("#itinerarioHora").find("option").remove();
-            var salDestino = $("#salidaDestino");
-            var prmIdOrigen = $('#salidaOrigen').val();
-            spIntinerarioDestinoXIdOrigen(salDestino, prmIdOrigen);
-
-        });
-
-        $("#salidaDestino").change(function () {
-            $("#itinerarioFecha").find("option").remove();
-            $("#itinerarioHora").find("option").remove();
-
-            var salFecha = $("#itinerarioFecha");
-            var prmIdOrigen = $('#salidaOrigen').val();
-            var prmIdDestino = $('#salidaDestino').val();
-            spIntinerarioFechaSalidaXIdOrigenIdDestino(salFecha, prmIdOrigen, prmIdDestino);
-        });
-
-        $("#itinerarioFecha").change(function () {
-            $("#itinerarioHora").find("option").remove();
-
-            var salHora = $("#itinerarioHora");
-            var prmIdOrigen = $('#salidaOrigen').val();
-            var prmIdDestino = $('#salidaDestino').val();
-            var prmFecha = $('#itinerarioFecha').val();
-            spIntinerarioHoraSalidaXIdOrigenIdDestinoFecha(salHora, prmIdOrigen, prmIdDestino, prmFecha);
-        });
-        $("#itinerarioHora").change(function () {
-            var prmIdOrigen = $('#itinerarioHora').val();
-            alert("Ha seleccionado "+prmIdOrigen);
-        });
-
-    </script>
-    <script src="pruebas/chosen.jquery.js" type="text/javascript"></script>
-    <script src="pruebas/prism.js" type="text/javascript" charset="utf-8"></script>
-    <script type="text/javascript">
-        var config = {
-            '.chosen-select': {},
-            '.chosen-select-deselect': { allow_single_deselect: true },
-            '.chosen-select-no-single': { disable_search_threshold: 10 },
-            '.chosen-select-no-results': { no_results_text: 'No existe salida con esa descripción' },
-            '.chosen-select-width': { width: "70%" }
-        }
-        for (var selector in config) {
-            $(selector).chosen(config[selector]);
-        }
-
-    </script>
-
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="javascript" runat="server">
+    <script src="assets/js/fnVentaPasaje.js"></script>
 </asp:Content>

@@ -175,6 +175,7 @@ go
 @sucursal_destino_id int,
 @iti_horSalida datetime,
 @iti_horLlegada datetime,
+@iti_precio decimal(4,2),
 @vehiculo_id int,
 @personal_id int)
 as begin
@@ -184,8 +185,8 @@ as begin
 	where V.veh_id=I.vehiculo_id and I.iti_estado='a' and I.vehiculo_id=@vehiculo_id
 	if cast(@res as int)<=1
 		begin
-			insert into itinerario(sucursal_origen_id,sucursal_destino_id,iti_horSalida,iti_horLlegada,iti_fecRegistro,iti_estado,vehiculo_id,personal_id) 
-			values(@sucursal_origen_id,@sucursal_destino_id,@iti_horSalida,@iti_horLlegada,GETDATE(),'a',@vehiculo_id,@personal_id)
+			insert into itinerario(sucursal_origen_id,sucursal_destino_id,iti_horSalida,iti_horLlegada,iti_precio,iti_fecRegistro,iti_estado,vehiculo_id,personal_id) 
+			values(@sucursal_origen_id,@sucursal_destino_id,@iti_horSalida,@iti_horLlegada,@iti_precio,GETDATE(),'a',@vehiculo_id,@personal_id)
 			if cast(@res as int)=1
 				update vehiculo set veh_estado='o' where veh_id=@vehiculo_id
 			set @PKCreado=@@IDENTITY 
@@ -198,23 +199,23 @@ as begin
 	select @res		
 end
 go
-spItinerarioRegistrar 1,2,'07/06/2013 8:00 AM','07/06/2013 1:00 PM',1,1
+spItinerarioRegistrar 1,2,'07/06/2013 8:00 AM','07/06/2013 1:00 PM',20.00,1,1
 go
-spItinerarioRegistrar 1,2,'07/06/2013 9:30 AM','07/06/2013 2:30 PM',2,1
+spItinerarioRegistrar 1,2,'07/06/2013 9:30 AM','07/06/2013 2:30 PM',30.00,2,1
 go
-spItinerarioRegistrar 1,2,'07/06/2013 1:00 PM','07/06/2013 7:30 PM',3,1
+spItinerarioRegistrar 1,2,'07/06/2013 1:00 PM','07/06/2013 7:30 PM',31.00,3,1
 go
-spItinerarioRegistrar 1,2,'07/06/2013 4:00 PM','07/06/2013 10:30 PM',4,1
+spItinerarioRegistrar 1,2,'07/06/2013 4:00 PM','07/06/2013 10:30 PM',32.00,4,1
 go
-spItinerarioRegistrar 1,2,'07/06/2013 9:00 PM','08/06/2013 1:00 AM',5,1
+spItinerarioRegistrar 1,2,'07/06/2013 9:00 PM','08/06/2013 1:00 AM',33.00,5,1
 go
-spItinerarioRegistrar 1,2,'07/06/2013 10:30 PM','08/06/2013 3:00 AM',6,1
+spItinerarioRegistrar 1,2,'07/06/2013 10:30 PM','08/06/2013 3:00 AM',34.00,6,1
 go
-spItinerarioRegistrar 1,4,'07/06/2013 9:00 PM','08/06/2013 3:00 AM',7,1
+spItinerarioRegistrar 1,4,'07/06/2013 9:00 PM','08/06/2013 3:00 AM',35.00,7,1
 go
-spItinerarioRegistrar 1,4,'07/06/2013 11:00 AM','08/06/2013 5:00 AM',8,1
+spItinerarioRegistrar 1,4,'07/06/2013 11:00 AM','08/06/2013 5:00 AM',36.00,8,1
 go
-spItinerarioRegistrar 1,2,'08/06/2013 9:00 AM','07/06/2013 2:30 PM',9,1
+spItinerarioRegistrar 1,2,'08/06/2013 9:00 AM','07/06/2013 2:30 PM',37.00,9,1
 go
 if object_id('spIntinerarioOrigenXNombre', 'p') is not null
 drop procedure spIntinerarioOrigenXNombre
@@ -268,7 +269,7 @@ go
 @sucursal_destino_id int,
 @iti_horSalida datetime)
 as begin
-	select distinct iti_id,RIGHT(CONVERT(CHAR(17), iti_horSalida, 109), 5)
+	select distinct  iti_id,RIGHT(CONVERT(CHAR(17), iti_horSalida, 109), 5)
  +' ' +RIGHT(CONVERT(CHAR(26), iti_horSalida, 109), 2)
 	from itinerario I, sucursal SO, sucursal SD, ciudad CO, ciudad CD
 	where I.sucursal_origen_id=SO.suc_id and SO.ciudad_id=CO.ciu_id  and 
@@ -277,4 +278,24 @@ as begin
 end
 go
 spIntinerarioHoraSalidaXIdOrigenIdDestinoFecha 1,2,'07/06/2013'
+go
+if object_id('spIntinerarioResumenXIdOrigenIdDestinoFecha', 'p') is not null
+drop procedure spIntinerarioResumenXIdOrigenIdDestinoFecha
+go
+ create procedure spIntinerarioResumenXIdOrigenIdDestinoFecha(
+@sucursal_origen_id int,
+@sucursal_destino_id int,
+@iti_horSalida datetime)
+as begin
+	select I.iti_id,RIGHT(CONVERT(CHAR(17), iti_horSalida, 109), 5)
+ +' ' +RIGHT(CONVERT(CHAR(26), iti_horSalida, 109), 2), SE.serEsp_nombre, I.iti_precio, CA.disponibles  
+	from itinerario I, sucursal SO, sucursal SD, ciudad CO, ciudad CD,vehiculo V, servicioEspecial SE,
+	(select CA.itinerario_id, COUNT(CA.conAsi_numAsiento) as disponibles from controlAsiento CA where conAsi_estAsiento='d' group by itinerario_id ) CA
+	where I.sucursal_origen_id=SO.suc_id and SO.ciudad_id=CO.ciu_id 
+	and I.vehiculo_id=V.veh_id and V.serEspecial_id=SE.serEsp_id and CA.itinerario_id=I.iti_id and
+	I.sucursal_destino_id=SD.suc_id and SD.ciudad_id=CD.ciu_id and I.iti_estado='a' 	
+	and I.sucursal_origen_id=@sucursal_origen_id and I.sucursal_destino_id=@sucursal_destino_id and CONVERT(CHAR(10), I.iti_horSalida, 103)=@iti_horSalida
+end
+go
+spIntinerarioResumenXIdOrigenIdDestinoFecha 1,2,'07/06/2013'
 go

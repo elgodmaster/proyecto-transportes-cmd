@@ -17,5 +17,8 @@ namespace Negocio
         public static List<enItinerario> spIntinerarioHoraSalidaXIdOrigenIdDestinoFecha(int prmIdOrigen, int prmIdDestino, String prmFecha) {
             return daItinerario.spIntinerarioHoraSalidaXIdOrigenIdDestinoFecha( prmIdOrigen,  prmIdDestino,  prmFecha);
         }
+        public static List<enItinerario> spIntinerarioResumenXIdOrigenIdDestinoFecha(int prmIdOrigen, int prmIdDestino, String prmFecha) {
+            return daItinerario.spIntinerarioResumenXIdOrigenIdDestinoFecha(prmIdOrigen, prmIdDestino, prmFecha);
+        }
     }
 }
