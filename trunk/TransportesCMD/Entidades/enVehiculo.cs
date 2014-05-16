@@ -13,6 +13,7 @@ namespace Entidades
         public String veh_modelo {get;set;}
         public int veh_numAsiPrimer {get;set;}
         public int veh_numAsiSegundo {get;set;}
+        public int veh_totAsientos { get; set; }
         public String veh_img {get;set;}
         public DateTime veh_fecRegistro {get;set;}
         public String veh_estado { get; set; }

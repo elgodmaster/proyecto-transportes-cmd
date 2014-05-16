@@ -53,6 +53,15 @@ namespace Presentacion.intranet
             lstItinerario = neItinerario.spIntinerarioHoraSalidaXIdOrigenIdDestinoFecha(prmIdOrigen, prmIdDestino, prmFecha);
             return lstItinerario;
         }
+
+        [WebMethod]
+        public List<enItinerario> spIntinerarioResumenXIdOrigenIdDestinoFecha(int prmIdOrigen, int prmIdDestino, String prmFecha)
+        {
+            List<enItinerario> lstItinerario = new List<enItinerario>();
+            // enviar la id de la sucursal que se selecciono como origen
+            lstItinerario = neItinerario.spIntinerarioResumenXIdOrigenIdDestinoFecha(prmIdOrigen, prmIdDestino, prmFecha);
+            return lstItinerario;
+        }
         
     }
 }
