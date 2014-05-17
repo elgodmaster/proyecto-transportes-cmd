@@ -194,3 +194,11 @@ ordTra_id int)
 go
 alter table ordenTrasladoDetalle add constraint fk_ordTraDetalle_ordTraslado foreign key (ordTra_id) references ordenTraslado(ordTra_id)
 go
+
+--OTRA POSIBLES TABLAS
+create table mensajes(
+men_id int primary key identity not null,
+men_codigo char(7) unique,
+men_descripcion text,
+men_fecRegistro datetime)
+go

@@ -211,6 +211,10 @@
     <Content Include="intranet\assets\font\fontawesome-webfont.woff" />
     <Content Include="intranet\MDI.Master" />
     <Content Include="SQL y Recursos\Modelo\Modelo.emf" />
+    <Content Include="SQL y Recursos\ESPECIFICACIÓN DE PROYECTO.docx" />
+    <Content Include="SQL y Recursos\Cronograma - 01.mpp" />
+    <Content Include="SQL y Recursos\Pruebas de Software.docx" />
+    <Content Include="SQL y Recursos\Reglas del Negocio.xlsx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
