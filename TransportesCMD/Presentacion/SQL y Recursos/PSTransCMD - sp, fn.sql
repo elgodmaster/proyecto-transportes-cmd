@@ -19,6 +19,20 @@ as begin
 	return @pass
 end
 go
+--PROCEDIMIENTOS Y LLENADO INICIAL
+insert into mensajes values('MS-0001','Error al Registrar Itinerario',GETDATE())
+insert into mensajes values('MS-0002','¡Registro de Itinerario Correcto!',GETDATE())
+insert into mensajes values('RN-0001','No debe haber Itinerarios con las misma ruta, fecha y hora de salida. Por lo menos debe diferenciarse en lo último.',GETDATE())
+go
+if object_id('spMostrarMensaje', 'p') is not null
+drop procedure spMostrarMensaje
+go
+create procedure spMostrarMensaje(
+@men_codigo char(7))
+as begin
+	select men_descripcion from mensajes where men_codigo=@men_codigo
+end
+go
 insert into documentoIdentidad(docIde_descripcion) values('PASAPORTE')
 insert into documentoIdentidad(docIde_descripcion) values('DNI')
 insert into documentoIdentidad(docIde_descripcion) values('LIBRETA MILITAR')
@@ -179,24 +193,23 @@ go
 @vehiculo_id int,
 @personal_id int)
 as begin
-	declare @res nvarchar(500)
+	declare @res int
 	declare @PKCreado int
-	select @res=COUNT(I.vehiculo_id) from vehiculo V, itinerario I 
-	where V.veh_id=I.vehiculo_id and I.iti_estado='a' and I.vehiculo_id=@vehiculo_id
-	if cast(@res as int)<=1
+	
+	select @res=I.iti_id from itinerario I 
+	where I.sucursal_origen_id=@sucursal_origen_id and I.sucursal_destino_id=@sucursal_destino_id
+		and I.iti_horSalida=@iti_horSalida 	
+	if @res>0	
+		exec spMostrarMensaje 'RN-0001'			
+	else		
 		begin
-			insert into itinerario(sucursal_origen_id,sucursal_destino_id,iti_horSalida,iti_horLlegada,iti_precio,iti_fecRegistro,iti_estado,vehiculo_id,personal_id) 
+			insert into itinerario(sucursal_origen_id,sucursal_destino_id,iti_horSalida,iti_horLlegada,
+				iti_precio,iti_fecRegistro,iti_estado,vehiculo_id,personal_id) 
 			values(@sucursal_origen_id,@sucursal_destino_id,@iti_horSalida,@iti_horLlegada,@iti_precio,GETDATE(),'a',@vehiculo_id,@personal_id)
 			if cast(@res as int)=1
 				update vehiculo set veh_estado='o' where veh_id=@vehiculo_id
-			set @PKCreado=@@IDENTITY 
-			set @res= 'OK: Registro Correcto'
+			exec spMostrarMensaje 'MS-0002'		
 		end
-	else
-		set @res= 'ER: Ha ocurrido un error, puede que la unidad no esté activa. Por favor seleccione otra unidad disponible.'	
-	if LEFT(@res,2)='OK'
-		execute spLlenarAsientos @vehiculo_id,@PKCreado	
-	select @res		
 end
 go
 spItinerarioRegistrar 1,2,'07/06/2013 8:00 AM','07/06/2013 1:00 PM',20.00,1,1
@@ -299,3 +312,6 @@ end
 go
 spIntinerarioResumenXIdOrigenIdDestinoFecha 1,2,'07/06/2013'
 go
+
+select * from controlAsiento CA, itinerario I 
+where CA.itinerario_id=I.iti_id and CA.itinerario_id=1

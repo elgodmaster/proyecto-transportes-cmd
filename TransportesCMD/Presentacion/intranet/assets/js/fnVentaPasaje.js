@@ -42,10 +42,10 @@ $("#itinerarioFecha").change(function () {
     var prmFecha = $('#itinerarioFecha').val();
     spIntinerarioResumenXIdOrigenIdDestinoFecha(etiqueta, prmIdOrigen, prmIdDestino, prmFecha);
 });
-$("#itinerarioHora").change(function () {
-    var prmIdOrigen = $('#itinerarioHora').val();
-    ////alert("Ha seleccionado " + prmIdOrigen);
-});
+//$("#itinerarioHora").change(function () {
+//    var prmIdOrigen = $('#itinerarioHora').val();
+//    ////alert("Ha seleccionado " + prmIdOrigen);
+//});
 
 function spIntinerarioOrigenXNombre(salOrigen) {
     
@@ -137,27 +137,27 @@ function spIntinerarioFechaSalidaXIdOrigenIdDestino(itiFecha, prmIdOrigen, prmId
 
     });
 }
-function spIntinerarioHoraSalidaXIdOrigenIdDestinoFecha(itiHora, prmIdOrigen, prmIdDestino, prmFecha) {
-    $.ajax({
-        type: "POST",
-        url: "wsVentaPasaje.asmx/spIntinerarioHoraSalidaXIdOrigenIdDestinoFecha",
-        data: "{ 'prmIdOrigen': '" + prmIdOrigen + "','prmIdDestino': '" + prmIdDestino + "' ,'prmFecha':'" + prmFecha + "'}",
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: function (response) {
-            var itinerarios = response.d;
-            $("#lista").text(JSON.stringify(response));
-            $.each(itinerarios, function (index, enItinerario) {
-                itiHora.append('<option value="' + enItinerario.iti_id + '">' + enItinerario.iti_horSalida + '</option>');
-            });
-        },
-        failure: function (msg) {
-            alert(msg);
-        }
+//function spIntinerarioHoraSalidaXIdOrigenIdDestinoFecha(itiHora, prmIdOrigen, prmIdDestino, prmFecha) {
+//    $.ajax({
+//        type: "POST",
+//        url: "wsVentaPasaje.asmx/spIntinerarioHoraSalidaXIdOrigenIdDestinoFecha",
+//        data: "{ 'prmIdOrigen': '" + prmIdOrigen + "','prmIdDestino': '" + prmIdDestino + "' ,'prmFecha':'" + prmFecha + "'}",
+//        contentType: "application/json; charset=utf-8",
+//        dataType: "json",
+//        success: function (response) {
+//            var itinerarios = response.d;
+//            $("#lista").text(JSON.stringify(response));
+//            $.each(itinerarios, function (index, enItinerario) {
+//                itiHora.append('<option value="' + enItinerario.iti_id + '">' + enItinerario.iti_horSalida + '</option>');
+//            });
+//        },
+//        failure: function (msg) {
+//            alert(msg);
+//        }
 
-    });
+//    });
     
-}
+//}
 
 function spIntinerarioResumenXIdOrigenIdDestinoFecha(etiqueta, prmIdOrigen, prmIdDestino, prmFecha) {
     $.ajax({

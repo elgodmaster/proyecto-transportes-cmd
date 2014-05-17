@@ -1,6 +1,23 @@
 use bdTransportesCMD
 go
+--create table mensajes(
+--men_id int primary key identity not null,
+--men_codigo char(7) unique,
+--men_descripcion text,
+--men_fecRegistro datetime)
+--go
 
+--if object_id('spMostrarMensaje', 'p') is not null
+--drop procedure spMostrarMensaje
+--go
+-- create procedure spMostrarMensaje(
+--@men_codigo char(7))
+--as begin
+--	select men_descripcion from mensajes where men_codigo=@men_codigo
+--end
+--go
+
+go
 --Consultas frecuentes
 select CONVERT(CHAR(10), iti_horSalida, 103)
 +' ' +RIGHT(CONVERT(CHAR(17), iti_horSalida, 109), 5)
