@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="neControlAsiento.cs" />
     <Compile Include="neItinerario.cs" />
     <Compile Include="neSucursal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

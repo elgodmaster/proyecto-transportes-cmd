@@ -62,6 +62,14 @@ namespace Presentacion.intranet
             lstItinerario = neItinerario.spIntinerarioResumenXIdOrigenIdDestinoFecha(prmIdOrigen, prmIdDestino, prmFecha);
             return lstItinerario;
         }
+
+        [WebMethod]
+        public List<enControlAsiento> spControlAsientoXIdItinerario(int prmIdItinerario)
+        {
+            List<enControlAsiento> lstControlAsiento = new List<enControlAsiento>();
+            lstControlAsiento = neControlAsiento.spControlAsientoXIdItinerario(prmIdItinerario);
+            return lstControlAsiento;
+        }
         
     }
 }

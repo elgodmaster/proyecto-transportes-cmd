@@ -140,23 +140,23 @@ as begin
 	values(@veh_modelo,@veh_placa,@veh_numAsiPrimer,@veh_numAsiSegundo,'n',GETDATE(),'a',@vehMarca_id,@serEspecial_id)
 end
 go
-spVehiculoRegistrar 'MB001','MGS-23',16,54,1,1
+spVehiculoRegistrar 'MB001','MGS-23',16,56,1,1
 go
-spVehiculoRegistrar 'MB002','MGS-24',54,0,1,1
+spVehiculoRegistrar 'MB002','MGS-24',52,0,1,1
 gO
-spVehiculoRegistrar 'MB003','MGS-25',12,50,1,1
+spVehiculoRegistrar 'MB003','MGS-25',16,56,1,1
 go
-spVehiculoRegistrar 'MB004','MGS-26',50,0,1,1
+spVehiculoRegistrar 'MB004','MGS-26',52,0,1,1
 go
-spVehiculoRegistrar 'MB005','MGS-27',20,58,1,1
+spVehiculoRegistrar 'MB005','MGS-27',16,56,1,1
 go
-spVehiculoRegistrar 'MB006','MGS-28',58,0,1,1
+spVehiculoRegistrar 'MB006','MGS-28',48,0,1,1
 go
-spVehiculoRegistrar 'MB007','MGS-29',16,58,1,1
+spVehiculoRegistrar 'MB007','MGS-29',16,56,1,1
 go
-spVehiculoRegistrar 'MB008','MGS-10',12,54,2,1
+spVehiculoRegistrar 'MB008','MGS-10',16,56,2,1
 go
-spVehiculoRegistrar 'MB008','MGS-11',12,54,2,1
+spVehiculoRegistrar 'MB008','MGS-11',52,0,2,1
 go
 if object_id('spLlenarAsientos', 'p') is not null
 drop procedure spLlenarAsientos
@@ -165,19 +165,22 @@ go
  @vehiculo_id int,
  @itinerario_id int )
  as begin 
-	declare @contador int
-	set @contador=1
-	while @contador<=(select veh_numAsiPrimer from vehiculo where veh_id=@vehiculo_id)		
+	declare @conPri int
+	declare @conSeg int
+	set @conPri=1
+	set @conSeg=1
+	while @conPri<=(select veh_numAsiPrimer from vehiculo where veh_id=@vehiculo_id)		
 		begin
 			insert into controlAsiento(conAsi_piso,conAsi_numAsiento,conAsi_estAsiento,itinerario_id)
-			values(1,@contador,'d',@itinerario_id) 
-			set @contador=@contador+1
+			values(1,@conPri,'d',@itinerario_id) 
+			set @conPri=@conPri+1
 		end
-	while @contador<=(select veh_numAsiSegundo from vehiculo where veh_id=@vehiculo_id)		
+	while @conSeg<=(select veh_numAsiSegundo from vehiculo where veh_id=@vehiculo_id)		
 		begin
 			insert into controlAsiento(conAsi_piso,conAsi_numAsiento,conAsi_estAsiento,itinerario_id)
-			values(2,@contador,'d',@itinerario_id) 
-			set @contador=@contador+1
+			values(2,@conPri,'d',@itinerario_id) 
+			set @conPri=@conPri+1
+			set @conSeg=@conSeg+1
 		end
  end
 go
@@ -206,29 +209,31 @@ as begin
 			insert into itinerario(sucursal_origen_id,sucursal_destino_id,iti_horSalida,iti_horLlegada,
 				iti_precio,iti_fecRegistro,iti_estado,vehiculo_id,personal_id) 
 			values(@sucursal_origen_id,@sucursal_destino_id,@iti_horSalida,@iti_horLlegada,@iti_precio,GETDATE(),'a',@vehiculo_id,@personal_id)
-			if cast(@res as int)=1
-				update vehiculo set veh_estado='o' where veh_id=@vehiculo_id
-			exec spMostrarMensaje 'MS-0002'		
+			set @PKCreado=@@IDENTITY
+			exec spMostrarMensaje 'MS-0002'
+			exec spLlenarAsientos @vehiculo_id,@PKCreado
 		end
 end
 go
-spItinerarioRegistrar 1,2,'07/06/2013 8:00 AM','07/06/2013 1:00 PM',20.00,1,1
+spItinerarioRegistrar 1,2,'07/07/2014 8:00 AM','07/07/2014 1:00 PM',20.00,1,1
 go
-spItinerarioRegistrar 1,2,'07/06/2013 9:30 AM','07/06/2013 2:30 PM',30.00,2,1
+spItinerarioRegistrar 1,2,'07/07/2014 9:30 AM','07/07/2014 2:30 PM',30.00,2,1
 go
-spItinerarioRegistrar 1,2,'07/06/2013 1:00 PM','07/06/2013 7:30 PM',31.00,3,1
+spItinerarioRegistrar 1,2,'07/07/2014 1:00 PM','07/07/2014 7:30 PM',31.00,3,1
 go
-spItinerarioRegistrar 1,2,'07/06/2013 4:00 PM','07/06/2013 10:30 PM',32.00,4,1
+spItinerarioRegistrar 1,2,'07/07/2014 4:00 PM','07/07/2014 10:30 PM',32.00,4,1
 go
-spItinerarioRegistrar 1,2,'07/06/2013 9:00 PM','08/06/2013 1:00 AM',33.00,5,1
+spItinerarioRegistrar 1,2,'07/07/2014 9:00 PM','08/07/2014 1:00 AM',33.00,5,1
 go
-spItinerarioRegistrar 1,2,'07/06/2013 10:30 PM','08/06/2013 3:00 AM',34.00,6,1
+spItinerarioRegistrar 1,2,'07/07/2014 10:30 PM','08/07/2014 3:00 AM',34.00,6,1
 go
-spItinerarioRegistrar 1,4,'07/06/2013 9:00 PM','08/06/2013 3:00 AM',35.00,7,1
+spItinerarioRegistrar 1,4,'07/07/2014 9:00 PM','08/07/2014 3:00 AM',35.00,7,1
 go
-spItinerarioRegistrar 1,4,'07/06/2013 11:00 AM','08/06/2013 5:00 AM',36.00,8,1
+spItinerarioRegistrar 1,4,'07/07/2014 11:00 AM','08/07/2014 5:00 AM',36.00,8,1
 go
-spItinerarioRegistrar 1,2,'08/06/2013 9:00 AM','07/06/2013 2:30 PM',37.00,9,1
+spItinerarioRegistrar 1,2,'08/07/2014 9:00 AM','07/07/2014 2:30 PM',37.00,9,1
+go
+spItinerarioRegistrar 2,1,'08/07/2014 9:00 AM','08/07/2014 2:30 PM',37.00,9,1
 go
 if object_id('spIntinerarioOrigenXNombre', 'p') is not null
 drop procedure spIntinerarioOrigenXNombre
@@ -290,7 +295,7 @@ as begin
 	and I.sucursal_origen_id=@sucursal_origen_id and I.sucursal_destino_id=@sucursal_destino_id and CONVERT(CHAR(10), I.iti_horSalida, 103)=@iti_horSalida
 end
 go
-spIntinerarioHoraSalidaXIdOrigenIdDestinoFecha 1,2,'07/06/2013'
+spIntinerarioHoraSalidaXIdOrigenIdDestinoFecha 1,2,'07/06/2014'
 go
 if object_id('spIntinerarioResumenXIdOrigenIdDestinoFecha', 'p') is not null
 drop procedure spIntinerarioResumenXIdOrigenIdDestinoFecha
@@ -310,8 +315,18 @@ as begin
 	and I.sucursal_origen_id=@sucursal_origen_id and I.sucursal_destino_id=@sucursal_destino_id and CONVERT(CHAR(10), I.iti_horSalida, 103)=@iti_horSalida
 end
 go
-spIntinerarioResumenXIdOrigenIdDestinoFecha 1,2,'07/06/2013'
+spIntinerarioResumenXIdOrigenIdDestinoFecha 1,2,'07/06/2014'
 go
-
-select * from controlAsiento CA, itinerario I 
-where CA.itinerario_id=I.iti_id and CA.itinerario_id=1
+if object_id('spControlAsientoXIdItinerario', 'p') is not null
+drop procedure spControlAsientoXIdItinerario
+go
+ create procedure spControlAsientoXIdItinerario(
+@iti_id int)
+as begin
+	select CA.conAsi_piso,CA.conAsi_numAsiento, CA.conAsi_estAsiento 
+	from controlAsiento CA, itinerario I
+	where CA.itinerario_id=I.iti_id  and I.iti_id=@iti_id
+end
+go
+spControlAsientoXIdItinerario 1
+go
