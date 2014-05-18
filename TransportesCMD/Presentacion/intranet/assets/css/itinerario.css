@@ -8,12 +8,12 @@
     background:#ccc; 
 }
 
-.mr-fila {
+.fila {
     width: 90%;
     margin:0 auto;
 }
 
-.mr-asiento {
+.asiento {
     width:18%;
     height:50px;  
     vertical-align:middle;
@@ -22,7 +22,7 @@
    
 }
 
-.mr-asiento-d {
+.asiento-d {
 	-moz-box-shadow:inset 0px 1px 0px 0px #caefab;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #caefab;
 	box-shadow:inset 0px 1px 0px 0px #caefab;
@@ -57,16 +57,17 @@
 	text-align:center;
 	text-shadow:1px 1px 0px #aade7c;
 }
-.mr-asiento-d:hover {
+.asiento-d:hover {
 	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #5cb811), color-stop(1, #77d42a) );
 	background:-moz-linear-gradient( center top, #5cb811 5%, #77d42a 100% );
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#5cb811', endColorstr='#77d42a');
 	background-color:#5cb811;
-}.mr-asiento-d:active {
+    cursor: pointer;
+}.asiento-d:active {
 	position:relative;
 	top:1px;
 }
- .mr-asiento-o {
+ .asiento-o {
 	-moz-box-shadow:inset 0px 1px 0px 0px #f29c93;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #f29c93;
 	box-shadow:inset 0px 1px 0px 0px #f29c93;
@@ -101,17 +102,17 @@
 	text-align:center;
 	text-shadow:1px 1px 0px #b23e35;
 }
-.mr-asiento-o:hover {
+.asiento-o:hover {
 	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ce0100), color-stop(1, #fe1a00) );
 	background:-moz-linear-gradient( center top, #ce0100 5%, #fe1a00 100% );
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ce0100', endColorstr='#fe1a00');
 	background-color:#ce0100;
-}.mr-asiento-o:active {
+}.asiento-o:active {
 	position:relative;
 	top:1px;
 }
 
-.mr-asiento-r {   
+.asiento-r {   
   
 	-moz-box-shadow:inset 0px 1px 0px 0px #fed897;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #fed897;
@@ -147,13 +148,13 @@
 	text-align:center;
 	text-shadow:1px 1px 0px #cd8a15;
 }
-.mr-asiento-r:hover {
+.asiento-r:hover {
 	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #d29105), color-stop(1, #f6b33d) );
 	background:-moz-linear-gradient( center top, #d29105 5%, #f6b33d 100% );
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#d29105', endColorstr='#f6b33d');
 	background-color:#d29105;
     color:#fff;
-}.mr-asiento-r:active {
+}.asiento-r:active {
 	position:relative;
 	top:1px;
 }

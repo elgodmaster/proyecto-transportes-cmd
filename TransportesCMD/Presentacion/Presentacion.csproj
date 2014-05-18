@@ -105,7 +105,7 @@
     <Content Include="intranet\pruebas\prism.css" />
     <Content Include="intranet\pruebas\prism.js" />
     <Content Include="intranet\pruebas\style.css" />
-    <Content Include="intranet\assets\css\css_roque.css" />
+    <Content Include="intranet\assets\css\itinerario.css" />
     <Content Include="intranet\assets\font\fontawesome-webfont.svg" />
     <Content Include="intranet\assets\images\glyphicons-halflings-white.png" />
     <Content Include="intranet\assets\images\glyphicons-halflings.png" />
@@ -146,6 +146,23 @@
     <Content Include="SQL y Recursos\PSTransCMD - bd, tablas.sql" />
     <Content Include="SQL y Recursos\PSTransCMD - Consultas Frecuentes.sql" />
     <Content Include="SQL y Recursos\PSTransCMD - sp, fn.sql" />
+    <Content Include="SQL y Recursos\Recursos Internet\004-busbillet-Antezana-Lima-Ayacucho-2007-02-18.jpg" />
+    <Content Include="SQL y Recursos\Recursos Internet\1384875165_567931040_13-Sistema-Venta-De-Pasajes-Encomiendasgiros-Phpmysq-Codigo-Fuente-.jpg" />
+    <Content Include="SQL y Recursos\Recursos Internet\1384875165_567931040_14-Sistema-Venta-De-Pasajes-Encomiendasgiros-Phpmysq-Codigo-Fuente-.jpg" />
+    <Content Include="SQL y Recursos\Recursos Internet\23423 %282%29.jpg" />
+    <Content Include="SQL y Recursos\Recursos Internet\23423.jpg" />
+    <Content Include="SQL y Recursos\Recursos Internet\234234.jpg" />
+    <Content Include="SQL y Recursos\Recursos Internet\Boleto de Cusco - 152.jpg" />
+    <Content Include="SQL y Recursos\Recursos Internet\descarga.jpg" />
+    <Content Include="SQL y Recursos\Recursos Internet\Encomiendas1.png" />
+    <Content Include="SQL y Recursos\Recursos Internet\ficha_pasajes.jpg" />
+    <Content Include="SQL y Recursos\Recursos Internet\Gestion de Itinerario.png" />
+    <Content Include="SQL y Recursos\Recursos Internet\Sistema-Venta-De-Pasajes-Encomiendasgiros-Phpmysq-Codigo-Fuente-.jpg" />
+    <Content Include="SQL y Recursos\Recursos Internet\Sistema-Venta-De-Pasajes-Encomiendasgiros-Phpmysq-Codigo-Fuente-CAMPODONICO.jpg" />
+    <Content Include="SQL y Recursos\Recursos Internet\Sistema-Venta-De-Pasajes-Encomiendasgiros-Phpmysq-Codigo-Fuente-Informatica.jpg" />
+    <Content Include="SQL y Recursos\Recursos Internet\Sistema-Venta-De-Pasajes-Encomiendasgiros-Phpmysq-Codigo-Fuente-Lambayeque.jpg" />
+    <Content Include="SQL y Recursos\Recursos Internet\Sistema-Venta-De-Pasajes-Encomiendasgiros-Phpmysq-Codigo-Fuente-Peru.jpg" />
+    <Content Include="SQL y Recursos\Recursos Internet\Sistema-Venta-De-Pasajes-Encomiendasgiros-Phpmysq-Codigo-Fuente-Servicios.jpg" />
     <Content Include="SQL y Recursos\Venta_Pasaje %282%29.png" />
     <Content Include="Web.config" />
   </ItemGroup>
