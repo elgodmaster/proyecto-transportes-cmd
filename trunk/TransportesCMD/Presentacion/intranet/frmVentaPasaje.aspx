@@ -2,14 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="assets/css/itinerario.css" type="text/css" media="screen, projection" rel="stylesheet" />
-    <link rel="stylesheet" href="pruebas/chosen.css" />
-    <style>
-        #tbSalidasCss tbody tr:nth-child(odd):hover, #tbSalidasCss tbody tr:nth-child(even):hover {
-            color: red;
-            font-weight: 100;
-            cursor: pointer;
-        }
-    </style>
+    <link rel="stylesheet" href="pruebas/chosen.css" />  
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cuerpo" runat="server">
@@ -45,15 +38,14 @@
                             </div>
                             <div class="span1"></div>
                             <div id="tbSalidas" class="span13">
-                                <div id="Person-1" class="box">
-                                    <div class="box-content box-table">
-                                        <div style="width: 100%;">
-                                            <table id="tbSalidasCss" class="table table-hover tablesorter">
+                                <div class="box">
+                                    <div class="box-content box-table">                                        
+                                        <div>
+                                            <div class="span5"></div><div class="span3"><h4>Lista de Itinerarios</h4></div>
+                                            <div id="divTableScroll">
+                                            <table id="tbSalidasCss" class="table">
                                                 <thead>
-                                                    <tr>
-                                                        <%--<th>Origen</th>
-                                                    <th>Destino</th>
-                                                    <th>Fecha</th>--%>
+                                                    <tr>                                                        
                                                         <th>N°</th>
                                                         <th>Hora</th>
                                                         <th>Precio</th>
@@ -65,11 +57,11 @@
                                                     <%-- Aqui Javascript JSON --%>
                                                 </tbody>
                                             </table>
+                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="span2"></div>
                         </div>
                     </div>
                 </div>
@@ -87,49 +79,56 @@
                 <div class="box-content box-cliente collapse in">
                     <div class="box-content">
                         <div class="row-fluid">
-                            <fieldset>
-                                <legend></legend>
-                                <div class="span3">Documento de Identidad:</div>
-                                <div class="control-group">
-                                    <select class="span4" id="Select1">
-                                        <option>DNI</option>
-                                        <option>PASAPORTE</option>
-                                        <option>LIBRETA MILITAR</option>
-                                    </select>
-                                </div>
-                                <div class="span3">Número</div>
-                                <div class="control-group">
-                                    <input class="span4" name="" value="" />
-                                </div>
-
-
-                                <div class="span3">Nombres:</div>
-                                <div class="control-group">
-                                    <input class="span4" name="" />
-                                </div>
-                                <div class="span3">Apellidos:</div>
-                                <div class="control-group">
-                                    <input class="span4" name="" />
-                                </div>
-                                <div class="span3">Edad:</div>
-                                <div class="control-group">
-                                    <input class="span4" name="" />
-                                </div>
-                                <div id="divControlAsiento" class="span8">
-                                    <div class="span3">Número de Asiento:</div>
-                                    <div class="divControlAsiento control-group">
-                                        <input id="numAsiento" style="text-align: center; color: red; font-size: 1.5em; font-weight: bold;" class="span2" name="" disabled="disabled" />
+                            <form name="frmRegistraVentaPasaje">
+                                <fieldset>
+                                    <legend></legend>
+                                    <div class="span3">Documento de Identidad:</div>
+                                    <div class="control-group">
+                                        <select class="span4" id="selDocIdentidad">
+                                             <%-- Aqui Javascript JSON --%>                                     
+                                        </select>
                                     </div>
-                                </div>
-                            </fieldset>
+                                    <div class="span3">Número de Documento:</div>
+                                    <div class="control-group">
+                                        <input class="span3" id="impDocIdentidad" name="" value="" />
+                                        <button class="btn" onclick="fnEnviarDatosPersonBusqueda()"><i class="icon-search"></i>Buscar</button>
+                                    </div>
+
+
+                                    <div class="span3">Nombres:</div>
+                                    <div class="control-group">
+                                        <input class="span4" name=""  id="impNombres"/>
+                                    </div>
+                                    <div class="span3">Apellidos:</div>
+                                    <div class="control-group">
+                                        <input class="span4" name="" id="impApellidos"/>
+                                    </div>
+                                    <div class="span3">Sexo:</div>
+                                    <div class="control-group">
+                                        <input type="radio" class="radio" name="sexo" value="m" checked="checked"/>  Masculino 
+                                        <input type="radio" class="radio" name="sexo"  value="f"/>  Femenino 
+                                    </div>
+                                    <div class="span3">Edad:</div>
+                                    <div class="control-group">
+                                        <input class="span4" name=""  id="impEdad"/>
+                                    </div>
+                                    <div id="divControlAsiento" class="span8">
+                                        <div class="span3">Número de Asiento:</div>
+                                        <div class="divControlAsiento control-group">
+                                            <input id="numAsiento" class="span2" name="" disabled="disabled" />
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
                         </div>
                     </div>
                     <div class="box-footer ">
+                        <div class="span4"></div>
                         <button type="submit" class="btn btn-primary">
                             <i class="icon-ok"></i>
                             Aceptar
                         </button>
-                        <button type="submit" class="btn" name="action" value="CANCEL">Cancel</button>
+                        <button type="submit" class="btn btn-ser" name="action" value="CANCEL">Cancel</button>
                     </div>
                 </div>
             </div>

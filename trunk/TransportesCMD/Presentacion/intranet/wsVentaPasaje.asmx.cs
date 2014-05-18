@@ -70,6 +70,25 @@ namespace Presentacion.intranet
             lstControlAsiento = neControlAsiento.spControlAsientoXIdItinerario(prmIdItinerario);
             return lstControlAsiento;
         }
+
+        [WebMethod]
+        public List<enDocumentoIdentidad> spDocumentoIdentidadLista()
+        {
+            List<enDocumentoIdentidad> lstDocIdentidad = new List<enDocumentoIdentidad>();
+            lstDocIdentidad = neDocumentoIdentidad.spDocumentoIdentidadLista();
+            return lstDocIdentidad;
+        }
+
+        [WebMethod]
+        public List<enPersona> spPersonaXNumeroTipoDocumentoIdentidad(String prmNumDocIde, int idTipDoc)
+        {
+            List<enPersona> lsPersona = new List<enPersona>();
+            lsPersona = nePersona.spPersonaXNumeroTipoDocumentoIdentidad(prmNumDocIde, idTipDoc);
+            return lsPersona;
+        }
+
+        
+        
         
     }
 }

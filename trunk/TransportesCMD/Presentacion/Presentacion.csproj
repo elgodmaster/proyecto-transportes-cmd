@@ -97,14 +97,6 @@
     <Content Include="assets\js\Myriad_Pro_italic_600.font.js" />
     <Content Include="assets\js\PIE.htc" />
     <Content Include="intranet\frmMantenedorBus.aspx" />
-    <Content Include="intranet\pruebas\chosen-sprite.png" />
-    <Content Include="intranet\pruebas\chosen.css" />
-    <Content Include="intranet\pruebas\chosen.jquery.js" />
-    <Content Include="intranet\pruebas\jquery-ui-1.8.1.css" />
-    <Content Include="intranet\pruebas\jquery-ui-1.8.1.min.js" />
-    <Content Include="intranet\pruebas\prism.css" />
-    <Content Include="intranet\pruebas\prism.js" />
-    <Content Include="intranet\pruebas\style.css" />
     <Content Include="intranet\assets\css\itinerario.css" />
     <Content Include="intranet\assets\font\fontawesome-webfont.svg" />
     <Content Include="intranet\assets\images\glyphicons-halflings-white.png" />
@@ -139,7 +131,6 @@
     <Content Include="intranet\assets\js\jquery\virtual-tour.js" />
     <Content Include="index.aspx" />
     <Content Include="intranet\frmPrincipal.aspx" />
-    <Content Include="intranet\frmPruebas.aspx" />
     <Content Include="intranet\frmVentaPasaje.aspx" />
     <Content Include="intranet\index.aspx" />
     <Content Include="intranet\wsVentaPasaje.asmx" />
@@ -147,8 +138,6 @@
     <Content Include="SQL y Recursos\PSTransCMD - Consultas Frecuentes.sql" />
     <Content Include="SQL y Recursos\PSTransCMD - sp, fn.sql" />
     <Content Include="SQL y Recursos\Recursos Internet\004-busbillet-Antezana-Lima-Ayacucho-2007-02-18.jpg" />
-    <Content Include="SQL y Recursos\Recursos Internet\1384875165_567931040_13-Sistema-Venta-De-Pasajes-Encomiendasgiros-Phpmysq-Codigo-Fuente-.jpg" />
-    <Content Include="SQL y Recursos\Recursos Internet\1384875165_567931040_14-Sistema-Venta-De-Pasajes-Encomiendasgiros-Phpmysq-Codigo-Fuente-.jpg" />
     <Content Include="SQL y Recursos\Recursos Internet\23423 %282%29.jpg" />
     <Content Include="SQL y Recursos\Recursos Internet\23423.jpg" />
     <Content Include="SQL y Recursos\Recursos Internet\234234.jpg" />
@@ -187,13 +176,6 @@
     </Compile>
     <Compile Include="intranet\frmPrincipal.aspx.designer.cs">
       <DependentUpon>frmPrincipal.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="intranet\frmPruebas.aspx.cs">
-      <DependentUpon>frmPruebas.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="intranet\frmPruebas.aspx.designer.cs">
-      <DependentUpon>frmPruebas.aspx</DependentUpon>
     </Compile>
     <Compile Include="intranet\frmVentaPasaje.aspx.cs">
       <DependentUpon>frmVentaPasaje.aspx</DependentUpon>

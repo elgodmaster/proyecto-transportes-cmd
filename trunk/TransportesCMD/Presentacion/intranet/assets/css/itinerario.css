@@ -1,12 +1,31 @@
+#divTableScroll {
+    height: 200px;
+    width: 100%;
+    overflow: scroll;
+}
 
-#intinerario-ida, #intinerario-vuelta {
+#tbSalidasCss tbody tr:nth-child(odd):hover, #tbSalidasCss tbody tr:nth-child(even):hover {
+    font-weight: 100;
+    cursor: pointer;
+    font-weight: bold;    
+    background:#e9e9e9;
+    -webkit-transition:all 0.2s ease-out;  /* Chrome y Safari */
+      -o-transition:all  0.2s ease-out;  /* Opera */
+      -moz-transition:all  0.2s ease-out;  /* Mozilla Firefox */
+      -ms-transition:all  0.2s ease-out;   /* Internet Explorer */
+      transition:all  0.2s ease-out;
+}
+
+
+
+/*#intinerario-ida, #intinerario-vuelta {
     margin:0 auto;
     width:70%;    
     border-left:solid 2px #f6b33d;
     border-right:solid 2px #f6b33d;
     padding:5px 0 10px 0 ;    
     background:#ccc; 
-}
+}*/
 
 .fila {
     width: 90%;
@@ -157,5 +176,13 @@
 }.asiento-r:active {
 	position:relative;
 	top:1px;
+}
+
+
+#numAsiento {
+    text-align: center; 
+    color: red; 
+    font-size: 1.5em; 
+    font-weight: bold;
 }
 

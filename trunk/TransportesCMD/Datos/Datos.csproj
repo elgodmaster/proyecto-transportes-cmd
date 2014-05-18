@@ -45,7 +45,9 @@
   <ItemGroup>
     <Compile Include="Conexion.cs" />
     <Compile Include="daControlAsiento.cs" />
+    <Compile Include="daDocumentoIdentidad.cs" />
     <Compile Include="daItinerario.cs" />
+    <Compile Include="daPersona.cs" />
     <Compile Include="daSucursal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
