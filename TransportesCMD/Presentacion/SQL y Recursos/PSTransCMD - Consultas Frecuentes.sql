@@ -1,4 +1,4 @@
-use bdTransportesCMD
+	use bdTransportesCMD
 go
 --create table mensajes(
 --men_id int primary key identity not null,
