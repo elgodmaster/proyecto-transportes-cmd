@@ -12,6 +12,7 @@ namespace Entidades
         public String per_nombres {get;set;}
         public String per_apellidos { get; set; }
         public String per_numDocIdentidad { get; set; }
+        public String per_fecNacimiento { get; set; }
         public String per_telefono { get; set; }
         public String per_sexo { get; set; }
         public String per_direccion { get; set; }

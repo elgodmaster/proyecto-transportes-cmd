@@ -5,7 +5,27 @@
     spIntinerarioOrigenXNombre(salOrigen);
     fnMostrarOcularComponenteByClass(0, 'divControlAsiento');
     fnMostrarOcularComponenteByClass(0, 'replicaBus');
+    var selDocIdentidad = $("#selDocIdentidad");
+    spDocumentoIdentidadLista(selDocIdentidad);
+    
 });
+
+function validarTeclaPresionada(e,tecla) {
+    var key = e.keyCode || e.which;
+    if (key == tecla) { return true; } else { return false; }
+}
+
+//function callkeydownhandler(evnt) {
+//    var ev = (evnt) ? evnt : event;
+//    var code = (ev.which) ? ev.which : event.keyCode;
+//    alert("El código de la tecla pulsada es: " + code);
+//}
+//if (window.document.addEventListener) {
+//    window.document.addEventListener("keydown", callkeydownhandler, false);
+//} else {
+//    window.document.attachEvent("onkeydown", callkeydownhandler);
+//}
+
 function fnMostrarOcularComponenteByClass(accion, componente ) {
     var com = document.getElementById(componente);
     if (accion == 0) {
@@ -14,6 +34,8 @@ function fnMostrarOcularComponenteByClass(accion, componente ) {
         com.style.display = 'block';
     }
 }
+
+
 
 $("#salidaOrigen").change(function () {
     $("#salidaDestino").find("option").remove();
@@ -46,7 +68,7 @@ $("#salidaDestino").change(function () {
 $("#itinerarioFecha").change(function () {
     $("#itinerarioHora").find("option").remove();
     $("#tbBodyItinerario").find("tr").remove();
-    fnMostrarOcularComponenteByClass(0, 'tbSalidas');
+    fnMostrarOcularComponenteByClass(1, 'tbSalidas');
     fnMostrarOcularComponenteByClass(0, 'divControlAsiento');
     fnMostrarOcularComponenteByClass(0, 'replicaBus');
 
@@ -149,7 +171,7 @@ function spIntinerarioResumenXIdOrigenIdDestinoFecha(etiqueta, prmIdOrigen, prmI
             var itinerarios = response.d;
             var i = 1;
             $.each(itinerarios, function (index, enItinerario) {                
-                etiqueta.append('<tr onclick="spControlAsientoXIdItinerario(\'' + enItinerario.iti_id + '\')"  tabindex="' + i + 4 + '">'
+                etiqueta.append('<tr onkeyup="if(validarTeclaPresionada(event,32) == true) { spControlAsientoXIdItinerario(\'' + enItinerario.iti_id + '\'); }" onclick="spControlAsientoXIdItinerario(\'' + enItinerario.iti_id + '\')"  tabindex="' + i + 4 + '">'
                     //+ '<td>' + enItinerario.sucursalOrigen.ciudad.ciu_nomCiudad + '</td>'
                     //+ '<td>' + enItinerario.sucursalDestino.ciudad.ciu_nomCiudad + '</td>'
                     //+ '<td>' + enItinerario.iti_fecSalida + '</td>'
@@ -243,8 +265,6 @@ function spControlAsientoXIdItinerario(prmIdItinerario) {
                         i += 3;
                     }
                     contSeg++;
-                   
-
                 }
             }
         },
@@ -259,4 +279,72 @@ function spControlAsientoXIdItinerario(prmIdItinerario) {
 function fnMostrarAsiento(numAsiento) {
     fnMostrarOcularComponenteByClass(1, 'divControlAsiento');
     document.getElementById("numAsiento").value = numAsiento;
+}
+
+function spDocumentoIdentidadLista(etiqueta){
+    $.ajax({
+        type: "POST",
+        url: "wsVentaPasaje.asmx/spDocumentoIdentidadLista",
+        data: "{}",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (response) {
+            var docIdentidad = response.d;
+            $.each(docIdentidad, function (index, enDocumentoIdentidad) {
+                etiqueta.append('<option value="' + enDocumentoIdentidad.docIde_id + '">' + enDocumentoIdentidad.docIde_descripcion + '</option>');
+            });
+        },
+        failure: function (msg) {
+            alert(msg);
+        }
+    });
+}
+
+function spPersonaXNumeroTipoDocumentoIdentidad(prmNumDocIde, idTipDoc) {
+    $.ajax({
+        type: "POST",
+        url: "wsVentaPasaje.asmx/spPersonaXNumeroTipoDocumentoIdentidad",
+        data: "{ 'prmNumDocIde': '" + prmNumDocIde + "','idTipDoc': '" + idTipDoc + "'}",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (response) {
+            var persona = response.d;
+            $.each(persona, function (index, enPersona) {                
+                document.getElementById("impNombres").value = enPersona.per_nombres;
+                document.getElementById("impApellidos").value = enPersona.per_apellidos;
+                document.getElementById("impEdad").value = enPersona.per_fecNacimiento;
+                if (enPersona.per_sexo == 'm') {
+                    document.frmRegistraVentaPasaje.sexo[0].checked = true;
+                }else{
+                    document.frmRegistraVentaPasaje.sexo[1].checked = true;
+                }                
+            });
+        },
+        failure: function (msg) {           
+            alert(msg);
+        }
+    });
+}
+
+$("#impDocIdentidad").keyup(function () {  
+
+    if ($('#impDocIdentidad').val().length >= 8) {
+        //if (validarTeclaPresionada(event, 13) == true) {
+            fnEnviarDatosPersonBusqueda()
+        //}       
+    } else {
+        fnLimpiarCampos();       
+    }
+
+});
+function fnEnviarDatosPersonBusqueda() {
+    var prmNumDocIde = $('#impDocIdentidad').val();
+    var idTipDoc = $('#selDocIdentidad').val();
+    spPersonaXNumeroTipoDocumentoIdentidad(prmNumDocIde, idTipDoc)
+}
+
+function fnLimpiarCampos() {
+    document.getElementById("impNombres").value ="";
+    document.getElementById("impApellidos").value = "";
+    document.getElementById("impEdad").value = "";
 }
