@@ -20,9 +20,10 @@ as begin
 end
 go
 --PROCEDIMIENTOS Y LLENADO INICIAL
-insert into mensajes values('MS-0001','Error al Registrar Itinerario',GETDATE())
-insert into mensajes values('MS-0002','¡Registro de Itinerario Correcto!',GETDATE())
+insert into mensajes values('MS-0001','Error al Registrar',GETDATE())
+insert into mensajes values('MS-0002','¡Registro de Correcto!',GETDATE())
 insert into mensajes values('RN-0001','No debe haber Itinerarios con las misma ruta, fecha y hora de salida. Por lo menos debe diferenciarse en lo último.',GETDATE())
+insert into mensajes values('RN-0003','No se puede registrar a otra persona que su Número de Documento de Identidad ya esté en la base de datos.',GETDATE())
 go
 if object_id('spMostrarMensaje', 'p') is not null
 drop procedure spMostrarMensaje
@@ -37,6 +38,14 @@ insert into documentoIdentidad(docIde_descripcion) values('PASAPORTE')
 insert into documentoIdentidad(docIde_descripcion) values('DNI')
 insert into documentoIdentidad(docIde_descripcion) values('LIBRETA MILITAR')
 go
+if object_id('spDocumentoIdentidadLista', 'p') is not null
+drop procedure spDocumentoIdentidadLista
+go
+create procedure spDocumentoIdentidadLista
+as begin
+	select * from documentoIdentidad order by docIde_descripcion
+end
+go
 if object_id('spPersonaRegistrarBasico', 'p') is not null
 drop procedure spPersonaRegistrarBasico
 go
@@ -44,15 +53,39 @@ create procedure spPersonaRegistrarBasico(
 @per_nombres varchar(35),
 @per_apellidos varchar(55),
 @per_numDocIdentidad varchar(15),
+@per_fecNacimiento date,
 @per_sexo char(1),
 @docIdentidad_id int)
 as
 begin
-	insert into persona(per_nombres,per_apellidos,per_numDocIdentidad,per_telefono,per_sexo,per_direccion,per_email,per_img,per_fecRegistro,per_estado,docIdentidad_id ) 
-	values(@per_nombres,@per_apellidos,@per_numDocIdentidad,'n',@per_sexo,'n','n','n',GETDATE(),'a',@docIdentidad_id )	
+	declare @numDocIden int
+	select @numDocIden=count(per_numDocIdentidad) from persona where per_numDocIdentidad=@per_numDocIdentidad
+	if @numDocIden > 0
+		exec spMostrarMensaje 'RN-0003'			
+	else
+		begin
+			insert into persona(per_nombres,per_apellidos,per_numDocIdentidad,per_fecNacimiento,per_telefono,per_sexo,per_direccion,per_email,per_img,per_fecRegistro,per_estado,docIdentidad_id ) 
+			values(@per_nombres,@per_apellidos,@per_numDocIdentidad,@per_fecNacimiento,'n',@per_sexo,'n','n','n',GETDATE(),'a',@docIdentidad_id )	
+			set @numDocIden=@@IDENTITY	
+			select @numDocIden
+			exec spMostrarMensaje 'MS-0002'		
+		end	
 end
 go
-spPersonaRegistrarBasico 'Miler Ivan','Roque Laiza','47540732','m',2
+spPersonaRegistrarBasico 'Miler Ivan','Roque Laiza','12345678','12/01/1990','m',2
+go
+if object_id('spPersonaXNumeroTipoDocumentoIdentidad', 'p') is not null
+drop procedure spPersonaXNumeroTipoDocumentoIdentidad
+go
+create procedure spPersonaXNumeroTipoDocumentoIdentidad(
+@per_numDocIdentidad varchar(15),
+@docIdentidad_id int)
+as begin
+	select per_id,per_nombres, per_apellidos,per_sexo, DATEDIFF(yy,per_fecNacimiento, GETDATE()) 'Edad' 
+	from persona where per_numDocIdentidad=@per_numDocIdentidad and docIdentidad_id=@docIdentidad_id
+end
+go
+spPersonaXNumeroTipoDocumentoIdentidad '47540532',2
 go
 if object_id('spUsuarioRegistrar', 'p') is not null
 drop procedure spUsuarioRegistrar
