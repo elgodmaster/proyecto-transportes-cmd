@@ -72,7 +72,7 @@ begin
 		end	
 end
 go
-spPersonaRegistrarBasico 'Miler Ivan','Roque Laiza','12345678','12/01/1990','m',2
+spPersonaRegistrarBasico 'MILER','ROQUE LAIZA','12345678','12/01/1990','m',2
 go
 if object_id('spPersonaXNumeroTipoDocumentoIdentidad', 'p') is not null
 drop procedure spPersonaXNumeroTipoDocumentoIdentidad
@@ -85,7 +85,7 @@ as begin
 	from persona where per_numDocIdentidad=@per_numDocIdentidad and docIdentidad_id=@docIdentidad_id
 end
 go
-spPersonaXNumeroTipoDocumentoIdentidad '47540532',2
+spPersonaXNumeroTipoDocumentoIdentidad '29609107',2
 go
 if object_id('spUsuarioRegistrar', 'p') is not null
 drop procedure spUsuarioRegistrar

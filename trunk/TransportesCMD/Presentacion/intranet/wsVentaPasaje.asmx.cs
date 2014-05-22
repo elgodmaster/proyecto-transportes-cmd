@@ -84,6 +84,15 @@ namespace Presentacion.intranet
         {
             List<enPersona> lsPersona = new List<enPersona>();
             lsPersona = nePersona.spPersonaXNumeroTipoDocumentoIdentidad(prmNumDocIde, idTipDoc);
+            if (lsPersona.Count > 0)
+            {
+                lsPersona[0].personaMensaje = "¡Cliente Nuestro!";  
+            }
+            else {
+                enPersona persona = new enPersona();
+                persona.personaMensaje = "¡Nuevo Cliente1";
+                lsPersona.Add(persona);
+            }
             return lsPersona;
         }
 
