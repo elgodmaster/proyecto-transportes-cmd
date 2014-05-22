@@ -171,7 +171,8 @@ function spIntinerarioResumenXIdOrigenIdDestinoFecha(etiqueta, prmIdOrigen, prmI
             var itinerarios = response.d;
             var i = 1;
             $.each(itinerarios, function (index, enItinerario) {                
-                etiqueta.append('<tr onkeyup="if(validarTeclaPresionada(event,32) == true) { spControlAsientoXIdItinerario(\'' + enItinerario.iti_id + '\'); }" onclick="spControlAsientoXIdItinerario(\'' + enItinerario.iti_id + '\')"  tabindex="' + i + 4 + '">'
+                etiqueta.append('<tr onkeyup="if(validarTeclaPresionada(event,32) == true) { spControlAsientoXIdItinerario(\''
+                    + enItinerario.iti_id + '\'); }" onclick="spControlAsientoXIdItinerario(\'' + enItinerario.iti_id + '\')"  tabindex="' + i + 4 + '"class="collapsed" data-toggle="collapse" data-target=".box-cliente">'
                     //+ '<td>' + enItinerario.sucursalOrigen.ciudad.ciu_nomCiudad + '</td>'
                     //+ '<td>' + enItinerario.sucursalDestino.ciudad.ciu_nomCiudad + '</td>'
                     //+ '<td>' + enItinerario.iti_fecSalida + '</td>'
@@ -309,15 +310,17 @@ function spPersonaXNumeroTipoDocumentoIdentidad(prmNumDocIde, idTipDoc) {
         dataType: "json",
         success: function (response) {
             var persona = response.d;
-            $.each(persona, function (index, enPersona) {                
+            $.each(persona, function (index, enPersona) {
                 document.getElementById("impNombres").value = enPersona.per_nombres;
                 document.getElementById("impApellidos").value = enPersona.per_apellidos;
-                document.getElementById("impEdad").value = enPersona.per_fecNacimiento;
+                document.getElementById("impEdad").value = enPersona.per_fecNacimiento;                
                 if (enPersona.per_sexo == 'm') {
                     document.frmRegistraVentaPasaje.sexo[0].checked = true;
-                }else{
+                } else if (enPersona.per_sexo == 'f') {
                     document.frmRegistraVentaPasaje.sexo[1].checked = true;
-                }                
+                } lblMsjVentaPasaje
+                $('#lblMsjVentaPasaje').find("span").remove();
+                $('#lblMsjVentaPasaje').append("<span>" + enPersona.personaMensaje + "</span>");
             });
         },
         failure: function (msg) {           
@@ -329,9 +332,9 @@ function spPersonaXNumeroTipoDocumentoIdentidad(prmNumDocIde, idTipDoc) {
 $("#impDocIdentidad").keyup(function () {  
 
     if ($('#impDocIdentidad').val().length >= 8) {
-        //if (validarTeclaPresionada(event, 13) == true) {
+        if (validarTeclaPresionada(event, 13) == true) {
             fnEnviarDatosPersonBusqueda()
-        //}       
+        }
     } else {
         fnLimpiarCampos();       
     }
@@ -347,4 +350,5 @@ function fnLimpiarCampos() {
     document.getElementById("impNombres").value ="";
     document.getElementById("impApellidos").value = "";
     document.getElementById("impEdad").value = "";
+    //document.getElementById("impNumAsiento").value = "";
 }

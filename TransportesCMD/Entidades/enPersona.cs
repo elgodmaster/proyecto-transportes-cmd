@@ -21,5 +21,7 @@ namespace Entidades
         public DateTime per_fecRegistro {get;set;}
         public String per_estado { get; set; }
         public enDocumentoIdentidad documentoIdentidad { get; set; }
+
+        public String personaMensaje { get; set; }
     }
 }
