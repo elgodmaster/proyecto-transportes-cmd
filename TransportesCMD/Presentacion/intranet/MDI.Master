@@ -23,7 +23,7 @@
 </head>
 <body>
     <div class="navbar navbar-fixed-top">
-        <form id="frmSalir" runat="server">
+        <%--<form id="frmSalir" runat="server">--%>
         <div class="navbar-inner">
             <div class="container">
                 <button class="btn btn-navbar" data-toggle="collapse" data-target="#app-nav-top-bar">
@@ -59,14 +59,14 @@
                     </ul>
                     <ul class="nav pull-right">
                         <li> 
-                            <asp:Button ID="salir" CssClass="btn btn-danger" runat="server" Text="Salir" OnClick="salir_Click"  />
+                            <%--<asp:Button ID="salir" CssClass="btn btn-danger" runat="server" Text="Salir" OnClick="salir_Click"  />--%>
                         </li> 
                     </ul>
                     
                 </div>
             </div>
         </div>
-        </form>
+        <%--</form>--%>
     </div>
     <div id="body-container">
         <div id="body-content">
@@ -94,7 +94,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="frmMantenedorBus.aspx">
                                 <i class="icon-cogs icon-large"></i>Buses
                             </a>
                         </li>
