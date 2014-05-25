@@ -35,7 +35,7 @@ as begin
 	select men_descripcion from mensajes where men_codigo=@men_codigo
 end
 go
-insert into documentoIdentidad(docIde_descripcion,docIde_longitud) values('PASAPORTE',11)
+insert into documentoIdentidad(docIde_descripcion,docIde_longitud) values('PASAPORTE',12)
 insert into documentoIdentidad(docIde_descripcion,docIde_longitud) values('DNI',8)
 insert into documentoIdentidad(docIde_descripcion,docIde_longitud) values('LIBRETA MILITAR',8)
 go
@@ -73,20 +73,31 @@ begin
 		end	
 end
 go
-spPersonaRegistrarBasico 'MILER','ROQUE LAIZA','12345679','12/01/1990','m',2
+spPersonaRegistrarBasico 'MILER','ROQUE LAIZA','123456789012','12/01/1990','m',1
 go
-if object_id('spPersonaXNumeroTipoDocumentoIdentidad', 'p') is not null
-drop procedure spPersonaXNumeroTipoDocumentoIdentidad
+if object_id('spPersonaXNumeroDocumentoIdentidad', 'p') is not null
+drop procedure spPersonaXNumeroDocumentoIdentidad
 go
-create procedure spPersonaXNumeroTipoDocumentoIdentidad(
-@per_numDocIdentidad varchar(15),
-@docIdentidad_id int)
+create procedure spPersonaXNumeroDocumentoIdentidad(
+@per_numDocIdentidad varchar(15))
 as begin
-	select per_id,per_nombres, per_apellidos,per_sexo, DATEDIFF(yy,per_fecNacimiento, GETDATE()) 'Edad', CONVERT(CHAR(10), per_fecNacimiento, 103)
-	from persona where per_numDocIdentidad=@per_numDocIdentidad and docIdentidad_id=@docIdentidad_id
+	select per_id,per_nombres, per_apellidos,per_sexo, DATEDIFF(yy,per_fecNacimiento, GETDATE()) 'Edad', CONVERT(CHAR(10), per_fecNacimiento, 103), docIdentidad_id, per_numDocIdentidad
+	from persona where per_numDocIdentidad=@per_numDocIdentidad
 end
 go
-spPersonaXNumeroTipoDocumentoIdentidad '12345678',2
+spPersonaXNumeroDocumentoIdentidad '123456789012'
+go
+if object_id('spPersonaXApellidos', 'p') is not null
+drop procedure spPersonaXApellidos
+go
+create procedure spPersonaXApellidos(
+@per_nomApellidos varchar(15))
+as begin
+	select top 4 per_id,per_nombres, per_apellidos,per_sexo, DATEDIFF(yy,per_fecNacimiento, GETDATE()) 'Edad', CONVERT(CHAR(10), per_fecNacimiento, 103), docIdentidad_id, per_numDocIdentidad
+	from persona where per_apellidos like '%'+@per_nomApellidos+'%'
+	end
+go
+spPersonaXApellidos 'ro'
 go
 if object_id('spUsuarioRegistrar', 'p') is not null
 drop procedure spUsuarioRegistrar

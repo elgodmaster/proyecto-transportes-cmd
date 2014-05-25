@@ -16,10 +16,9 @@
                         <i class="icon-reorder"></i>
                     </button>
                 </div>
-                <div class="box-content box-list collapse in">
+                <div class="box-content box-list">
                     <div class="box-content">
                         <div class="row-fluid">
-
                             <div class="control-group span15">
                                 <div class="span2"></div>
                                 <span>Origen: </span>
@@ -83,48 +82,50 @@
                     <div class="box-content">
                         <div class="row-fluid">
                             <form name="frmRegistraVentaPasaje">
-                                <div></div>
+                                <div class="" >
+                                    <input type="text" id="tamNumDocIdentidad"  value="" />
+                                    <input type="text" id="idItinerario" name="idItinerario" value="" />
+                                    <input type="text" id="idPersona" name="idPersona" value="" />
+                                </div>
                                 <div class="span3">Documento de Identidad:</div>
                                 <div class="control-group">
                                     <select class="span4" id="tipDocIdentidad" name="tipDocIdentidad">
                                         <%-- Aqui Javascript JSON --%>                                       
-                                    </select>
-                                     <input type="text" style="display:none" id="tamNumDocIdentidad" hidden="hidden" value="" />
-                                    <input type="text" style="display:none" id="idItinerario" name="idItinerario" value="" />
+                                    </select>                                    
                                 </div>
                                 <div class="span3">Número de Documento:</div>
                                 <div class="control-group">                                    
                                     <input type="text" class="span3" id="numDocIdentidad" name="numDocIdentidad" />
-                                    <button type="button" class="btn" onclick="fnEnviarDatosPersonBusqueda()"><i class="icon-search"></i>Buscar</button>
-                                    <input type="text" style="display:none"  hidden="hidden" id="idPersona" name="idPersona" value="" />
-                                </div>
-                                <div class="span3">Nombres:</div>
-                                <div class="control-group">
-                                    <input class="span4" name="nombres" id="nombres" />
+                                    <button type="button" class="btn" onclick="buscarPersonaPorNic()"><i class="icon-search"></i>Buscar</button>                                    
                                 </div>
                                 <div class="span3">Apellidos:</div>
                                 <div class="control-group">
                                     <input class="span4" name="apellidos" id="apellidos" />
                                 </div>
+                                <div class="span3">Nombres:</div>
+                                <div class="control-group">
+                                    <input class="span4" name="nombres" id="nombres" />
+                                </div>                                
                                 <div class="span3">Sexo:</div>
                                 <div class="control-group">
-                                    <input type="radio" class="radio" name="sexo" value="m" checked="checked" />
+                                    <input type="radio" class="radio" name="sexo" value="m" checked="checked"/>
                                     Masculino 
-                                        <input type="radio" class="radio" name="sexo" value="f" />
+                                    <input type="radio" class="radio" name="sexo" value="f" />
                                     Femenino 
                                 </div>
                                 <div class="span3">Fecha Nacimiento:</div>
                                 <div class="control-group">
-                                    <input class="span2" name="fecNacimiento" id="fecNacimiento" />
+                                    <input class="span2" name="fecNacimiento" id="fecNacimiento" onfocus="this.blur()"  />                                    
                                     <input class="span1" name="edad" id="edad" /><span> Años</span>
                                 </div>
+                                <div id="mensaje"></div>
                                 <div id="divNumAsiento" class="span8">
                                     <div class="span3">Número de Asiento:</div>
                                     <div class="control-group">
                                         <input type="text" id="numAsiento" class="span2" name="numAsiento" disabled="disabled" />
                                     </div>
                                 </div>
-                                <textarea id="results" style="display:none" ></textarea>
+                                <textarea id="results"></textarea>
                                                                 
                             </form>
                         </div>

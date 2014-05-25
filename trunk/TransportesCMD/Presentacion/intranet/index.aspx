@@ -13,7 +13,6 @@
     <link href="assets/css/customize-template.css" type="text/css" media="screen, projection" rel="stylesheet" />
 
 </head>
-
 <body>
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
@@ -41,7 +40,6 @@
                                         <span class="add-on" title="Usuario" ><i class="icon-user"></i></span>
                                         <asp:TextBox ID="txtUser" class="span4" runat="server"></asp:TextBox>                                       
                                     </div>
-
                                     <div class="input-prepend">                                        
                                         <span class="add-on"><i class="icon-key"></i></span>
                                         <asp:TextBox ID="txtPass" class="span4" runat="server" type="password"></asp:TextBox> 

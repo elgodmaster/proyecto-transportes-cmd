@@ -85,9 +85,10 @@ namespace Presentacion.intranet
             List<enDocumentoIdentidad> lstDocIdentidad = new List<enDocumentoIdentidad>();
             List<enDocumentoIdentidad> lstReturn = new List<enDocumentoIdentidad>();
             lstDocIdentidad = neDocumentoIdentidad.spDocumentoIdentidadLista();
-            for (int i = 0; i < lstDocIdentidad.Count;i++ )
+            for (int i = 0; i < lstDocIdentidad.Count; i++)
             {
-                if (lstDocIdentidad[i].docIde_id == prmIdDocIdentidad) {
+                if (lstDocIdentidad[i].docIde_id == prmIdDocIdentidad)
+                {
                     enDocumentoIdentidad doc = new enDocumentoIdentidad();
                     doc = lstDocIdentidad[i];
                     lstReturn.Add(doc);
@@ -99,10 +100,10 @@ namespace Presentacion.intranet
 
 
         [WebMethod]
-        public List<enPersona> spPersonaXNumeroTipoDocumentoIdentidad(String prmNumDocIde, int idTipDoc)
+        public List<enPersona> spPersonaXNumeroDocumentoIdentidad(String prmNumDocIde)
         {
             List<enPersona> lsPersona = new List<enPersona>();
-            lsPersona = nePersona.spPersonaXNumeroTipoDocumentoIdentidad(prmNumDocIde, idTipDoc);
+            lsPersona = nePersona.spPersonaXNumeroDocumentoIdentidad(prmNumDocIde);
             if (lsPersona.Count > 0)
             {
                 lsPersona[0].personaMensaje = "¡Cliente Nuestro!";  
@@ -115,6 +116,14 @@ namespace Presentacion.intranet
             return lsPersona;
         }
 
+
+        [WebMethod]
+        public List<enPersona> spPersonaXApellidos(String apellidos)
+        {
+            List<enPersona> lsPersona = new List<enPersona>();
+            lsPersona = nePersona.spPersonaXApellidos(apellidos);            
+            return lsPersona;
+        }
         
         
         
