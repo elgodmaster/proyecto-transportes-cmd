@@ -50,6 +50,7 @@
     <Compile Include="daPersona.cs" />
     <Compile Include="daSucursal.cs" />
     <Compile Include="daUsuario.cs" />
+    <Compile Include="daVehiculo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
