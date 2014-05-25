@@ -89,14 +89,14 @@
                                     <select class="span4" id="tipDocIdentidad" name="tipDocIdentidad">
                                         <%-- Aqui Javascript JSON --%>                                       
                                     </select>
-                                     <input type="text" id="tamNumDocIdentidad" hidden="hidden" value="" />
-                                    <input type="text" hidden="hidden" id="idItinerario" name="idPersona" value="" />
+                                     <input type="text" style="display:none" id="tamNumDocIdentidad" hidden="hidden" value="" />
+                                    <input type="text" style="display:none" id="idItinerario" name="idItinerario" value="" />
                                 </div>
                                 <div class="span3">Número de Documento:</div>
                                 <div class="control-group">                                    
                                     <input type="text" class="span3" id="numDocIdentidad" name="numDocIdentidad" />
                                     <button type="button" class="btn" onclick="fnEnviarDatosPersonBusqueda()"><i class="icon-search"></i>Buscar</button>
-                                    <input type="text" hidden="hidden" id="idPersona" name="idPersona" value="" />
+                                    <input type="text" style="display:none"  hidden="hidden" id="idPersona" name="idPersona" value="" />
                                 </div>
                                 <div class="span3">Nombres:</div>
                                 <div class="control-group">
@@ -124,7 +124,7 @@
                                         <input type="text" id="numAsiento" class="span2" name="numAsiento" disabled="disabled" />
                                     </div>
                                 </div>
-                                <textarea id="results"></textarea>
+                                <textarea id="results" style="display:none" ></textarea>
                                                                 
                             </form>
                         </div>

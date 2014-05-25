@@ -50,6 +50,7 @@
     <Compile Include="neSucursal.cs" />
     <Compile Include="neUsuario.cs" />
     <Compile Include="neVehiculo.cs" />
+    <Compile Include="neVehiculoMarca.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
