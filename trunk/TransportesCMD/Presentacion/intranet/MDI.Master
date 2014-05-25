@@ -43,7 +43,7 @@
                                     <a href="dashboard.html">Mantenedor de clientes</a>
                                 </li>
                                 <li>
-                                    <a href="form.html">Mantenedor de Buses</a>
+                                    <a href="frmMantenedorBus.aspx">Mantenedor de Buses</a>
                                 </li>
                                 <li>
                                     <a href="custom-view.html">Mantenedor de Salidas</a>
