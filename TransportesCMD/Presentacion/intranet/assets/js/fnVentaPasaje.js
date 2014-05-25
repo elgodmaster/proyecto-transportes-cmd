@@ -16,7 +16,7 @@ $(document).ready(function () {
             var edad = fecActual.getFullYear() - fecSeleccionada.getFullYear();
 
             var m = fecActual.getMonth() - fecSeleccionada.getMonth();
-            if (m < 0 || (m === 0 && fecActual.getDate() < fecSeleccionada.getDate())) {
+            if (m < 0 || (m == 0 && fecActual.getDate() < fecSeleccionada.getDate())) {
                 edad--;
             }
             document.getElementById("edad").value = edad;           
@@ -359,20 +359,21 @@ function spPersonaXNumeroDocumentoIdentidad(prmNumDocIde) {
 }
 
 function buscarPersonaPorNic() {
-    spPersonaXNumeroDocumentoIdentidad($('#numDocIdentidad').val());
+    if (validarLongitudEntre('numDocIdentidad', 8, 15)) {
+
+        spPersonaXNumeroDocumentoIdentidad($('#numDocIdentidad').val());
+
+    } else {
+        limpiarImputText(false, true, true, true, true, false, true);
+        removerSpan(true);
+        $('#lblMsjVentaPasaje').append("<span>Búsqueda: La longitud de \"Número de Documento\" debe ser entre 8 y 15 caracteres.</span>");
+    }
+    
 }
 
 $("#numDocIdentidad").keyup(function () {
     if (validarTeclaPresionada(event, 13) == true) {
-        if (validarLongitudEntre('numDocIdentidad', 8, 15)) {
-        
-                buscarPersonaPorNic();
-        
-        } else {
-            limpiarImputText(false, true, true, true, true, false, true);
-            removerSpan(true);
-            $('#lblMsjVentaPasaje').append("<span>Búsqueda: La longitud de \"Número de Documento\" debe ser entre 8 y 15 caracteres.</span>");
-        }
+        buscarPersonaPorNic();
     }
 });
 
