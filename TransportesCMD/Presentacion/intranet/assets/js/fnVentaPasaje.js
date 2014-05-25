@@ -429,14 +429,3 @@ $("#apellidos").autocomplete({
     },
     minLength: 2
 });
-
-function calcularEdad(fecha) {
-    var today = new Date();
-    var birthDate = new Date($("#fecNacimiento").datepicker("getDate"));
-    var age = today.getFullYear() - birthDate.getFullYear();
-    var m = today.getMonth() - birthDate.getMonth();
-    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-        age--;
-    }
-    $("#edad").val(age);
-}
