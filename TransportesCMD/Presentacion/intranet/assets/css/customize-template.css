@@ -7676,6 +7676,8 @@ body > #body-container {
 }
 .box .box-content.box-list {
   padding: 0;
+    top: 159px;
+    left: -9px;
 }
 .box .box-content.box-list ul {
   margin: 0;

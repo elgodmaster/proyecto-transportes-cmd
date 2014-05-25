@@ -1,10 +1,31 @@
-﻿$(document).ready(function () {
+﻿
+$(document).ready(function () {
     limpiarImputText(true,true,true,true,true,true,true,true);
     ocultarComponente(true,true,true);
 
     spIntinerarioOrigenXNombre();
-    spDocumentoIdentidadLista();    
+    spDocumentoIdentidadLista();
+
+    $("#fecNacimiento").datepicker({
+        changeMonth: true,
+        changeYear: true,
+        maxDate: "+0d",
+        onSelect: function (date) {
+            var fecSeleccionada = new Date(date.substring(6, 10) + '-' + date.substring(3, 5) + '-' + date.substring(0, 2));
+            var fecActual = new Date();
+            var edad = fecActual.getFullYear() - fecSeleccionada.getFullYear();
+
+            var m = fecActual.getMonth() - fecSeleccionada.getMonth();
+            if (m < 0 || (m === 0 && fecActual.getDate() < fecSeleccionada.getDate())) {
+                edad--;
+            }
+            document.getElementById("edad").value = edad;           
+        }
+
+    });
+   
 });
+
 
 function limpiarImputText(numDocIdentidad, nombres, apellidos, fecNacimiento, edad, numAsiento,idPersona, idItinerario) {   
     if (numDocIdentidad) { document.getElementById("numDocIdentidad").value = ""; }
@@ -268,7 +289,8 @@ function spDocumentoIdentidadLista() {
             document.getElementById("tamNumDocIdentidad").value=numDocIdentidad[0].docIde_longitud;
             $.each(numDocIdentidad, function (index, enDocumentoIdentidad) {
                 etiqueta.append('<option value="' + enDocumentoIdentidad.docIde_id + '">' + enDocumentoIdentidad.docIde_descripcion + '</option>');
-            });
+            });            
+            
         },
         failure: function (msg) {
             alert(msg);
@@ -276,65 +298,58 @@ function spDocumentoIdentidadLista() {
     });
 }
 
-$("#tipDocIdentidad").change(function () {
-    limpiarImputText(false, true, true, true, true, false,true);
-    removerSpan(true);
-    $.ajax({
-        type: "POST",
-        url: "wsVentaPasaje.asmx/longitudNumeroDocumentoIdentidad",
-        data: "{ 'prmIdDocIdentidad': '" + $("#tipDocIdentidad").val() + "'}",
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: function (response) {
-            $.each(response.d, function (index, enDocumentoIdentidad) {
-                document.getElementById("tamNumDocIdentidad").value = enDocumentoIdentidad.docIde_longitud;
-            });
-        },
-        failure: function (msg) {
-            alert(msg);
-        }
-    });
-});
 
-
-$("#numDocIdentidad").keyup(function () {
-    //validarLongitudInt(inputText, tamaño máximo);
-    validarLongitudInt('numDocIdentidad', $('#tamNumDocIdentidad').val());
-    if ($('#numDocIdentidad').val().length >= 8 && $('#numDocIdentidad').val().length <=15) {
-        //if (validarTeclaPresionada(event, 13) == true) {
-        var prmNumDocIde = $('#numDocIdentidad').val();
-        var idTipDoc = $('#tipDocIdentidad').val();
-        spPersonaXNumeroTipoDocumentoIdentidad(prmNumDocIde, idTipDoc);
-        //}
-    } else {
-        limpiarImputText(false, true, true, true, true, false,true);
-        removerSpan(true);
+function mostrarTamanioNumeroDocumentoIdentidad() {
+$.ajax({
+    type: "POST",
+    url: "wsVentaPasaje.asmx/longitudNumeroDocumentoIdentidad",
+    data: "{ 'prmIdDocIdentidad': '" + $("#tipDocIdentidad").val() + "'}",
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    success: function (response) {
+        $.each(response.d, function (index, enDocumentoIdentidad) {
+            document.getElementById("tamNumDocIdentidad").value = enDocumentoIdentidad.docIde_longitud;
+        });
+    },
+    failure: function (msg) {
+        alert(msg);
     }
 });
+}
 
-function spPersonaXNumeroTipoDocumentoIdentidad(prmNumDocIde, idTipDoc) {
+$("#tipDocIdentidad").change(function () {
+    mostrarTamanioNumeroDocumentoIdentidad();
+});
+
+
+function spPersonaXNumeroDocumentoIdentidad(prmNumDocIde) {
     limpiarImputText(false, false, false, false, false, false, true);
     $.ajax({
         type: "POST",
-        url: "wsVentaPasaje.asmx/spPersonaXNumeroTipoDocumentoIdentidad",
-        data: "{ 'prmNumDocIde': '" + prmNumDocIde + "','idTipDoc': '" + idTipDoc + "'}",
+        url: "wsVentaPasaje.asmx/spPersonaXNumeroDocumentoIdentidad",
+        data: "{ 'prmNumDocIde': '" + prmNumDocIde + "'}",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (response) {
+            
             var persona = response.d;
-            $.each(persona, function (index, enPersona) {
-                document.getElementById("nombres").value = enPersona.per_nombres;
-                document.getElementById("apellidos").value = enPersona.per_apellidos;
-                document.getElementById("fecNacimiento").value = enPersona.per_fecNacimiento;
-                document.getElementById("edad").value = enPersona.edad;
-                document.getElementById("idPersona").value = enPersona.per_id;
-                if (enPersona.per_sexo == 'm') {
-                    document.frmRegistraVentaPasaje.sexo[0].checked = true;
-                } else if (enPersona.per_sexo == 'f') {
-                    document.frmRegistraVentaPasaje.sexo[1].checked = true;
-                }
-                removerSpan(true);
-                $('#lblMsjVentaPasaje').append("<span>" + enPersona.personaMensaje + "</span>");               
+            $.each(persona, function (index, enPersona) {                
+                
+                    document.getElementById("nombres").value = enPersona.per_nombres;
+                    document.getElementById("apellidos").value = enPersona.per_apellidos;
+                    document.getElementById("fecNacimiento").value = enPersona.per_fecNacimiento;
+                    document.getElementById("edad").value = enPersona.edad;
+                    document.getElementById("idPersona").value = enPersona.per_id;                
+                    if (enPersona.per_sexo == 'm') {
+                        document.frmRegistraVentaPasaje.sexo[0].checked = true;
+                    } else if (enPersona.per_sexo == 'f') {
+                        document.frmRegistraVentaPasaje.sexo[1].checked = true;
+                    } 
+                    removerSpan(true);
+                    $('#lblMsjVentaPasaje').append("<span>" + enPersona.personaMensaje + ".</span>");
+                    $("#tipDocIdentidad option[value=" + enPersona.documentoIdentidad.docIde_id + "]").attr("selected", true);
+                    mostrarTamanioNumeroDocumentoIdentidad();
+                
             });
         },
         failure: function (msg) {           
@@ -343,8 +358,85 @@ function spPersonaXNumeroTipoDocumentoIdentidad(prmNumDocIde, idTipDoc) {
     });
 }
 
+function buscarPersonaPorNic() {
+    spPersonaXNumeroDocumentoIdentidad($('#numDocIdentidad').val());
+}
+
+$("#numDocIdentidad").keyup(function () {
+    if (validarTeclaPresionada(event, 13) == true) {
+        if (validarLongitudEntre('numDocIdentidad', 8, 15)) {
+        
+                buscarPersonaPorNic();
+        
+        } else {
+            limpiarImputText(false, true, true, true, true, false, true);
+            removerSpan(true);
+            $('#lblMsjVentaPasaje').append("<span>Búsqueda: La longitud de \"Número de Documento\" debe ser entre 8 y 15 caracteres.</span>");
+        }
+    }
+});
+
 function mostrar() {
     var str = $("form").serialize();
     $("#results").text(str);
 }
 
+$("#apellidos").autocomplete({
+    source: function (request, response) {
+        $.ajax({
+            url: "wsVentaPasaje.asmx/spPersonaXApellidos",
+            data: "{ 'apellidos': '" + request.term + "' }",
+            dataType: "json",
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                var lstPersona = data.d;
+                response($.map(lstPersona, function (enPersona) {
+                    return {
+                        value: enPersona.per_apellidos,
+                        label: (enPersona.per_apellidos).concat(' ' + enPersona.per_nombres),
+                        docIde_id: enPersona.documentoIdentidad.docIde_id,
+                        per_nombres: enPersona.per_nombres,
+                        per_fecNacimiento: enPersona.per_fecNacimiento,
+                        edad: enPersona.edad,
+                        per_sexo: enPersona.per_sexo,
+                        per_numDocIdentidad: enPersona.per_numDocIdentidad,
+                        per_id: enPersona.per_id
+                    }
+                }))
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert(textStatus);
+            }
+        });
+    },
+    select: function (e, i) {
+        document.getElementById("nombres").value = i.item.per_nombres;
+        document.getElementById("apellidos").value = i.item.per_apellidos;
+        document.getElementById("fecNacimiento").value = i.item.per_fecNacimiento;
+        document.getElementById("edad").value = i.item.edad;
+        document.getElementById("idPersona").value = i.item.per_id;
+        document.getElementById("numDocIdentidad").value = i.item.per_numDocIdentidad;
+        $("#tipDocIdentidad option[value=" + i.item.docIde_id + "]").attr("selected", true);
+        mostrarTamanioNumeroDocumentoIdentidad();
+        if (i.item.per_sexo == 'm') {
+            document.frmRegistraVentaPasaje.sexo[0].checked = true;
+        } else if (enPersona.per_sexo == 'f') {
+            document.frmRegistraVentaPasaje.sexo[1].checked = true;
+        }
+        removerSpan(true);
+        $('#lblMsjVentaPasaje').append("<span>¡Cliente Nuestro!</span>");
+    },
+    minLength: 2
+});
+
+function calcularEdad(fecha) {
+    var today = new Date();
+    var birthDate = new Date($("#fecNacimiento").datepicker("getDate"));
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    $("#edad").val(age);
+}

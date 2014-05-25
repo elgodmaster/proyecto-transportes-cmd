@@ -10,9 +10,19 @@ namespace Negocio
 {
     public class nePersona
     {
-        public static List<enPersona> spPersonaXNumeroTipoDocumentoIdentidad(String prmNumDocIde, int idTipDoc)
+        public static List<enPersona> spPersonaXNumeroDocumentoIdentidad(String prmNumDocIde)
         {
-            return daPersona.spPersonaXNumeroTipoDocumentoIdentidad(prmNumDocIde, idTipDoc);
+            return daPersona.spPersonaXNumeroDocumentoIdentidad(prmNumDocIde);
+        }
+
+        public static List<enPersona> spPersonaXApellidos(String nomApellidos)
+        {
+            try {
+                return daPersona.spPersonaXApellidos(nomApellidos);
+            }catch(Exception e){
+                throw e;
+            }
+           
         }
     }
 }
