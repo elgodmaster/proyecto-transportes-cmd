@@ -236,6 +236,7 @@
     <Content Include="SQL y Recursos\Cronograma - 01.mpp" />
     <Content Include="SQL y Recursos\Pruebas de Software.docx" />
     <Content Include="SQL y Recursos\Reglas del Negocio.xlsx" />
+    <Content Include="SQL y Recursos\Moqups.zip" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
