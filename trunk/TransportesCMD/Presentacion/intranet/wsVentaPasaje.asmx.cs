@@ -80,6 +80,25 @@ namespace Presentacion.intranet
         }
 
         [WebMethod]
+        public List<enDocumentoIdentidad> longitudNumeroDocumentoIdentidad(int prmIdDocIdentidad)
+        {
+            List<enDocumentoIdentidad> lstDocIdentidad = new List<enDocumentoIdentidad>();
+            List<enDocumentoIdentidad> lstReturn = new List<enDocumentoIdentidad>();
+            lstDocIdentidad = neDocumentoIdentidad.spDocumentoIdentidadLista();
+            for (int i = 0; i < lstDocIdentidad.Count;i++ )
+            {
+                if (lstDocIdentidad[i].docIde_id == prmIdDocIdentidad) {
+                    enDocumentoIdentidad doc = new enDocumentoIdentidad();
+                    doc = lstDocIdentidad[i];
+                    lstReturn.Add(doc);
+                    break;
+                }
+            }
+            return lstReturn;
+        }
+
+
+        [WebMethod]
         public List<enPersona> spPersonaXNumeroTipoDocumentoIdentidad(String prmNumDocIde, int idTipDoc)
         {
             List<enPersona> lsPersona = new List<enPersona>();
@@ -90,7 +109,7 @@ namespace Presentacion.intranet
             }
             else {
                 enPersona persona = new enPersona();
-                persona.personaMensaje = "¡Nuevo Cliente1";
+                persona.personaMensaje = "¡Nuevo Cliente!";
                 lsPersona.Add(persona);
             }
             return lsPersona;

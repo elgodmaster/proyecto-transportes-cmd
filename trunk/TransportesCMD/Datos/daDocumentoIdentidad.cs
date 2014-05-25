@@ -29,7 +29,8 @@ namespace Datos
                 {
                     enDocumentoIdentidad docIdentidad = new enDocumentoIdentidad();
                     docIdentidad.docIde_id = Convert.ToInt32(dr[0].ToString());
-                    docIdentidad.docIde_descripcion = dr[1].ToString();
+                    docIdentidad.docIde_longitud = Convert.ToInt32(dr[1].ToString());
+                    docIdentidad.docIde_descripcion = dr[2].ToString();
                     lstDocIdentidad.Add(docIdentidad);
                 }
 

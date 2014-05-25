@@ -96,6 +96,7 @@
     <Content Include="assets\js\Myriad_Pro_italic_400.font.js" />
     <Content Include="assets\js\Myriad_Pro_italic_600.font.js" />
     <Content Include="assets\js\PIE.htc" />
+    <Content Include="intranet\assets\js\softroque.js" />
     <Content Include="intranet\frmMantenedorBus.aspx" />
     <Content Include="intranet\assets\css\itinerario.css" />
     <Content Include="intranet\assets\font\fontawesome-webfont.svg" />
@@ -135,7 +136,7 @@
     <Content Include="intranet\index.aspx" />
     <Content Include="intranet\wsVentaPasaje.asmx" />
     <Content Include="SQL y Recursos\PSTransCMD - bd, tablas.sql" />
-    <Content Include="SQL y Recursos\PSTransCMD - Consultas Frecuentes.sql" />
+    <Content Include="SQL y Recursos\PSTransCMD - No Ejecutar%28Pruebas%29.sql" />
     <Content Include="SQL y Recursos\PSTransCMD - sp, fn.sql" />
     <Content Include="SQL y Recursos\Recursos Internet\004-busbillet-Antezana-Lima-Ayacucho-2007-02-18.jpg" />
     <Content Include="SQL y Recursos\Recursos Internet\23423 %282%29.jpg" />

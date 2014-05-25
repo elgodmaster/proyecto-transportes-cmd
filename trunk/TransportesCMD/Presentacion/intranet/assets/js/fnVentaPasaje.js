@@ -1,87 +1,67 @@
 ﻿$(document).ready(function () {
-    $("#tbSalidas").hide();
-    var salOrigen = $("#salidaOrigen");
-    
-    spIntinerarioOrigenXNombre(salOrigen);
-    fnMostrarOcularComponenteByClass(0, 'divControlAsiento');
-    fnMostrarOcularComponenteByClass(0, 'replicaBus');
-    var selDocIdentidad = $("#selDocIdentidad");
-    spDocumentoIdentidadLista(selDocIdentidad);
-    
+    limpiarImputText(true,true,true,true,true,true,true,true);
+    ocultarComponente(true,true,true);
+
+    spIntinerarioOrigenXNombre();
+    spDocumentoIdentidadLista();    
 });
 
-function validarTeclaPresionada(e,tecla) {
-    var key = e.keyCode || e.which;
-    if (key == tecla) { return true; } else { return false; }
+function limpiarImputText(numDocIdentidad, nombres, apellidos, fecNacimiento, edad, numAsiento,idPersona, idItinerario) {   
+    if (numDocIdentidad) { document.getElementById("numDocIdentidad").value = ""; }
+    if (nombres) { document.getElementById("nombres").value = ""; }
+    if (apellidos) { document.getElementById("apellidos").value = ""; }
+    if (fecNacimiento) { document.getElementById("fecNacimiento").value = ""; }
+    if (edad) { document.getElementById("edad").value = ""; }
+    if (numAsiento) { document.getElementById("numAsiento").value = ""; }
+    if (idPersona) { document.getElementById("idPersona").value = ""; }
+    if (idItinerario) { document.getElementById("idItinerario").value = ""; }
 }
 
-//function callkeydownhandler(evnt) {
-//    var ev = (evnt) ? evnt : event;
-//    var code = (ev.which) ? ev.which : event.keyCode;
-//    alert("El código de la tecla pulsada es: " + code);
-//}
-//if (window.document.addEventListener) {
-//    window.document.addEventListener("keydown", callkeydownhandler, false);
-//} else {
-//    window.document.attachEvent("onkeydown", callkeydownhandler);
-//}
+function ocultarComponente(divNumAsiento, tbItinerario, replicaBus) {
+    if (divNumAsiento) {  document.getElementById("divNumAsiento").style.display = "none"; }
+    else { document.getElementById("divNumAsiento").style.display = "block"; }
 
-function fnMostrarOcularComponenteByClass(accion, componente ) {
-    var com = document.getElementById(componente);
-    if (accion == 0) {
-        com.style.display = 'none';
-    } else {
-        com.style.display = 'block';
-    }
+    if (tbItinerario) { document.getElementById("tbItinerario").style.display = "none"; }
+    else { document.getElementById("tbItinerario").style.display = "block"; }
+
+    if (replicaBus) { document.getElementById("replicaBus").style.display = "none"; }
+    else { document.getElementById("replicaBus").style.display = "block"; }
 }
 
+function removerOptions(salidaOrigen, salidaDestino, itinerarioFecha, tipDocIdentidad) {
+    if (salidaOrigen) { $("#salidaOrigen").find("option").remove(); }
+    if (salidaDestino) { $("#salidaDestino").find("option").remove(); }
+    if (itinerarioFecha) { $("#itinerarioFecha").find("option").remove(); }
+    if (tipDocIdentidad) { $("#tipDocIdentidad").find("option").remove(); }
+}
 
+function removerTr(tbBodyItinerario) {
+    if (salidaOrigen) { $("#tbBodyItinerario").find("tr").remove(); }
+}
 
-$("#salidaOrigen").change(function () {
-    $("#salidaDestino").find("option").remove();
-    $("#itinerarioFecha").find("option").remove();
-    $("#itinerarioHora").find("option").remove();
-    fnMostrarOcularComponenteByClass(0, 'tbSalidas');
-    fnMostrarOcularComponenteByClass(0, 'divControlAsiento');
-    fnMostrarOcularComponenteByClass(0, 'replicaBus');
+function removerSpan(lblMsjVentaPasaje) {
+    if (lblMsjVentaPasaje) { $("#lblMsjVentaPasaje").find("span").remove(); }
+}
 
-    $("#tbBodyItinerario").find("tr").remove();
-
-    var salDestino = $("#salidaDestino");
-    var prmIdOrigen = $('#salidaOrigen').val();
-    spIntinerarioDestinoXIdOrigen(salDestino, prmIdOrigen);
-
+$("#salidaOrigen").change(function () { 
+    spIntinerarioDestinoXIdOrigen($('#salidaOrigen').val());
 });
-$("#salidaDestino").change(function () {
-    $("#itinerarioFecha").find("option").remove();
-    $("#itinerarioHora").find("option").remove();
-    $("#tbBodyItinerario").find("tr").remove();
-    fnMostrarOcularComponenteByClass(0, 'tbSalidas');
-    fnMostrarOcularComponenteByClass(0, 'divControlAsiento');
-    fnMostrarOcularComponenteByClass(0, 'replicaBus');
 
-    var salFecha = $("#itinerarioFecha");
-    var prmIdOrigen = $('#salidaOrigen').val();
-    var prmIdDestino = $('#salidaDestino').val();
-    spIntinerarioFechaSalidaXIdOrigenIdDestino(salFecha, prmIdOrigen, prmIdDestino);
+$("#salidaDestino").change(function () { 
+    spIntinerarioFechaSalidaXIdOrigenIdDestino($('#salidaOrigen').val(), $('#salidaDestino').val());
 });
+
 $("#itinerarioFecha").change(function () {
-    $("#itinerarioHora").find("option").remove();
-    $("#tbBodyItinerario").find("tr").remove();
-    fnMostrarOcularComponenteByClass(1, 'tbSalidas');
-    fnMostrarOcularComponenteByClass(0, 'divControlAsiento');
-    fnMostrarOcularComponenteByClass(0, 'replicaBus');
-
-    //var salHora = $("#itinerarioHora");
-    var etiqueta = $("#tbBodyItinerario");
-    var prmIdOrigen = $('#salidaOrigen').val();
-    var prmIdDestino = $('#salidaDestino').val();
-    var prmFecha = $('#itinerarioFecha').val();
-    spIntinerarioResumenXIdOrigenIdDestinoFecha(etiqueta, prmIdOrigen, prmIdDestino, prmFecha);
+    spIntinerarioResumenXIdOrigenIdDestinoFecha($('#salidaOrigen').val(), $('#salidaDestino').val(), $('#itinerarioFecha').val());
 });
 
-function spIntinerarioOrigenXNombre(salOrigen) {
-    
+function spIntinerarioOrigenXNombre() {
+    limpiarImputText(true, true, true, true, true, true, true,true);
+    removerOptions(false, true, true, false);
+    ocultarComponente(true, true, true);
+    removerTr(true);
+
+    var etiqueta = $("#salidaOrigen");
     $.ajax({
         type: "POST",
         url: "wsVentaPasaje.asmx/spIntinerarioOrigenXNombre",
@@ -90,17 +70,23 @@ function spIntinerarioOrigenXNombre(salOrigen) {
         dataType: "json",
         success: function (response) {
             var sucursales = response.d;
-            salOrigen.append('<option value="0">Seleccione Origen</option>');
             $.each(sucursales, function (index, enSucursal) {
-                salOrigen.append('<option value="' + enSucursal.suc_id + '">' + enSucursal.suc_nombre + '</option>');                
+                etiqueta.append('<option value="' + enSucursal.suc_id + '">' + enSucursal.suc_nombre + '</option>');
             });
+            spIntinerarioDestinoXIdOrigen($('#salidaOrigen').val());
         },
         failure: function (msg) {
             alert(msg);
         }
     });
 }
-function spIntinerarioDestinoXIdOrigen(salDestino, prmIdOrigen) {
+
+function spIntinerarioDestinoXIdOrigen(prmIdOrigen) {
+    limpiarImputText(true, true, true, true, true, true, true, true);
+    removerOptions(false, true, true, false);
+    ocultarComponente(true, true, true);
+    removerTr(true);
+    var etiqueta = $("#salidaDestino");
     $.ajax({
         type: "POST",
         url: "wsVentaPasaje.asmx/spIntinerarioDestinoXIdOrigen",
@@ -111,17 +97,9 @@ function spIntinerarioDestinoXIdOrigen(salDestino, prmIdOrigen) {
             //salDestino.append('<option value="0">Seleccione Destino</option>');
             var sucursales = response.d; 
             $.each(sucursales, function (index, enSucursal) {
-                salDestino.append('<option value="' + enSucursal.suc_id + '">' + enSucursal.suc_nombre + '</option>');
+                etiqueta.append('<option value="' + enSucursal.suc_id + '">' + enSucursal.suc_nombre + '</option>');
             });
-            $("#itinerarioFecha").find("option").remove();
-            $("#itinerarioHora").find("option").remove();
-            $("#tbBodyItinerario").find("tr").remove();
-            $("#tbSalidas").hide();
-
-            var salFecha = $("#itinerarioFecha");
-            var prmIdOrigen = $('#salidaOrigen').val();
-            var prmIdDestino = $('#salidaDestino').val();
-            spIntinerarioFechaSalidaXIdOrigenIdDestino(salFecha, prmIdOrigen, prmIdDestino);
+            spIntinerarioFechaSalidaXIdOrigenIdDestino($('#salidaOrigen').val(), $('#salidaDestino').val());
         },
         failure: function (msg) {
             alert(msg);
@@ -129,7 +107,13 @@ function spIntinerarioDestinoXIdOrigen(salDestino, prmIdOrigen) {
 
     });
 }
-function spIntinerarioFechaSalidaXIdOrigenIdDestino(itiFecha, prmIdOrigen, prmIdDestino) {
+
+function spIntinerarioFechaSalidaXIdOrigenIdDestino(prmIdOrigen, prmIdDestino) {
+    limpiarImputText(true, true, true, true, true, true, true, true);
+    removerOptions(false, false, true, false);
+    ocultarComponente(true, true, true);
+    removerTr(true);
+    var etiqueta = $("#itinerarioFecha");
     $.ajax({
         type: "POST",
         url: "wsVentaPasaje.asmx/spIntinerarioFechaSalidaXIdOrigenIdDestino",
@@ -140,18 +124,9 @@ function spIntinerarioFechaSalidaXIdOrigenIdDestino(itiFecha, prmIdOrigen, prmId
             //itiFecha.append('<option value="0">Seleccione Fecha</option>');
             var itinerarios = response.d;
             $.each(itinerarios, function (index, enItinerario) {
-                itiFecha.append('<option value="' + enItinerario.iti_horSalida + '">' + enItinerario.iti_horSalida + '</option>');
+                etiqueta.append('<option value="' + enItinerario.iti_horSalida + '">' + enItinerario.iti_horSalida + '</option>');
             });
-            $("#itinerarioHora").find("option").remove();
-            $("#tbBodyItinerario").find("tr").remove();
-            $("#tbSalidas").show();
-
-            //var salHora = $("#itinerarioHora");
-            var etiqueta = $("#tbBodyItinerario");
-            var prmIdOrigen = $('#salidaOrigen').val();
-            var prmIdDestino = $('#salidaDestino').val();
-            var prmFecha = $('#itinerarioFecha').val();
-            spIntinerarioResumenXIdOrigenIdDestinoFecha(etiqueta, prmIdOrigen, prmIdDestino, prmFecha);
+            spIntinerarioResumenXIdOrigenIdDestinoFecha($('#salidaOrigen').val(), $('#salidaDestino').val(), $('#itinerarioFecha').val());
         },
         failure: function (msg) {
             alert(msg);
@@ -160,7 +135,12 @@ function spIntinerarioFechaSalidaXIdOrigenIdDestino(itiFecha, prmIdOrigen, prmId
     });
 }
 
-function spIntinerarioResumenXIdOrigenIdDestinoFecha(etiqueta, prmIdOrigen, prmIdDestino, prmFecha) {
+function spIntinerarioResumenXIdOrigenIdDestinoFecha(prmIdOrigen, prmIdDestino, prmFecha) {
+    limpiarImputText(true, true, true, true, true, true, true);
+    removerOptions(false, false, false, false);
+    ocultarComponente(true, false, true);
+    removerTr(true);
+    var etiqueta = $("#tbBodyItinerario");
     $.ajax({
         type: "POST",
         url: "wsVentaPasaje.asmx/spIntinerarioResumenXIdOrigenIdDestinoFecha",
@@ -171,11 +151,7 @@ function spIntinerarioResumenXIdOrigenIdDestinoFecha(etiqueta, prmIdOrigen, prmI
             var itinerarios = response.d;
             var i = 1;
             $.each(itinerarios, function (index, enItinerario) {                
-                etiqueta.append('<tr onkeyup="if(validarTeclaPresionada(event,32) == true) { spControlAsientoXIdItinerario(\''
-                    + enItinerario.iti_id + '\'); }" onclick="spControlAsientoXIdItinerario(\'' + enItinerario.iti_id + '\')"  tabindex="' + i + 4 + '"class="collapsed" data-toggle="collapse" data-target=".box-cliente">'
-                    //+ '<td>' + enItinerario.sucursalOrigen.ciudad.ciu_nomCiudad + '</td>'
-                    //+ '<td>' + enItinerario.sucursalDestino.ciudad.ciu_nomCiudad + '</td>'
-                    //+ '<td>' + enItinerario.iti_fecSalida + '</td>'
+                etiqueta.append('<tr onclick="spControlAsientoXIdItinerario(\'' + enItinerario.iti_id + '\')"  tabindex="' + i + 4 + '"class="collapsed" data-toggle="collapse" >'
                     + '<td>' + i + '</td>'
                     + '<td>' + enItinerario.iti_horSalida + '</td>'                    
                     + '<td> S/. ' + enItinerario.iti_precio + '</td>'
@@ -187,12 +163,11 @@ function spIntinerarioResumenXIdOrigenIdDestinoFecha(etiqueta, prmIdOrigen, prmI
         failure: function (msg) {
             alert(msg);
         }
-
     });
-
 }
 
 function spControlAsientoXIdItinerario(prmIdItinerario) {
+    document.getElementById("idItinerario").value = prmIdItinerario;
     var etiqueta = $("#replicaBus");
     $.ajax({
         type: "POST",
@@ -202,8 +177,8 @@ function spControlAsientoXIdItinerario(prmIdItinerario) {
         dataType: "json",
         success: function (response) {
             etiqueta.find("div").remove();
-            fnMostrarOcularComponenteByClass(1, 'replicaBus');
-            fnMostrarOcularComponenteByClass(0, 'divControlAsiento');
+            ocultarComponente(true, false, false);
+
             var controlAsiento = response.d;
             etiqueta.append('<div><h4>Primer Piso</h4></div>');
             var contSeg = 1;
@@ -212,19 +187,19 @@ function spControlAsientoXIdItinerario(prmIdItinerario) {
                 if (controlAsiento[i + 3].conAsi_piso == 1) {                   
                     if (controlAsiento.length > 60) {
                         etiqueta.append('<div class="fila">'
-                       + '<div class="asiento"><a class="asiento-' + controlAsiento[i].conAsi_estAsiento + '"   onclick="fnMostrarAsiento(' + controlAsiento[i].conAsi_numAsiento + ')">' + controlAsiento[i].conAsi_numAsiento + '</a></div>'
-                       + '<div class="asiento"><a class="asiento-' + controlAsiento[i + 1].conAsi_estAsiento + '" onclick="fnMostrarAsiento(' + controlAsiento[i+1].conAsi_numAsiento + ')">' + controlAsiento[i + 1].conAsi_numAsiento + '</a></div>'
+                       + '<div class="asiento"><a class="asiento-' + controlAsiento[i].conAsi_estAsiento + '"   onclick="asignarAsiento(' + controlAsiento[i].conAsi_numAsiento + ')">' + controlAsiento[i].conAsi_numAsiento + '</a></div>'
+                       + '<div class="asiento"><a class="asiento-' + controlAsiento[i + 1].conAsi_estAsiento + '" onclick="asignarAsiento(' + controlAsiento[i+1].conAsi_numAsiento + ')">' + controlAsiento[i + 1].conAsi_numAsiento + '</a></div>'
                        + '<div class="asiento">' + controlAsiento.length + '</div>'
-                       + '<div class="asiento"><a class="asiento-' + controlAsiento[i + 2].conAsi_estAsiento + '" onclick="fnMostrarAsiento(' + controlAsiento[i+2].conAsi_numAsiento + ')">' + controlAsiento[i + 2].conAsi_numAsiento + '</a></div>'
-                       + '<div class="asiento"><a class="asiento-' + controlAsiento[i + 3].conAsi_estAsiento + '" onclick="fnMostrarAsiento(' + controlAsiento[i+3].conAsi_numAsiento + ')">' + controlAsiento[i + 3].conAsi_numAsiento + '</a></div>'
+                       + '<div class="asiento"><a class="asiento-' + controlAsiento[i + 2].conAsi_estAsiento + '" onclick="asignarAsiento(' + controlAsiento[i+2].conAsi_numAsiento + ')">' + controlAsiento[i + 2].conAsi_numAsiento + '</a></div>'
+                       + '<div class="asiento"><a class="asiento-' + controlAsiento[i + 3].conAsi_estAsiento + '" onclick="asignarAsiento(' + controlAsiento[i+3].conAsi_numAsiento + ')">' + controlAsiento[i + 3].conAsi_numAsiento + '</a></div>'
                        + '</div>');
                         i += 3;
                         
                     } else {
                         if (contPri == 3 || contPri == 4) {
                             etiqueta.append('<div class="fila">'
-                                + '<div class="asiento"><a class="asiento-' + controlAsiento[i].conAsi_estAsiento + '"   onclick="fnMostrarAsiento(' + controlAsiento[i+1].conAsi_numAsiento + ')">' + controlAsiento[i].conAsi_numAsiento + '</a></div>'
-                                + '<div class="asiento"><a class="asiento-' + controlAsiento[i + 1].conAsi_estAsiento + '"   onclick="fnMostrarAsiento(' + controlAsiento[i+2].conAsi_numAsiento + ')">' + controlAsiento[i + 1].conAsi_numAsiento + '</a></div>'
+                                + '<div class="asiento"><a class="asiento-' + controlAsiento[i].conAsi_estAsiento + '"   onclick="asignarAsiento(' + controlAsiento[i+1].conAsi_numAsiento + ')">' + controlAsiento[i].conAsi_numAsiento + '</a></div>'
+                                + '<div class="asiento"><a class="asiento-' + controlAsiento[i + 1].conAsi_estAsiento + '"   onclick="asignarAsiento(' + controlAsiento[i+2].conAsi_numAsiento + ')">' + controlAsiento[i + 1].conAsi_numAsiento + '</a></div>'
                                 + '<div class="asiento">' + controlAsiento.length + '</div>'
                                 + '<div class="asiento"></div>'
                                 + '<div class="asiento"></div>'
@@ -232,11 +207,11 @@ function spControlAsientoXIdItinerario(prmIdItinerario) {
                             i += 1;
                         } else {
                             etiqueta.append('<div class="fila">'
-                      + '<div class="asiento"><a class="asiento-' + controlAsiento[i].conAsi_estAsiento + '"  onclick="fnMostrarAsiento(' + controlAsiento[i].conAsi_numAsiento + ')">' + controlAsiento[i].conAsi_numAsiento + '</a></div>'
-                      + '<div class="asiento"><a class="asiento-' + controlAsiento[i + 1].conAsi_estAsiento + '"  onclick="fnMostrarAsiento(' + controlAsiento[i+1].conAsi_numAsiento + ')">' + controlAsiento[i + 1].conAsi_numAsiento + '</a></div>'
+                      + '<div class="asiento"><a class="asiento-' + controlAsiento[i].conAsi_estAsiento + '"  onclick="asignarAsiento(' + controlAsiento[i].conAsi_numAsiento + ')">' + controlAsiento[i].conAsi_numAsiento + '</a></div>'
+                      + '<div class="asiento"><a class="asiento-' + controlAsiento[i + 1].conAsi_estAsiento + '"  onclick="asignarAsiento(' + controlAsiento[i+1].conAsi_numAsiento + ')">' + controlAsiento[i + 1].conAsi_numAsiento + '</a></div>'
                       + '<div class="asiento">' + controlAsiento.length + '</div>'
-                      + '<div class="asiento"><a class="asiento-' + controlAsiento[i + 2].conAsi_estAsiento + '"  onclick="fnMostrarAsiento(' + controlAsiento[i+2].conAsi_numAsiento + ')">' + controlAsiento[i + 2].conAsi_numAsiento + '</a></div>'
-                      + '<div class="asiento"><a class="asiento-' + controlAsiento[i + 3].conAsi_estAsiento + '"   onclick="fnMostrarAsiento(' + controlAsiento[i+3].conAsi_numAsiento + ')">' + controlAsiento[i + 3].conAsi_numAsiento + '</a></div>'
+                      + '<div class="asiento"><a class="asiento-' + controlAsiento[i + 2].conAsi_estAsiento + '"  onclick="asignarAsiento(' + controlAsiento[i+2].conAsi_numAsiento + ')">' + controlAsiento[i + 2].conAsi_numAsiento + '</a></div>'
+                      + '<div class="asiento"><a class="asiento-' + controlAsiento[i + 3].conAsi_estAsiento + '"   onclick="asignarAsiento(' + controlAsiento[i+3].conAsi_numAsiento + ')">' + controlAsiento[i + 3].conAsi_numAsiento + '</a></div>'
                       + '</div>');
                             i += 3;
                         }
@@ -248,8 +223,8 @@ function spControlAsientoXIdItinerario(prmIdItinerario) {
                     }                   
                     if (contSeg == 3 || contSeg == 4) {
                         etiqueta.append('<div class="fila">'
-                            + '<div class="asiento"><a class="asiento-' + controlAsiento[i].conAsi_estAsiento + '" onclick="fnMostrarAsiento(' + controlAsiento[i+1].conAsi_numAsiento + ')">' + controlAsiento[i].conAsi_numAsiento + '</a></div>'
-                            + '<div class="asiento"><a class="asiento-' + controlAsiento[i + 1].conAsi_estAsiento + '"   onclick="fnMostrarAsiento(' + controlAsiento[i+2].conAsi_numAsiento + ')">' + controlAsiento[i + 1].conAsi_numAsiento + '</a></div>'
+                            + '<div class="asiento"><a class="asiento-' + controlAsiento[i].conAsi_estAsiento + '" onclick="asignarAsiento(' + controlAsiento[i+1].conAsi_numAsiento + ')">' + controlAsiento[i].conAsi_numAsiento + '</a></div>'
+                            + '<div class="asiento"><a class="asiento-' + controlAsiento[i + 1].conAsi_estAsiento + '"   onclick="asignarAsiento(' + controlAsiento[i+2].conAsi_numAsiento + ')">' + controlAsiento[i + 1].conAsi_numAsiento + '</a></div>'
                             + '<div class="asiento">' + controlAsiento[i + 3].conAsi_piso + '</div>'
                             + '<div class="asiento"></div>'
                             + '<div class="asiento"></div>'
@@ -257,11 +232,11 @@ function spControlAsientoXIdItinerario(prmIdItinerario) {
                         i += 1;
                     } else {
                         etiqueta.append('<div class="fila">'
-                        + '<div class="asiento"><a class="asiento-' + controlAsiento[i].conAsi_estAsiento + '"  onclick="fnMostrarAsiento(' + controlAsiento[i].conAsi_numAsiento + ')">' + controlAsiento[i].conAsi_numAsiento + '</a></div>'
-                        + '<div class="asiento"><a class="asiento-' + controlAsiento[i + 1].conAsi_estAsiento + '"  onclick="fnMostrarAsiento(' + controlAsiento[i+1].conAsi_numAsiento + ')">' + controlAsiento[i + 1].conAsi_numAsiento + '</a></div>'
+                        + '<div class="asiento"><a class="asiento-' + controlAsiento[i].conAsi_estAsiento + '"  onclick="asignarAsiento(' + controlAsiento[i].conAsi_numAsiento + ')">' + controlAsiento[i].conAsi_numAsiento + '</a></div>'
+                        + '<div class="asiento"><a class="asiento-' + controlAsiento[i + 1].conAsi_estAsiento + '"  onclick="asignarAsiento(' + controlAsiento[i+1].conAsi_numAsiento + ')">' + controlAsiento[i + 1].conAsi_numAsiento + '</a></div>'
                         + '<div class="asiento">' + controlAsiento[i + 3].conAsi_piso + '</div>'
-                        + '<div class="asiento"><a class="asiento-' + controlAsiento[i + 2].conAsi_estAsiento + '" onclick="fnMostrarAsiento(' + controlAsiento[i+2].conAsi_numAsiento + ')">' + controlAsiento[i + 2].conAsi_numAsiento + '</a></div>'
-                        + '<div class="asiento"><a class="asiento-' + controlAsiento[i + 3].conAsi_estAsiento + '"   onclick="fnMostrarAsiento(' + controlAsiento[i+3].conAsi_numAsiento + ')">' + controlAsiento[i + 3].conAsi_numAsiento + '</a></div>'
+                        + '<div class="asiento"><a class="asiento-' + controlAsiento[i + 2].conAsi_estAsiento + '" onclick="asignarAsiento(' + controlAsiento[i+2].conAsi_numAsiento + ')">' + controlAsiento[i + 2].conAsi_numAsiento + '</a></div>'
+                        + '<div class="asiento"><a class="asiento-' + controlAsiento[i + 3].conAsi_estAsiento + '"   onclick="asignarAsiento(' + controlAsiento[i+3].conAsi_numAsiento + ')">' + controlAsiento[i + 3].conAsi_numAsiento + '</a></div>'
                         + '</div>');
                         i += 3;
                     }
@@ -272,17 +247,16 @@ function spControlAsientoXIdItinerario(prmIdItinerario) {
         failure: function (msg) {
             alert(msg);
         }
-
     });
-
 }
 
-function fnMostrarAsiento(numAsiento) {
-    fnMostrarOcularComponenteByClass(1, 'divControlAsiento');
+function asignarAsiento(numAsiento) {
+    ocultarComponente(false, false, false);
     document.getElementById("numAsiento").value = numAsiento;
 }
 
-function spDocumentoIdentidadLista(etiqueta){
+function spDocumentoIdentidadLista() {
+    var etiqueta = $("#tipDocIdentidad");
     $.ajax({
         type: "POST",
         url: "wsVentaPasaje.asmx/spDocumentoIdentidadLista",
@@ -290,8 +264,9 @@ function spDocumentoIdentidadLista(etiqueta){
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (response) {
-            var docIdentidad = response.d;
-            $.each(docIdentidad, function (index, enDocumentoIdentidad) {
+            var numDocIdentidad = response.d;
+            document.getElementById("tamNumDocIdentidad").value=numDocIdentidad[0].docIde_longitud;
+            $.each(numDocIdentidad, function (index, enDocumentoIdentidad) {
                 etiqueta.append('<option value="' + enDocumentoIdentidad.docIde_id + '">' + enDocumentoIdentidad.docIde_descripcion + '</option>');
             });
         },
@@ -301,7 +276,44 @@ function spDocumentoIdentidadLista(etiqueta){
     });
 }
 
+$("#tipDocIdentidad").change(function () {
+    limpiarImputText(false, true, true, true, true, false,true);
+    removerSpan(true);
+    $.ajax({
+        type: "POST",
+        url: "wsVentaPasaje.asmx/longitudNumeroDocumentoIdentidad",
+        data: "{ 'prmIdDocIdentidad': '" + $("#tipDocIdentidad").val() + "'}",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (response) {
+            $.each(response.d, function (index, enDocumentoIdentidad) {
+                document.getElementById("tamNumDocIdentidad").value = enDocumentoIdentidad.docIde_longitud;
+            });
+        },
+        failure: function (msg) {
+            alert(msg);
+        }
+    });
+});
+
+
+$("#numDocIdentidad").keyup(function () {
+    //validarLongitudInt(inputText, tamaño máximo);
+    validarLongitudInt('numDocIdentidad', $('#tamNumDocIdentidad').val());
+    if ($('#numDocIdentidad').val().length >= 8 && $('#numDocIdentidad').val().length <=15) {
+        //if (validarTeclaPresionada(event, 13) == true) {
+        var prmNumDocIde = $('#numDocIdentidad').val();
+        var idTipDoc = $('#tipDocIdentidad').val();
+        spPersonaXNumeroTipoDocumentoIdentidad(prmNumDocIde, idTipDoc);
+        //}
+    } else {
+        limpiarImputText(false, true, true, true, true, false,true);
+        removerSpan(true);
+    }
+});
+
 function spPersonaXNumeroTipoDocumentoIdentidad(prmNumDocIde, idTipDoc) {
+    limpiarImputText(false, false, false, false, false, false, true);
     $.ajax({
         type: "POST",
         url: "wsVentaPasaje.asmx/spPersonaXNumeroTipoDocumentoIdentidad",
@@ -311,16 +323,18 @@ function spPersonaXNumeroTipoDocumentoIdentidad(prmNumDocIde, idTipDoc) {
         success: function (response) {
             var persona = response.d;
             $.each(persona, function (index, enPersona) {
-                document.getElementById("impNombres").value = enPersona.per_nombres;
-                document.getElementById("impApellidos").value = enPersona.per_apellidos;
-                document.getElementById("impEdad").value = enPersona.per_fecNacimiento;                
+                document.getElementById("nombres").value = enPersona.per_nombres;
+                document.getElementById("apellidos").value = enPersona.per_apellidos;
+                document.getElementById("fecNacimiento").value = enPersona.per_fecNacimiento;
+                document.getElementById("edad").value = enPersona.edad;
+                document.getElementById("idPersona").value = enPersona.per_id;
                 if (enPersona.per_sexo == 'm') {
                     document.frmRegistraVentaPasaje.sexo[0].checked = true;
                 } else if (enPersona.per_sexo == 'f') {
                     document.frmRegistraVentaPasaje.sexo[1].checked = true;
-                } lblMsjVentaPasaje
-                $('#lblMsjVentaPasaje').find("span").remove();
-                $('#lblMsjVentaPasaje').append("<span>" + enPersona.personaMensaje + "</span>");
+                }
+                removerSpan(true);
+                $('#lblMsjVentaPasaje').append("<span>" + enPersona.personaMensaje + "</span>");               
             });
         },
         failure: function (msg) {           
@@ -329,26 +343,8 @@ function spPersonaXNumeroTipoDocumentoIdentidad(prmNumDocIde, idTipDoc) {
     });
 }
 
-$("#impDocIdentidad").keyup(function () {  
-
-    if ($('#impDocIdentidad').val().length >= 8) {
-        if (validarTeclaPresionada(event, 13) == true) {
-            fnEnviarDatosPersonBusqueda()
-        }
-    } else {
-        fnLimpiarCampos();       
-    }
-
-});
-function fnEnviarDatosPersonBusqueda() {
-    var prmNumDocIde = $('#impDocIdentidad').val();
-    var idTipDoc = $('#selDocIdentidad').val();
-    spPersonaXNumeroTipoDocumentoIdentidad(prmNumDocIde, idTipDoc)
+function mostrar() {
+    var str = $("form").serialize();
+    $("#results").text(str);
 }
 
-function fnLimpiarCampos() {
-    document.getElementById("impNombres").value ="";
-    document.getElementById("impApellidos").value = "";
-    document.getElementById("impEdad").value = "";
-    //document.getElementById("impNumAsiento").value = "";
-}

@@ -11,11 +11,12 @@ as begin
 end
 go
 create function fnDescifrarClave(
-@clave VarBinary(8000))
-RETURNS varchar(25)
+@clave VarBinary(8000),
+@llave varchar(45))
+RETURNS varchar(55)
 as begin
 	declare @pass varchar(25)
-	set @pass = DECRYPTBYPASSPHRASE(@clave,@clave)
+	set @pass = DECRYPTBYPASSPHRASE(@llave,@clave)
 	return @pass
 end
 go
@@ -34,9 +35,9 @@ as begin
 	select men_descripcion from mensajes where men_codigo=@men_codigo
 end
 go
-insert into documentoIdentidad(docIde_descripcion) values('PASAPORTE')
-insert into documentoIdentidad(docIde_descripcion) values('DNI')
-insert into documentoIdentidad(docIde_descripcion) values('LIBRETA MILITAR')
+insert into documentoIdentidad(docIde_descripcion,docIde_longitud) values('PASAPORTE',11)
+insert into documentoIdentidad(docIde_descripcion,docIde_longitud) values('DNI',8)
+insert into documentoIdentidad(docIde_descripcion,docIde_longitud) values('LIBRETA MILITAR',8)
 go
 if object_id('spDocumentoIdentidadLista', 'p') is not null
 drop procedure spDocumentoIdentidadLista
@@ -72,7 +73,7 @@ begin
 		end	
 end
 go
-spPersonaRegistrarBasico 'MILER','ROQUE LAIZA','12345678','12/01/1990','m',2
+spPersonaRegistrarBasico 'MILER','ROQUE LAIZA','12345679','12/01/1990','m',2
 go
 if object_id('spPersonaXNumeroTipoDocumentoIdentidad', 'p') is not null
 drop procedure spPersonaXNumeroTipoDocumentoIdentidad
@@ -81,11 +82,11 @@ create procedure spPersonaXNumeroTipoDocumentoIdentidad(
 @per_numDocIdentidad varchar(15),
 @docIdentidad_id int)
 as begin
-	select per_id,per_nombres, per_apellidos,per_sexo, DATEDIFF(yy,per_fecNacimiento, GETDATE()) 'Edad' 
+	select per_id,per_nombres, per_apellidos,per_sexo, DATEDIFF(yy,per_fecNacimiento, GETDATE()) 'Edad', CONVERT(CHAR(10), per_fecNacimiento, 103)
 	from persona where per_numDocIdentidad=@per_numDocIdentidad and docIdentidad_id=@docIdentidad_id
 end
 go
-spPersonaXNumeroTipoDocumentoIdentidad '29609107',2
+spPersonaXNumeroTipoDocumentoIdentidad '12345678',2
 go
 if object_id('spUsuarioRegistrar', 'p') is not null
 drop procedure spUsuarioRegistrar
@@ -100,6 +101,19 @@ as begin
 end
 go
 spUsuarioRegistrar 'admin','123',1
+go
+if object_id('spUsuarioLogin', 'p') is not null
+drop procedure spUsuarioLogin
+go
+create procedure spUsuarioLogin(
+@usu_user varchar(45),
+@usu_pass varchar(45))
+as begin
+	select U.usu_id,P.per_nombres, P.per_apellidos, U.usu_user from persona P, usuario U
+	where P.per_id=U.persona_id and dbo.fnDescifrarClave(U.usu_pass,@usu_pass)=@usu_pass and U.usu_user=@usu_user
+end
+go
+spUsuarioLogin 'admin','123'
 go
 insert into departamento(dep_nombre) values('La Libertad')
 insert into departamento(dep_nombre) values('Lima')
@@ -361,5 +375,19 @@ as begin
 	where CA.itinerario_id=I.iti_id  and I.iti_id=@iti_id
 end
 go
-spControlAsientoXIdItinerario 1
+spControlAsientoXIdItinerario 2
 go
+if object_id('spBoletoViajeRegistro', 'p') is not null
+drop procedure spBoletoViajeRegistro
+go
+ create procedure spBoletoViajeRegistro(
+@iti_id int)
+as begin
+	select CA.conAsi_piso,CA.conAsi_numAsiento, CA.conAsi_estAsiento 
+	from controlAsiento CA, itinerario I
+	where CA.itinerario_id=I.iti_id  and I.iti_id=@iti_id
+end
+go
+spBoletoViajeRegistro 2
+go
+select * from boletoViaje
