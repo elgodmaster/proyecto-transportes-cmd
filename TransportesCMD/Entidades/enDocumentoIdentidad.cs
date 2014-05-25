@@ -9,6 +9,7 @@ namespace Entidades
     public class enDocumentoIdentidad
     {
        public int docIde_id {get;set;}
+       public int docIde_longitud { get; set; }
         public String docIde_descripcion {get;set;}
     }
 }

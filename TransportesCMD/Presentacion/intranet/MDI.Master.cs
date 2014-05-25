@@ -11,7 +11,18 @@ namespace Presentacion
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["usuario"] == null)
+            {
+                Response.Redirect("index.aspx");
+            }
         }
+
+        protected void salir_Click(object sender, EventArgs e)
+        {
+            Session["usuario"] = null;
+            Response.Redirect("index.aspx");
+        }
+
+
     }
 }

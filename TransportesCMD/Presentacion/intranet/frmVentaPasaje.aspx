@@ -37,7 +37,7 @@
                                 </select>
                             </div>
                             <div class="span1"></div>
-                            <div id="tbSalidas" class="span13">
+                            <div id="tbItinerario" class="span13">
                                 <div class="box">
                                     <div class="box-content box-table">
                                         <div>
@@ -45,7 +45,7 @@
                                             <div class="span3">
                                                 <h4>Lista de Itinerarios</h4>
                                             </div>
-                                            <div id="divTableScroll">
+                                            <div>
                                                 <table id="tbSalidasCss" class="table">
                                                     <thead>
                                                         <tr>
@@ -79,31 +79,32 @@
                         <i class="icon-reorder"></i>
                     </button>
                 </div>
-                <div class="box-content box-cliente collapse">
+                <div class="box-content box-cliente">
                     <div class="box-content">
                         <div class="row-fluid">
                             <form name="frmRegistraVentaPasaje">
                                 <div></div>
                                 <div class="span3">Documento de Identidad:</div>
                                 <div class="control-group">
-                                    <select class="span4" id="selDocIdentidad">
-                                        <%-- Aqui Javascript JSON --%>
+                                    <select class="span4" id="tipDocIdentidad" name="tipDocIdentidad">
+                                        <%-- Aqui Javascript JSON --%>                                       
                                     </select>
+                                     <input type="text" id="tamNumDocIdentidad" hidden="hidden" value="" />
+                                    <input type="text" hidden="hidden" id="idItinerario" name="idPersona" value="" />
                                 </div>
                                 <div class="span3">Número de Documento:</div>
-                                <div class="control-group">
-                                    <input class="span3" id="impDocIdentidad" name="" value="" />
+                                <div class="control-group">                                    
+                                    <input type="text" class="span3" id="numDocIdentidad" name="numDocIdentidad" />
                                     <button type="button" class="btn" onclick="fnEnviarDatosPersonBusqueda()"><i class="icon-search"></i>Buscar</button>
+                                    <input type="text" hidden="hidden" id="idPersona" name="idPersona" value="" />
                                 </div>
-
-
                                 <div class="span3">Nombres:</div>
                                 <div class="control-group">
-                                    <input class="span4" name="" id="impNombres" />
+                                    <input class="span4" name="nombres" id="nombres" />
                                 </div>
                                 <div class="span3">Apellidos:</div>
                                 <div class="control-group">
-                                    <input class="span4" name="" id="impApellidos" />
+                                    <input class="span4" name="apellidos" id="apellidos" />
                                 </div>
                                 <div class="span3">Sexo:</div>
                                 <div class="control-group">
@@ -114,25 +115,27 @@
                                 </div>
                                 <div class="span3">Fecha Nacimiento:</div>
                                 <div class="control-group">
-                                    <input class="span2" name="" id="impFecNacimiento" />
-                                    <input class="span1" name="" id="impEdad" /><span> Años</span>
+                                    <input class="span2" name="fecNacimiento" id="fecNacimiento" />
+                                    <input class="span1" name="edad" id="edad" /><span> Años</span>
                                 </div>
-                                <div id="divControlAsiento" class="span8">
+                                <div id="divNumAsiento" class="span8">
                                     <div class="span3">Número de Asiento:</div>
-                                    <div class="divControlAsiento control-group">
-                                        <input type="button" id="numAsiento" class="span2" name="impNumAsiento" disabled="disabled" />
+                                    <div class="control-group">
+                                        <input type="text" id="numAsiento" class="span2" name="numAsiento" disabled="disabled" />
                                     </div>
-                                </div>                                
+                                </div>
+                                <textarea id="results"></textarea>
+                                                                
                             </form>
                         </div>
                     </div>
                     <div class="box-footer ">
                         <div class="span4"><label class="lblMensaje" id="lblMsjVentaPasaje"></label></div>
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" class="btn btn-primary" onclick="mostrar()">
                             <i class="icon-ok"></i>
                             Aceptar
                         </button>
-                        <button class="btn btn-ser" name="action" value="CANCEL">Cancel</button>
+                        <button class="btn btn-ser" name="action" value="Cancelar">Cancel</button>
                     </div>
                 </div>
             </div>
@@ -141,13 +144,14 @@
             <div class="box">
                  <div class="box-header">
                     <i class="icon-list"></i>
-                    <h5>Datos de Cliente</h5>
+                    <h5>Réplica de Bus</h5>
                     <button class="btn btn-box-right collapsed" data-toggle="collapse" data-target=".box-cliente">
                         <i class="icon-reorder"></i>
                     </button>
                 </div>
-                <div class="box-content box-cliente collapse">
+                <div class="box-content box-cliente">
                     <div id="replicaBus">
+                        <%--Aquí va Javascript y JSON--%>
                     </div>
                 </div>
             </div>

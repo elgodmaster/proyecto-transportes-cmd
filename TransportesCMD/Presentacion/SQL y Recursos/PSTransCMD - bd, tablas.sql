@@ -7,6 +7,7 @@ go
 --Pasaporte, DNI, Libreta Militar
 create table documentoIdentidad(
 docIde_id int primary key identity not null,
+docIde_longitud int,
 docIde_descripcion varchar(25))
 go
 --Todo se registrarán
@@ -157,11 +158,11 @@ venPas_fecRegistro datetime,
 venPas_estado char(1),
 persona_id int,
 personal_id int,
-conAsiento_id int,
+itinerario_id int,
 comSerie_id int)
 alter table boletoViaje add constraint fk_bolViaje_persona foreign key (persona_id) references persona(per_id)
 alter table boletoViaje add constraint fk_bolViaje_personal foreign key (personal_id) references personal(per_id)
-alter table boletoViaje add constraint fk_bolViaje_conAsiento foreign key (conAsiento_id) references controlAsiento(conAsi_id)
+alter table boletoViaje add constraint fk_bolViaje_itinerario foreign key (itinerario_id) references itinerario(iti_id)
 alter table boletoViaje add constraint fk_bolViaje_comSerie foreign key (comSerie_id) references comprobanteSerie(comSer_id)
 go
 create table ordenTraslado(

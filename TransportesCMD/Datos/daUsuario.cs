@@ -9,48 +9,43 @@ using Entidades;
 
 namespace Datos
 {
-   public class daPersona
+    public class daUsuario
     {
-
-        public static List<enPersona> spPersonaXNumeroTipoDocumentoIdentidad(String prmNumDocIde, int idTipDoc)
-        {
+        public static enUsuario spUsuarioLogin(enUsuario prmUsuario) {
             SqlConnection cn = null;
             SqlCommand cmd = null;
             SqlDataReader dr = null;
-            
-            List<enPersona> lstpersona = null;
+            enUsuario usuario = null;
             try
             {
                 cn = Conexion.ConexionSQL();
-                cmd = new SqlCommand("spPersonaXNumeroTipoDocumentoIdentidad", cn);
-                cmd.Parameters.AddWithValue("@per_numDocIdentidad", prmNumDocIde);
-                cmd.Parameters.AddWithValue("@docIdentidad_id", idTipDoc);
+                cmd = new SqlCommand("spUsuarioLogin", cn);
+                cmd.Parameters.AddWithValue("@usu_user", prmUsuario.usu_user);
+                cmd.Parameters.AddWithValue("@usu_pass", prmUsuario.usu_pass);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cn.Open();
                 dr = cmd.ExecuteReader();
-                lstpersona = new List<enPersona>();
                 if (dr.Read())
                 {
+                    usuario = new enUsuario();
+                    usuario.usu_id = Convert.ToInt32(dr[0].ToString());
                     enPersona persona = new enPersona();
-                    persona.per_id = Convert.ToInt32(dr[0].ToString());
                     persona.per_nombres = dr[1].ToString();
                     persona.per_apellidos = dr[2].ToString();
-                    persona.per_sexo = dr[3].ToString();
-                    persona.edad = dr[4].ToString();
-                    persona.per_fecNacimiento = dr[5].ToString();
-                    lstpersona.Add(persona);
+                    usuario.persona = persona;
+                    usuario.usu_user = dr[3].ToString();
                 }
 
             }
             catch (Exception e)
             {
-
+                
             }
             finally
             {
                 cn.Close();
             }
-            return lstpersona;
+            return usuario;
         }
     }
 }

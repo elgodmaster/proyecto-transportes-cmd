@@ -64,8 +64,7 @@ if LEFT(@var,2)='OK'
 	set @var=LEFT(@var,2)
 select @var
 go
----------------------------------POBLAR PERSONAS------------------------
-
+---------------------------------POBLAR PERSONAS----------------------------
 CREATE VIEW seeder
 AS
 	SELECT RAND(CONVERT(VARBINARY, NEWID())) seed

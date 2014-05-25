@@ -1,8 +1,8 @@
-#divTableScroll {
+/*#divTableScroll {
     height: 200px;
     width: 100%;
     overflow: scroll;
-}
+}*/
 
 #tbSalidasCss tbody tr:nth-child(odd):hover, #tbSalidasCss tbody tr:nth-child(even):hover {
     font-weight: 100;

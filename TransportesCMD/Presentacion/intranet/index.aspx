@@ -28,56 +28,39 @@
             </div>
         </div>
         <div id="body-container">
-                    <div id="body-content">
-                        
-                        
-            <div class='container'>
-                
+        <div id="body-content"> 
+            <div class='container'>                
                 <div class="signin-row row">
-                    <div class="span4"></div>
-                    <div class="span8">
+                    <div class="span5"></div>
+                    <div class="span6">
                         <div class="container-signin">
-                            <legend>Autenticación de Usuario</legend>
-                            <form action='frmPrincipal.aspx' method='POST' id='loginForm' class='form-signin' autocomplete='off'>
+                            <h4>Autenticación de Usuario</h4>
+                            <form method='POST' id='loginForm' runat="server" class='form-signin' autocomplete='off'>
                                 <div class="form-inner">
-                                    <div class="input-prepend">
-                                        
-                                        <span class="add-on" rel="tooltip" title="Username or E-Mail Address" data-placement="top"><i class="icon-envelope"></i></span>
-                                        <input type='text' class='span4' id='username'/>
+                                    <div class="input-prepend">                                        
+                                        <span class="add-on" title="Usuario" ><i class="icon-user"></i></span>
+                                        <asp:TextBox ID="txtUser" class="span4" runat="server"></asp:TextBox>                                       
                                     </div>
 
-                                    <div class="input-prepend">
-                                        
+                                    <div class="input-prepend">                                        
                                         <span class="add-on"><i class="icon-key"></i></span>
-                                        <input type='password' class='span4' id='password'/>
-                                    </div>
-                                    <label class="checkbox" for='remember_me'>Recordar
-                                        <input type='checkbox' id='remember_me'
-                                               />
-                                    </label>
+                                        <asp:TextBox ID="txtPass" class="span4" runat="server" type="password"></asp:TextBox> 
+                                    </div>                                    
                                 </div>
                                 <footer class="signin-actions">
-                                    <input class="btn btn-primary" type='submit' id="submit" value='Ingreso'/>
+                                    <div class="span3">
+                                        <asp:Label ID="lblMensaje" runat="server" Text=""></asp:Label>
+                                    </div>
+                                    <asp:Button ID="Ingresar"  class="btn btn-primary" runat="server" Text="Ingresar" OnClick="Ingresar_Click" />                                
                                 </footer>
                             </form>
                         </div>
                     </div>
-                    <div class="span3"></div>
-                </div>
-
-                <div class="signin-row row">                    
-                </div>
-            
-            </div>
-    
-
+                    <div class="span4"></div>
+                </div>            
+            </div> 
             </div>
         </div>
-
-        <div id="spinner" class="spinner" style="display:none;">
-            Loading&hellip;
-        </div>
-
         <footer class="application-footer">
             <div class="container">
                 <p>Transportes CMD</p>
@@ -87,32 +70,6 @@
                 </div>
             </div>
         </footer>
-        <script type="text/javascript">
-            $(function () {
-                document.forms['loginForm'].elements['j_username'].focus();
-                $('body').addClass('pattern pattern-sandstone');
-                $("[rel=tooltip]").tooltip();
-            });
-        </script>
-        <script src="assets/js/bootstrap/bootstrap-transition.js" type="text/javascript" ></script>
-        <script src="assets/js/bootstrap/bootstrap-alert.js" type="text/javascript" ></script>
-        <script src="assets/js/bootstrap/bootstrap-modal.js" type="text/javascript" ></script>
-        <script src="assets/js/bootstrap/bootstrap-dropdown.js" type="text/javascript" ></script>
-        <script src="assets/js/bootstrap/bootstrap-scrollspy.js" type="text/javascript" ></script>
-        <script src="assets/js/bootstrap/bootstrap-tab.js" type="text/javascript" ></script>
-        <script src="assets/js/bootstrap/bootstrap-tooltip.js" type="text/javascript" ></script>
-        <script src="assets/js/bootstrap/bootstrap-popover.js" type="text/javascript" ></script>
-        <script src="assets/js/bootstrap/bootstrap-button.js" type="text/javascript" ></script>
-        <script src="assets/js/bootstrap/bootstrap-collapse.js" type="text/javascript" ></script>
-        <script src="assets/js/bootstrap/bootstrap-carousel.js" type="text/javascript" ></script>
-        <script src="assets/js/bootstrap/bootstrap-typeahead.js" type="text/javascript" ></script>
-        <script src="assets/js/bootstrap/bootstrap-affix.js" type="text/javascript" ></script>
-        <script src="assets/js/bootstrap/bootstrap-datepicker.js" type="text/javascript" ></script>
-        <script src="assets/js/jquery/jquery-tablesorter.js" type="text/javascript" ></script>
-        <script src="assets/js/jquery/jquery-chosen.js" type="text/javascript" ></script>
-        <script src="assets/js/jquery/virtual-tour.js" type="text/javascript" ></script>
-        
-
 	</body>
 
 </html>
