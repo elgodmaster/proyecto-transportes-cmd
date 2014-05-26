@@ -141,7 +141,6 @@ insert into ciudad(ciu_nomCiudad,departamento_id) values('Huamachuco',1)
 go
 insert into sucursal(suc_nombre,suc_direccion,suc_telefono,ciudad_id) values('Vallejo','Av. Prolongación Vallejo 1135','231215',1)
 insert into sucursal(suc_nombre,suc_direccion,suc_telefono,ciudad_id) values('Balta','Jr. Balta 510','232323',5)
-insert into sucursal(suc_nombre,suc_direccion,suc_telefono,ciudad_id) values('America Sur','Av. América Sur 1145','312312',1)
 insert into sucursal(suc_nombre,suc_direccion,suc_telefono,ciudad_id) values('Sur América','Av. Sur América 1231','123456',4)
 go
 insert into cargo(car_nomCargo,car_desCargo)values('SYSTEM ADMIN','Administrador del Sistema')
@@ -285,9 +284,9 @@ spItinerarioRegistrar 1,2,'07/07/2014 9:00 PM','08/07/2014 1:00 AM',33.00,5,1
 go
 spItinerarioRegistrar 1,2,'07/07/2014 10:30 PM','08/07/2014 3:00 AM',34.00,6,1
 go
-spItinerarioRegistrar 1,4,'07/07/2014 9:00 PM','08/07/2014 3:00 AM',35.00,7,1
+spItinerarioRegistrar 1,3,'07/07/2014 9:00 PM','08/07/2014 3:00 AM',35.00,7,1
 go
-spItinerarioRegistrar 1,4,'07/07/2014 11:00 AM','08/07/2014 5:00 AM',36.00,8,1
+spItinerarioRegistrar 1,3,'07/07/2014 11:00 AM','08/07/2014 5:00 AM',36.00,8,1
 go
 spItinerarioRegistrar 1,2,'08/07/2014 9:00 AM','07/07/2014 2:30 PM',37.00,9,1
 go
@@ -388,17 +387,102 @@ end
 go
 spControlAsientoXIdItinerario 2
 go
+insert into comprobante(com_descripcion) values('Boleto de Viaje')
+insert into comprobante(com_descripcion) values('Orden de Traslado')
+go
+if object_id('spGenerarSerieDocumento', 'p') is not null
+drop procedure spGenerarSerieDocumento
+go
+create procedure spGenerarSerieDocumento(
+@sucursal_id int,
+@comprobante_id int,
+@PKCreado int output)
+as begin
+	declare @serie int, @numero int
+	select @serie=comSer_serie, @numero=max(comSer_numero+1) from comprobanteSerie 
+	where sucursal_id=@sucursal_id and comprobante_id=@comprobante_id and comSer_estado='a'
+	group by comSer_serie
+	
+	insert into comprobanteSerie(comSer_serie,comSer_numero,comprobante_id,sucursal_id,comSer_estado)
+	values (@serie,@numero,@comprobante_id,@sucursal_id,'a')
+	set @PKCreado=@@IDENTITY 
+end
+go
 if object_id('spBoletoViajeRegistro', 'p') is not null
 drop procedure spBoletoViajeRegistro
 go
  create procedure spBoletoViajeRegistro(
-@iti_id int)
+@bolVia_asiento int,
+@persona_id int,
+@personal_id int,
+@itinerario_id int,
+@sucursal_id int)
 as begin
-	select CA.conAsi_piso,CA.conAsi_numAsiento, CA.conAsi_estAsiento 
-	from controlAsiento CA, itinerario I
-	where CA.itinerario_id=I.iti_id  and I.iti_id=@iti_id
+	declare @numAsiento int,@pkBoleto int
+	select @numAsiento=conAsi_numAsiento from controlAsiento C
+	where C.conAsi_numAsiento=@bolVia_asiento and C.itinerario_id=@itinerario_id and C.conAsi_estAsiento='o'
+	if @numAsiento is null 
+		begin try
+			begin tran
+				DECLARE @numSerie int
+				EXEC spGenerarSerieDocumento @sucursal_id,1, @numSerie output
+				insert into boletoViaje(bolVia_fecha,bolVia_estado,bolVia_asiento,persona_id, personal_id, itinerario_id, comSerie_id)
+				values(GETDATE(),'v', @bolVia_asiento,@persona_id,@personal_id,@itinerario_id,@numSerie)
+				set @pkBoleto=@@IDENTITY 
+				set @numAsiento=@bolVia_asiento
+				update controlAsiento set conAsi_estAsiento='o' where itinerario_id=@itinerario_id and conAsi_numAsiento=@bolVia_asiento
+			commit			
+		end	try
+		begin catch
+			set @pkBoleto=-1	
+			ROLLBACK
+			PRINT ERROR_MESSAGE()
+		end catch
+	else
+		set @pkBoleto=0	
+	select @pkBoleto, @numAsiento
 end
 go
-spBoletoViajeRegistro 2
-go
-select * from boletoViaje
+--spBoletoViajeRegistro 23,1,1,1,1
+--select * from boletoViaje
+
+--go
+--if object_id('spBoleto', 'p') is not null
+--drop procedure spPersonalRegistroXML
+--go
+--create procedure spPersonalRegistroXML(
+--@prmPersonalXML ntext)
+--as begin
+--	declare @h int
+--	declare @PKCreado int
+--	begin Transaction
+--		EXEC sp_xml_preparedocument @h output, @prmPersonalXML
+		
+--			--Inserta Salida			
+--			insert into PL_personal(per_id,per_nombres,per_apellidos,per_dni,per_telefono,per_fecNacimiento,per_estado) 
+--			select X.per_id,X.per_nombres, X.per_apellidos, X.per_dni, X.per_telefono, X.per_fecNacimiento,1		
+--			from openXML(@h,'/root/vendedor',1) with(
+--				per_id int,
+--				per_nombres varchar(25),
+--				per_apellidos varchar(35),
+--				per_dni char(8),
+--				per_telefono varchar(15),
+--				per_fecNacimiento date,
+--				accionXML int)X
+--				where X.accionXML=1
+--		set @PKCreado=@@IDENTITY 				
+--		EXEC sp_xml_removedocument @h
+--		if @@ERROR <>0	
+--			begin
+--				rollback transaction
+--				return -1;
+--			end					
+--	commit Transaction	
+--	select @PKCreado
+--end
+--go
+--spPersonalRegistroXML
+--'<root>
+--	<vendedor per_id="0" per_nombres="Admin" per_apellidos="Administrador" per_dni="00000000" per_telefono="000" per_fecNacimiento="01/01/2000" accionXML="1"/>
+--</root>'
+--go

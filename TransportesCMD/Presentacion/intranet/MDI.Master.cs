@@ -9,6 +9,7 @@ namespace Presentacion
 {
     public partial class MDI : System.Web.UI.MasterPage
     {
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["usuario"] == null)
@@ -19,8 +20,7 @@ namespace Presentacion
 
         protected void salir_Click(object sender, EventArgs e)
         {
-            Session["usuario"] = null;
-            Response.Redirect("index.aspx");
+            
         }
 
 
