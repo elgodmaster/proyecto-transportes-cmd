@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="neBoletoViaje.cs" />
     <Compile Include="neControlAsiento.cs" />
     <Compile Include="neDocumentoIdentidad.cs" />
     <Compile Include="neItinerario.cs" />

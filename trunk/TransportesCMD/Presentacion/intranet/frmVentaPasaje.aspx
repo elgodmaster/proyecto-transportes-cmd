@@ -132,7 +132,7 @@
                     </div>
                     <div class="box-footer ">
                         <div class="span4"><label class="lblMensaje" id="lblMsjVentaPasaje"></label></div>
-                        <button type="submit" class="btn btn-primary" onclick="mostrar()">
+                        <button type="submit" class="btn btn-primary" onclick="spBoletoViajeRegistro()">
                             <i class="icon-ok"></i>
                             Aceptar
                         </button>

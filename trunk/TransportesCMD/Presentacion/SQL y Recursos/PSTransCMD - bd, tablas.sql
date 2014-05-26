@@ -146,16 +146,17 @@ create table comprobanteSerie(
 comSer_id int primary key identity not null,
 comSer_serie int,
 comSer_numero int,
+comSer_estado char(1),
 comprobante_id int,
 sucursal_id int)
 alter table comprobanteSerie add constraint fk_comSerie_sucursal foreign key (sucursal_id) references sucursal(suc_id)
 alter table comprobanteSerie add constraint fk_comSerie_comprobante foreign key (comprobante_id) references comprobante(com_id)
 go
 create table boletoViaje(
-venPas_id int primary key identity not null,
-venPas_fecha datetime,
-venPas_fecRegistro datetime,
-venPas_estado char(1),
+bolVia_id int primary key identity not null,
+bolVia_fecha datetime,
+bolVia_estado char(1),
+bolVia_asiento int,
 persona_id int,
 personal_id int,
 itinerario_id int,
@@ -203,4 +204,26 @@ men_id int primary key identity not null,
 men_codigo char(7) unique,
 men_descripcion text,
 men_fecRegistro datetime)
+go
+
+create trigger trCrearSerieXComprobante
+on comprobante after insert
+as 
+begin
+	declare @idNueComprobante int,@idSucursal int,@serie int
+	set @idNueComprobante = (select com_id from INSERTED)
+	declare curSucursal cursor for select suc_id from sucursal	
+	open curSucursal 
+	fetch curSucursal into @idSucursal
+	set @serie =1
+	while @@FETCH_STATUS=0		
+		begin
+			insert into comprobanteSerie(comSer_serie,comSer_numero,comprobante_id,sucursal_id,comSer_estado) 
+			values(@serie,0,@idNueComprobante,@idSucursal,'a')			
+			fetch curSucursal into @idSucursal
+			set @serie+=1
+		end	
+	close curSucursal
+	DEALLOCATE curSucursal
+end
 go

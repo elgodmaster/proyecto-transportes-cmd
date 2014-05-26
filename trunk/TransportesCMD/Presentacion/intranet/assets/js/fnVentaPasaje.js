@@ -377,10 +377,6 @@ $("#numDocIdentidad").keyup(function () {
     }
 });
 
-function mostrar() {
-    var str = $("form").serialize();
-    $("#results").text(str);
-}
 
 $("#apellidos").autocomplete({
     source: function (request, response) {
@@ -430,3 +426,24 @@ $("#apellidos").autocomplete({
     },
     minLength: 2
 });
+
+function spBoletoViajeRegistro() {
+    $.ajax({
+        type: "POST",
+        url: "wsVentaPasaje.asmx/spBoletoViajeRegistro",
+        data: "{ 'prmAsiento': '" 
+            + $('#numAsiento').val()+ "', 'prmIdPersona': '"
+            + $('#idPersona').val()+ "', 'prmIdItinerario': '" 
+            + $('#idItinerario').val()+ "'}",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (response) {
+            $.each(response.d, function (index, enBoletoViaje) {
+                document.getElementById("apellidos").value = enBoletoViaje.bolVia_id;
+            });
+        },
+        failure: function (msg) {
+            alert(msg);
+        }
+    });
+}

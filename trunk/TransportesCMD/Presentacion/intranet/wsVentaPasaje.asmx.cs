@@ -124,6 +124,14 @@ namespace Presentacion.intranet
             lsPersona = nePersona.spPersonaXApellidos(apellidos);            
             return lsPersona;
         }
+
+        [WebMethod]
+        public enBoletoViaje spBoletoViajeRegistro(int prmAsiento, int prmIdPersona,int prmIdItinerario)
+        {
+            enBoletoViaje bolViaje = new enBoletoViaje();
+            bolViaje = neBoletoViaje.spBoletoViajeRegistro(prmAsiento, prmIdPersona, 1, prmIdItinerario, 1);
+            return bolViaje;
+        }
         
         
         
