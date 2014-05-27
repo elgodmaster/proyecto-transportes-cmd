@@ -13,13 +13,12 @@ namespace Datos
     public class daVehiculo
     {
 
-        public String RegistrarVehiculo(enVehiculo objveh)
+        public static Boolean RegistrarVehiculo(String modelo, String placa, int numasi1, int numasi2, int marca, int serviespe)
         {
 
-            String rpta = "";
+            Boolean resultado = false;
             SqlConnection cn = null;
             SqlCommand cmd = new SqlCommand();
-            SqlDataReader dr = null;
             try
             {
                 cn = Conexion.ConexionSQL();
@@ -27,30 +26,26 @@ namespace Datos
                 cmd.CommandText = "spVehiculoRegistrar";
                 cmd.Connection = cn;
                 {
-                    cmd.Parameters.AddWithValue("@veh_modelo", objveh.veh_modelo);
-                    cmd.Parameters.AddWithValue("@veh_placa", objveh.veh_placa);
-                    cmd.Parameters.AddWithValue("@veh_numAsiPrimer", objveh.veh_numAsiPrimer);
-                    cmd.Parameters.AddWithValue("@veh_numAsiSegundo", objveh.veh_numAsiSegundo);
-                    cmd.Parameters.AddWithValue("@vehMarca_id", objveh.vehiculoMarca);
-                    cmd.Parameters.AddWithValue("@serEspecial_id", objveh.servicioEspecial);
+                    cmd.Parameters.AddWithValue("@veh_modelo", modelo);
+                    cmd.Parameters.AddWithValue("@veh_placa", placa);
+                    cmd.Parameters.AddWithValue("@veh_numAsiPrimer", numasi1);
+                    cmd.Parameters.AddWithValue("@veh_numAsiSegundo", numasi2);
+                    cmd.Parameters.AddWithValue("@vehMarca_id", marca);
+                    cmd.Parameters.AddWithValue("@serEspecial_id", serviespe);
                 }
                 cn.Open();
-                int registro;
-                registro = cmd.ExecuteNonQuery();
-                if (registro == 1)
-                {
-                    rpta = "ok";
-                }
-                else
-                {
-                    rpta = "Error";
-                }
+                resultado = true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                System.Console.Write(e.Message);
+                resultado = false;
             }
-            return rpta;
+            finally
+            {                
+                cmd.Connection.Close();
+                cn.Close();
+            }
+            return resultado;
 
         }
     }

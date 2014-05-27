@@ -12,39 +12,39 @@ namespace Datos
 {
     public class daVehiculoMarca
     {
-        public static List<enVehiculoMarca> spListaVehiculoMarca()
+        public List<enVehiculoMarca> ListaMarca()
         {
             SqlConnection cn = null;
+            List<enVehiculoMarca> listado = new List<enVehiculoMarca>();
+            enVehiculoMarca objlin = new enVehiculoMarca();
             SqlCommand cmd = null;
             SqlDataReader dr = null;
-            enVehiculoMarca vehMarca = null;
-            List<enVehiculoMarca> lstVehiculoMarca = null;
             try
             {
                 cn = Conexion.ConexionSQL();
-                cmd = new SqlCommand("spListaMarcas", cn);
-                cmd.CommandType = CommandType.StoredProcedure;
+                cmd = new SqlCommand("select * from vehiculoMarca", cn);
+                cmd.CommandType = CommandType.Text;
                 cn.Open();
                 dr = cmd.ExecuteReader();
-                lstVehiculoMarca = new List<enVehiculoMarca>();
                 while (dr.Read())
                 {
-                    vehMarca = new enVehiculoMarca();
-                    vehMarca.vehMar_id = Convert.ToInt32(dr[0].ToString());
-                    vehMarca.vehMar_descripcion = dr[1].ToString();
-                    lstVehiculoMarca.Add(vehMarca);
+                    objlin = new enVehiculoMarca();
+                    objlin.vehMar_id = Convert.ToInt32(dr["vehMar_id"].ToString());
+                    objlin.vehMar_descripcion = dr["vehMar_descripcion"].ToString();
+                    listado.Add(objlin);
+
                 }
 
             }
             catch (Exception e)
             {
-
+                System.Console.Write(e.Message);
             }
             finally
             {
-                cn.Close();
+                cmd.Connection.Close();
             }
-            return lstVehiculoMarca;
+            return listado;
 
         }
     }

@@ -6,30 +6,58 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cuerpo" runat="server">
     <form runat="server">
-    Modelo:<br />
-    <asp:TextBox ID="txtmodelo" runat="server"></asp:TextBox>
-    <br />
-    Placa:<br />
-    <asp:TextBox ID="txtplaca" runat="server"></asp:TextBox>
-    <br />
-    Numeros Asientos 1er Piso:<br />
-    <asp:TextBox ID="txt1piso" runat="server"></asp:TextBox>
-    <br />
-    Numeros Asientos 2do Piso:<br />
-    <asp:TextBox ID="txt2piso" runat="server"></asp:TextBox>
-<%--    <br />
-    Marca:<br />
-    <asp:TextBox ID="txtmarca" runat="server"></asp:TextBox>
-    <br />
-    Servicio especial:<br />
-    <asp:TextBox ID="txtservespecial" runat="server"></asp:TextBox>--%>
-    <br />
-    <br />
-    <br />
+   <fieldset>
+      <div class="control-group">
+    <label class="control-label" for="focusedInput">Modelo</label>
+    <div class="controls">
+    <input class="input-xlarge focused" id="txtmodel" type="text" value="" name="txtmodelo" runat="server"/>
+    </div>
+</div>
+    <div class="control-group ">
+        <label class="control-label">PLACA</label>
+        <div class="controls">
+            <input id="txtPlac" name="txtPlaca" class="span4" type="text" value="" autocomplete="false" runat="server"/>
+        </div>
+    </div>
+    <div class="control-group ">
+        <label class="control-label">Numero de Asientos 1er piso</label>
+        <div class="controls">
+            <input id="txtprimer" name="txtprimero" class="span4" type="text" value="" autocomplete="false" runat="server"/>
+
+        </div>
+    </div>
+    <div class="control-group ">
+        <label class="control-label">Numero de Asientos 2do piso</label>
+        <div class="controls">
+            <input id="txtsegund" name="txtsegundo" class="span4" type="text" value="" autocomplete="false" runat="server"/>
+
+        </div>
+    </div>
+    <div class="control-group">
+        <label for="challengeQuestion" class="control-label">Marca</label>
+    <div class="controls">                       
+    <select id="select_marc" name="select_marca" class="input-large" runat="server">
+											            <option value="1">Mercedes Bens</option>
+											            <option value="2">Volkswagen</option>
+	</select>
+    </div>
+    </div>
+
+    <div class="control-group">
+        <label for="challengeQuestion" class="control-label">Servicio</label>
+    <div class="controls">                       
+    <select id="select_servici" name="select_servicio" class="input-large" runat="server">
+											            <option value="1">Bus Cama</option>
+											            <option value="2">Bus Cama Cold</option>
+                                                        <option value="3">Vip</option>
+	</select>
+    </div>
+    </div>
     <asp:Button ID="btnRegistrar" runat="server" OnClick="btnRegistrar_Click" Text="Registrar" />
         <br /><br />
         <asp:Label ID="lblMensajeGraba" runat="server" Text="Label" Visible="False"></asp:Label>
-        </form>
+    </fieldset>
+    </form>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="javascript" runat="server">
 </asp:Content>

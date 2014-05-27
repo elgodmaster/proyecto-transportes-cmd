@@ -13,40 +13,58 @@ namespace Presentacion.intranet {
     public partial class frmMantenedorBus {
         
         /// <summary>
-        /// Control txtmodelo.
+        /// Control txtmodel.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtmodelo;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtmodel;
         
         /// <summary>
-        /// Control txtplaca.
+        /// Control txtPlac.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtplaca;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtPlac;
         
         /// <summary>
-        /// Control txt1piso.
+        /// Control txtprimer.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt1piso;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtprimer;
         
         /// <summary>
-        /// Control txt2piso.
+        /// Control txtsegund.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt2piso;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtsegund;
+        
+        /// <summary>
+        /// Control select_marc.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlSelect select_marc;
+        
+        /// <summary>
+        /// Control select_servici.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlSelect select_servici;
         
         /// <summary>
         /// Control btnRegistrar.
