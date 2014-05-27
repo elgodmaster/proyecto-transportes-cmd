@@ -10,11 +10,10 @@ namespace Negocio
 {
     public class neVehiculo
     {
-        daVehiculo vehidao = new daVehiculo();
 
-        public String RegistroVehiculo(enVehiculo objveh)
+        public static Boolean RegistrarVehiculo(String modelo, String placa, int numasi1, int numasi2, int marca, int serviespe)
         {
-            return vehidao.RegistrarVehiculo(objveh);
+            return daVehiculo.RegistrarVehiculo(modelo, placa, numasi1, numasi2, marca, serviespe);
         }
     }
 }

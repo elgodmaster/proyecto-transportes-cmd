@@ -10,9 +10,10 @@ namespace Negocio
 {
     public class neVehiculoMarca
     {
-        public static List<enVehiculoMarca> spListaVehiculoMarca()
+        daVehiculoMarca vehmar = new daVehiculoMarca();
+        public List<enVehiculoMarca> ListaMarca()
         {
-            return daVehiculoMarca.spListaVehiculoMarca();
+            return vehmar.ListaMarca();
         }
     }
 }

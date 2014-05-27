@@ -17,33 +17,27 @@ namespace Presentacion.intranet
 
         }
 
+        protected void cboMarca_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void cboMarca_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
         protected void btnRegistrar_Click(object sender, EventArgs e)
         {
-            String rpta = "";
-            enVehiculo objveh = new enVehiculo();
-            neVehiculo neveh = new neVehiculo();
-
-            objveh.veh_modelo = txtmodelo.Text;
-            objveh.veh_placa = txtplaca.Text;
-            objveh.veh_numAsiPrimer =Convert.ToInt32(txt1piso.Text);
-            objveh.veh_numAsiSegundo = Convert.ToInt32(txt2piso.Text);
-            //objveh.vehiculoMarca = Convert.ToString(txtmarca.Text);
-            //objveh.servicioEspecial = Convert.ToInt32(txtservespecial.Text);
-
-            //rpta = neveh.RegistroVehiculo(objveh);
-            //if (rpta == "ok")
-            //{
-            //    Response.Redirect("Logeo.aspx");
-            //}
-            //else
-            //{
-            //    Response.Redirect("frmMantenedorBus.aspx");
-            //}
-
-
-            neveh.RegistroVehiculo(objveh);
-            lblMensajeGraba.Visible = true;
-            lblMensajeGraba.Text = "Vehiculo Registrado";
+            String model = txtmodel.Value;
+            String pla = txtPlac.Value;
+            int asi1= Convert.ToInt32(txtprimer.Value);
+            int asi2 = Convert.ToInt32(txtsegund.Value);
+            int mar = Convert.ToInt32(select_marc.Value);
+            int serv = Convert.ToInt32(select_servici.Value);
+            Boolean resultado = false;
+            resultado = neVehiculo.RegistrarVehiculo(model, pla, asi1,asi2,mar, serv);
         }
+
     }
 }
