@@ -11,12 +11,12 @@ namespace Datos
 {
     public class daBoletoViaje
     {
-        public static enBoletoViaje spBoletoViajeRegistro(int prmAsiento, int prmIdPersona, int prmIdPersonal, int prmIdItinerario, int prmIdSucursal)
+        public static List<enBoletoViaje> spBoletoViajeRegistro(int prmAsiento, int prmIdPersona, int prmIdPersonal, int prmIdItinerario, int prmIdSucursal)
         {
             SqlConnection cn = null;
             SqlCommand cmd = null;
             SqlDataReader dr = null;
-            enBoletoViaje bolViaje = null;
+            List<enBoletoViaje> lstBolViaje = null;
             try
             {
                 cn = Conexion.ConexionSQL();
@@ -29,9 +29,11 @@ namespace Datos
                 cmd.CommandType = CommandType.StoredProcedure;
                 cn.Open();
                 dr = cmd.ExecuteReader();
+                lstBolViaje = new List<enBoletoViaje>();
                 if (dr.Read())                {
-                    bolViaje = new enBoletoViaje();
+                   enBoletoViaje bolViaje = new enBoletoViaje();
                     bolViaje.bolVia_id = Convert.ToInt32(dr[0].ToString());
+                    lstBolViaje.Add(bolViaje);
                 }
 
             }
@@ -43,7 +45,7 @@ namespace Datos
             {
                 cn.Close();
             }
-            return bolViaje;
+            return lstBolViaje;
         }
     }
 }

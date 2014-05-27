@@ -84,23 +84,18 @@ serEsp_caracteristicas varchar(85),
 serEsp_fecRegistro datetime,
 serEsp_estado char(1))
 go
-create table vehiculoMarca(
-vehMar_id  int primary key identity not null,
-vehMar_descripcion varchar(35))
-go
 create table vehiculo(
 veh_id int primary key identity not null,
 veh_placa varchar(15),
 veh_modelo varchar(30),
+veh_marca varchar(35),
 veh_numAsiPrimer int,
 veh_numAsiSegundo int,
 veh_img varchar(50),
 veh_fecRegistro datetime,
 veh_estado char(1),
-vehMarca_id int,
 serEspecial_id int)
 go
-alter table vehiculo add constraint fk_vehiculo_vehMarca foreign key (vehMarca_id) references vehiculoMarca(vehMar_id)
 alter table vehiculo add constraint fk_vehiculo_serEspecial foreign key (serEspecial_id) references servicioEspecial(serEsp_id)
 go
 create table itinerario(

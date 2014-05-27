@@ -1,6 +1,6 @@
 ﻿
 $(document).ready(function () {
-    limpiarImputText(true,true,true,true,true,true,true,true);
+    limpiarImputText(true,true,true,true,true,true,true,true, true);
     ocultarComponente(true,true,true);
 
     spIntinerarioOrigenXNombre();
@@ -27,7 +27,7 @@ $(document).ready(function () {
 });
 
 
-function limpiarImputText(numDocIdentidad, nombres, apellidos, fecNacimiento, edad, numAsiento,idPersona, idItinerario) {   
+function limpiarImputText(numDocIdentidad, nombres, apellidos, fecNacimiento, edad, numAsiento,idPersona, idItinerario,tamNumDocIdentidad) {   
     if (numDocIdentidad) { document.getElementById("numDocIdentidad").value = ""; }
     if (nombres) { document.getElementById("nombres").value = ""; }
     if (apellidos) { document.getElementById("apellidos").value = ""; }
@@ -36,6 +36,7 @@ function limpiarImputText(numDocIdentidad, nombres, apellidos, fecNacimiento, ed
     if (numAsiento) { document.getElementById("numAsiento").value = ""; }
     if (idPersona) { document.getElementById("idPersona").value = ""; }
     if (idItinerario) { document.getElementById("idItinerario").value = ""; }
+    if (tamNumDocIdentidad) { document.getElementById("tamNumDocIdentidad").value = ""; }
 }
 
 function ocultarComponente(divNumAsiento, tbItinerario, replicaBus) {
@@ -77,7 +78,7 @@ $("#itinerarioFecha").change(function () {
 });
 
 function spIntinerarioOrigenXNombre() {
-    limpiarImputText(true, true, true, true, true, true, true,true);
+    //limpiarImputText(true, true, true, true, true, true, true,true,true);
     removerOptions(false, true, true, false);
     ocultarComponente(true, true, true);
     removerTr(true);
@@ -103,7 +104,7 @@ function spIntinerarioOrigenXNombre() {
 }
 
 function spIntinerarioDestinoXIdOrigen(prmIdOrigen) {
-    limpiarImputText(true, true, true, true, true, true, true, true);
+    //limpiarImputText(true, true, true, true, true, true, true, true,true);
     removerOptions(false, true, true, false);
     ocultarComponente(true, true, true);
     removerTr(true);
@@ -130,7 +131,7 @@ function spIntinerarioDestinoXIdOrigen(prmIdOrigen) {
 }
 
 function spIntinerarioFechaSalidaXIdOrigenIdDestino(prmIdOrigen, prmIdDestino) {
-    limpiarImputText(true, true, true, true, true, true, true, true);
+    //limpiarImputText(true, true, true, true, true, true, true, true, true);
     removerOptions(false, false, true, false);
     ocultarComponente(true, true, true);
     removerTr(true);
@@ -157,7 +158,7 @@ function spIntinerarioFechaSalidaXIdOrigenIdDestino(prmIdOrigen, prmIdDestino) {
 }
 
 function spIntinerarioResumenXIdOrigenIdDestinoFecha(prmIdOrigen, prmIdDestino, prmFecha) {
-    limpiarImputText(true, true, true, true, true, true, true);
+    //limpiarImputText(true, true, true, true, true, true, true, true);
     removerOptions(false, false, false, false);
     ocultarComponente(true, false, true);
     removerTr(true);
@@ -172,7 +173,7 @@ function spIntinerarioResumenXIdOrigenIdDestinoFecha(prmIdOrigen, prmIdDestino, 
             var itinerarios = response.d;
             var i = 1;
             $.each(itinerarios, function (index, enItinerario) {                
-                etiqueta.append('<tr onclick="spControlAsientoXIdItinerario(\'' + enItinerario.iti_id + '\')"  tabindex="' + i + 4 + '"class="collapsed" data-toggle="collapse" >'
+                etiqueta.append('<tr onclick="spControlAsientoXIdItinerario(' + enItinerario.iti_id +')">'
                     + '<td>' + i + '</td>'
                     + '<td>' + enItinerario.iti_horSalida + '</td>'                    
                     + '<td> S/. ' + enItinerario.iti_precio + '</td>'
@@ -187,7 +188,19 @@ function spIntinerarioResumenXIdOrigenIdDestinoFecha(prmIdOrigen, prmIdDestino, 
     });
 }
 
-function spControlAsientoXIdItinerario(prmIdItinerario) {
+function scroll() {
+    $('html, body').animate({
+        scrollTop: $("#replicaBus").position().top-120
+    }, 300);
+}
+
+
+jQuery('#tbBodyItinerario').on('click', 'tr', function (evt) {
+    $("#tbBodyItinerario").find("tr").removeClass("trSeleccionado");
+    $(this).addClass("trSeleccionado");
+});
+
+function spControlAsientoXIdItinerario(prmIdItinerario) { 
     document.getElementById("idItinerario").value = prmIdItinerario;
     var etiqueta = $("#replicaBus");
     $.ajax({
@@ -263,12 +276,14 @@ function spControlAsientoXIdItinerario(prmIdItinerario) {
                     }
                     contSeg++;
                 }
+                 
             }
+            scroll();
         },
         failure: function (msg) {
             alert(msg);
         }
-    });
+    });    
 }
 
 function asignarAsiento(numAsiento) {
@@ -323,7 +338,7 @@ $("#tipDocIdentidad").change(function () {
 
 
 function spPersonaXNumeroDocumentoIdentidad(prmNumDocIde) {
-    limpiarImputText(false, false, false, false, false, false, true);
+    limpiarImputText(false, false, false, false, false, false, true, true);
     $.ajax({
         type: "POST",
         url: "wsVentaPasaje.asmx/spPersonaXNumeroDocumentoIdentidad",
@@ -333,8 +348,7 @@ function spPersonaXNumeroDocumentoIdentidad(prmNumDocIde) {
         success: function (response) {
             
             var persona = response.d;
-            $.each(persona, function (index, enPersona) {                
-                
+            $.each(persona, function (index, enPersona) { 
                     document.getElementById("nombres").value = enPersona.per_nombres;
                     document.getElementById("apellidos").value = enPersona.per_apellidos;
                     document.getElementById("fecNacimiento").value = enPersona.per_fecNacimiento;
@@ -364,7 +378,7 @@ function buscarPersonaPorNic() {
         spPersonaXNumeroDocumentoIdentidad($('#numDocIdentidad').val());
 
     } else {
-        limpiarImputText(false, true, true, true, true, false, true);
+        limpiarImputText(false, true, true, true, true, false, true, true);
         removerSpan(true);
         $('#lblMsjVentaPasaje').append("<span>Búsqueda: La longitud de \"Número de Documento\" debe ser entre 8 y 15 caracteres.</span>");
     }
@@ -431,19 +445,26 @@ function spBoletoViajeRegistro() {
     $.ajax({
         type: "POST",
         url: "wsVentaPasaje.asmx/spBoletoViajeRegistro",
-        data: "{ 'prmAsiento': '" 
-            + $('#numAsiento').val()+ "', 'prmIdPersona': '"
-            + $('#idPersona').val()+ "', 'prmIdItinerario': '" 
-            + $('#idItinerario').val()+ "'}",
+        data: "{ 'prmAsiento': '" + $('#numAsiento').val()
+            + "', 'prmIdPersona': '" + $('#idPersona').val()
+            + "', 'prmIdItinerario': '" + $('#idItinerario').val()+ "'}",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (response) {
-            $.each(response.d, function (index, enBoletoViaje) {
+            var lstBolViaje = response.d;            
+            $.each(lstBolViaje, function (index, enBoletoViaje) {
                 document.getElementById("apellidos").value = enBoletoViaje.bolVia_id;
             });
+            spControlAsientoXIdItinerario($('#idItinerario').val());
+            limpiarImputText(true, true, true, true, true, true, true, true);
+            removerSpan(true);
         },
         failure: function (msg) {
             alert(msg);
         }
     });
+}
+
+function cancelarVenta() {
+    location.href = "frmVentaPasaje.aspx?s=canceled";
 }

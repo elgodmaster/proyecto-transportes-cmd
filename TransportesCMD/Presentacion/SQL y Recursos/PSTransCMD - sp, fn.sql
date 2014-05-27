@@ -21,20 +21,20 @@ as begin
 end
 go
 --PROCEDIMIENTOS Y LLENADO INICIAL
-insert into mensajes values('MS-0001','Error al Registrar',GETDATE())
-insert into mensajes values('MS-0002','¡Registro de Correcto!',GETDATE())
-insert into mensajes values('RN-0001','No debe haber Itinerarios con las misma ruta, fecha y hora de salida. Por lo menos debe diferenciarse en lo último.',GETDATE())
-insert into mensajes values('RN-0003','No se puede registrar a otra persona que su Número de Documento de Identidad ya esté en la base de datos.',GETDATE())
-go
-if object_id('spMostrarMensaje', 'p') is not null
-drop procedure spMostrarMensaje
-go
-create procedure spMostrarMensaje(
-@men_codigo char(7))
-as begin
-	select men_descripcion from mensajes where men_codigo=@men_codigo
-end
-go
+--insert into mensajes values('MS-0001','Error al Registrar',GETDATE())
+--insert into mensajes values('MS-0002','¡Registro de Correcto!',GETDATE())
+--insert into mensajes values('RN-0001','No debe haber Itinerarios con las misma ruta, fecha y hora de salida. Por lo menos debe diferenciarse en lo último.',GETDATE())
+--insert into mensajes values('RN-0003','No se puede registrar a otra persona que su Número de Documento de Identidad ya esté en la base de datos.',GETDATE())
+--go
+--if object_id('spMostrarMensaje', 'p') is not null
+--drop procedure spMostrarMensaje
+--go
+--create procedure spMostrarMensaje(
+--@men_codigo char(7))
+--as begin
+--	select men_descripcion from mensajes where men_codigo=@men_codigo
+--end
+--go
 insert into documentoIdentidad(docIde_descripcion,docIde_longitud) values('PASAPORTE',12)
 insert into documentoIdentidad(docIde_descripcion,docIde_longitud) values('DNI',8)
 insert into documentoIdentidad(docIde_descripcion,docIde_longitud) values('LIBRETA MILITAR',8)
@@ -61,16 +61,16 @@ as
 begin
 	declare @numDocIden int
 	select @numDocIden=count(per_numDocIdentidad) from persona where per_numDocIdentidad=@per_numDocIdentidad
-	if @numDocIden > 0
-		exec spMostrarMensaje 'RN-0003'			
+	if @numDocIden>0
+		set @numDocIden=0		
 	else
 		begin
 			insert into persona(per_nombres,per_apellidos,per_numDocIdentidad,per_fecNacimiento,per_telefono,per_sexo,per_direccion,per_email,per_img,per_fecRegistro,per_estado,docIdentidad_id ) 
 			values(@per_nombres,@per_apellidos,@per_numDocIdentidad,@per_fecNacimiento,'n',@per_sexo,'n','n','n',GETDATE(),'a',@docIdentidad_id )	
 			set @numDocIden=@@IDENTITY	
-			select @numDocIden
-			exec spMostrarMensaje 'MS-0002'		
-		end	
+			
+		end
+	select @numDocIden	
 end
 go
 spPersonaRegistrarBasico 'MILER','ROQUE LAIZA','123456789012','12/01/1990','m',1
@@ -182,38 +182,35 @@ go
 if object_id('spVehiculoRegistrar', 'p') is not null
 drop procedure spVehiculoRegistrar
 go
-insert into vehiculoMarca(vehMar_descripcion) values('Mercedes Bens');
-insert into vehiculoMarca(vehMar_descripcion) values('Volkswagen');
-go
 create procedure spVehiculoRegistrar(
+@veh_marca varchar(35),
 @veh_modelo varchar(30),
 @veh_placa varchar(15),
 @veh_numAsiPrimer int,
 @veh_numAsiSegundo int,
-@vehMarca_id int,
 @serEspecial_id int)
 as begin
-	insert into vehiculo(veh_modelo,veh_placa,veh_numAsiPrimer,veh_numAsiSegundo,veh_img,veh_fecRegistro,veh_estado,vehMarca_id,serEspecial_id) 
-	values(@veh_modelo,@veh_placa,@veh_numAsiPrimer,@veh_numAsiSegundo,'n',GETDATE(),'a',@vehMarca_id,@serEspecial_id)
+	insert into vehiculo(veh_marca,veh_modelo,veh_placa,veh_numAsiPrimer,veh_numAsiSegundo,veh_img,veh_fecRegistro,veh_estado,serEspecial_id) 
+	values(@veh_marca,@veh_modelo,@veh_placa,@veh_numAsiPrimer,@veh_numAsiSegundo,'n',GETDATE(),'a',@serEspecial_id)
 end
 go
-spVehiculoRegistrar 'MB001','MGS-23',16,56,1,1
+spVehiculoRegistrar 'Mercedes Bens','MB001','MGS-23',16,56,1
 go
-spVehiculoRegistrar 'MB002','MGS-24',52,0,1,1
+spVehiculoRegistrar 'Mercedes Bens','MB002','MGS-24',52,0,1
 gO
-spVehiculoRegistrar 'MB003','MGS-25',16,56,1,1
+spVehiculoRegistrar 'Mercedes Bens','MB003','MGS-25',16,56,1
 go
-spVehiculoRegistrar 'MB004','MGS-26',52,0,1,1
+spVehiculoRegistrar 'Mercedes Bens','MB004','MGS-26',52,0,1
 go
-spVehiculoRegistrar 'MB005','MGS-27',16,56,1,1
+spVehiculoRegistrar 'Mercedes Bens','MB005','MGS-27',16,56,1
 go
-spVehiculoRegistrar 'MB006','MGS-28',48,0,1,1
+spVehiculoRegistrar 'Mercedes Bens','MB006','MGS-28',48,0,1
 go
-spVehiculoRegistrar 'MB007','MGS-29',16,56,1,1
+spVehiculoRegistrar 'Mercedes Bens','MB007','MGS-29',16,56,1
 go
-spVehiculoRegistrar 'MB008','MGS-10',16,56,2,1
+spVehiculoRegistrar 'Mercedes Bens','MB008','MGS-10',16,56,2
 go
-spVehiculoRegistrar 'MB008','MGS-11',52,0,2,1
+spVehiculoRegistrar 'Mercedes Bens','MB008','MGS-11',52,0,2
 go
 if object_id('spLlenarAsientos', 'p') is not null
 drop procedure spLlenarAsientos
@@ -260,16 +257,16 @@ as begin
 	where I.sucursal_origen_id=@sucursal_origen_id and I.sucursal_destino_id=@sucursal_destino_id
 		and I.iti_horSalida=@iti_horSalida 	
 	if @res>0	
-		exec spMostrarMensaje 'RN-0001'			
+		set @PKCreado=0
 	else		
 		begin
 			insert into itinerario(sucursal_origen_id,sucursal_destino_id,iti_horSalida,iti_horLlegada,
 				iti_precio,iti_fecRegistro,iti_estado,vehiculo_id,personal_id) 
 			values(@sucursal_origen_id,@sucursal_destino_id,@iti_horSalida,@iti_horLlegada,@iti_precio,GETDATE(),'a',@vehiculo_id,@personal_id)
 			set @PKCreado=@@IDENTITY
-			exec spMostrarMensaje 'MS-0002'
 			exec spLlenarAsientos @vehiculo_id,@PKCreado
 		end
+	select @PKCreado
 end
 go
 spItinerarioRegistrar 1,2,'07/07/2014 8:00 AM','07/07/2014 1:00 PM',20.00,1,1
@@ -444,7 +441,6 @@ as begin
 end
 go
 --spBoletoViajeRegistro 23,1,1,1,1
---select * from boletoViaje
 
 --go
 --if object_id('spBoleto', 'p') is not null

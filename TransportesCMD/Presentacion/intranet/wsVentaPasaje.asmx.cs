@@ -126,11 +126,11 @@ namespace Presentacion.intranet
         }
 
         [WebMethod]
-        public enBoletoViaje spBoletoViajeRegistro(int prmAsiento, int prmIdPersona,int prmIdItinerario)
+        public List<enBoletoViaje> spBoletoViajeRegistro(int prmAsiento, int prmIdPersona, int prmIdItinerario)
         {
-            enBoletoViaje bolViaje = new enBoletoViaje();
-            bolViaje = neBoletoViaje.spBoletoViajeRegistro(prmAsiento, prmIdPersona, 1, prmIdItinerario, 1);
-            return bolViaje;
+            List<enBoletoViaje> lstBolVia = new List<enBoletoViaje>();
+            lstBolVia = neBoletoViaje.spBoletoViajeRegistro(prmAsiento, prmIdPersona, 1, prmIdItinerario, 1);
+            return lstBolVia;
         }
         
         

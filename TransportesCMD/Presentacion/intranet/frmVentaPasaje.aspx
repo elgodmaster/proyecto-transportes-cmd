@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="TCMD - Venta de Pasaje" Language="C#" MasterPageFile="~/intranet/MDI.Master" AutoEventWireup="true" CodeBehind="frmVentaPasaje.aspx.cs" Inherits="Presentacion.frmVentaPasaje1" %>
 
+<%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="assets/css/itinerario.css" type="text/css" media="screen, projection" rel="stylesheet" />
     <link rel="stylesheet" href="pruebas/chosen.css" />
@@ -82,10 +84,11 @@
                     <div class="box-content">
                         <div class="row-fluid">
                             <form name="frmRegistraVentaPasaje">
-                                <div class="" >
+                                <div class="hidden" >
                                     <input type="text" id="tamNumDocIdentidad"  value="" />
                                     <input type="text" id="idItinerario" name="idItinerario" value="" />
                                     <input type="text" id="idPersona" name="idPersona" value="" />
+                                    <textarea id="text"></textarea>
                                 </div>
                                 <div class="span3">Documento de Identidad:</div>
                                 <div class="control-group">
@@ -124,9 +127,7 @@
                                     <div class="control-group">
                                         <input type="text" id="numAsiento" class="span2" name="numAsiento" disabled="disabled" />
                                     </div>
-                                </div>
-                                <textarea id="results"></textarea>
-                                                                
+                                </div>                                
                             </form>
                         </div>
                     </div>
@@ -136,7 +137,7 @@
                             <i class="icon-ok"></i>
                             Aceptar
                         </button>
-                        <button class="btn btn-ser" name="action" value="Cancelar">Cancel</button>
+                        <button class="btn btn-ser" name="action" value="Cancelar" onclick="cancelarVenta()">Cancel</button>
                     </div>
                 </div>
             </div>
@@ -156,6 +157,10 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="span8">
+            <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+            <rsweb:ReportViewer ID="ReportViewer1" runat="server"></rsweb:ReportViewer>
         </div>
     </div>
 </asp:Content>
