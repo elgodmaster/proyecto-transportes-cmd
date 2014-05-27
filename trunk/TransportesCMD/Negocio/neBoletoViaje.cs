@@ -9,7 +9,8 @@ namespace Negocio
 {
     public class neBoletoViaje
     {
-        public static enBoletoViaje spBoletoViajeRegistro(int prmAsiento, int prmIdPersona, int prmIdPersonal, int prmIdItinerario, int prmIdSucursal) { 
+        public static List<enBoletoViaje> spBoletoViajeRegistro(int prmAsiento, int prmIdPersona, int prmIdPersonal, int prmIdItinerario, int prmIdSucursal)
+        { 
             return daBoletoViaje.spBoletoViajeRegistro(prmAsiento, prmIdPersona, prmIdPersonal, prmIdItinerario, prmIdSucursal);
         }
     }
