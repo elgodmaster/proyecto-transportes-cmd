@@ -1389,7 +1389,7 @@ input[type="file"] {
   line-height: 30px;
 }
 select {
-  width: 220px;
+  width: 228px;
   border: 1px solid #cccccc;
   background-color: #ffffff;
 }
@@ -3979,8 +3979,8 @@ input[type="submit"].btn.btn-mini {
 .navbar-fixed-top,
 .navbar-fixed-bottom {
   position: fixed;
-  right: 0;
-  left: 0;
+  right: 3px;
+  left: -8px;
   z-index: 1030;
   margin-bottom: 0;
 }
@@ -4005,7 +4005,9 @@ input[type="submit"].btn.btn-mini {
   width: 972px;
 }
 .navbar-fixed-top {
-  top: 0;
+  top: -9px;
+    height: 58px;
+    margin-top: 9px;
 }
 .navbar-fixed-top .navbar-inner,
 .navbar-static-top .navbar-inner {

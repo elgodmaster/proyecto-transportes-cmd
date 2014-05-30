@@ -10,6 +10,19 @@ namespace Negocio
 {
     public class neSucursal
     {
+        #region singleton
+        private static readonly neSucursal _instancia = new neSucursal();
+        public static neSucursal Instancia
+        {
+            get { return neSucursal._instancia; }
+        }
+        #endregion
+
+        #region Métodos
+        public List<enSucursal> sucursalLista() {
+            return daSucursal.sucursalLista();
+        }
+        
         public static List<enSucursal> spIntinerarioOrigenXNombre(String prmNomSucursal) {
             return daSucursal.spIntinerarioOrigenXNombre(prmNomSucursal);
         }
@@ -17,5 +30,7 @@ namespace Negocio
         {
             return daSucursal.spIntinerarioDestinoXIdOrigen(prmIdOrigen);
         }
+
+        #endregion
     }
 }

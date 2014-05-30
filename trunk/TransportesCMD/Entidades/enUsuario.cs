@@ -14,5 +14,6 @@ namespace Entidades
         public DateTime usu_fecRegistro {get;set;}
         public String usu_estado  {get;set;}
         public enPersona persona { get; set; }
+        public enPersonal personal { get; set; }
     }
 }
