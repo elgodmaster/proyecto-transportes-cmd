@@ -82,7 +82,7 @@
                     <div class="box-content">
                         <div class="row-fluid">
                             <form name="frmRegistraVentaPasaje">
-                                <div class="hidden">
+                                <div class="hiddesn">
                                     <input type="text" id="tamNumDocIdentidad" value="" />
                                     <input type="text" id="idItinerario" name="idItinerario" value="" />
                                     <input type="text" id="idPersona" name="idPersona" value="" />

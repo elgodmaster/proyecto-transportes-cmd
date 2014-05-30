@@ -455,8 +455,9 @@ function spBoletoViajeRegistro() {
             $.each(lstBolViaje, function (index, enBoletoViaje) {
                 document.getElementById("apellidos").value = enBoletoViaje.bolVia_id;
             });
+            //limpiarImputText(numDocIdentidad, nombres, apellidos, fecNacimiento, edad, numAsiento,idPersona, idItinerario,tamNumDocIdentidad) 
             spControlAsientoXIdItinerario($('#idItinerario').val());
-            limpiarImputText(true, true, true, true, true, true, true, true);
+            limpiarImputText(true, true, true, true, true, true, true, false,false);
             removerSpan(true);
         },
         failure: function (msg) {
