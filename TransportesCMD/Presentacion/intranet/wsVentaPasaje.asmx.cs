@@ -125,11 +125,14 @@ namespace Presentacion.intranet
             return lsPersona;
         }
 
-        [WebMethod]
+        [WebMethod(EnableSession = true)]
         public List<enBoletoViaje> spBoletoViajeRegistro(int prmAsiento, int prmIdPersona, int prmIdItinerario)
         {
             List<enBoletoViaje> lstBolVia = new List<enBoletoViaje>();
-            lstBolVia = neBoletoViaje.spBoletoViajeRegistro(prmAsiento, prmIdPersona, 1, prmIdItinerario, 1);
+            enUsuario usuario = new enUsuario();
+            usuario = (enUsuario)Session["usuario"];
+
+            lstBolVia = neBoletoViaje.spBoletoViajeRegistro(prmAsiento, prmIdPersona,usuario.personal.per_id , prmIdItinerario, usuario.personal.sucursal.suc_id);
             return lstBolVia;
         }
         

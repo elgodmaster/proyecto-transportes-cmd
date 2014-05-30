@@ -13,10 +13,15 @@ namespace Presentacion
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-                if (Session["usuario"] != null)
+            if (Session["usuario"] != null)
             {
                 Response.Redirect("frmPrincipal.aspx");
             }
+
+            lstSucursal.DataSource = neSucursal.Instancia.sucursalLista();
+            lstSucursal.DataTextField = "suc_nombre";
+            lstSucursal.DataValueField = "suc_id";
+            lstSucursal.DataBind();
         }
 
         protected void Ingresar_Click(object sender, EventArgs e)
@@ -24,15 +29,26 @@ namespace Presentacion
             enUsuario usuario = new enUsuario();
             usuario.usu_user = txtUser.Text;
             usuario.usu_pass = txtPass.Text;
+            enSucursal sucursal = new enSucursal();
+            //sucursal.suc_id = Convert.ToInt32(lstSucursal.SelectedValue.ToString());
+            sucursal.suc_id = 1;
+           
             if (txtUser.Text == "" || txtPass.Text == "")
             {
                 lblMensaje.Text = "Ingrese Datos";
             }
             else
             {
-                Session["usuario"] = neUsuario.spUsuarioLogin(usuario);
-                if (Session["usuario"] != null)
+                enUsuario usuLogueado = new enUsuario();
+                usuLogueado = neUsuario.spUsuarioLogin(usuario);
+                if (usuLogueado.personal != null)
+                {
+                   
+                    
+                    usuLogueado.personal.sucursal = sucursal;
+                    Session["usuario"] = usuLogueado;
                     Response.Redirect("frmPrincipal.aspx");
+                }
                 else
                 {
                     lblMensaje.Text = "Datos Incorrectos";

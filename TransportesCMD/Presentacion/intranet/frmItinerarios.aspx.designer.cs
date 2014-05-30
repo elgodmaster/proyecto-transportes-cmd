@@ -7,9 +7,9 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace Presentacion {
+namespace Presentacion.intranet {
     
     
-    public partial class frmVentaPasaje1 {
+    public partial class frmItinerarios {
     }
 }

@@ -113,6 +113,17 @@ end
 go
 spUsuarioRegistrar 'admin','123',1
 go
+if object_id('spSucursalListar', 'p') is not null
+drop procedure spSucursalListar
+go
+ create procedure spSucursalListar
+as begin
+	select S.suc_id, C.ciu_nomCiudad, S.suc_nombre from sucursal S, ciudad C
+	where S.ciudad_id = C.ciu_id
+end
+go
+spSucursalListar
+go
 if object_id('spUsuarioLogin', 'p') is not null
 drop procedure spUsuarioLogin
 go
@@ -120,8 +131,8 @@ create procedure spUsuarioLogin(
 @usu_user varchar(45),
 @usu_pass varchar(45))
 as begin
-	select U.usu_id,P.per_nombres, P.per_apellidos, U.usu_user from persona P, usuario U
-	where P.per_id=U.persona_id and dbo.fnDescifrarClave(U.usu_pass,@usu_pass)=@usu_pass and U.usu_user=@usu_user
+	select U.usu_id,P.per_nombres, P.per_apellidos, U.usu_user,PL.per_id from persona P, usuario U, personal PL
+	where P.per_id=U.persona_id and P.per_id=PL.persona_id and dbo.fnDescifrarClave(U.usu_pass,@usu_pass)=@usu_pass and U.usu_user=@usu_user
 end
 go
 spUsuarioLogin 'admin','123'

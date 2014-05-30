@@ -119,6 +119,7 @@
     <Content Include="intranet\assets\js\jquery\jquery-ui-1.8.1-min.js" />
     <Content Include="intranet\assets\js\jquery\jquery.ui.datepicker-es.js" />
     <Content Include="intranet\assets\js\softroque.js" />
+    <Content Include="intranet\frmItinerarios.aspx" />
     <Content Include="intranet\frmMantenedorBus.aspx" />
     <Content Include="intranet\assets\css\itinerario.css" />
     <Content Include="intranet\assets\font\fontawesome-webfont.svg" />
@@ -186,6 +187,13 @@
     </Compile>
     <Compile Include="index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="intranet\frmItinerarios.aspx.cs">
+      <DependentUpon>frmItinerarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="intranet\frmItinerarios.aspx.designer.cs">
+      <DependentUpon>frmItinerarios.aspx</DependentUpon>
     </Compile>
     <Compile Include="intranet\frmMantenedorBus.aspx.cs">
       <DependentUpon>frmMantenedorBus.aspx</DependentUpon>

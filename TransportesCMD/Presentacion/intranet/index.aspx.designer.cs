@@ -31,6 +31,15 @@ namespace Presentacion {
         protected global::System.Web.UI.HtmlControls.HtmlForm loginForm;
         
         /// <summary>
+        /// Control lstSucursal.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox lstSucursal;
+        
+        /// <summary>
         /// Control txtUser.
         /// </summary>
         /// <remarks>

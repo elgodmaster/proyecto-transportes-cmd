@@ -29,10 +29,13 @@ namespace Datos
                 {
                     usuario = new enUsuario();
                     usuario.usu_id = Convert.ToInt32(dr[0].ToString());
-                    enPersona persona = new enPersona();
-                    persona.per_nombres = dr[1].ToString();
-                    persona.per_apellidos = dr[2].ToString();
-                    usuario.persona = persona;
+                            enPersona persona = new enPersona();
+                            persona.per_nombres = dr[1].ToString();
+                            persona.per_apellidos = dr[2].ToString();
+                        enPersonal personal = new enPersonal();
+                        personal.per_id = Convert.ToInt32(dr[4].ToString());
+                        personal.persona = persona;
+                    usuario.personal = personal;
                     usuario.usu_user = dr[3].ToString();
                 }
 
