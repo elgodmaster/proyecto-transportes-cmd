@@ -18,6 +18,7 @@ namespace Presentacion.intranet
     [System.Web.Script.Services.ScriptService]
     public class wsServicio : System.Web.Services.WebService
     {
+
         [WebMethod]
         public List<enServicioEspecial> spServicioListar()
         {

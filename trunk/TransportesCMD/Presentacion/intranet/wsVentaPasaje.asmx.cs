@@ -135,6 +135,8 @@ namespace Presentacion.intranet
             lstBolVia = neBoletoViaje.spBoletoViajeRegistro(prmAsiento, prmIdPersona,usuario.personal.per_id , prmIdItinerario, usuario.personal.sucursal.suc_id);
             return lstBolVia;
         }
+
+        
         
         
         
