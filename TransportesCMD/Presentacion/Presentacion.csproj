@@ -154,6 +154,7 @@
     <Content Include="intranet\assets\js\jquery\jquery-tablesorter.js" />
     <Content Include="intranet\assets\js\jquery\virtual-tour.js" />
     <Content Include="index.aspx" />
+    <Content Include="intranet\frmMantenedorServicios.aspx" />
     <Content Include="intranet\frmPrincipal.aspx" />
     <Content Include="intranet\frmVentaPasaje.aspx" />
     <Content Include="intranet\index.aspx" />
@@ -201,6 +202,13 @@
     </Compile>
     <Compile Include="intranet\frmMantenedorBus.aspx.designer.cs">
       <DependentUpon>frmMantenedorBus.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="intranet\frmMantenedorServicios.aspx.cs">
+      <DependentUpon>frmMantenedorServicios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="intranet\frmMantenedorServicios.aspx.designer.cs">
+      <DependentUpon>frmMantenedorServicios.aspx</DependentUpon>
     </Compile>
     <Compile Include="intranet\frmPrincipal.aspx.cs">
       <DependentUpon>frmPrincipal.aspx</DependentUpon>
