@@ -47,3 +47,20 @@ as begin
 	where veh_id = @veh_id
 end
 go
+
+
+
+
+
+
+
+
+
+create procedure spServicioEspecialRegistro(
+@serEsp_nombre varchar(35),
+@serEsp_caracteristicas varchar(85),
+@serEsp_estado int)
+as begin
+insert into servicioEspecial(serEsp_nombre, serEsp_caracteristicas,serEsp_fecRegistro, serEsp_estado) 
+values(@serEsp_nombre,@serEsp_caracteristicas,GETDATE(),@serEsp_estado)
+end

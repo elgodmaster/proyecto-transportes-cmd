@@ -12,6 +12,17 @@ namespace Datos
 {
     public class daServicio
     {
+
+
+        #region singleton
+        private static readonly daServicio _instancia = new daServicio();
+        public static daServicio Instancia
+        {
+            get { return daServicio._instancia; }
+        }
+        #endregion
+
+        #region singleton
         public static Boolean RegistrarServicioEspecial(String nombre, String caracteristicas, int ser_est)
         {
 
@@ -42,5 +53,43 @@ namespace Datos
             return resultado;
 
         }
+
+        public static List<enServicioEspecial> spServicioListar()
+        {
+            SqlConnection cn = null;
+            SqlCommand cmd = null;
+            SqlDataReader dr = null;
+            List<enServicioEspecial> lstServicio = null;
+            try
+            {
+                cn = Conexion.ConexionSQL();
+                cmd = new SqlCommand("spServicioListar", cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cn.Open();
+                dr = cmd.ExecuteReader();
+                lstServicio = new List<enServicioEspecial>();
+                while (dr.Read())
+                {
+                    
+                    enServicioEspecial seresp = new enServicioEspecial();
+                    seresp.serEsp_nombre = dr[0].ToString();
+                    seresp.serEsp_caracteristicas = dr[1].ToString();
+                    seresp.serEsp_fecRegistro = Convert.ToDateTime(dr[2].ToString());
+                    seresp.serEsp_estado = dr[4].ToString();
+                    lstServicio.Add(seresp);
+                }
+
+            }
+            catch (Exception e)
+            {
+
+            }
+            finally
+            {
+                cn.Close();
+            }
+            return lstServicio;
+        }
+        #endregion
     }
 }
