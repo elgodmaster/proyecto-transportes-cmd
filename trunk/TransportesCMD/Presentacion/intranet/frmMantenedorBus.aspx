@@ -14,6 +14,7 @@
     <input class="input-xlarge focused" id="txtmodel" type="text" value="" name="txtmodelo" runat="server"/>
     </div>
 </div>
+        <asp:TextBox ID="txtId"  runat="server" Visible="False"></asp:TextBox>
     <div class="control-group ">
         <label class="control-label">PLACA</label>
         <div class="controls">
