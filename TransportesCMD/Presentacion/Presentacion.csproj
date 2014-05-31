@@ -118,6 +118,7 @@
     <Content Include="intranet\assets\js\jquery\jquery-ui-1.10.4.min.js" />
     <Content Include="intranet\assets\js\jquery\jquery-ui-1.8.1-min.js" />
     <Content Include="intranet\assets\js\jquery\jquery.ui.datepicker-es.js" />
+    <Content Include="intranet\assets\js\Servicio.js" />
     <Content Include="intranet\assets\js\softroque.js" />
     <Content Include="intranet\assets\js\vehiculo.js" />
     <Content Include="intranet\frmItinerarios.aspx" />
@@ -159,6 +160,7 @@
     <Content Include="intranet\frmPrincipal.aspx" />
     <Content Include="intranet\frmVentaPasaje.aspx" />
     <Content Include="intranet\index.aspx" />
+    <Content Include="intranet\wsServicio.asmx" />
     <Content Include="intranet\wsMDI.asmx" />
     <Content Include="intranet\wsVehiculo.asmx" />
     <Content Include="intranet\wsVentaPasaje.asmx" />
@@ -240,6 +242,10 @@
     </Compile>
     <Compile Include="intranet\MDI.Master.designer.cs">
       <DependentUpon>MDI.Master</DependentUpon>
+    </Compile>
+    <Compile Include="intranet\wsServicio.asmx.cs">
+      <DependentUpon>wsServicio.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="intranet\wsMDI.asmx.cs">
       <DependentUpon>wsMDI.asmx</DependentUpon>

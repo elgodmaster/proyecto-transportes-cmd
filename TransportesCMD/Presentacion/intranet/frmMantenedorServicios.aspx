@@ -74,7 +74,32 @@
         </div> 
 
 
+    <div class="span18">
+        <div class="span18">
+            <h4>Listado General</h4>
+        </div>
+        <table id="tbSalidasCss" class="table">
+            <thead>
+                <tr>
+                    <th>N°</th>
+                    <th>Nombre</th>
+                    <th>Caracteristicas</th>
+                    <th>Fecha_Registro</th>
+                    <th>estado</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>            
+            <tbody id="tbBodyServicio">
+                <%-- Aqui Javascript JSON --%>
+
+            </tbody>
+        </table>
+    </div>
+
+
+
 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="javascript" runat="server">
+    <script src="assets/js/Servicio.js"></script>
 </asp:Content>

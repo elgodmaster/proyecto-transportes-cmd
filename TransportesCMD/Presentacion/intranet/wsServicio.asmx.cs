@@ -9,22 +9,22 @@ using Negocio;
 namespace Presentacion.intranet
 {
     /// <summary>
-    /// Descripción breve de wsVehiculo
+    /// Descripción breve de wsServicio
     /// </summary>
     [WebService(Namespace = "http://tempuri.org/")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [System.ComponentModel.ToolboxItem(false)]
     // Para permitir que se llame a este servicio web desde un script, usando ASP.NET AJAX, quite la marca de comentario de la línea siguiente. 
     [System.Web.Script.Services.ScriptService]
-    public class wsVehiculo : System.Web.Services.WebService
+    public class wsServicio : System.Web.Services.WebService
     {
         [WebMethod]
-        public List<enVehiculo> spVehiculoListar()
+        public List<enServicioEspecial> spServicioListar()
         {
-            List<enVehiculo> lstVehiculo = new List<enVehiculo>();
+            List<enServicioEspecial> lstServicio = new List<enServicioEspecial>();
             // enviar vacio "" significa que va a devolver todo
-            lstVehiculo = neVehiculo.Instancia.spVehiculoListar();
-            return lstVehiculo;
+            lstServicio = neServicioEspecial.Instancia.spServicioListar();
+            return lstServicio;
         }
     }
 }
