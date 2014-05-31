@@ -385,7 +385,7 @@ go
 if object_id('spControlAsientoXIdItinerario', 'p') is not null
 drop procedure spControlAsientoXIdItinerario
 go
- create procedure spControlAsientoXIdItinerario(
+create procedure spControlAsientoXIdItinerario(
 @iti_id int)
 as begin
 	select CA.conAsi_piso,CA.conAsi_numAsiento, CA.conAsi_estAsiento 
@@ -451,6 +451,8 @@ as begin
 	select @pkBoleto, @numAsiento
 end
 go
+
+
 --spBoletoViajeRegistro 23,1,1,1,1
 
 --go
