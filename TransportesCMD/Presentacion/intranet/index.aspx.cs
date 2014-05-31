@@ -18,16 +18,16 @@ namespace Presentacion
                 if (Session["usuario"] != null)
                 {
                     Response.Redirect("frmPrincipal.aspx");
+                }else if(neSucursal.Instancia.sucursalLista()!=null){
+                    lstSucursal.DataSource = neSucursal.Instancia.sucursalLista();
+                    lstSucursal.DataTextField = "suc_nombre";
+                    lstSucursal.DataValueField = "suc_id";
+                    lstSucursal.DataBind();
                 }
-
-                lstSucursal.DataSource = neSucursal.Instancia.sucursalLista();
-                lstSucursal.DataTextField = "suc_nombre";
-                lstSucursal.DataValueField = "suc_id";
-                lstSucursal.DataBind();
+                
             }
             catch (Exception)
-            {
-                
+            {                
                 throw;
             }
             
