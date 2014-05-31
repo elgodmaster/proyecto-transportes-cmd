@@ -49,6 +49,7 @@
     <Compile Include="daDocumentoIdentidad.cs" />
     <Compile Include="daItinerario.cs" />
     <Compile Include="daPersona.cs" />
+    <Compile Include="daServicio.cs" />
     <Compile Include="daSucursal.cs" />
     <Compile Include="daUsuario.cs" />
     <Compile Include="daVehiculo.cs" />
