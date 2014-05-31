@@ -14,7 +14,37 @@ namespace Presentacion.intranet
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Page.IsPostBack )
+            {
+                if(Request.QueryString["v"] != null){
+                    int id  = Convert.ToInt32(Request.QueryString["v"]);
+                List<enVehiculo> lst = new List<enVehiculo>();
+                lst = neVehiculo.Instancia.spVehiculoXid(id);
+                txtPlac.Value = lst[0].veh_placa.ToString();
+                txtmodel.Value = lst[0].veh_modelo.ToString();               
+                txtmarc.Value = lst[0].veh_marca.ToString();
+                txtprimer.Value = lst[0].veh_numAsiPrimer.ToString();
+                txtsegund.Value = lst[0].veh_numAsiSegundo.ToString();
+                //txtmarc.Value = lst[0].veh_numAsiPrimer.ToString();
+                }
+                if (Request.QueryString["e"] != null) {
+                    Response.Write(@"<script type='javascript'>alert('Elima')</script>");
+                    int id = Convert.ToInt32(Request.QueryString["e"]);
+                    Boolean resultado = false;
+                    resultado = neVehiculo.Instancia.spVehiculoEliminar(id);
+                    if (resultado)
+                    {
+                        Response.Write(@"<script languaje='javascript'>alert('Eliminacion Correcta');</script>");
+                    }
+                    else
+                    {
+                        Response.Write(@"<script languaje='javascript'>alert('Error Eliminar');</script>");
+                    }
+                }
+                
+            }
 
+       
         }
 
         protected void cboMarca_SelectedIndexChanged(object sender, EventArgs e)
@@ -36,9 +66,9 @@ namespace Presentacion.intranet
             String mar = txtmarc.Value;
             int serv = Convert.ToInt32(select_servici.Value);
             Boolean resultado = false;
-            resultado = neVehiculo.RegistrarVehiculo(model, pla, asi1,asi2, mar, serv);
+            resultado = neVehiculo.Instancia.RegistrarVehiculo(model, pla, asi1,asi2, mar, serv);
             if (resultado) {
-                lblMensajeGraba.Text = "OK";
+                Response.Redirect("frmMantenedorBus.aspx");
             }else{
                 lblMensajeGraba.Text = "Error";
             }

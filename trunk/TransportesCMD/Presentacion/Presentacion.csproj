@@ -119,6 +119,7 @@
     <Content Include="intranet\assets\js\jquery\jquery-ui-1.8.1-min.js" />
     <Content Include="intranet\assets\js\jquery\jquery.ui.datepicker-es.js" />
     <Content Include="intranet\assets\js\softroque.js" />
+    <Content Include="intranet\assets\js\vehiculo.js" />
     <Content Include="intranet\frmItinerarios.aspx" />
     <Content Include="intranet\frmMantenedorBus.aspx" />
     <Content Include="intranet\assets\css\itinerario.css" />
@@ -159,9 +160,11 @@
     <Content Include="intranet\frmVentaPasaje.aspx" />
     <Content Include="intranet\index.aspx" />
     <Content Include="intranet\wsMDI.asmx" />
+    <Content Include="intranet\wsVehiculo.asmx" />
     <Content Include="intranet\wsVentaPasaje.asmx" />
     <Content Include="SQL y Recursos\PSTransCMD - bd, tablas.sql" />
     <Content Include="SQL y Recursos\PSTransCMD - No Ejecutar%28Pruebas%29.sql" />
+    <Content Include="SQL y Recursos\PSTRANSCMD - SP, CARLOS.sql" />
     <Content Include="SQL y Recursos\PSTransCMD - sp, fn.sql" />
     <Content Include="SQL y Recursos\Recursos Internet\004-busbillet-Antezana-Lima-Ayacucho-2007-02-18.jpg" />
     <Content Include="SQL y Recursos\Recursos Internet\23423 %282%29.jpg" />
@@ -240,6 +243,10 @@
     </Compile>
     <Compile Include="intranet\wsMDI.asmx.cs">
       <DependentUpon>wsMDI.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="intranet\wsVehiculo.asmx.cs">
+      <DependentUpon>wsVehiculo.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="intranet\wsVentaPasaje.asmx.cs">
