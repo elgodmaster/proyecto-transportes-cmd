@@ -5,8 +5,9 @@
       <link rel="stylesheet" href="pruebas/chosen.css"/>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cuerpo" runat="server">
+    <div class="span6">
     <form runat="server">
-   <fieldset>
+   
       <div class="control-group">
     <label class="control-label" for="focusedInput">Modelo</label>
     <div class="controls">
@@ -53,8 +54,13 @@
     <asp:Button ID="btnRegistrar" runat="server" OnClick="btnRegistrar_Click" Text="Registrar" />
         <br /><br />
         <asp:Label ID="lblMensajeGraba" runat="server" Text="Label" Visible="False"></asp:Label>
-    </fieldset>
     </form>
+    </div>
+
+    <div class="span6">
+        <h1>HOLA</h1>
+    </div>
+
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="javascript" runat="server">
 </asp:Content>
