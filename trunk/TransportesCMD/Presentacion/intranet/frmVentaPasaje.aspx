@@ -36,31 +36,26 @@
                                 </select>
                             </div>
                             <div class="span1"></div>
-                            <div id="tbItinerario" class="span13">
-                                <div class="box">
-                                    <div class="box-content box-table">
-                                        <div>
-                                            <div class="span5"></div>
-                                            <div class="span3">
-                                                <h4>Lista de Itinerarios</h4>
-                                            </div>
-                                            <div class="span3">
-                                                <table id="tbSalidasCss" class="table">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>N°</th>
-                                                            <th>Hora</th>
-                                                            <th>Precio</th>
-                                                            <th>Disponibles</th>
-                                                            <th>Servicio Especial</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody id="tbBodyItinerario">
-                                                        <%-- Aqui Javascript JSON --%>
-                                                    </tbody>
-                                                </table>
-                                            </div>
+                            <div id="tbItinerario" class="span13">                       
+                                <div class="box-content box-table">
+                                    <div class="span12">
+                                        <div class="span3">
+                                            <h4>Lista de Itinerarios</h4>
                                         </div>
+                                        <table id="tbSalidasCss" class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>N°</th>
+                                                    <th>Hora</th>
+                                                    <th>Precio</th>
+                                                    <th>Disponibles</th>
+                                                    <th>Servicio Especial</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="tbBodyItinerario">
+                                                <%-- Aqui Javascript JSON --%>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>

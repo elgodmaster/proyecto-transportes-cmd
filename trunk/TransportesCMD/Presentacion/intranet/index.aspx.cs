@@ -41,10 +41,8 @@ namespace Presentacion
             {
                 enUsuario usuLogueado = new enUsuario();
                 usuLogueado = neUsuario.spUsuarioLogin(usuario);
-                if (usuLogueado.personal != null)
-                {
-                   
-                    
+                if (usuLogueado != null)
+                {                   
                     usuLogueado.personal.sucursal = sucursal;
                     Session["usuario"] = usuLogueado;
                     Response.Redirect("frmPrincipal.aspx");
