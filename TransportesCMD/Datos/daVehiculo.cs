@@ -167,7 +167,7 @@ namespace Datos
             return resultado;
         }
 
-        public static Boolean spVehiculoModificar(int id,String modelo, String placa, int numasi1, int numasi2, String marca, int serviespe)
+        public static Boolean spVehiculoModificar(int id,String modelo, String placa, int numasi1, int numasi2, String marca,String estado, int serviespe)
         {
 
             Boolean resultado = false;
@@ -177,12 +177,13 @@ namespace Datos
             {
                 cn = Conexion.ConexionSQL();
                 cmd = new SqlCommand("spVehiculoModificar", cn);
-                cmd.Parameters.AddWithValue("@veh_modelo", modelo);
+                cmd.Parameters.AddWithValue("@veh_id", id);
                 cmd.Parameters.AddWithValue("@veh_modelo", modelo);
                 cmd.Parameters.AddWithValue("@veh_placa", placa);
                 cmd.Parameters.AddWithValue("@veh_numAsiPrimer", numasi1);
                 cmd.Parameters.AddWithValue("@veh_numAsiSegundo", numasi2);
                 cmd.Parameters.AddWithValue("@veh_marca", marca);
+                cmd.Parameters.AddWithValue("@veh_estado", estado);
                 cmd.Parameters.AddWithValue("@serEspecial_id", serviespe);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cn.Open();
