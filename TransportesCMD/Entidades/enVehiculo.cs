@@ -17,7 +17,7 @@ namespace Entidades
         public String veh_img {get;set;}
         public DateTime veh_fecRegistro {get;set;}
         public String veh_estado { get; set; }
-        public String vehiculoMarca { get; set; }
+        public String veh_marca { get; set; }
         public enServicioEspecial servicioEspecial { get; set; }
     }
 }

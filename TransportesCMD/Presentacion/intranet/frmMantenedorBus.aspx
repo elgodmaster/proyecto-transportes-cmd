@@ -1,11 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/intranet/MDI.Master" AutoEventWireup="true" CodeBehind="frmMantenedorBus.aspx.cs" Inherits="Presentacion.intranet.frmMantenedorBus" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link href="assets/css/css_roque.css" type="text/css" media="screen, projection" rel="stylesheet" />
+   <%-- <link href="assets/css/css_roque.css" type="text/css" media="screen, projection" rel="stylesheet" />
    
-      <link rel="stylesheet" href="pruebas/chosen.css"/>
+      <link rel="stylesheet" href="pruebas/chosen.css"/>--%>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cuerpo" runat="server">
-    <div class="span6">
+    <div class="span18">
     <form runat="server">
    
       <div class="control-group">
@@ -23,6 +23,7 @@
     <div class="control-group ">
         <label class="control-label">Numero de Asientos 1er piso</label>
         <div class="controls">
+
             <input id="txtprimer" name="txtprimero" class="span4" type="text" value="" autocomplete="false" runat="server"/>
 
         </div>
@@ -57,10 +58,33 @@
     </form>
     </div>
 
-    <div class="span6">
-        <h1>HOLA</h1>
-    </div>
+    <div class="span18">
+        <div class="span18">
+            <h4>Lista de Vehículos</h4>
+        </div>
+        <table id="tbSalidasCss" class="table">
+            <thead>
+                <tr>
+                    <th>N°</th>
+                    <th>Placa</th>
+                    <th>Modelo</th>
+                    <th>Marca</th>
+                    <th>1er piso</th>
+                    <th>2do piso</th>
+                    <%--<th>Estado</th>--%>
+                    <th>Servicio Especial</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            
+            <tbody id="tbBodyVehiculo">
+                <%-- Aqui Javascript JSON --%>
 
+            </tbody>
+        </table>
+    </div>
+    
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="javascript" runat="server">
+    <script src="assets/js/vehiculo.js"></script>
 </asp:Content>
