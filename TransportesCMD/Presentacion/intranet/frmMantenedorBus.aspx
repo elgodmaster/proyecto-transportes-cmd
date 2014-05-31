@@ -6,6 +6,49 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cuerpo" runat="server">
     <div class="span18">
+        <div class="box">
+    <div class="box-header">
+        <i class="icon-list"></i>
+        <h5>Listado Vehículo</h5>
+        <button class="btn btn-box-right collapsed" data-toggle="collapse" data-target=".box-cliente">
+            <i class="icon-reorder"></i>
+        </button>
+    </div>
+    <div class="box-content box-cliente">
+        <table id="tbSalidasCss" class="table">
+            <thead>
+                <tr>
+                    <th>N°</th>
+                    <th>Placa</th>
+                    <th>Modelo</th>
+                    <th>Marca</th>
+                    <th>1er piso</th>
+                    <th>2do piso</th>
+                    <%--<th>Estado</th>--%>
+                    <th>Servicio Especial</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            
+            <tbody id="tbBodyVehiculo">
+                <%-- Aqui Javascript JSON --%>
+
+            </tbody>
+        </table>
+    </div>
+    </div>
+    </div>
+
+    <div class="span18">
+    <div class="box">
+    <div class="box-header">
+        <i class="icon-list"></i>
+        <h5>Datos Vehículo</h5>
+        <button class="btn btn-box-right collapsed" data-toggle="collapse" data-target=".box-cliente">
+            <i class="icon-reorder"></i>
+        </button>
+    </div>
+    <div class="box-content box-cliente">
     <form runat="server">
    
       <div class="control-group">
@@ -13,7 +56,7 @@
     <div class="controls">
     <input class="input-xlarge focused" id="txtmodel" type="text" value="" name="txtmodelo" runat="server"/>
     </div>
-</div>
+    </div>
         <asp:TextBox ID="txtId"  runat="server" Visible="False"></asp:TextBox>
     <div class="control-group ">
         <label class="control-label">PLACA</label>
@@ -58,33 +101,8 @@
         <asp:Label ID="lblMensajeGraba" runat="server" Text="Label" Visible="False"></asp:Label>
     </form>
     </div>
-
-    <div class="span18">
-        <div class="span18">
-            <h4>Lista de Vehículos</h4>
-        </div>
-        <table id="tbSalidasCss" class="table">
-            <thead>
-                <tr>
-                    <th>N°</th>
-                    <th>Placa</th>
-                    <th>Modelo</th>
-                    <th>Marca</th>
-                    <th>1er piso</th>
-                    <th>2do piso</th>
-                    <%--<th>Estado</th>--%>
-                    <th>Servicio Especial</th>
-                    <th>Acción</th>
-                </tr>
-            </thead>
-            
-            <tbody id="tbBodyVehiculo">
-                <%-- Aqui Javascript JSON --%>
-
-            </tbody>
-        </table>
     </div>
-    
+    </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="javascript" runat="server">
     <script src="assets/js/vehiculo.js"></script>

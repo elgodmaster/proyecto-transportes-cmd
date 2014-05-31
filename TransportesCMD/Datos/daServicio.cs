@@ -24,41 +24,41 @@ namespace Datos
 
         #region Métodos
 
-        //public static List<enSegmento> segmentoListar()
-        //{
+        public static List<enServicioEspecial> segmentoListar()
+        {
 
-        //    SqlConnection cn = null;
-        //    SqlCommand cmd = null;
-        //    SqlDataReader dr = null;
-        //    List<enSegmento> lstSegmento = null;
-        //    try
-        //    {
-        //        cn = Conexion.getConexion();
-        //        cmd = new SqlCommand("select * from VE_segmento", cn);
-        //        cmd.CommandType = CommandType.Text;
-        //        cn.Open();
-        //        dr = cmd.ExecuteReader();
-        //        lstSegmento = new List<enSegmento>();
-        //        while (dr.Read())
-        //        {
-        //            enSegmento segmento = new enSegmento();
-        //            segmento.seg_id = Convert.ToInt32(dr[0].ToString());
-        //            segmento.seg_nombre = dr[1].ToString();
-        //            lstSegmento.Add(segmento);
-        //        }
-        //    }
-        //    catch (Exception)
-        //    {
-        //        throw;
-        //    }
-        //    finally
-        //    {
-        //        dr.Close();
-        //        cn.Close();
-        //    }
-        //    return lstSegmento;
+            SqlConnection cn = null;
+            SqlCommand cmd = null;
+            SqlDataReader dr = null;
+            List<enServicioEspecial> lstServicio = null;
+            try
+            {
+                cn = Conexion.ConexionSQL();
+                cmd = new SqlCommand("select * from VE_segmento", cn);
+                cmd.CommandType = CommandType.Text;
+                cn.Open();
+                dr = cmd.ExecuteReader();
+                lstServicio = new List<enServicioEspecial>();
+                while (dr.Read())
+                {
+                    enServicioEspecial sespec = new enServicioEspecial();
+                    sespec.serEsp_id = Convert.ToInt32(dr[0].ToString());
+                    sespec.serEsp_nombre = dr[1].ToString();
+                    lstServicio.Add(sespec);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                dr.Close();
+                cn.Close();
+            }
+            return lstServicio;
 
-        //}
+        }
 
         public static Boolean RegistrarServicioEspecial(String nombre, String caracteristicas, int ser_est)
         {
