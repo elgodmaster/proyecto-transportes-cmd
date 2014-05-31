@@ -52,7 +52,6 @@
     <Compile Include="daSucursal.cs" />
     <Compile Include="daUsuario.cs" />
     <Compile Include="daVehiculo.cs" />
-    <Compile Include="daVehiculoMarca.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

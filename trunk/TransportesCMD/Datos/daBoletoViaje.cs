@@ -26,8 +26,8 @@ namespace Datos
                 cmd.Parameters.AddWithValue("@personal_id", prmIdPersonal);
                 cmd.Parameters.AddWithValue("@itinerario_id", prmIdItinerario);
                 cmd.Parameters.AddWithValue("@sucursal_id", prmIdSucursal);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cn.Open();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cn.Open();
                 dr = cmd.ExecuteReader();
                 lstBolViaje = new List<enBoletoViaje>();
                 if (dr.Read())                {
