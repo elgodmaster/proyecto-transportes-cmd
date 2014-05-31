@@ -13,15 +13,24 @@ namespace Presentacion
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["usuario"] != null)
+            try
             {
-                Response.Redirect("frmPrincipal.aspx");
-            }
+                if (Session["usuario"] != null)
+                {
+                    Response.Redirect("frmPrincipal.aspx");
+                }
 
-            lstSucursal.DataSource = neSucursal.Instancia.sucursalLista();
-            lstSucursal.DataTextField = "suc_nombre";
-            lstSucursal.DataValueField = "suc_id";
-            lstSucursal.DataBind();
+                lstSucursal.DataSource = neSucursal.Instancia.sucursalLista();
+                lstSucursal.DataTextField = "suc_nombre";
+                lstSucursal.DataValueField = "suc_id";
+                lstSucursal.DataBind();
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+            
         }
 
         protected void Ingresar_Click(object sender, EventArgs e)
