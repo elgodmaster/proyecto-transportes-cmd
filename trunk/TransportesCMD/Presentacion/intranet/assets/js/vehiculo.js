@@ -2,6 +2,7 @@
     spVehiculoListar();
 });
 
+//Aquí va  el cuerpo de la tabla(Vehiculo).
 function spVehiculoListar() {
     var etiqueta = $("#tbBodyVehiculo");
     $.ajax({
