@@ -13,19 +13,15 @@
                     </button>
                 </div>
                 <div class="box-content box-list">
+                    <form runat="server">
                     <div class="box-content">
                         <div class="row-fluid">
                             <div class="control-group span15">
                                 <div class="span2"></div>
                                 <span>Origen: </span>
-                                <select id="salidaOrigen" data-placeholder="Seleccione Origen" class="span3" tabindex="1">
-                                    <%-- Aqui Javascript JSON --%>
-                                </select>
+                                <asp:ListBox ID="lstSucOrigen" Rows="1" runat="server"></asp:ListBox>                               
                                 <span>Destino: </span>
-                                <select class="span3" id="salidaDestino" tabindex="2">
-                                    <%-- Aqui Javascript JSON --%>
-                                </select>
-
+                               <asp:ListBox ID="lstSucDestino" Rows="1" runat="server"></asp:ListBox>
                                 <span>Fecha: </span>
                                 <select class="span3" id="itinerarioFecha" tabindex="3">
                                     <%-- Aqui Javascript JSON --%>
@@ -62,6 +58,7 @@
                             </div>
                         </div>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>

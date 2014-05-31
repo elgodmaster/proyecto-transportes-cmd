@@ -26,7 +26,6 @@ $(document).ready(function () {
    
 });
 
-
 function limpiarImputText(numDocIdentidad, nombres, apellidos, fecNacimiento, edad, numAsiento,idPersona, idItinerario,tamNumDocIdentidad) {   
     if (numDocIdentidad) { document.getElementById("numDocIdentidad").value = ""; }
     if (nombres) { document.getElementById("nombres").value = ""; }
