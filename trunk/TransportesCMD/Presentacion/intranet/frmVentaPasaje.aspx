@@ -44,7 +44,7 @@
                                             <div class="span3">
                                                 <h4>Lista de Itinerarios</h4>
                                             </div>
-                                            <div>
+                                            <div class="span3">
                                                 <table id="tbSalidasCss" class="table">
                                                     <thead>
                                                         <tr>
