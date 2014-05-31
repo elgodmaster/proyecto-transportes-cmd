@@ -49,13 +49,13 @@ namespace Presentacion.intranet {
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtsegund;
         
         /// <summary>
-        /// Control select_marc.
+        /// Control txtmarc.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlSelect select_marc;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtmarc;
         
         /// <summary>
         /// Control select_servici.

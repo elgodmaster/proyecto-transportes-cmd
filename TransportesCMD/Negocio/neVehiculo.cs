@@ -11,7 +11,7 @@ namespace Negocio
     public class neVehiculo
     {
 
-        public static Boolean RegistrarVehiculo(String modelo, String placa, int numasi1, int numasi2, int marca, int serviespe)
+        public static Boolean RegistrarVehiculo(String modelo, String placa, int numasi1, int numasi2, String marca, int serviespe)
         {
             return daVehiculo.RegistrarVehiculo(modelo, placa, numasi1, numasi2, marca, serviespe);
         }

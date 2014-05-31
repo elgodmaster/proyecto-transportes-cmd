@@ -36,10 +36,7 @@
     <div class="control-group">
         <label for="challengeQuestion" class="control-label">Marca</label>
     <div class="controls">                       
-    <select id="select_marc" name="select_marca" class="input-large" runat="server">
-											            <option value="1">Mercedes Bens</option>
-											            <option value="2">Volkswagen</option>
-	</select>
+    <input id="txtmarc" name="txtmarc" class="span4" type="text" value="" autocomplete="false" runat="server"/>
     </div>
     </div>
 

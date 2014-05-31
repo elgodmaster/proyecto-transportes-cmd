@@ -33,10 +33,15 @@ namespace Presentacion.intranet
             String pla = txtPlac.Value;
             int asi1= Convert.ToInt32(txtprimer.Value);
             int asi2 = Convert.ToInt32(txtsegund.Value);
-            int mar = Convert.ToInt32(select_marc.Value);
+            String mar = txtmarc.Value;
             int serv = Convert.ToInt32(select_servici.Value);
             Boolean resultado = false;
-            resultado = neVehiculo.RegistrarVehiculo(model, pla, asi1,asi2,mar, serv);
+            resultado = neVehiculo.RegistrarVehiculo(model, pla, asi1,asi2, mar, serv);
+            if (resultado) {
+                lblMensajeGraba.Text = "OK";
+            }else{
+                lblMensajeGraba.Text = "Error";
+            }
         }
 
     }
