@@ -48,6 +48,7 @@
     <Compile Include="neDocumentoIdentidad.cs" />
     <Compile Include="neItinerario.cs" />
     <Compile Include="nePersona.cs" />
+    <Compile Include="neServicioEspecial.cs" />
     <Compile Include="neSucursal.cs" />
     <Compile Include="neUsuario.cs" />
     <Compile Include="neVehiculo.cs" />
