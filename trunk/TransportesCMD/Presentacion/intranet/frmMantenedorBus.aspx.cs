@@ -35,6 +35,8 @@ namespace Presentacion.intranet
                     if (resultado)
                     {
                         Response.Write(@"<script languaje='javascript'>alert('Eliminacion Correcta');</script>");
+                        
+                        
                     }
                     else
                     {
