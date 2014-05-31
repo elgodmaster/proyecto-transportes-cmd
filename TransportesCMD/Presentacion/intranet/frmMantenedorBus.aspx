@@ -17,28 +17,28 @@
     <div class="control-group ">
         <label class="control-label">PLACA</label>
         <div class="controls">
-            <input id="txtPlac" name="txtPlaca" class="span4" type="text" value="" autocomplete="false" runat="server"/>
+            <input id="txtPlac" name="txtPlaca" class="span4" type="text" value="" runat="server"/>
         </div>
     </div>
     <div class="control-group ">
         <label class="control-label">Numero de Asientos 1er piso</label>
         <div class="controls">
 
-            <input id="txtprimer" name="txtprimero" class="span4" type="text" value="" autocomplete="false" runat="server"/>
+            <input id="txtprimer" name="txtprimero" class="span4" type="text" value="" runat="server"/>
 
         </div>
     </div>
     <div class="control-group ">
         <label class="control-label">Numero de Asientos 2do piso</label>
         <div class="controls">
-            <input id="txtsegund" name="txtsegundo" class="span4" type="text" value="" autocomplete="false" runat="server"/>
+            <input id="txtsegund" name="txtsegundo" class="span4" type="text" value="" runat="server"/>
 
         </div>
     </div>
     <div class="control-group">
         <label for="challengeQuestion" class="control-label">Marca</label>
     <div class="controls">                       
-    <input id="txtmarc" name="txtmarc" class="span4" type="text" value="" autocomplete="false" runat="server"/>
+    <input id="txtmarc" name="txtmarc" class="span4" type="text" value=""  runat="server"/>
     </div>
     </div>
 
