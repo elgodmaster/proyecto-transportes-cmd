@@ -61,6 +61,7 @@ namespace Presentacion.intranet
 
         protected void btnRegistrar_Click(object sender, EventArgs e)
         {
+            
             String model = txtmodel.Value;
             String pla = txtPlac.Value;
             int asi1= Convert.ToInt32(txtprimer.Value);

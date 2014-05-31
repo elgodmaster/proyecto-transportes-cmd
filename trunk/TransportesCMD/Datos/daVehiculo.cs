@@ -166,6 +166,41 @@ namespace Datos
             }
             return resultado;
         }
+
+        public static Boolean spVehiculoModificar(int id,String modelo, String placa, int numasi1, int numasi2, String marca, int serviespe)
+        {
+
+            Boolean resultado = false;
+            SqlConnection cn = null;
+            SqlCommand cmd = new SqlCommand();
+            try
+            {
+                cn = Conexion.ConexionSQL();
+                cmd = new SqlCommand("spVehiculoModificar", cn);
+                cmd.Parameters.AddWithValue("@veh_modelo", modelo);
+                cmd.Parameters.AddWithValue("@veh_modelo", modelo);
+                cmd.Parameters.AddWithValue("@veh_placa", placa);
+                cmd.Parameters.AddWithValue("@veh_numAsiPrimer", numasi1);
+                cmd.Parameters.AddWithValue("@veh_numAsiSegundo", numasi2);
+                cmd.Parameters.AddWithValue("@veh_marca", marca);
+                cmd.Parameters.AddWithValue("@serEspecial_id", serviespe);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cn.Open();
+                cmd.ExecuteNonQuery();
+                resultado = true;
+            }
+            catch (Exception)
+            {
+                resultado = false;
+            }
+            finally
+            {
+                cmd.Connection.Close();
+                cn.Close();
+            }
+            return resultado;
+
+        }
         #endregion
     }
 
