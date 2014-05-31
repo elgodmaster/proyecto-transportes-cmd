@@ -22,7 +22,44 @@ namespace Datos
         }
         #endregion
 
-        #region singleton
+        #region Métodos
+
+        //public static List<enSegmento> segmentoListar()
+        //{
+
+        //    SqlConnection cn = null;
+        //    SqlCommand cmd = null;
+        //    SqlDataReader dr = null;
+        //    List<enSegmento> lstSegmento = null;
+        //    try
+        //    {
+        //        cn = Conexion.getConexion();
+        //        cmd = new SqlCommand("select * from VE_segmento", cn);
+        //        cmd.CommandType = CommandType.Text;
+        //        cn.Open();
+        //        dr = cmd.ExecuteReader();
+        //        lstSegmento = new List<enSegmento>();
+        //        while (dr.Read())
+        //        {
+        //            enSegmento segmento = new enSegmento();
+        //            segmento.seg_id = Convert.ToInt32(dr[0].ToString());
+        //            segmento.seg_nombre = dr[1].ToString();
+        //            lstSegmento.Add(segmento);
+        //        }
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw;
+        //    }
+        //    finally
+        //    {
+        //        dr.Close();
+        //        cn.Close();
+        //    }
+        //    return lstSegmento;
+
+        //}
+
         public static Boolean RegistrarServicioEspecial(String nombre, String caracteristicas, int ser_est)
         {
 
