@@ -183,6 +183,7 @@
     <Content Include="SQL y Recursos\Recursos Internet\Sistema-Venta-De-Pasajes-Encomiendasgiros-Phpmysq-Codigo-Fuente-Lambayeque.jpg" />
     <Content Include="SQL y Recursos\Recursos Internet\Sistema-Venta-De-Pasajes-Encomiendasgiros-Phpmysq-Codigo-Fuente-Peru.jpg" />
     <Content Include="SQL y Recursos\Recursos Internet\Sistema-Venta-De-Pasajes-Encomiendasgiros-Phpmysq-Codigo-Fuente-Servicios.jpg" />
+    <Content Include="SQL y Recursos\spTalento.sql" />
     <Content Include="SQL y Recursos\Venta_Pasaje %282%29.png" />
     <Content Include="Web.config" />
   </ItemGroup>
