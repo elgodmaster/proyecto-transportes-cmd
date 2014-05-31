@@ -38,6 +38,11 @@ namespace Negocio
         {
             return daVehiculo.spVehiculoEliminar(id);
         }
+
+        public Boolean spVehiculoModificar(int id, String modelo, String placa, int numasi1, int numasi2, String marca, int serviespe)
+        {
+            return daVehiculo.spVehiculoModificar(id,modelo,placa,numasi1,numasi2,marca,serviespe);
+        }
         #endregion
     }
 }
