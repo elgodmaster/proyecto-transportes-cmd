@@ -13,15 +13,6 @@ namespace Presentacion.intranet {
     public partial class frmMantenedorBus {
         
         /// <summary>
-        /// Control txtmodel.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtmodel;
-        
-        /// <summary>
         /// Control txtId.
         /// </summary>
         /// <remarks>
@@ -29,6 +20,15 @@ namespace Presentacion.intranet {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtId;
+        
+        /// <summary>
+        /// Control txtmodel.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtmodel;
         
         /// <summary>
         /// Control txtPlac.
