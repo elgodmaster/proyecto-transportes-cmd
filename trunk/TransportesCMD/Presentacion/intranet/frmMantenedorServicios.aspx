@@ -27,21 +27,15 @@
     <input class="input-xlarge focused" id="txtnom" type="text" value="" name="txtnombre" runat="server"/>
     </div>
 </div>
+       <asp:TextBox ID="txtId"  runat="server" Visible="False"></asp:TextBox>
     <div class="control-group ">
         <label class="control-label">Caracterìsticas</label>
         <div class="controls">
             <input id="txtcarac" name="txtcaracteristicas" class="span4" type="text" value="" autocomplete="false" runat="server"/>
         </div>
     </div>
-    <div class="control-group">
-        <label for="challengeQuestion" class="control-label">Estado</label>
-    <div class="controls">                       
-    <select id="select_estad" name="select_estado" class="input-large" runat="server">
-											            <option value="1">Activo</option>
-											            <option value="0">Inactivo</option>
-	</select>
-    </div>
-    </div>
+    
+
     <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" OnClick="btnRegistrar_Click" />
         <br /><br />
         <asp:Label ID="lblMensajeGraba" runat="server" Text="Label" Visible="False"></asp:Label>
@@ -84,8 +78,7 @@
                     <th>N°</th>
                     <th>Nombre</th>
                     <th>Caracteristicas</th>
-                    <th>Fecha_Registro</th>
-                    <th>estado</th>
+
                     <th>Acción</th>
                 </tr>
             </thead>            
@@ -95,8 +88,6 @@
             </tbody>
         </table>
     </div>
-
-
 
 
 </asp:Content>

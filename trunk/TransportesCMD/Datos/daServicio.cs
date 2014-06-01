@@ -75,9 +75,47 @@ namespace Datos
                     seresp.serEsp_caracteristicas = dr[1].ToString();
                     seresp.serEsp_fecRegistro = Convert.ToDateTime(dr[2].ToString());
                     seresp.serEsp_estado = dr[3].ToString();
+                    seresp.serEsp_id = Convert.ToInt32(dr[4].ToString());
                     lstServicio.Add(seresp);
                 }
 
+            }
+            catch (Exception e)
+            {
+
+            }
+            finally
+            {
+                cn.Close();
+            }
+            return lstServicio;
+        }
+
+        public static List<enServicioEspecial> spServicioXid(int id)
+        {
+            SqlConnection cn = null;
+            SqlCommand cmd = null;
+            SqlDataReader dr = null;
+            List<enServicioEspecial> lstServicio = null;
+            try
+            {
+                cn = Conexion.ConexionSQL();
+                cmd = new SqlCommand("spServicioXid", cn);
+                cmd.Parameters.AddWithValue("@serEsp_id", id);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cn.Open();
+                dr = cmd.ExecuteReader();
+                lstServicio = new List<enServicioEspecial>();
+                while (dr.Read())
+                {
+                    enServicioEspecial seresp = new enServicioEspecial();
+                    seresp.serEsp_nombre = dr[0].ToString();
+                    seresp.serEsp_caracteristicas = dr[1].ToString();
+                    seresp.serEsp_fecRegistro = Convert.ToDateTime(dr[2].ToString());
+                    seresp.serEsp_estado = dr[3].ToString();
+                    seresp.serEsp_id = Convert.ToInt32(dr[4].ToString());
+                    lstServicio.Add(seresp);
+                }
             }
             catch (Exception e)
             {

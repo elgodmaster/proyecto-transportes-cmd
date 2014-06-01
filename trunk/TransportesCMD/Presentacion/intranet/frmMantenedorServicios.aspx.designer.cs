@@ -31,6 +31,15 @@ namespace Presentacion.intranet {
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtnom;
         
         /// <summary>
+        /// Control txtId.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtId;
+        
+        /// <summary>
         /// Control txtcarac.
         /// </summary>
         /// <remarks>
@@ -38,15 +47,6 @@ namespace Presentacion.intranet {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtcarac;
-        
-        /// <summary>
-        /// Control select_estad.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlSelect select_estad;
         
         /// <summary>
         /// Control btnRegistrar.

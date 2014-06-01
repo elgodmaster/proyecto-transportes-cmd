@@ -31,6 +31,11 @@ namespace Negocio
             return daServicio.spServicioListar();
         }
 
+        public List<enServicioEspecial> spServicioXid(int id)
+        {
+            return daServicio.spServicioXid(id);
+        }
+
         public Boolean spServicioEliminar(int id)
         {
             return daServicio.spServicioEliminar(id);
