@@ -452,7 +452,7 @@ function spBoletoViajeRegistro() {
         success: function (response) {
             var lstBolViaje = response.d;            
             $.each(lstBolViaje, function (index, enBoletoViaje) {
-                document.getElementById("apellidos").value = enBoletoViaje.bolVia_id;
+                alert("Proceso Correcto ");
             });
             //limpiarImputText(numDocIdentidad, nombres, apellidos, fecNacimiento, edad, numAsiento,idPersona, idItinerario,tamNumDocIdentidad) 
             spControlAsientoXIdItinerario($('#idItinerario').val());

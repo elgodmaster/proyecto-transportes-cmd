@@ -15,6 +15,7 @@
     <script src="assets/js/jquery/jquery-ui-1.10.4.min.js"></script>
 
     <script src="assets/js/jquery/jquery.ui.datepicker-es.js"></script>
+    <script src="assets/js/jquery/jquery-ui-timepicker-addon.js"></script>
     <script src="assets/js/softroque.js"></script>
     <style>
         #body-content {
