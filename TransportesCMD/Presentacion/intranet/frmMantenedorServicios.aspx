@@ -37,7 +37,7 @@
     
 
     <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" OnClick="btnRegistrar_Click" />
-        <br /><br />
+        
         <asp:Label ID="lblMensajeGraba" runat="server" Text="Label" Visible="False"></asp:Label>
     </fieldset>
     </form>
@@ -50,19 +50,13 @@
             <div class="box">
                  <div class="box-header">
                     <i class="icon-list"></i>
-                    <h5>Listado general</h5>
+                    <h5>Servicios Especiales</h5>
                     <button class="btn btn-box-right collapsed" data-toggle="collapse" data-target=".box-cliente">
                         <i class="icon-reorder"></i>
                     </button>
                 </div>
                 <div class="box-content box-cliente">
-                    <div id="Div2">
-                        <br />  
-    
-
-
-
-                        </div>
+                    
                 </div>
             </div>
         </div> 
