@@ -16,7 +16,7 @@ jQuery(function ($) {
         firstDay: 1,
         isRTL: false,
         showMonthAfterYear: false,
-        yearSuffix: '',
+        yearSuffix: '',        
         yearRange: "1950:2014"
     };
     $.datepicker.setDefaults($.datepicker.regional['es']);

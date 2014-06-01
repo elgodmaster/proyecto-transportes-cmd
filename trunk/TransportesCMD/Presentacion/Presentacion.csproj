@@ -113,6 +113,7 @@
     <Content Include="assets\js\Myriad_Pro_italic_400.font.js" />
     <Content Include="assets\js\Myriad_Pro_italic_600.font.js" />
     <Content Include="assets\js\PIE.htc" />
+    <Content Include="intranet\assets\js\gestionItinerario.js" />
     <Content Include="intranet\assets\js\jquery\calendar.png" />
     <Content Include="intranet\assets\js\jquery\jquery-1.10.2.js" />
     <Content Include="intranet\assets\js\jquery\jquery-ui-1.10.4.min.js" />
