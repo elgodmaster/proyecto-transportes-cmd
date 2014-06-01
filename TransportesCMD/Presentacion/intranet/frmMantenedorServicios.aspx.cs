@@ -15,18 +15,53 @@ namespace Presentacion.intranet
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            if (Request.QueryString["v"] != null)
+            {
+                int id = Convert.ToInt32(Request.QueryString["v"]);
+                List<enServicioEspecial> lst = new List<enServicioEspecial>();
+                lst = neServicioEspecial.Instancia.spServicioXid(id);
+                txtnom.Value = lst[0].serEsp_nombre.ToString();
+                txtcarac.Value = lst[0].serEsp_caracteristicas.ToString();
+                txtId.Text = Request.QueryString["v"];
+                btnRegistrar.Text = "Actualizar";
+                //txtmarc.Value = lst[0].veh_numAsiPrimer.ToString();
+            }
+            if (Request.QueryString["e"] != null)
+            {
+                Response.Write(@"<script type='javascript'>alert('Elima')</script>");
+                int id = Convert.ToInt32(Request.QueryString["e"]);
+                Boolean resultado = false;
+                resultado = neServicioEspecial.Instancia.spServicioEliminar(id);
+                if (resultado)
+                {
+                    Response.Write(@"<script languaje='javascript'>alert('Eliminacion Correcta');</script>");
+
+                }
+                else
+                {
+                    Response.Write(@"<script languaje='javascript'>alert('Error Eliminar');</script>");
+                }
+            }
+
+
+
+
+
         }
 
         protected void btnRegistrar_Click(object sender, EventArgs e)
         {
+            if (btnRegistrar.Text.Equals("Guardar"))
+            {
             String non = txtnom.Value;
             String carac = txtcarac.Value;
-            int serv = Convert.ToInt32(select_estad.Value);
+            //int serv = Convert.ToInt32(select_estad.Value);
             Boolean resultado = false;
-            resultado = neServicioEspecial.RegistrarServicioEspecial(non, carac, serv);
-            CleanControl(this.Controls);
+            resultado = neServicioEspecial.RegistrarServicioEspecial(non, carac, 1);
+            //CleanControl(this.Controls);
             if (resultado)
             {
+                Response.Redirect("frmMantenedorServicios.aspx");
                 lblMensajeGraba.Text = "OK";
                 lblMensajeGraba.ForeColor = System.Drawing.Color.Blue;
             }
@@ -35,30 +70,29 @@ namespace Presentacion.intranet
                 lblMensajeGraba.Text = "Error";
                 lblMensajeGraba.ForeColor = System.Drawing.Color.Red;
             }
+          }
 
-        }
-
-        public void CleanControl(ControlCollection controles)
-        {
-            foreach (Control control in controles)
+            if (btnRegistrar.Text.Equals("Actualizar"))
             {
-                if (control is TextBox)
-                    ((TextBox)control).Text = string.Empty;
-                else if (control is DropDownList)
-                    ((DropDownList)control).ClearSelection();
-                else if (control is RadioButtonList)
-                    ((RadioButtonList)control).ClearSelection();
-                else if (control is CheckBoxList)
-                    ((CheckBoxList)control).ClearSelection();
-                else if (control is RadioButton)
-                    ((RadioButton)control).Checked = false;
-                else if (control is CheckBox)
-                    ((CheckBox)control).Checked = false;
-                else if (control.HasControls())
-                    //Esta linea detécta un Control que contenga otros Controles
-                    //Así ningún control se quedará sin ser limpiado.
-                    CleanControl(control.Controls);
+                int id = Convert.ToInt32(txtId.Text);
+                String nom = txtnom.Value;
+                String carac = txtcarac.Value;
+                String est = "a";
+                //int serv = Convert.ToInt32(select_servici.Value);
+                Boolean resultado = false;
+                resultado = neServicioEspecial.Instancia.spServicioModificar(id, nom, carac, est);
+                if (resultado)
+                {
+                    btnRegistrar.Text = "Guardar";
+                    Response.Redirect("frmMantenedorServicios.aspx");
+                }
+                else
+                {
+                    lblMensajeGraba.Text = "Error";
+                }
             }
+
         }
+
     }
 }
