@@ -1,9 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/intranet/MDI.Master" AutoEventWireup="true" CodeBehind="frmMantenedorBus.aspx.cs" Inherits="Presentacion.intranet.frmMantenedorBus" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link href="assets/css/css_roque.css" type="text/css" media="screen, projection" rel="stylesheet" />
-
-    <link rel="stylesheet" href="pruebas/chosen.css" />
+    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cuerpo" runat="server">
     <div class="span18">
@@ -118,6 +116,5 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="javascript" runat="server">
-    <%--<script src="assets/js/vehiculo.js"></script>--%>
-    <script src="assets/js/vehiculo.js"></script>
+    <script src="assets/lib/vehiculo.js"></script>
 </asp:Content>
