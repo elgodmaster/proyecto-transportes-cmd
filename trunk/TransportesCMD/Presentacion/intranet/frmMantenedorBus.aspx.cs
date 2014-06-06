@@ -51,16 +51,6 @@ namespace Presentacion.intranet
        
         }
 
-        protected void cboMarca_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void cboMarca_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         protected void btnRegistrar_Click(object sender, EventArgs e)
         {
             if (btnRegistrar.Text.Equals("Guardar"))
