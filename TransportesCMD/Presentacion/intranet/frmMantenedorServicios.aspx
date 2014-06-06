@@ -86,5 +86,5 @@
 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="javascript" runat="server">
-    <script src="assets/js/Servicio.js"></script>
+    <script src="assets/lib/Servicio.js"></script>
 </asp:Content>

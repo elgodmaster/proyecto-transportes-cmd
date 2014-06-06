@@ -2,76 +2,61 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="assets/css/itinerario.css" type="text/css" media="screen, projection" rel="stylesheet" />
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cuerpo" runat="server">
-    <div class="row">
-        <div class="span16">
-            <div class="box pattern pattern-sandstone">
-                <div class="box-header">
-                    <i class="icon-list"></i>
-                    <h5>Itinerarios(Salidas)</h5>
-                    <button class="btn btn-box-right" data-toggle="collapse" data-target=".box-list">
-                        <i class="icon-reorder"></i>
-                    </button>
-                </div>
-                <div class="box-content box-list">
-                    <div class="box-content">
-                        <div class="row-fluid">
-                            <div class="control-group span15">
-                                <div class="span2"></div>
-                                <span>Origen: </span>
-                                <select id="salidaOrigen" data-placeholder="Seleccione Origen" class="span3" tabindex="1">
-                                    <%-- Aqui Javascript JSON --%>
-                                </select>
-                                <span>Destino: </span>
-                                <select class="span3" id="salidaDestino" tabindex="2">
-                                    <%-- Aqui Javascript JSON --%>
-                                </select>
+    <div class="header">
+        <h1 class="page-title">Venta de Pasajes</h1>
+    </div>
+    <ul class="breadcrumb">
+        <li><a href="frmPrincipal.aspx">Pasajes</a> <span class="divider">/</span></li>
+        <li class="active">Venta de Pasajes</li>
+    </ul>
 
-                                <span>Fecha: </span>
-                                <select class="span3" id="itinerarioFecha" tabindex="3">
-                                    <%-- Aqui Javascript JSON --%>
-                                </select>
-                            </div>
-                            <div class="span1"></div>
-                            <div id="tbItinerario" class="span13">                       
-                                <div class="box-content box-table">
-                                    <div class="span12">
-                                        <div class="span3">
-                                            <h4>Lista de Itinerarios</h4>
-                                        </div>
-                                        <table id="tbSalidasCss" class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th>N°</th>
-                                                    <th>Hora</th>
-                                                    <th>Precio</th>
-                                                    <th>Disponibles</th>
-                                                    <th>Servicio Especial</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="tbBodyItinerario">
-                                                <%-- Aqui Javascript JSON --%>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
+    <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="block">
+                    <div id="page-stats" class="block-body">
+                        <div class="stat-widget-container">
+                            <span>Origen: </span>
+                            <select id="salidaOrigen" data-placeholder="Seleccione Origen" class="span3" tabindex="1">
+                                <%-- Aqui Javascript JSON --%>
+                            </select>
+                            <span>Destino: </span>
+                            <select class="span3" id="salidaDestino" tabindex="2">
+                                <%-- Aqui Javascript JSON --%>
+                            </select>
+
+                            <span>Fecha: </span>
+                            <select class="span3" id="itinerarioFecha" tabindex="3">
+                                <%-- Aqui Javascript JSON --%>
+                            </select>
                         </div>
+                    </div>
+                    <div id="tbItinerario" class="block-body">
+                        <table id="tbSalidasCss" class="table">
+                            <thead>
+                                <tr>
+                                    <th>N°</th>
+                                    <th>Hora</th>
+                                    <th>Precio</th>
+                                    <th>Disponibles</th>
+                                    <th>Servicio Especial</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbBodyItinerario">
+                                <%-- Aqui Javascript JSON --%>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="span8">
-            <div class="box pattern pattern-sandstone">
-                <div class="box-header">
-                    <i class="icon-list"></i>
-                    <h5>Datos de Cliente</h5>
-                    <button class="btn btn-box-right collapsed" data-toggle="collapse" data-target=".box-cliente">
-                        <i class="icon-reorder"></i>
-                    </button>
-                </div>
-                <div class="box-content box-cliente">
+
+            <div class="row-fluid">
+                <div class="block span6">
+                   <a href="#widget1container" class="block-heading" data-toggle="collapse">Collapsible </a>
+                    <div id="widget1container" class="block-body collapse in">
+                         <div class="box-content box-cliente">
                     <div class="box-content">
                         <div class="row-fluid">
                             <form name="frmRegistraVentaPasaje">
@@ -133,30 +118,20 @@
                         <button class="btn btn-ser" name="action" value="Cancelar" onclick="cancelarVenta()">Cancel</button>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="span8">
-            <div class="box">
-                <div class="box-header">
-                    <i class="icon-list"></i>
-                    <h5>Réplica de Bus</h5>
-                    <button class="btn btn-box-right collapsed" data-toggle="collapse" data-target=".box-cliente">
-                        <i class="icon-reorder"></i>
-                    </button>
+                    </div>
                 </div>
-                <div class="box-content box-cliente">
-                    <div id="replicaBus">
+                <div class="block span6">
+                    <a href="#widget2container" class="block-heading" data-toggle="collapse">Collapsible </a>
+                    <div id="widget2container" class="block-body collapse in">
+                        <div id="replicaBus">
                         <%--Aquí va Javascript y JSON--%>
+                    </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="span8">
-            <%--<asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-            <rsweb:ReportViewer ID="ReportViewer1" runat="server"></rsweb:ReportViewer>--%>
-        </div>
+
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="javascript" runat="server">
-    <script src="assets/js/fnVentaPasaje.js"></script>
+    <script src="assets/lib/ventaPasaje.js"></script>
 </asp:Content>
