@@ -1,8 +1,7 @@
 ﻿<%@ Page Title="TCMD - Venta de Pasaje" Language="C#" MasterPageFile="~/intranet/MDI.Master" AutoEventWireup="true" CodeBehind="frmVentaPasaje.aspx.cs" Inherits="Presentacion.frmVentaPasaje1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link href="assets/css/itinerario.css" type="text/css" media="screen, projection" rel="stylesheet" />
-
+  <link href="assets/stylesheets/itinerario.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cuerpo" runat="server">
     <div class="header">
@@ -134,6 +133,5 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="javascript" runat="server">
-    <%--<script src="assets/lib/ventaPasaje.js"></script>--%>
-    <script src="assets/js/fnVentaPasaje.js"></script>
+    <script src="assets/lib/ventaPasaje.js"></script>
 </asp:Content>
