@@ -106,6 +106,8 @@
     <Content Include="intranet\assets\css\images\ui-icons_ffd27a_256x240.png" />
     <Content Include="intranet\assets\css\images\ui-icons_ffffff_256x240.png" />
     <Content Include="intranet\assets\css\jquery-ui-1.10.4.min.css" />
+    <Content Include="intranet\assets\font-awesome\css\font-awesome.css" />
+    <Content Include="intranet\assets\font-awesome\css\font-awesome.min.css" />
     <Content Include="intranet\assets\js\fnVentaPasaje.js" />
     <Content Include="assets\js\html5.js" />
     <Content Include="assets\js\jquery-1.4.2.js" />
@@ -282,6 +284,37 @@
     <Content Include="SQL y Recursos\Pruebas de Software.docx" />
     <Content Include="SQL y Recursos\Reglas del Negocio.xlsx" />
     <Content Include="SQL y Recursos\Moqups.zip" />
+    <Content Include="intranet\assets\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="intranet\assets\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="intranet\assets\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="intranet\assets\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="intranet\assets\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="intranet\assets\font-awesome\less\bordered-pulled.less" />
+    <Content Include="intranet\assets\font-awesome\less\core.less" />
+    <Content Include="intranet\assets\font-awesome\less\fixed-width.less" />
+    <Content Include="intranet\assets\font-awesome\less\font-awesome.less" />
+    <Content Include="intranet\assets\font-awesome\less\icons.less" />
+    <Content Include="intranet\assets\font-awesome\less\larger.less" />
+    <Content Include="intranet\assets\font-awesome\less\list.less" />
+    <Content Include="intranet\assets\font-awesome\less\mixins.less" />
+    <Content Include="intranet\assets\font-awesome\less\path.less" />
+    <Content Include="intranet\assets\font-awesome\less\rotated-flipped.less" />
+    <Content Include="intranet\assets\font-awesome\less\spinning.less" />
+    <Content Include="intranet\assets\font-awesome\less\stacked.less" />
+    <Content Include="intranet\assets\font-awesome\less\variables.less" />
+    <Content Include="intranet\assets\font-awesome\scss\font-awesome.scss" />
+    <Content Include="intranet\assets\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="intranet\assets\font-awesome\scss\_core.scss" />
+    <Content Include="intranet\assets\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="intranet\assets\font-awesome\scss\_icons.scss" />
+    <Content Include="intranet\assets\font-awesome\scss\_larger.scss" />
+    <Content Include="intranet\assets\font-awesome\scss\_list.scss" />
+    <Content Include="intranet\assets\font-awesome\scss\_mixins.scss" />
+    <Content Include="intranet\assets\font-awesome\scss\_path.scss" />
+    <Content Include="intranet\assets\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="intranet\assets\font-awesome\scss\_spinning.scss" />
+    <Content Include="intranet\assets\font-awesome\scss\_stacked.scss" />
+    <Content Include="intranet\assets\font-awesome\scss\_variables.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
