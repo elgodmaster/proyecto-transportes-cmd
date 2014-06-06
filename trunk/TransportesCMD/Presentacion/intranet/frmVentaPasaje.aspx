@@ -133,5 +133,6 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="javascript" runat="server">
-    <script src="assets/lib/ventaPasaje.js"></script>
+    <%--<script src="assets/lib/ventaPasaje.js"></script>--%>
+    <script src="assets/js/fnVentaPasaje.js"></script>
 </asp:Content>
