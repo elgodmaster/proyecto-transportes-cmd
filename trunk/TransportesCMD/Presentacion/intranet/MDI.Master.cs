@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Entidades;
 
 namespace Presentacion
 {
@@ -15,6 +16,12 @@ namespace Presentacion
             if (Session["usuario"] == null)
             {
                 Response.Redirect("index.aspx");
+            }
+            else if (Session["usuario"]!=null)
+            {
+                enUsuario usu = new enUsuario();
+                usu = (enUsuario)Session["usuario"];
+                lblUsuario.Text = usu.personal.persona.per_nombres + " " + usu.personal.persona.per_apellidos;
             }
         }
 

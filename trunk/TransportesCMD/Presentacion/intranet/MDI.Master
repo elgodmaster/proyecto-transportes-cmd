@@ -2,27 +2,44 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
 <head runat="server">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>TCMR - </title>
     <meta charset="utf-8" />
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
 
-    <link href="assets/css/customize-template.css" type="text/css" media="screen, projection" rel="stylesheet" />
-    <link href="assets/css/jquery-ui-1.10.4.min.css" rel="stylesheet" />
+    <link href="assets/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="assets/stylesheets/theme.css" rel="stylesheet" />
+    <link href="assets/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="assets/stylesheets/sistrancmd.css" rel="stylesheet" />
+    <link href="assets/stylesheets/jquery-ui-1.10.4.css" rel="stylesheet" />
 
-    <script src="assets/js/jquery/jquery-1.10.2.js"></script>
-    <script src="assets/js/jquery/jquery-ui-1.10.4.min.js"></script>
-
-    <script src="assets/js/jquery/jquery.ui.datepicker-es.js"></script>
-    <script src="assets/js/jquery/jquery-ui-timepicker-addon.js"></script>
-    <script src="assets/js/softroque.js"></script>
-    <style>
-        #body-content {
-            padding-top: 40px;
+    <%--<style type="text/css">
+        #line-chart {
+            height:300px;
+            width:800px;
+            margin: 0px auto;
+            margin-top: 1em;
         }
-    </style>
-    <title></title>
+        .brand { font-family: georgia, serif; }
+        .brand .first {
+            color: #ccc;
+            font-style: italic;
+        }
+        .brand .second {
+            color: #fff;
+            font-weight: bold;
+        }
+    </style>--%>
+
+    <script src="assets/lib/jquery/jquery-1.10.2.js"></script>
+    <script src="assets/lib/jquery/jquery-ui-1.10.4.min.js"></script>
+    <script src="assets/lib/jquery/jquery.ui.datepicker-es.js"></script>
+    <script src="assets/lib/softroque.js"></script>
+
     <script>
         function cerrarSesion() {
             $.ajax({
@@ -40,113 +57,84 @@
             });
         }
     </script>
+
+    <link rel="shortcut icon" href="../assets/ico/favicon.ico" />
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
     <asp:ContentPlaceHolder ID="head" runat="server">
         Aqui podeis agregar css específico de cada página
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <div class="navbar navbar-fixed-top">
+    <div class="navbar">
         <div class="navbar-inner">
-            <div class="container">
-                <button class="btn btn-navbar" data-toggle="collapse" data-target="#app-nav-top-bar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a href="frmPrincipal.aspx" class="brand"><i class="icon-leaf">Transporte CMD</i></a>
-                <div id="app-nav-top-bar" class="nav-collapse">
-                    <ul class="nav">
-                        <li class="dropdown">
-                            <a href="#">Personal
-                                <b class="caret hidden-phone"></b>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="dashboard.html">Mantenedor de clientes</a>
-                                </li>
-                                <li>
-                                    <a href="frmMantenedorBus.aspx">Mantenedor de Buses</a>
-                                </li>
-                                <li>
-                                    <a href="custom-view.html">Mantenedor de Salidas</a>
-                                </li>
-                                <li>
-                                    <a href="login.html">Mantenedor de Servicios Especiales</a>
-                                </li>
-                                <li>
-                                    <a href="login.html">Mantenedor de Personal</a>
-                                </li>
-                            </ul>
-                        </li>
+            <ul class="nav pull-right">                
+                <li id="fat-menu" class="dropdown">
+                    <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="icon-user"></i>
+                        <asp:Label ID="lblUsuario" runat="server" Text=""></asp:Label>
+                            <i class="icon-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <%--<li><a tabindex="-1" href="#">Cuenta de Usuario</a></li>        --%>                
+                        <li><a tabindex="-1" href="#" onclick="cerrarSesion()">Cerrar Sesión</a></li>
                     </ul>
-                    <ul class="nav pull-right">
-                        <li>
-                            <button id="salir" class="btn btn-danger" value="Salir" onclick="cerrarSesion()">Cerrar Sesión</button>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>    
-    <div id="body-container">
-        <div id="body-content">
-            <div class="body-nav body-nav-vertical body-nav-fixed">
-                <div class="container">
-                    <ul>
-                        <li>
-                            <a href="frmVentaPasaje.aspx">
-                                <i class="icon-dashboard icon-large"></i>Venta Pasaje
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="icon-calendar icon-large"></i>Reservas
-                            </a>
-                        </li>
-                        <li>
-                            <a href="frmItinerarios.aspx">
-                                <i class="icon-map-marker icon-large"></i>Itinerarios
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="icon-tasks icon-large"></i>Clientes
-                            </a>
-                        </li>
-                        <li>
-                            <a href="frmMantenedorBus.aspx">
-                                <i class="icon-cogs icon-large"></i>Buses
-                            </a>
-                        </li>
-                        <li>
-                            <a href="frmMantenedorServicios.aspx">
-                                <i class="icon-list-alt icon-large"></i>Servicios
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="icon-bar-chart icon-large"></i>Encomiendas
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <section class="page container">
-                <asp:ContentPlaceHolder ID="cuerpo" runat="server">
-                    Este es el cuerpo de la aplicación
-                </asp:ContentPlaceHolder>
-            </section>
+                </li>
+            </ul>
+            <a class="brand" href="index.html"><span class="first">Transportes</span> <span class="second">CMD</span></a>
         </div>
     </div>
-    <footer class="application-footer">
-        <div class="container">
-            <p>Transporte CMD</p>
-            <div class="disclaimer">
-                <p>Intituto Teconológico del Norte</p>
-                <p>CEI VI Ciclo - 201401</p>
-            </div>
-        </div>
+
+    <div class="sidebar-nav">
+        <a href="frmPrincipal.aspx" class="nav-header"><i class="icon-globe"></i>Principal</a>
+        <a href="#dashboard-menu" class="nav-header" data-toggle="collapse"><i class="icon-dashboard"></i>Ventas Pasaje<i class="icon-chevron-up"></i></a>
+        <ul id="dashboard-menu" class="nav nav-list collapse in">
+            <li><a href="frmVentaPasaje.aspx">Venta de Pasajes</a></li>
+            <%--<li><a href="users.html">Lista de Pasajeros</a></li>
+            <li><a href="user.html">Reporte de Pasajeros</a></li>--%>
+        </ul>
+        <a href="#accounts-menu" class="nav-header collapsed" data-toggle="collapse"><i class="icon-briefcase"></i>Itinerarios<i class="icon-chevron-up"></i></a>
+        <ul id="accounts-menu" class="nav nav-list collapse">
+            <li><a href="frmItinerarios.aspx">Gestión de Itinerarios</a></li>
+        </ul>
+        <a href="#error-menu" class="nav-header collapsed" data-toggle="collapse"><i class="icon-cogs"></i>Mantenedores <i class="icon-chevron-up"></i></a>
+        <ul id="error-menu" class="nav nav-list collapse">
+
+            <li><a href="frmMantenedorBus.aspx">Mantenedor Buses</a></li>
+            <li><a href="frmMantenedorServicios.aspx">Mantenedor Servicios</a></li>
+        </ul>
+
+        <%--<a href="#legal-menu" class="nav-header" data-toggle="collapse"><i class="icon-legal"></i>Legal</a>
+        <ul id="legal-menu" class="nav nav-list collapse">
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="terms-and-conditions.html">Terms and Conditions</a></li>
+        </ul>
+
+        <a href="help.html" class="nav-header"><i class="icon-question-sign"></i>Help</a>
+        <a href="faq.html" class="nav-header"><i class="icon-comment"></i>Faq</a>--%>
+    </div>
+    <div class="content">
+        <asp:ContentPlaceHolder ID="cuerpo" runat="server">
+            Este es el cuerpo de la aplicación
+        </asp:ContentPlaceHolder>
+    </div>
+    <footer>
+        <hr />
+        <p class="pull-right"><a href="#">Instituto Tecnológico del Norte</a></p>
+        <p>&copy; 2012 <a href="#" target="_blank">CMD</a></p>
     </footer>
+    <script src="assets/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $("[rel=tooltip]").tooltip();
+        $(function () {
+            $('.demo-cancel-click').click(function () { return false; });
+        });
+    </script>
+
     <asp:ContentPlaceHolder ID="javascript" runat="server">
     </asp:ContentPlaceHolder>
 </body>
