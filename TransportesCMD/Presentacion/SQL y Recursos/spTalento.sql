@@ -12,7 +12,7 @@ go
 
 create procedure spServicioListar
 as
-SELECT S.serEsp_nombre, S.serEsp_caracteristicas, S.serEsp_fecRegistro, S.serEsp_estado
+SELECT S.serEsp_nombre, S.serEsp_caracteristicas, S.serEsp_fecRegistro, S.serEsp_estado, S.serEsp_id
 FROM servicioEspecial S
 WHERE s.serEsp_estado = 'a'
 go
