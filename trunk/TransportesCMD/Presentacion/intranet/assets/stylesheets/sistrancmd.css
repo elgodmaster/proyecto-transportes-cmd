@@ -3,7 +3,9 @@
     width: 100%;
     overflow: scroll;
 }*/
-
+.validaciones {
+    color: red;
+}
 .trSeleccionado {
 color:red;
 font-weight: bold; 
