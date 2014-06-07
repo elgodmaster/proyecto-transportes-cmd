@@ -220,9 +220,9 @@ function spControlAsientoXIdItinerario(prmIdItinerario) {
                 if (controlAsiento[i + 3].conAsi_piso == 1) {                   
                     if (controlAsiento.length > 60) {
                         etiqueta.append('<div class="fila">'
-                       + '<div class="asiento"><a class="asiento-' + controlAsiento[i].conAsi_estAsiento + '"   onclick="asignarAsiento(' + controlAsiento[i].conAsi_numAsiento + ')">' + controlAsiento[i].conAsi_numAsiento + '</a></div>'
+                       + '<div class="asiento"><a onfocus="this.blur()" class="asiento-' + controlAsiento[i].conAsi_estAsiento + '"   onclick="asignarAsiento(' + controlAsiento[i].conAsi_numAsiento + ')">' + controlAsiento[i].conAsi_numAsiento + '</a></div>'
                        + '<div class="asiento"><a class="asiento-' + controlAsiento[i + 1].conAsi_estAsiento + '" onclick="asignarAsiento(' + controlAsiento[i+1].conAsi_numAsiento + ')">' + controlAsiento[i + 1].conAsi_numAsiento + '</a></div>'
-                       + '<div class="asiento"></div>'
+                       + '<div class="asiento">desde</div>'
                        + '<div class="asiento"><a class="asiento-' + controlAsiento[i + 2].conAsi_estAsiento + '" onclick="asignarAsiento(' + controlAsiento[i+2].conAsi_numAsiento + ')">' + controlAsiento[i + 2].conAsi_numAsiento + '</a></div>'
                        + '<div class="asiento"><a class="asiento-' + controlAsiento[i + 3].conAsi_estAsiento + '" onclick="asignarAsiento(' + controlAsiento[i+3].conAsi_numAsiento + ')">' + controlAsiento[i + 3].conAsi_numAsiento + '</a></div>'
                        + '</div>');
@@ -232,7 +232,7 @@ function spControlAsientoXIdItinerario(prmIdItinerario) {
                         if (contPri == 3 || contPri == 4) {
                             etiqueta.append('<div class="fila">'
                                 + '<div class="asiento"><a class="asiento-' + controlAsiento[i].conAsi_estAsiento + '"   onclick="asignarAsiento(' + controlAsiento[i].conAsi_numAsiento + ')">' + controlAsiento[i].conAsi_numAsiento + '</a></div>'
-                                + '<div class="asiento"><a class="asiento-' + controlAsiento[i + 1].conAsi_estAsiento + '"   onclick="asignarAsiento(' + controlAsiento[i+1].conAsi_numAsiento + ')">' + controlAsiento[i + 1].conAsi_numAsiento + '</a></div>'
+                                + '<div class="asiento"><a  class="asiento-' + controlAsiento[i + 1].conAsi_estAsiento + '"   onclick="asignarAsiento(' + controlAsiento[i + 1].conAsi_numAsiento + ')">' + controlAsiento[i + 1].conAsi_numAsiento + '</a></div>'
                                 + '<div class="asiento"></div>'
                                 + '<div class="asiento"></div>'
                                 + '<div class="asiento"></div>'
@@ -337,7 +337,7 @@ $("#tipDocIdentidad").change(function () {
 
 
 function spPersonaXNumeroDocumentoIdentidad(prmNumDocIde) {
-    limpiarImputText(false, false, false, false, false, false, true, true);
+    limpiarImputText(false, false, false, false, false, false, true, false,false);
     $.ajax({
         type: "POST",
         url: "wsVentaPasaje.asmx/spPersonaXNumeroDocumentoIdentidad",
@@ -372,19 +372,29 @@ function spPersonaXNumeroDocumentoIdentidad(prmNumDocIde) {
 }
 
 function buscarPersonaPorNic() {
-    if (validarLongitudEntre('numDocIdentidad', 8, 15)) {
-
+    if (validarLongitudIntEntre('numDocIdentidad', $('#tamNumDocIdentidad').val(), $('#tamNumDocIdentidad').val())) {
+        removerSpanLabel("lblNDocumento");
         spPersonaXNumeroDocumentoIdentidad($('#numDocIdentidad').val());
 
     } else {
-        limpiarImputText(false, true, true, true, true, false, true, true);
-        removerSpan(true);
-        $('#lblMsjVentaPasaje').append("<span>Búsqueda: La longitud de \"Número de Documento\" debe ser entre 8 y 15 caracteres.</span>");
+        //limpiarImputText(numDocIdentidad, nombres, apellidos, fecNacimiento, edad, numAsiento, idPersona, idItinerario, tamNumDocIdentidad)
+        limpiarImputText(false, true, true, true, true, false, true, false,false);
+        removerSpanLabel("lblNDocumento");
+        $('#lblNDocumento').append("<span>La longitud de \"Número de Documento\" debe ser de " + $('#tamNumDocIdentidad').val() + "</span>");
     }
     
 }
-
 $("#numDocIdentidad").keyup(function () {
+    validarInt("numDocIdentidad");
+    validarLongitudIntEntre('numDocIdentidad', $('#tamNumDocIdentidad').val(), $('#tamNumDocIdentidad').val());
+});
+
+$("#numDocIdentidad").keydown(function () {
+    if (validarInt("numDocIdentidad")) {
+        removerSpanLabel("lblNDocumento");
+    } else {
+        mostrarAlerta("lblNDocumento", "Ingrese Solo Enteros");
+    }
     if (validarTeclaPresionada(event, 13) == true) {
         buscarPersonaPorNic();
     }
@@ -454,8 +464,7 @@ function spBoletoViajeRegistro() {
             $.each(lstBolViaje, function (index, enBoletoViaje) {
                 alert("Proceso Correcto ");
             });
-            //limpiarImputText(numDocIdentidad, nombres, apellidos, fecNacimiento, edad, numAsiento,idPersona, idItinerario,tamNumDocIdentidad) 
-            spControlAsientoXIdItinerario($('#idItinerario').val());
+           spControlAsientoXIdItinerario($('#idItinerario').val());
             limpiarImputText(true, true, true, true, true, true, true, false,false);
             removerSpan(true);
         },
@@ -463,6 +472,61 @@ function spBoletoViajeRegistro() {
             alert(msg);
         }
     });
+}
+
+function removerSpanLabel(etiqueta) {
+    $("#" + etiqueta).find("span").remove();
+}
+
+function mostrarAlerta(etiqueta, mensaje) {    
+    removerSpanLabel(etiqueta);
+    $("#"+etiqueta).append("<span>"+mensaje+"</span>");
+}
+
+
+function registrarVenta() {
+    var res = true;
+   
+    if ($('#numDocIdentidad').val() == "") {
+        mostrarAlerta("lblNDocumento", "Campo necesario");
+        res = false;
+    } else {
+        removerSpanLabel("lblNDocumento");
+    }
+    if ($('#apellidos').val() == "") {
+        mostrarAlerta("lblApellidos", "Campo necesario");
+        res = false;
+    } else {
+        removerSpanLabel("lblApellidos");
+    }
+    if ($('#nombres').val() == "") {
+        mostrarAlerta("lblMensajeNombres", "Campo necesario");
+        res = false;
+    } else {
+        removerSpanLabel("lblMensajeNombres");
+    }
+    if ($('#fecNacimiento').val() == "") {
+        mostrarAlerta("lblMensajeFechaNacimiento", "Campo necesario");
+        res = false;
+    } else {
+        removerSpanLabel("lblMensajeFechaNacimiento");
+    }
+    if ($('#numAsiento').val() == "") {
+        mostrarAlerta("lblMensajeNumAsiento", "Seleccione Asiento Disponible");
+        res = false;
+    } else {
+        removerSpanLabel("lblMensajeNumAsiento");
+    }
+    if ($('#idItinerario').val() == "") {
+        mostrarAlerta("lblItinerario", "Seleccione Itinerario");
+        res = false;
+    } else {
+        removerSpanLabel("lblItinerario");
+    }
+    if (res) {
+        spBoletoViajeRegistro();
+        alert("Se guardó correctamente");
+    }
 }
 
 function cancelarVenta() {

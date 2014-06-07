@@ -22,7 +22,7 @@ namespace Datos
                 cn = Conexion.ConexionSQL();
                 cmd = new SqlCommand("spBoletoViajeRegistro", cn);
                 cmd.Parameters.AddWithValue("@bolVia_asiento", prmAsiento);
-                cmd.Parameters.AddWithValue("@persona_id",prmIdPersona);
+                cmd.Parameters.AddWithValue("@cliente_id", prmIdPersona);
                 cmd.Parameters.AddWithValue("@personal_id", prmIdPersonal);
                 cmd.Parameters.AddWithValue("@itinerario_id", prmIdItinerario);
                     cmd.CommandType = CommandType.StoredProcedure;
