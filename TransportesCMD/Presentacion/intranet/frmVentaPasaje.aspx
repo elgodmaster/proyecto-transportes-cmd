@@ -68,11 +68,10 @@
                             </div>
                             <div class="well">
                                 <form name="frmRegistraVentaPasaje">
-                                    <div class="hidden">
+                                    <div class="hiddens">
                                         <input type="text" id="tamNumDocIdentidad" value="" />
                                         <input type="text" id="idItinerario" name="idItinerario" value="" />
-                                        <input type="text" id="idPersona" name="idPersona" value="" />
-                                        <textarea id="text"></textarea>
+                                        <input type="text" id="idPersona" name="idPersona" value="" />                                       
                                     </div>
                                     <div class="span3">Documento de Identidad:</div>
                                     <div class="control-group">

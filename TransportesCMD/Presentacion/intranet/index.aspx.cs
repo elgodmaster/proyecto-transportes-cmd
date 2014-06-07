@@ -42,16 +42,23 @@ namespace Presentacion
             //sucursal.suc_id = Convert.ToInt32(lstSucursal.SelectedValue.ToString());
             sucursal.suc_id = 1;
            
-            if (txtUser.Text == "" || txtPass.Text == "")
+            if (txtUser.Text == "" && txtPass.Text == "")
             {
-                lblMensaje.Text = "Ingrese Datos";
+                lblMensaje.Text = "Ingrese Usuario y Contraseña";
+            }
+            else if (txtUser.Text == "")
+            {
+                lblMensaje.Text = "Ingrese Usuario";
+            }
+            else if (txtPass.Text == "") {
+                lblMensaje.Text = "Ingrese Contraseña";
             }
             else
             {
                 enUsuario usuLogueado = new enUsuario();
                 usuLogueado = neUsuario.spUsuarioLogin(usuario);
                 if (usuLogueado != null)
-                {                   
+                {
                     usuLogueado.personal.sucursal = sucursal;
                     Session["usuario"] = usuLogueado;
                     Response.Redirect("frmPrincipal.aspx");
