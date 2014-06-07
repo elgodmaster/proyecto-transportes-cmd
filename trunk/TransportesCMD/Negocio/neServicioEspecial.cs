@@ -21,9 +21,9 @@ namespace Negocio
         #endregion
 
         #region metodos
-        public static Boolean RegistrarServicioEspecial(String nombre, String caracteristicas, int ser_est)
+        public static Boolean RegistrarServicioEspecial(String nombre, String caracteristicas)
         {
-            return daServicio.RegistrarServicioEspecial(nombre, caracteristicas, ser_est);
+            return daServicio.RegistrarServicioEspecial(nombre, caracteristicas);
         }
 
         public List<enServicioEspecial> spServicioListar()

@@ -21,21 +21,23 @@
                             <div class="control-group">
                                 <label class="control-label" for="focusedInput">Nombre</label>
                                 <div class="controls">
-                                    <input class="input-xlarge focused" id="txtnom" type="text" value="" name="txtnombre" runat="server" />
+                                    <asp:TextBox ID="txtnombre" CssClass="input-xlarge focused" runat="server"></asp:TextBox>
                                 </div>
                             </div>
                             <asp:TextBox ID="txtId" runat="server" Visible="False"></asp:TextBox>
                             <div class="control-group ">
                                 <label class="control-label">Caracterìsticas</label>
                                 <div class="controls">
-                                    <input id="txtcarac" name="txtcaracteristicas" class="span4" type="text" value="" autocomplete="false" runat="server" />
+                                    <asp:TextBox ID="txtcaracteristicas" CssClass="input-xlarge focused" runat="server"></asp:TextBox>
                                 </div>
                             </div>
-
-
-                            <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" OnClick="btnRegistrar_Click" />
-
-                            <asp:Label ID="lblMensajeGraba" runat="server" Text="Label" Visible="False"></asp:Label>                       
+                         <div class="control-group ">
+                                <label class="control-label">Estado</label>
+                                <div class="controls">
+                                    <asp:RadioButtonList ID="RadioButtonList1" runat="server"></asp:RadioButtonList>
+                                </div>
+                            </div>
+                            <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" OnClick="btnRegistrar_Click" />                 
                     </form>
                 </div>
             </div>
