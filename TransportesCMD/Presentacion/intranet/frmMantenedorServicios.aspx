@@ -22,8 +22,8 @@
                                 <label class="control-label" for="focusedInput">Nombre</label>
                                 <div class="controls">
                                     <asp:TextBox ID="txtnombre" CssClass="input-xlarge focused" runat="server"></asp:TextBox>
-                                    <br /><asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Solo letras" ControlToValidate="txtnombre" Display="Dynamic" ValidationExpression="^[a-zA-Z ]*$" ValidationGroup="VALIDACION"></asp:RegularExpressionValidator>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Campo necesario" ControlToValidate="txtnombre" Display="Dynamic" ValidationGroup="VALIDACION"></asp:RequiredFieldValidator>
+                                    <br /><asp:RegularExpressionValidator CssClass="validaciones" ID="RegularExpressionValidator1" runat="server" ErrorMessage="Solo letras" ControlToValidate="txtnombre" Display="Dynamic" ValidationExpression="^[a-zA-Z ]*$" ValidationGroup="VALIDACION""></asp:RegularExpressionValidator>
+                                    <asp:RequiredFieldValidator CssClass="validaciones" ID="RequiredFieldValidator1" runat="server" ErrorMessage="Campo necesario" ControlToValidate="txtnombre" Display="Dynamic" ValidationGroup="VALIDACION"></asp:RequiredFieldValidator>
                                 </div>
                             </div>
                             <asp:TextBox ID="txtId" runat="server" Visible="False"></asp:TextBox>
@@ -31,7 +31,7 @@
                                 <label class="control-label">Caracterìsticas</label>
                                 <div class="controls">
                                     <asp:TextBox ID="txtcaracteristicas" CssClass="input-xlarge focused" runat="server"></asp:TextBox>
-                                    <br /><asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Campo necesario" ControlToValidate="txtcaracteristicas" Display="Dynamic" ValidationGroup="VALIDACION"></asp:RequiredFieldValidator>
+                                    <br /><asp:RequiredFieldValidator ID="RequiredFieldValidator2" CssClass="validaciones" runat="server" ErrorMessage="Campo necesario" ControlToValidate="txtcaracteristicas" Display="Dynamic" ValidationGroup="VALIDACION"></asp:RequiredFieldValidator>
                                 </div>
                             </div>
                          <div class="control-group ">
