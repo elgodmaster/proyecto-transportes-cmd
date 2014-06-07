@@ -16,6 +16,7 @@ namespace Datos
             {
                 cn = new SqlConnection();
                 cn.ConnectionString = @"Data Source=MILER-PC;Initial Catalog=bdTransportesCMD;User ID=sa;Password=system123";
+                //cn.ConnectionString = @"Data Source=.;Initial Catalog=bdTransportesCMD;Integrated Security=True";
             }
             catch (Exception e)
             {
