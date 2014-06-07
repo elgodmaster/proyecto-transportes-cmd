@@ -22,7 +22,7 @@
                                 <label class="control-label" for="focusedInput">Nombre</label>
                                 <div class="controls">
                                     <asp:TextBox ID="txtnombre" CssClass="input-xlarge focused" runat="server"></asp:TextBox>
-                                    <br /><asp:RegularExpressionValidator CssClass="validaciones" ID="RegularExpressionValidator1" runat="server" ErrorMessage="Solo letras" ControlToValidate="txtnombre" Display="Dynamic" ValidationExpression="^[a-zA-Z ]*$" ValidationGroup="VALIDACION""></asp:RegularExpressionValidator>
+                                    <br /><asp:RegularExpressionValidator CssClass="validaciones" ID="RegularExpressionValidator1" runat="server" ErrorMessage="Solo letras" ControlToValidate="txtnombre" Display="Dynamic" ValidationExpression="^[a-zA-Z ]*$" ValidationGroup="VALIDACION"></asp:RegularExpressionValidator>
                                     <asp:RequiredFieldValidator CssClass="validaciones" ID="RequiredFieldValidator1" runat="server" ErrorMessage="Campo necesario" ControlToValidate="txtnombre" Display="Dynamic" ValidationGroup="VALIDACION"></asp:RequiredFieldValidator>
                                 </div>
                             </div>
