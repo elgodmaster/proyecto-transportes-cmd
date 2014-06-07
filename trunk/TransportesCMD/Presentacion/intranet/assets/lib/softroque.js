@@ -31,3 +31,30 @@ function validarLongitudInt(etiqueta, max) {
     }
 }
 
+function validarLongitudIntEntre(etiqueta,min, max) {
+    var cadena = $('#' + etiqueta).val();
+    if (isNaN(cadena.substring(cadena.length - 1, cadena.length))) {
+        document.getElementById(etiqueta).value = cadena.substring(0, cadena.length - 1);
+        return false;
+    } else if (cadena.length < min) {
+        return false
+    } else if (cadena.length > max) {
+        document.getElementById(etiqueta).value = cadena.substring(0, max);
+        return false;
+    } else {
+        return true;
+    }
+}
+
+function validarInt(etiqueta) {
+    var cadena = $('#' + etiqueta).val();
+    if (isNaN(cadena.substring(cadena.length - 1, cadena.length))) {
+        document.getElementById(etiqueta).value = cadena.substring(0, cadena.length - 1);
+        return false;
+    } else {
+        return true;
+    }
+}
+
+
+

@@ -1,11 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/intranet/MDI.Master" AutoEventWireup="true" CodeBehind="frmVentaPasaje.aspx.cs" Inherits="Presentacion.intranet.frmVentaPasaje" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="assets/stylesheets/itinerario.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cuerpo" runat="server">
     <div class="header">
         <h1 class="page-title">Venta de Pasajes</h1>
-    </div> 
+    </div>
     <div class="container-fluid">
         <div class="row-fluid">
             <div class="block">
@@ -40,71 +41,85 @@
                         </thead>
                         <tbody id="tbBodyItinerario">
                             <%-- Aqui Javascript JSON --%>
-                        </tbody>
+                        </tbody>                        
                     </table>
+                    <label class="lblMensaje" id="lblItinerario"></label>
                 </div>
             </div>
         </div>
         <div class="row-fluid">
             <div class="block span6">
-                <a href="#widget1container" class="block-heading" data-toggle="collapse"> Datos de Boleto </a>
+                <a href="#widget1container" class="block-heading" data-toggle="collapse">Datos de Boleto </a>
                 <div id="widget1container" class="block-body collapse in">
 
                     <div class="box-content">
                         <br />
                         <div class="well">
                             <form name="frmRegistraVentaPasaje">
-                                <div class="hiddens">
+                                <div class="hidden">
                                     <input type="text" id="tamNumDocIdentidad" value="" />
                                     <input type="text" id="idItinerario" name="idItinerario" value="" />
                                     <input type="text" id="idPersona" name="idPersona" value="" />
                                 </div>
-                                <div class="span5">Documento de Identidad:</div>
+                                <div>Documento de Identidad:</div>
                                 <div class="control-group">
-                                    <select class="span6" id="tipDocIdentidad" name="tipDocIdentidad">
+                                    <select class="span12" id="tipDocIdentidad" name="tipDocIdentidad">
                                         <%-- Aqui Javascript JSON --%>
                                     </select>
                                 </div>
-                                <div class="span5">Número de Documento:</div>
+                                <div>Número de Documento:</div>
                                 <div class="control-group">
-                                    <input type="text" class="span4" id="numDocIdentidad" name="numDocIdentidad" />
+                                    <input type="text" class="span6" id="numDocIdentidad" name="numDocIdentidad" />
                                     <button type="button" class="btn" onclick="buscarPersonaPorNic()"><i class="icon-search"></i>Buscar</button>
+                                    <label class="lblMensaje" id="lblNDocumento"></label>
                                 </div>
-                                <div class="span5">Apellidos:</div>
+                                <div>Apellidos:</div>
                                 <div class="control-group">
-                                    <input class="span6" name="apellidos" id="apellidos" />
+                                    <input class="span12" name="apellidos" id="apellidos" />
+                                    <label class="lblMensaje" id="lblApellidos"></label>
                                 </div>
-                                <div class="span5">Nombres:</div>
+                                <div>Nombres:</div>
                                 <div class="control-group">
-                                    <input class="span6" name="nombres" id="nombres" />
+                                    <input class="span12" name="nombres" id="nombres" />
+                                    <label class="lblMensaje" id="lblMensajeNombres"></label>
                                 </div>
-                                <div class="span5">Sexo:</div>
+                                <div>Sexo:</div>
                                 <div class="control-group">
                                     <input type="radio" class="radio" name="sexo" value="m" checked="checked" />
                                     Masculino 
                                     <input type="radio" class="radio" name="sexo" value="f" />
                                     Femenino 
                                 </div>
-                                <div class="span5">Fecha Nacimiento:</div>
+                                <div>Fecha Nacimiento:</div>
                                 <div class="control-group">
-                                    <input class="span4" name="fecNacimiento" id="fecNacimiento" onfocus="this.blur()" />
-                                    <input class="span2" name="edad" id="edad" /><span> Años</span>
+                                    <input class="span6" name="fecNacimiento" id="fecNacimiento" onfocus="this.blur()" />
+                                    <input class="span3" name="edad" id="edad" onfocus="this.blur()" /><span> Años</span>
+                                    <label class="lblMensaje" id="lblMensajeFechaNacimiento"></label>
                                 </div>
                                 <div id="divNumAsiento">
-                                    <div class="span5">Número de Asiento:</div>
+                                    <div>Número de Asiento:</div>
                                     <div class="control-group">
-                                        <input type="text" id="numAsiento" class="span6" name="numAsiento" disabled="disabled" />
+                                        <input type="text" id="numAsiento" class="span12" name="numAsiento" disabled="disabled" />
+
                                     </div>
                                 </div>
                             </form>
                         </div>
+
                         <div class="btn-toolbar">
-                            <button type="submit" class="btn btn-primary" onclick="spBoletoViajeRegistro()">
-                                <i class="icon-ok"></i>
-                                Aceptar
-                            </button>
-                            <button class="btn btn-ser" name="action" value="Cancelar" onclick="cancelarVenta()">Cancel</button>
-                            <label class="lblMensaje" id="lblMensaje"></label>
+                            <div class="span6">                                
+                                <label class="lblMensaje" id="lblMsjVentaPasaje"></label>
+                            </div>
+                            <div class="span6">
+                                <button type="submit" class="btn btn-primary" onclick="registrarVenta()">
+                                    <i class="icon-ok"></i>
+                                    Aceptar
+                                </button>
+                                <button class="btn btn-ser" name="action" value="Cancelar" onclick="cancelarVenta()">Cancel</button>
+                                
+                            </div>
+
+
                         </div>
                     </div>
                 </div>
@@ -113,6 +128,7 @@
             <div class="block span6">
                 <a href="#widget2container" class="block-heading" data-toggle="collapse">Réplica de Bus </a>
                 <div id="widget2container" class="block-body collapse in">
+                    <label class="lblMensaje" id="lblMensajeNumAsiento"></label>     
                     <div id="replicaBus">
                         <%--Aquí va Javascript y JSON--%>
                     </div>
