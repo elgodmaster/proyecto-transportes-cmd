@@ -3,20 +3,18 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cuerpo" runat="server">
-
-
-    <div class="span8">
-        <div class="box">
-            <div class="box-header">
-                <i class="icon-list"></i>
-                <h5>Servicios Especiales</h5>
-                <button class="btn btn-box-right collapsed" data-toggle="collapse" data-target=".box-cliente">
-                    <i class="icon-reorder"></i>
-                </button>
-            </div>
-            <div class="box-content box-cliente">
-                <div id="Div1">
-                    <br />
+    <div class="header">
+        <h1 class="page-title">SERVICIOS ESPECIALES</h1>
+    </div>
+    <ul class="breadcrumb">
+        <li><a href="frmPrincipal.aspx">Pasajes</a> <span class="divider">/</span></li>
+        <li class="active">Servicios Especiales</li>
+    </ul>
+    <div class="container-fluid">
+    <div class="row-fluid">
+        <div class="block span4">
+            <a href="#widget2container" class="block-heading" data-toggle="collapse">Datos Servicio </a>
+            <div id="widget2container" class="block-body collapse in">
                     <form id="Form1" runat="server">
                             <div class="control-group">
                                 <label class="control-label" for="focusedInput">Nombre</label>
@@ -44,43 +42,31 @@
                     </form>
                 </div>
             </div>
+                <div class="block span8">
+                    <a href="#widget1container" class="block-heading" data-toggle="collapse">Listado Servicio </a>
+                    <div id="widget1container" class="block-body collapse in">
+                    <div class="box-content">
+                        <table id="tbSalidasCss" class="table">
+                            <thead>
+                                <tr>
+                                    <th>N°</th>
+                                    <th>Nombre</th>
+                                    <th>Caracteristicas</th>
+
+                                    <th>Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbBodyServicio">
+                                <%-- Aqui Javascript JSON --%>
+                            </tbody>
+                        </table>
+                    </div>
+                    </div>
+                </div>
         </div>
     </div>
 
-    <div class="span8">
-        <div class="box">
-            <div class="box-header">
-                <i class="icon-list"></i>
-                <h5>Servicios Especiales</h5>
-                <button class="btn btn-box-right collapsed" data-toggle="collapse" data-target=".box-cliente">
-                    <i class="icon-reorder"></i>
-                </button>
-            </div>
-            <div class="box-content box-cliente">
-            </div>
-        </div>
-    </div>
-
-
-    <div class="span18">
-        <div class="span18">
-            <h4>Listado General</h4>
-        </div>
-        <table id="tbSalidasCss" class="table">
-            <thead>
-                <tr>
-                    <th>N°</th>
-                    <th>Nombre</th>
-                    <th>Caracteristicas</th>
-
-                    <th>Acción</th>
-                </tr>
-            </thead>
-            <tbody id="tbBodyServicio">
-                <%-- Aqui Javascript JSON --%>
-            </tbody>
-        </table>
-    </div>
+        
 
 
 </asp:Content>
