@@ -145,6 +145,7 @@
     <Content Include="index.aspx" />
     <Content Include="intranet\frmMantenedorServicios.aspx" />
     <Content Include="intranet\frmPrincipal.aspx" />
+    <Content Include="intranet\frmVentaPasaje.aspx" />
     <Content Include="intranet\index.aspx" />
     <Content Include="intranet\wsMDI.asmx" />
     <Content Include="intranet\wsServicio.asmx" />
@@ -209,6 +210,13 @@
     </Compile>
     <Compile Include="intranet\frmPrincipal.aspx.designer.cs">
       <DependentUpon>frmPrincipal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="intranet\frmVentaPasaje.aspx.cs">
+      <DependentUpon>frmVentaPasaje.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="intranet\frmVentaPasaje.aspx.designer.cs">
+      <DependentUpon>frmVentaPasaje.aspx</DependentUpon>
     </Compile>
     <Compile Include="intranet\index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
