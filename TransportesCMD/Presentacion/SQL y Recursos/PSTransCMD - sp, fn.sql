@@ -75,6 +75,8 @@ end
 go
 spPersonaRegistrarBasico 'MILER','ROQUE LAIZA','123456789012','12/01/1990','m',1
 go
+spPersonaRegistrarBasico 'CARLOS','BOCANEGRA BOLAÑOS','12345678','29/12/1992','m',2
+go
 if object_id('spPersonaXNumeroDocumentoIdentidad', 'p') is not null
 drop procedure spPersonaXNumeroDocumentoIdentidad
 go
@@ -85,7 +87,7 @@ as begin
 	from persona where per_numDocIdentidad=@per_numDocIdentidad
 end
 go
-spPersonaXNumeroDocumentoIdentidad '123456789012'
+spPersonaXNumeroDocumentoIdentidad '12345678'
 go
 if object_id('spPersonaXApellidos', 'p') is not null
 drop procedure spPersonaXApellidos
@@ -94,24 +96,10 @@ create procedure spPersonaXApellidos(
 @per_nomApellidos varchar(15))
 as begin
 	select top 4 per_id,per_nombres, per_apellidos,per_sexo, DATEDIFF(yy,per_fecNacimiento, GETDATE()) 'Edad', CONVERT(CHAR(10), per_fecNacimiento, 103), docIdentidad_id, per_numDocIdentidad
-	from persona where per_apellidos like '%'+@per_nomApellidos+'%'
+	from persona where per_apellidos +' '+per_nombres  like '%'+@per_nomApellidos+'%'
 	end
 go
-spPersonaXApellidos 'ro'
-go
-if object_id('spUsuarioRegistrar', 'p') is not null
-drop procedure spUsuarioRegistrar
-go
-create procedure spUsuarioRegistrar(
-@usu_user varchar(45),
-@usu_pass varchar(45),
-@persona_id int)
-as begin
-	insert into usuario(usu_user,usu_pass,usu_fecRegistro,usu_estado,persona_id) 
-	values(@usu_user,dbo.fnCifrarClave(@usu_pass),GETDATE(),'a',@persona_id)
-end
-go
-spUsuarioRegistrar 'admin','123',1
+spPersonaXApellidos 'car'
 go
 if object_id('spSucursalListar', 'p') is not null
 drop procedure spSucursalListar
@@ -123,19 +111,6 @@ as begin
 end
 go
 spSucursalListar
-go
-if object_id('spUsuarioLogin', 'p') is not null
-drop procedure spUsuarioLogin
-go
-create procedure spUsuarioLogin(
-@usu_user varchar(45),
-@usu_pass varchar(45))
-as begin
-	select U.usu_id,P.per_nombres, P.per_apellidos, U.usu_user,PL.per_id from persona P, usuario U, personal PL
-	where P.per_id=U.persona_id and P.per_id=PL.persona_id and dbo.fnDescifrarClave(U.usu_pass,@usu_pass)=@usu_pass and U.usu_user=@usu_user
-end
-go
-spUsuarioLogin 'admin','123'
 go
 insert into departamento(dep_nombre) values('La Libertad')
 insert into departamento(dep_nombre) values('Lima')
@@ -163,15 +138,46 @@ create procedure spPersonalRegistrar(
 @per_estCivil char(1),
 @per_fecContrato date,
 @per_fecFinContrato date,
-@persona_id int,
+@cliente_id int,
 @cargo_id int,
 @sucursal_id int)
 as begin
 	insert into personal(per_estCivil,per_fecContrato,per_fecFinContrato,per_fecRegistro,per_estado,persona_id,cargo_id,sucursal_id)
-	values(@per_estCivil,@per_fecContrato,@per_fecFinContrato,GETDATE(),'a',@persona_id,@cargo_id,@sucursal_id)
+	values(@per_estCivil,@per_fecContrato,@per_fecFinContrato,GETDATE(),'a',@cliente_id,@cargo_id,@sucursal_id)
 end
 go
 spPersonalRegistrar 'c','12/04/2014','17/07/2014',1,1,1
+go
+spPersonalRegistrar 'c','12/04/2014','17/07/2014',2,1,2
+go
+if object_id('spUsuarioAdministrativoRegistrar', 'p') is not null
+drop procedure spUsuarioAdministrativoRegistrar
+go
+create procedure spUsuarioAdministrativoRegistrar(
+@usu_user varchar(45),
+@usu_pass varchar(45),
+@personal_id int)
+as begin
+	insert into usuario(usu_user,usu_pass,usu_fecRegistro,usu_estado,persona_id) 
+	values(@usu_user,dbo.fnCifrarClave(@usu_pass),GETDATE(),'a',@personal_id)
+end
+go
+spUsuarioAdministrativoRegistrar 'admin','123',1
+go
+spUsuarioAdministrativoRegistrar 'cadmin','321',2
+go
+if object_id('spUsuarioAministrativoLogin', 'p') is not null
+drop procedure spUsuarioAministrativoLogin
+go
+create procedure spUsuarioAministrativoLogin(
+@usu_user varchar(45),
+@usu_pass varchar(45))
+as begin
+	select U.usu_id,P.per_nombres, P.per_apellidos, U.usu_user,PL.per_id from persona P, usuario U, personal PL
+	where P.per_id=U.persona_id and P.per_id=PL.persona_id and dbo.fnDescifrarClave(U.usu_pass,@usu_pass)=@usu_pass and U.usu_user=@usu_user
+end
+go 
+spUsuarioAministrativoLogin 'admin','123'
 go
 if object_id('spServicioEspecialRegistrar', 'p') is not null
 drop procedure spServicioEspecialRegistrar
@@ -409,8 +415,7 @@ as begin
 	declare @serie int, @numero int
 	select @serie=comSer_serie, @numero=max(comSer_numero+1) from comprobanteSerie 
 	where sucursal_id=@sucursal_id and comprobante_id=@comprobante_id and comSer_estado='a'
-	group by comSer_serie
-	
+	group by comSer_serie	
 	insert into comprobanteSerie(comSer_serie,comSer_numero,comprobante_id,sucursal_id,comSer_estado)
 	values (@serie,@numero,@comprobante_id,@sucursal_id,'a')
 	set @PKCreado=@@IDENTITY 
@@ -419,12 +424,11 @@ go
 if object_id('spBoletoViajeRegistro', 'p') is not null
 drop procedure spBoletoViajeRegistro
 go
- create procedure spBoletoViajeRegistro(
+create procedure spBoletoViajeRegistro(
 @bolVia_asiento int,
-@persona_id int,
+@cliente_id int,
 @personal_id int,
-@itinerario_id int,
-@sucursal_id int)
+@itinerario_id int)
 as begin
 	declare @numAsiento int,@pkBoleto int
 	select @numAsiento=conAsi_numAsiento from controlAsiento C
@@ -432,10 +436,12 @@ as begin
 	if @numAsiento is null 
 		begin try
 			begin tran
-				DECLARE @numSerie int
+				DECLARE @numSerie int,@sucursal_id int
+				select @sucursal_id=S.suc_id from sucursal S, personal P 
+				where S.suc_id = P.sucursal_id and P.per_id=@personal_id
 				EXEC spGenerarSerieDocumento @sucursal_id,1, @numSerie output
 				insert into boletoViaje(bolVia_fecha,bolVia_estado,bolVia_asiento,persona_id, personal_id, itinerario_id, comSerie_id)
-				values(GETDATE(),'v', @bolVia_asiento,@persona_id,@personal_id,@itinerario_id,@numSerie)
+				values(GETDATE(),'v', @bolVia_asiento,@cliente_id,@personal_id,@itinerario_id,@numSerie)
 				set @pkBoleto=@@IDENTITY 
 				set @numAsiento=@bolVia_asiento
 				update controlAsiento set conAsi_estAsiento='o' where itinerario_id=@itinerario_id and conAsi_numAsiento=@bolVia_asiento
@@ -452,6 +458,8 @@ as begin
 end
 go
 
+select * from boletoViaje B
+select * from comprobanteSerie
 
 --spBoletoViajeRegistro 23,1,1,1,1
 
