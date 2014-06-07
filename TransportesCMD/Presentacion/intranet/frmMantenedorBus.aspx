@@ -1,53 +1,21 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/intranet/MDI.Master" AutoEventWireup="true" CodeBehind="frmMantenedorBus.aspx.cs" Inherits="Presentacion.intranet.frmMantenedorBus" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cuerpo" runat="server">
-    <div class="span18">
-        <div class="box">
-            <div class="box-header">
-                <i class="icon-list"></i>
-                <h5>Listado Vehículo</h5>
-                <button class="btn btn-box-right collapsed" data-toggle="collapse" data-target=".box-cliente">
-                    <i class="icon-reorder"></i>
-                </button>
-            </div>
-            <div class="box-content box-cliente">
-                <table id="tbSalidasCss" class="table">
-                    <thead>
-                        <tr>
-                            <th>N°</th>
-                            <th>Placa</th>
-                            <th>Modelo</th>
-                            <th>Marca</th>
-                            <th>1er piso</th>
-                            <th>2do piso</th>
-                            <%--<th>Estado</th>--%>
-                            <th>Servicio Especial</th>
-                            <th>Acción</th>
-                        </tr>
-                    </thead>
-
-                    <tbody id="tbBodyVehiculo">
-                        <%-- Aqui Javascript JSON --%>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+    <div class="header">
+        <h1 class="page-title">Venta de Pasajes</h1>
     </div>
-
-    <div class="span18">
-        <div class="box">
-            <div class="box-header">
-                <i class="icon-list"></i>
-                <h5>Datos Vehículo</h5>
-                <button class="btn btn-box-right collapsed" data-toggle="collapse" data-target=".box-cliente">
-                    <i class="icon-reorder"></i>
-                </button>
-            </div>
-            <div class="box-content box-cliente">
-                <form runat="server">
+    <ul class="breadcrumb">
+        <li><a href="frmPrincipal.aspx">Pasajes</a> <span class="divider">/</span></li>
+        <li class="active">Venta de Pasajes</li>
+    </ul>
+    <div class="container-fluid">
+    <div class="row-fluid">
+        <div class="block span4">
+            <a href="#widget2container" class="block-heading" data-toggle="collapse">Datos Vehículo </a>
+            <div id="widget2container" class="block-body collapse in">
+                <form id="Form1" runat="server">
 
                     <div class="control-group">
                         <label class="control-label" for="focusedInput">Modelo</label>
@@ -113,7 +81,35 @@
                 </form>
             </div>
         </div>
+        <div class="block span8">
+            <a href="#widget1container" class="block-heading" data-toggle="collapse">Listado Vehículo </a>
+            <div id="widget1container" class="block-body collapse in">
+            <div class="box-content">
+                <table id="tbSalidasCss" class="table">
+                    <thead>
+                        <tr>
+                            <th>N°</th>
+                            <th>Placa</th>
+                            <th>Modelo</th>
+                            <th>Marca</th>
+                            <th>1er piso</th>
+                            <th>2do piso</th>
+                            <%--<th>Estado</th>--%>
+                            <th>Servicio Especial</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tbBodyVehiculo">
+                        <%-- Aqui Javascript JSON --%>
+                    </tbody>
+                </table>
+            </div>
+                </div>
+        </div>
+        
     </div>
+        </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="javascript" runat="server">
     <script src="assets/lib/vehiculo.js"></script>
