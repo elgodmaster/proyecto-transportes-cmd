@@ -34,7 +34,7 @@ namespace Datos
                             persona.per_apellidos = dr[2].ToString();
                     usuario.usu_user = dr[3].ToString();                        
                         enPersonal personal = new enPersonal();
-                        personal.per_id = Convert.ToInt32(dr[4].ToString());                       
+                        personal.per_id = Convert.ToInt32(dr[4].ToString());
                         personal.persona = persona;                       
                     usuario.personal = personal;                    
                 }
