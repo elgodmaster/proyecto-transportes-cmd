@@ -2,8 +2,48 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cuerpo" runat="server">
-    <div class="row">
-        <div class="span16">
+    <div class="header">
+        <h1 class="page-title">Itinerarios</h1>
+    </div>
+    <ul class="breadcrumb">
+        <li><a href="frmPrincipal.aspx">Inicio</a> <span class="divider">/</span></li>
+        <li class="active">Mantenedor de Itinirearios</li>
+    </ul>
+    <div class="row-fluid">
+        <form id="Form1" runat="server">
+            <div class="block span6">
+        <a href="#widget2container" class="block-heading" data-toggle="collapse">Collapsible </a>
+        <div id="widget2container" class="block-body collapse in">
+            <div class="box-content">
+                <div id="page-stats" class="block-body">
+                    <div class="stat-widget-container">
+                        <div class="control-group">
+                        <span>Origen: </span>
+                        <asp:ListBox ID="idOrigen" Rows="1" runat="server"></asp:ListBox>
+                            <%-- Aqui Javascript JSON --%> 
+                        </div>
+                        <div class="control-group">                       
+                        <span >Destino: </span>
+                        <asp:ListBox ID="idDestino" Rows="1" runat="server"></asp:ListBox>
+                            <%-- Aqui Javascript JSON --%>
+                        </div>
+                        <div class="control-group">
+                        <span>Fecha: </span>
+                        <select class="span3" id="itinerarioFecha" tabindex="3">
+                            <%-- Aqui Javascript JSON --%>
+                        </select>
+                        </div>
+                        <div class="control-group">
+                        <span>Hora: </span>
+                        <select class="span3" id="itinerarioHora" tabindex="3">
+                            <%-- Aqui Javascript JSON --%>
+                        </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%--<div class="span16">
             <div class="box pattern pattern-sandstone">
                 <div class="box-header">
                     <i class="icon-list"></i>
@@ -100,7 +140,9 @@
                     </form>
                 </div>
             </div>
-        </div>       
+        </div>--%>
+        </div>
+        </form>
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="javascript" runat="server">

@@ -21,15 +21,15 @@ namespace Presentacion.intranet
                 {
 
 
-                    lstSucOrigen.DataSource = listaSucursales;
-                    lstSucOrigen.DataTextField = "suc_nombre";
-                    lstSucOrigen.DataValueField = "suc_id";
-                    lstSucOrigen.DataBind();
+                    idOrigen.DataSource = listaSucursales;
+                    idOrigen.DataTextField = "suc_nombre";
+                    idOrigen.DataValueField = "suc_id";
+                    idOrigen.DataBind();
 
-                    lstSucDestino.DataSource = listaSucursales;
-                    lstSucDestino.DataTextField = "suc_nombre";
-                    lstSucDestino.DataValueField = "suc_id";
-                    lstSucDestino.DataBind();
+                    idDestino.DataSource = listaSucursales;
+                    idDestino.DataTextField = "suc_nombre";
+                    idDestino.DataValueField = "suc_id";
+                    idDestino.DataBind();
                 }
             }
             catch (Exception)
