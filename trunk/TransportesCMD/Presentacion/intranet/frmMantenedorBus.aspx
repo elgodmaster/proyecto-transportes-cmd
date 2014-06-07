@@ -4,11 +4,11 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cuerpo" runat="server">
     <div class="header">
-        <h1 class="page-title">Venta de Pasajes</h1>
+        <h1 class="page-title">MANTENDOR DE VEHÍCULOS</h1>
     </div>
     <ul class="breadcrumb">
         <li><a href="frmPrincipal.aspx">Pasajes</a> <span class="divider">/</span></li>
-        <li class="active">Venta de Pasajes</li>
+        <li class="active">Vehículo</li>
     </ul>
     <div class="container-fluid">
     <div class="row-fluid">
@@ -27,7 +27,7 @@
                     </div>
                     <asp:TextBox ID="txtId" runat="server" Visible="False"></asp:TextBox>
                     <div class="control-group ">
-                        <label class="control-label">PLACA</label>
+                        <label class="control-label">Placa</label>
                         <div class="controls">
                             <input id="txtPlac" name="txtPlaca" class="span4" type="text" value="" runat="server" maxlength="7" />
                             <br />
@@ -35,7 +35,7 @@
                         </div>
                     </div>
                     <div class="control-group ">
-                        <label class="control-label">Numero de Asientos 1er piso</label>
+                        <label class="control-label">Numero de asientos 1er piso</label>
                         <div class="controls">
 
                             <input id="txtprimer" name="txtprimero" class="span4" type="text" value="" runat="server" maxlength="2" />
@@ -44,7 +44,7 @@
                         </div>
                     </div>
                     <div class="control-group ">
-                        <label class="control-label">Numero de Asientos 2do piso</label>
+                        <label class="control-label">Numero de asientos 2do piso</label>
                         <div class="controls">
                             <input id="txtsegund" name="txtsegundo" class="span4" type="text" value="" runat="server" maxlength="2" />
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Campo necesario" ControlToValidate="txtsegund" Display="Dynamic" ValidationGroup="VALIDACION" CssClass="validaciones"></asp:RequiredFieldValidator>
@@ -58,7 +58,7 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="Campo necesario" ControlToValidate="txtmarc" Display="Dynamic" ValidationGroup="VALIDACION" CssClass="validaciones"></asp:RequiredFieldValidator>
                             <br />
                             <asp:RegularExpressionValidator ID="RegularExpressionValidator1"
-                                runat="server" ErrorMessage="Solo letras."
+                                runat="server" ErrorMessage="Ingrese solo letras."
                                 ControlToValidate="txtmarc" ValidationExpression="^[a-zA-Z ]*$"
                                 ValidationGroup="VALIDACION" CssClass="validaciones"></asp:RegularExpressionValidator>
                         </div>
