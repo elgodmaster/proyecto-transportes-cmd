@@ -50,7 +50,6 @@
                 </div>
             </div>
         </div>
-        <form runat="server">
         <div class="row-fluid">
             <div class="block span6">
                 <a href="#widget1container" class="block-heading" data-toggle="collapse">Collapsible </a>
@@ -58,17 +57,16 @@
                     
                         <div class="box-content">
                             <div class="btn-toolbar">
-                                <%--<button type="submit" class="btn btn-primary" onclick="spBoletoViajeRegistro()">
+                                <button type="submit" class="btn btn-primary" onclick="spBoletoViajeRegistro()">
                                     <i class="icon-ok"></i>
                                     Aceptar
-                                </button>--%>
-                                <asp:Button class="btn btn-primary" ID="btnAceptar" runat="server" Text="Aceptar" ValidationGroup="VALIDATION" />
+                                </button>                                
                                 <button class="btn btn-ser" name="action" value="Cancelar" onclick="cancelarVenta()">Cancel</button>
                                 <label class="lblMensaje" id="lblMensaje"></label>
                                 
                             </div>
                             <div class="well">
-                                <%--<form name="frmRegistraVentaPasaje">--%>
+                                <form name="frmRegistraVentaPasaje">
                                     <div class="hiddens">
                                         <input type="text" id="tamNumDocIdentidad" value="" />
                                         <input type="text" id="idItinerario" name="idItinerario" value="" />
@@ -87,8 +85,8 @@
                                     </div>
                                     <div class="span3">Apellidos:</div>
                                     <div class="control-group">
-                                        <input class="span4" name="txtapellidos" id="txtapellidos" />
-                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="RegularExpressionValidator"></asp:RegularExpressionValidator>
+                                        <input class="span4" name="apellidos" id="apellidos" />
+                                        
                                     </div>
                                     <div class="span3">Nombres:</div>
                                     <div class="control-group">
@@ -113,7 +111,7 @@
                                             <input type="text" id="numAsiento" class="span2" name="numAsiento" disabled="disabled" />
                                         </div>
                                     </div>
-                                <%--</form>--%>
+                                </form>
                             </div>
 
                         </div>
@@ -130,7 +128,6 @@
                 </div>
             </div>
         </div>
-    </form>
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="javascript" runat="server">
