@@ -53,7 +53,7 @@ namespace Presentacion.intranet
 
         protected void btnRegistrar_Click(object sender, EventArgs e)
         {
-            if (btnRegistrar.Text.Equals("Guardar"))
+            if (btnRegistrar.Text.Equals("Registrar"))
             {
                 String model = txtmodel.Value;
                 String pla = txtPlac.Value;
