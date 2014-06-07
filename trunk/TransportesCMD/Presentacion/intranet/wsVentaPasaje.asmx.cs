@@ -23,7 +23,7 @@ namespace Presentacion.intranet
         public List<enSucursal> spIntinerarioOrigenXNombre()
         {
             List<enSucursal> lstSucursal = new List<enSucursal>();
-            // enviar vacio "" significa que va a devolver todo
+            //enviar vacio "" significa que va a devolver todo
             lstSucursal = neSucursal.spIntinerarioOrigenXNombre("");
             return lstSucursal;
         }
@@ -32,7 +32,7 @@ namespace Presentacion.intranet
         public List<enSucursal> spIntinerarioDestinoXIdOrigen(int prmIdOrigen)
         {
             List<enSucursal> lstSucursal = new List<enSucursal>();
-            // enviar la id de la sucursal que se selecciono como origen
+            //enviar la id de la sucursal que se selecciono como origen
             lstSucursal = neSucursal.spIntinerarioDestinoXIdOrigen(prmIdOrigen);
             return lstSucursal;
         }
@@ -41,7 +41,7 @@ namespace Presentacion.intranet
         public List<enItinerario> spIntinerarioFechaSalidaXIdOrigenIdDestino(int prmIdOrigen, int prmIdDestino)
         {
             List<enItinerario> lstItinerario = new List<enItinerario>();
-            // enviar las fechas del itinerario
+            //enviar las fechas del itinerario
             lstItinerario = neItinerario.spIntinerarioFechaSalidaXIdOrigenIdDestino(prmIdOrigen, prmIdDestino);
             return lstItinerario;
         }
@@ -132,7 +132,7 @@ namespace Presentacion.intranet
             enUsuario usuario = new enUsuario();
             usuario = (enUsuario)Session["usuario"];
 
-            lstBolVia = neBoletoViaje.spBoletoViajeRegistro(prmAsiento, prmIdPersona,usuario.personal.per_id , prmIdItinerario, usuario.personal.sucursal.suc_id);
+            lstBolVia = neBoletoViaje.spBoletoViajeRegistro(prmAsiento, prmIdPersona,usuario.personal.per_id , prmIdItinerario);
             return lstBolVia;
         }
 
