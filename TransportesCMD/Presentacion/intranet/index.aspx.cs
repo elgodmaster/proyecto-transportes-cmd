@@ -20,15 +20,16 @@ namespace Presentacion
                     Response.Redirect("frmPrincipal.aspx");
                 }else{
 
-                    lstSucursal.DataSource = neSucursal.Instancia.sucursalLista();
-                    lstSucursal.DataTextField = "suc_nombre";
-                    lstSucursal.DataValueField = "suc_id";
-                    lstSucursal.DataBind();
+                    //lstSucursal.DataSource = neSucursal.Instancia.sucursalLista();
+                    //lstSucursal.DataTextField = "suc_nombre";
+                    //lstSucursal.DataValueField = "suc_id";
+                    //lstSucursal.DataBind();
                 }
                 
             }
             catch (Exception)
-            {           
+            {
+
             }
             
         }

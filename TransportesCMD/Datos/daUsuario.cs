@@ -19,7 +19,7 @@ namespace Datos
             try
             {
                 cn = Conexion.ConexionSQL();
-                cmd = new SqlCommand("spUsuarioLogin", cn);
+                cmd = new SqlCommand("spUsuarioAministrativoLogin", cn);
                 cmd.Parameters.AddWithValue("@usu_user", prmUsuario.usu_user);
                 cmd.Parameters.AddWithValue("@usu_pass", prmUsuario.usu_pass);
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -32,11 +32,11 @@ namespace Datos
                             enPersona persona = new enPersona();
                             persona.per_nombres = dr[1].ToString();
                             persona.per_apellidos = dr[2].ToString();
+                    usuario.usu_user = dr[3].ToString();                        
                         enPersonal personal = new enPersonal();
-                        personal.per_id = Convert.ToInt32(dr[4].ToString());
-                        personal.persona = persona;
-                    usuario.personal = personal;
-                    usuario.usu_user = dr[3].ToString();
+                        personal.per_id = Convert.ToInt32(dr[4].ToString());                       
+                        personal.persona = persona;                       
+                    usuario.personal = personal;                    
                 }
 
             }

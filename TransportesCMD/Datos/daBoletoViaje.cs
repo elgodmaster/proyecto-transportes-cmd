@@ -11,7 +11,7 @@ namespace Datos
 {
     public class daBoletoViaje
     {
-        public static List<enBoletoViaje> spBoletoViajeRegistro(int prmAsiento, int prmIdPersona, int prmIdPersonal, int prmIdItinerario, int prmIdSucursal)
+        public static List<enBoletoViaje> spBoletoViajeRegistro(int prmAsiento, int prmIdPersona, int prmIdPersonal, int prmIdItinerario)
         {
             SqlConnection cn = null;
             SqlCommand cmd = null;
@@ -25,7 +25,6 @@ namespace Datos
                 cmd.Parameters.AddWithValue("@persona_id",prmIdPersona);
                 cmd.Parameters.AddWithValue("@personal_id", prmIdPersonal);
                 cmd.Parameters.AddWithValue("@itinerario_id", prmIdItinerario);
-                cmd.Parameters.AddWithValue("@sucursal_id", prmIdSucursal);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cn.Open();
                 dr = cmd.ExecuteReader();

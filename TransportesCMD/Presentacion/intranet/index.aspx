@@ -41,9 +41,8 @@
                 <div class="block-body">
                     <div class="container-signin">
                         <form method='POST' id='loginForm' runat="server" class='form-signin' autocomplete='off'>
-                            <label>Sucursal</label>
-                            <asp:ListBox ID="lstSucursal" class="span12" runat="server" Rows="1"></asp:ListBox>
-
+                           <%-- <label>Sucursal</label>
+                            <asp:ListBox ID="lstSucursal" class="span12" runat="server" Rows="1"></asp:ListBox>--%>
                             <label>Usuario</label>
                             <asp:TextBox ID="txtUser" class="span12" runat="server"></asp:TextBox>
                             <label>Contraseña</label>
