@@ -11,7 +11,7 @@ namespace Entidades
         public int serEsp_id {get;set;}
         public String serEsp_nombre { get; set; }
         public String serEsp_caracteristicas {get;set;}
-        public DateTime serEsp_fecRegistro {get;set;}
+        public String serEsp_fecRegistro {get;set;}
         public String serEsp_estado { get; set; }
     }
 }

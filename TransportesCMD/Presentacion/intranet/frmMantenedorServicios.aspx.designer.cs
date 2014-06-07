@@ -22,13 +22,13 @@ namespace Presentacion.intranet {
         protected global::System.Web.UI.HtmlControls.HtmlForm Form1;
         
         /// <summary>
-        /// Control txtnom.
+        /// Control txtnombre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtnom;
+        protected global::System.Web.UI.WebControls.TextBox txtnombre;
         
         /// <summary>
         /// Control txtId.
@@ -40,13 +40,22 @@ namespace Presentacion.intranet {
         protected global::System.Web.UI.WebControls.TextBox txtId;
         
         /// <summary>
-        /// Control txtcarac.
+        /// Control txtcaracteristicas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtcarac;
+        protected global::System.Web.UI.WebControls.TextBox txtcaracteristicas;
+        
+        /// <summary>
+        /// Control RadioButtonList1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList1;
         
         /// <summary>
         /// Control btnRegistrar.
@@ -56,14 +65,5 @@ namespace Presentacion.intranet {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnRegistrar;
-        
-        /// <summary>
-        /// Control lblMensajeGraba.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMensajeGraba;
     }
 }

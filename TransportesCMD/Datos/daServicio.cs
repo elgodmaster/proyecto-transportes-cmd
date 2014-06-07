@@ -23,7 +23,7 @@ namespace Datos
         #endregion
 
         #region Métodos
-        public static Boolean RegistrarServicioEspecial(String nombre, String caracteristicas, int ser_est)
+        public static Boolean RegistrarServicioEspecial(String nombre, String caracteristicas)
         {
 
             Boolean resultado = false;
@@ -35,7 +35,6 @@ namespace Datos
                 cmd = new SqlCommand("spServicioEspecialRegistro", cn);
                 cmd.Parameters.AddWithValue("@serEsp_nombre", nombre);
                 cmd.Parameters.AddWithValue("@serEsp_caracteristicas", caracteristicas);
-                cmd.Parameters.AddWithValue("@serEsp_estado", ser_est);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cn.Open();
                 cmd.ExecuteNonQuery();
@@ -73,7 +72,7 @@ namespace Datos
                     enServicioEspecial seresp = new enServicioEspecial();
                     seresp.serEsp_nombre = dr[0].ToString();
                     seresp.serEsp_caracteristicas = dr[1].ToString();
-                    seresp.serEsp_fecRegistro = Convert.ToDateTime(dr[2].ToString());
+                    seresp.serEsp_fecRegistro = dr[2].ToString();
                     seresp.serEsp_estado = dr[3].ToString();
                     seresp.serEsp_id = Convert.ToInt32(dr[4].ToString());
                     lstServicio.Add(seresp);
@@ -111,7 +110,7 @@ namespace Datos
                     enServicioEspecial seresp = new enServicioEspecial();
                     seresp.serEsp_nombre = dr[0].ToString();
                     seresp.serEsp_caracteristicas = dr[1].ToString();
-                    seresp.serEsp_fecRegistro = Convert.ToDateTime(dr[2].ToString());
+                    seresp.serEsp_fecRegistro = dr[2].ToString();
                     seresp.serEsp_estado = dr[3].ToString();
                     seresp.serEsp_id = Convert.ToInt32(dr[4].ToString());
                     lstServicio.Add(seresp);
