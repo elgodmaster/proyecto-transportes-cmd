@@ -54,7 +54,7 @@
                         <div class="controls">
                             <input class="input-xlarge focused" id="txtmodel" type="text" value="" name="txtmodelo" runat="server" />
                             <br />
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="*" ControlToValidate="txtmodel" Display="Dynamic" ValidationGroup="VALIDACION"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Campo necesario" ControlToValidate="txtmodel" Display="Dynamic" ValidationGroup="VALIDACION"></asp:RequiredFieldValidator>
                         </div>
                     </div>
                     <asp:TextBox ID="txtId" runat="server" Visible="False"></asp:TextBox>
@@ -63,31 +63,31 @@
                         <div class="controls">
                             <input id="txtPlac" name="txtPlaca" class="span4" type="text" value="" runat="server" maxlength="7" />
                             <br />
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" ControlToValidate="txtPlac" Display="Dynamic" ValidationGroup="VALIDACION"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Campo necesario" ControlToValidate="txtPlac" Display="Dynamic" ValidationGroup="VALIDACION"></asp:RequiredFieldValidator>
                         </div>
                     </div>
                     <div class="control-group ">
                         <label class="control-label">Numero de Asientos 1er piso</label>
                         <div class="controls">
 
-                            <input id="txtprimer" name="txtprimero" class="span4" type="text" value="" runat="server" />
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" ControlToValidate="txtprimer" Display="Dynamic" ValidationGroup="VALIDACION"></asp:RequiredFieldValidator>
-                            <asp:RangeValidator ID="RangeValidator1" runat="server" ErrorMessage="+10 -20" ControlToValidate="txtprimer" Display="Dynamic" MaximumValue="20" MinimumValue="10" ValidationGroup="VALIDACION"></asp:RangeValidator>
+                            <input id="txtprimer" name="txtprimero" class="span4" type="text" value="" runat="server" maxlength="2" />
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Campo necesario" ControlToValidate="txtprimer" Display="Dynamic" ValidationGroup="VALIDACION"></asp:RequiredFieldValidator>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="Ingrese solo números" ControlToValidate="txtprimer" Display="Dynamic" ValidationExpression="^[0-9]*"></asp:RegularExpressionValidator>
                         </div>
                     </div>
                     <div class="control-group ">
                         <label class="control-label">Numero de Asientos 2do piso</label>
                         <div class="controls">
-                            <input id="txtsegund" name="txtsegundo" class="span4" type="text" value="" runat="server" />
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="*" ControlToValidate="txtsegund" Display="Dynamic" ValidationGroup="VALIDACION"></asp:RequiredFieldValidator>
-                            <asp:RangeValidator ID="RangeValidator2" runat="server" ErrorMessage="+ 35 -45" ControlToValidate="txtsegund" Display="Dynamic" MaximumValue="45" MinimumValue="35" ValidationGroup="VALIDACION"></asp:RangeValidator>
+                            <input id="txtsegund" name="txtsegundo" class="span4" type="text" value="" runat="server" maxlength="2" />
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Campo necesario" ControlToValidate="txtsegund" Display="Dynamic" ValidationGroup="VALIDACION"></asp:RequiredFieldValidator>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ErrorMessage="Ingrese solo números" ControlToValidate="txtsegund" Display="Dynamic"></asp:RegularExpressionValidator>
                         </div>
                     </div>
                     <div class="control-group">
                         <label for="challengeQuestion" class="control-label">Marca</label>
                         <div class="controls">
                             <input id="txtmarc" name="txtmarc" class="span4" type="text" value="" runat="server" />
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="*" ControlToValidate="txtmarc" Display="Dynamic" ValidationGroup="VALIDACION"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="Campo necesario" ControlToValidate="txtmarc" Display="Dynamic" ValidationGroup="VALIDACION"></asp:RequiredFieldValidator>
                             <br />
                             <asp:RegularExpressionValidator ID="RegularExpressionValidator1"
                                 runat="server" ErrorMessage="Solo letras."

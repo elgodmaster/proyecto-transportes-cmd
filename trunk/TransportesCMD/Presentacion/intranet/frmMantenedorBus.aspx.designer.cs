@@ -76,13 +76,13 @@ namespace Presentacion.intranet {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
         
         /// <summary>
-        /// Control RangeValidator1.
+        /// Control RegularExpressionValidator2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RangeValidator RangeValidator1;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator2;
         
         /// <summary>
         /// Control txtsegund.
@@ -103,13 +103,13 @@ namespace Presentacion.intranet {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator4;
         
         /// <summary>
-        /// Control RangeValidator2.
+        /// Control RegularExpressionValidator3.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RangeValidator RangeValidator2;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator3;
         
         /// <summary>
         /// Control txtmarc.
