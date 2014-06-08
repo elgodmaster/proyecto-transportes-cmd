@@ -13,5 +13,6 @@ namespace Negocio
         public static List<enControlAsiento> spControlAsientoXIdItinerario(int prmIdItinerario) {
             return daControlAsiento.spControlAsientoXIdItinerario(prmIdItinerario);
         }
+       
     }
 }

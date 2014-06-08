@@ -56,5 +56,14 @@ function validarInt(etiqueta) {
     }
 }
 
+function validarTexto(etiqueta) {
+    var cadena = $('#' + etiqueta).val();
+    if (!isNaN(cadena.substring(cadena.length - 1, cadena.length))) {
+        document.getElementById(etiqueta).value = cadena.substring(0, cadena.length - 1);
+        return false;
+    } else {
+        return true;
+    }
+}
 
 

@@ -56,7 +56,7 @@
                         <br />
                         <div class="well">
                             <form name="frmRegistraVentaPasaje">
-                                <div class="hidden">
+                                <div class="hiddens">
                                     <input type="text" id="tamNumDocIdentidad" value="" />
                                     <input type="text" id="idItinerario" name="idItinerario" value="" />
                                     <input type="text" id="idPersona" name="idPersona" value="" />
@@ -82,6 +82,7 @@
                                 <div class="control-group">
                                     <input class="span12" name="nombres" id="nombres" />
                                     <label class="lblMensaje" id="lblMensajeNombres"></label>
+
                                 </div>
                                 <div>Sexo:</div>
                                 <div class="control-group">
@@ -135,7 +136,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>    
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="javascript" runat="server">
     <script src="assets/lib/ventaPasaje.js"></script>

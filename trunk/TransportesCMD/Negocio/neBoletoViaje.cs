@@ -13,5 +13,9 @@ namespace Negocio
         { 
             return daBoletoViaje.spBoletoViajeRegistro(prmAsiento, prmIdPersona, prmIdPersonal, prmIdItinerario);
         }
+        public static List<enBoletoViaje> spBoletoViajeRegistroPersona(int prmAsiento, int prmIdItinerario, int prmIdPersonal, enPersona prmPersona)
+        {
+            return daBoletoViaje.spBoletoViajeRegistroPersona(prmAsiento, prmIdItinerario, prmIdPersonal, prmPersona);
+        }
     }
 }

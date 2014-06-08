@@ -26,18 +26,12 @@
                             </div>
                             <asp:TextBox ID="txtId" runat="server" Visible="False"></asp:TextBox>
                             <div class="control-group ">
-                                <label class="control-label">Caracterìsticas</label>
+                                <label class="control-label">Características</label>
                                 <div class="controls">
                                     <asp:TextBox ID="txtcaracteristicas" CssClass="input-xlarge focused" runat="server"></asp:TextBox>
                                     <br /><asp:RequiredFieldValidator ID="RequiredFieldValidator2" CssClass="validaciones" runat="server" ErrorMessage="Campo necesario" ControlToValidate="txtcaracteristicas" Display="Dynamic" ValidationGroup="VALIDACION"></asp:RequiredFieldValidator>
                                 </div>
-                            </div>
-                         <div class="control-group ">
-                                <label class="control-label">Estado</label>
-                                <div class="controls">
-                                    <asp:RadioButtonList ID="RadioButtonList1" runat="server"></asp:RadioButtonList>
-                                </div>
-                            </div>
+                            </div>                         
                             <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" OnClick="btnRegistrar_Click" ValidationGroup="VALIDACION" />                 
                     </form>
                 </div>

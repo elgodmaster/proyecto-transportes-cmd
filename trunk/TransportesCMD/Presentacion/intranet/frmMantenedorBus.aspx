@@ -16,7 +16,6 @@
             <a href="#widget2container" class="block-heading" data-toggle="collapse">Datos Vehículo </a>
             <div id="widget2container" class="block-body collapse in">
                 <form id="Form1" runat="server">
-
                     <div class="control-group">
                         <label class="control-label" for="focusedInput">Modelo</label>
                         <div class="controls">
