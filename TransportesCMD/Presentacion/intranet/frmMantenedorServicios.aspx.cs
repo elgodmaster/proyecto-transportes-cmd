@@ -46,10 +46,11 @@ namespace Presentacion.intranet
 
         protected void btnRegistrar_Click(object sender, EventArgs e)
         {       
-            try
-            {
+            try {
+                
                 String nom = txtnombre.Text;
                 String carac = txtcaracteristicas.Text;
+               
                 if (btnRegistrar.Text.Equals("Registrar"))
                 {
                     //int serv = Convert.ToInt32(select_estad.Value);
