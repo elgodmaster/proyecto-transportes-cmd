@@ -9,7 +9,8 @@ namespace Negocio
 {
     public class neDocumentoIdentidad
     {
-        public static List<enDocumentoIdentidad> spDocumentoIdentidadLista() {
+        public static List<enDocumentoIdentidad> spDocumentoIdentidadLista()
+        {
             return daDocumentoIdentidad.spDocumentoIdentidadLista();
 
         }

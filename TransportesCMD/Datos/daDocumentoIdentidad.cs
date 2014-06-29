@@ -31,6 +31,7 @@ namespace Datos
                     docIdentidad.docIde_id = Convert.ToInt32(dr[0].ToString());
                     docIdentidad.docIde_longitud = Convert.ToInt32(dr[1].ToString());
                     docIdentidad.docIde_descripcion = dr[2].ToString();
+                    docIdentidad.docIde_valor = dr[3].ToString();
                     lstDocIdentidad.Add(docIdentidad);
                 }
 

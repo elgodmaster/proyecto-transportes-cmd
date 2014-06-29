@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class enDepartamento
+    public class enMensaje
     {
-        public int dep_id {get;set;}
-        public String dep_nombre { get; set; }
-        
+        public int res { get; set; }
+        public String mensaje { get; set; }
     }
 }

@@ -10,7 +10,8 @@ namespace Negocio
 {
     public class neUsuario
     {
-        public static enUsuario spUsuarioLogin(enUsuario prmUsuario) {
+        public static enUsuario spUsuarioLogin(enUsuario prmUsuario)
+        {
             return daUsuario.spUsuarioLogin(prmUsuario);
         }
     }

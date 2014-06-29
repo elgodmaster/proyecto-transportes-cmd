@@ -11,7 +11,8 @@ namespace Datos
 {
     public class daControlAsiento
     {
-        public static List<enControlAsiento> spControlAsientoXIdItinerario(int prmIdItinerario) {
+        public static List<enControlAsiento> spControlAsientoXIdItinerario(int prmIdItinerario)
+        {
             SqlConnection cn = null;
             SqlCommand cmd = null;
             SqlDataReader dr = null;

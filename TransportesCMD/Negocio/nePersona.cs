@@ -17,12 +17,15 @@ namespace Negocio
 
         public static List<enPersona> spPersonaXApellidos(String nomApellidos)
         {
-            try {
+            try
+            {
                 return daPersona.spPersonaXApellidos(nomApellidos);
-            }catch(Exception e){
+            }
+            catch (Exception e)
+            {
                 throw e;
             }
-           
+
         }
     }
 }

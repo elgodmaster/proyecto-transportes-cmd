@@ -9,15 +9,15 @@ using Entidades;
 
 namespace Datos
 {
-   public class daPersona
+    public class daPersona
     {
 
-       public static List<enPersona> spPersonaXNumeroDocumentoIdentidad(String prmNumDocIde)
+        public static List<enPersona> spPersonaXNumeroDocumentoIdentidad(String prmNumDocIde)
         {
             SqlConnection cn = null;
             SqlCommand cmd = null;
             SqlDataReader dr = null;
-            
+
             List<enPersona> lstpersona = null;
             try
             {

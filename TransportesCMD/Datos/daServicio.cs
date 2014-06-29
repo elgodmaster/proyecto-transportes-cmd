@@ -73,7 +73,7 @@ namespace Datos
                     seresp.serEsp_nombre = dr[0].ToString();
                     seresp.serEsp_caracteristicas = dr[1].ToString();
                     seresp.serEsp_fecRegistro = dr[2].ToString();
-                    seresp.serEsp_estado = dr[3].ToString();
+                    seresp.serEsp_estado = Convert.ToInt32(dr[3].ToString());
                     seresp.serEsp_id = Convert.ToInt32(dr[4].ToString());
                     lstServicio.Add(seresp);
                 }
@@ -111,7 +111,7 @@ namespace Datos
                     seresp.serEsp_nombre = dr[0].ToString();
                     seresp.serEsp_caracteristicas = dr[1].ToString();
                     seresp.serEsp_fecRegistro = dr[2].ToString();
-                    seresp.serEsp_estado = dr[3].ToString();
+                    seresp.serEsp_estado = Convert.ToInt32(dr[3].ToString());
                     seresp.serEsp_id = Convert.ToInt32(dr[4].ToString());
                     lstServicio.Add(seresp);
                 }

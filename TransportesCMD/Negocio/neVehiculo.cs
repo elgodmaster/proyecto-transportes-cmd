@@ -41,9 +41,9 @@ namespace Negocio
 
         public Boolean spVehiculoModificar(int id, String modelo, String placa, int numasi1, int numasi2, String marca, String estado, int serviespe)
         {
-            
-            return daVehiculo.spVehiculoModificar(id,modelo,placa,numasi1,numasi2,marca,estado, serviespe);
-            
+
+            return daVehiculo.spVehiculoModificar(id, modelo, placa, numasi1, numasi2, marca, estado, serviespe);
+
         }
         #endregion
     }

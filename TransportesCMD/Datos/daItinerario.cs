@@ -23,8 +23,8 @@ namespace Datos
             {
                 cn = Conexion.ConexionSQL();
                 cmd = new SqlCommand("spIntinerarioFechaSalidaXIdOrigenIdDestino", cn);
-                cmd.Parameters.AddWithValue("@sucursal_origen_id", prmIdOrigen);
-                cmd.Parameters.AddWithValue("@sucursal_destino_id", prmIdDestino);
+                cmd.Parameters.AddWithValue("@sucOrigen_id", prmIdOrigen);
+                cmd.Parameters.AddWithValue("@sucDestino_id", prmIdDestino);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cn.Open();
                 dr = cmd.ExecuteReader();
@@ -32,7 +32,7 @@ namespace Datos
                 while (dr.Read())
                 {
                     itinerario = new enItinerario();
-                    itinerario.iti_horSalida = dr[0].ToString();                    
+                    itinerario.iti_fecSalida = dr[0].ToString();
                     lstItinerarioLista.Add(itinerario);
                 }
 
@@ -52,24 +52,28 @@ namespace Datos
         {
             SqlConnection cn = null;
             SqlCommand cmd = null;
-            SqlDataReader dr = null;            
+            SqlDataReader dr = null;
             List<enItinerario> lstItinerarioLista = null;
             try
             {
                 cn = Conexion.ConexionSQL();
                 cmd = new SqlCommand("spIntinerarioHoraSalidaXIdOrigenIdDestinoFecha", cn);
-                cmd.Parameters.AddWithValue("@sucursal_origen_id", prmIdOrigen);
-                cmd.Parameters.AddWithValue("@sucursal_destino_id", prmIdDestino);
-                cmd.Parameters.AddWithValue("@iti_horSalida", prmFecha);
+                cmd.Parameters.AddWithValue("@sucOrigen_id", prmIdOrigen);
+                cmd.Parameters.AddWithValue("@sucDestino_id", prmIdDestino);
+                cmd.Parameters.AddWithValue("@iti_fecSalida", prmFecha);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cn.Open();
                 dr = cmd.ExecuteReader();
                 lstItinerarioLista = new List<enItinerario>();
                 while (dr.Read())
                 {
-                    enItinerario itinerario = new enItinerario();                    
+                    enItinerario itinerario = new enItinerario();
+
                     itinerario.iti_id = Convert.ToInt32(dr[0].ToString());
-                    itinerario.iti_horSalida = dr[1].ToString();                   
+                    enRuta ruta = new enRuta();
+                    ruta.rut_horSalida = dr[1].ToString();
+                    itinerario.ruta = ruta;
+                    itinerario.iti_fecSalida = dr[2].ToString();
                     lstItinerarioLista.Add(itinerario);
                 }
 
@@ -96,9 +100,9 @@ namespace Datos
             {
                 cn = Conexion.ConexionSQL();
                 cmd = new SqlCommand("spIntinerarioResumenXIdOrigenIdDestinoFecha", cn);
-                cmd.Parameters.AddWithValue("@sucursal_origen_id", prmIdOrigen);
-                cmd.Parameters.AddWithValue("@sucursal_destino_id", prmIdDestino);
-                cmd.Parameters.AddWithValue("@iti_horSalida", prmFecha);
+                cmd.Parameters.AddWithValue("@sucOrigen_id", prmIdOrigen);
+                cmd.Parameters.AddWithValue("@sucDestino_id", prmIdDestino);
+                cmd.Parameters.AddWithValue("@iti_fecSalida", prmFecha);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cn.Open();
                 dr = cmd.ExecuteReader();
@@ -109,11 +113,13 @@ namespace Datos
                     enVehiculo vehiculo = new enVehiculo();
                     enServicioEspecial serEspecial = new enServicioEspecial();
                     itinerario.iti_id = Convert.ToInt32(dr[0].ToString());
-                    itinerario.iti_horSalida = dr[1].ToString();
+                    enRuta ruta = new enRuta();
+                    ruta.rut_horSalida = dr[1].ToString();
+                    itinerario.ruta = ruta;
                     serEspecial.serEsp_nombre = dr[2].ToString();
                     itinerario.iti_precio = Convert.ToDouble(dr[3].ToString());
                     vehiculo.veh_totAsientos = Convert.ToInt32(dr[4].ToString());
-                    vehiculo.servicioEspecial = serEspecial;            
+                    vehiculo.servicioEspecial = serEspecial;
                     itinerario.vehiculo = vehiculo;
                     lstItinerarioLista.Add(itinerario);
                 }

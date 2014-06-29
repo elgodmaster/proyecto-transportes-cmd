@@ -21,7 +21,7 @@ namespace Datos
         #endregion
 
         #region métodos
-        
+
         public static Boolean RegistrarVehiculo(String modelo, String placa, int numasi1, int numasi2, String marca, int serviespe)
         {
 
@@ -48,7 +48,7 @@ namespace Datos
                 resultado = false;
             }
             finally
-            {                
+            {
                 cmd.Connection.Close();
                 cn.Close();
             }
@@ -79,7 +79,7 @@ namespace Datos
                     vehic.veh_marca = dr[2].ToString();
                     vehic.veh_numAsiPrimer = Convert.ToInt32(dr[3].ToString());
                     vehic.veh_numAsiSegundo = Convert.ToInt32(dr[4].ToString());
-                    vehic.veh_estado = dr[5].ToString();
+                    vehic.veh_estado = Convert.ToInt32(dr[5].ToString());
                     seresp.serEsp_nombre = dr[6].ToString();
                     vehic.servicioEspecial = seresp;
                     vehic.veh_id = Convert.ToInt32(dr[7].ToString());
@@ -122,7 +122,7 @@ namespace Datos
                     vehic.veh_marca = dr[2].ToString();
                     vehic.veh_numAsiPrimer = Convert.ToInt32(dr[3].ToString());
                     vehic.veh_numAsiSegundo = Convert.ToInt32(dr[4].ToString());
-                    vehic.veh_estado = dr[5].ToString();
+                    vehic.veh_estado = Convert.ToInt32(dr[5].ToString());
                     seresp.serEsp_nombre = dr[6].ToString();
                     vehic.servicioEspecial = seresp;
                     vehic.veh_id = Convert.ToInt32(dr[7].ToString());
@@ -167,7 +167,7 @@ namespace Datos
             return resultado;
         }
 
-        public static Boolean spVehiculoModificar(int id,String modelo, String placa, int numasi1, int numasi2, String marca,String estado, int serviespe)
+        public static Boolean spVehiculoModificar(int id, String modelo, String placa, int numasi1, int numasi2, String marca, String estado, int serviespe)
         {
 
             Boolean resultado = false;
