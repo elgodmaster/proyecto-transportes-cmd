@@ -404,7 +404,7 @@ $("#numDocIdentidad").keydown(function () {
     if (validarInt("numDocIdentidad")) {
         removerSpanLabel("lblNDocumento");
     } else {
-        mostrarAlerta("lblNDocumento", "Ingrese Solo Enteros");
+        mostrarAlerta("lblNDocumento", "Ingrese solo enteros");
     }
     if (validarTeclaPresionada(event, 13) == true) {
         
@@ -585,25 +585,25 @@ function mostrarAlerta(etiqueta, mensaje) {
 function registrarVenta() {  
     var res = true;
     if ($('#numDocIdentidad').val() == "") {
-        mostrarAlerta("lblNDocumento", "Campo necesario");
+        mostrarAlerta("lblNDocumento", "Ingresar un número de documento");
         res = false;
     } else {
         removerSpanLabel("lblNDocumento");
     }
     if ($('#apellidos').val() == "") {
-        mostrarAlerta("lblApellidos", "Campo necesario");
+        mostrarAlerta("lblApellidos", "Ingresar apellidos");
         res = false;
     } else {
         removerSpanLabel("lblApellidos");
     }
     if ($('#nombres').val() == "") {
-        mostrarAlerta("lblMensajeNombres", "Campo necesario");
+        mostrarAlerta("lblMensajeNombres", "Ingresar nombres");
         res = false;
     } else {
         removerSpanLabel("lblMensajeNombres");
     }
     if ($('#fecNacimiento').val() == "") {
-        mostrarAlerta("lblMensajeFechaNacimiento", "Campo necesario");
+        mostrarAlerta("lblMensajeFechaNacimiento", "Ingresar fecha de nacimiento");
         res = false;
     } else {
         removerSpanLabel("lblMensajeFechaNacimiento");
@@ -615,7 +615,7 @@ function registrarVenta() {
         removerSpanLabel("lblMensajeNumAsiento");
     }
     if ($('#idItinerario').val() == "") {
-        mostrarAlerta("lblItinerario", "Seleccione Itinerario");
+        mostrarAlerta("lblItinerario", "Seleccione un Itinerario");
         res = false;
     } else {
         removerSpanLabel("lblItinerario");

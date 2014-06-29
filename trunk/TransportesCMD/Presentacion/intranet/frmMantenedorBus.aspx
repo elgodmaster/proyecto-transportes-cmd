@@ -47,7 +47,7 @@
                         <div class="controls">
                             <input id="txtsegund" name="txtsegundo" class="span4" type="text" value="" runat="server" maxlength="2" />
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Ingrese número de asientos" ControlToValidate="txtsegund" Display="Dynamic" ValidationGroup="VALIDACION" CssClass="validaciones"></asp:RequiredFieldValidator>
-                            <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ErrorMessage="Solo se permiten números" ControlToValidate="txtsegund" Display="Dynamic" CssClass="validaciones"></asp:RegularExpressionValidator>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ErrorMessage="Solo se permiten números" ControlToValidate="txtsegund" Display="Dynamic" ValidationExpression="^[0-9]*" CssClass="validaciones"></asp:RegularExpressionValidator>
                         </div>
                     </div>
                     <div class="control-group">
