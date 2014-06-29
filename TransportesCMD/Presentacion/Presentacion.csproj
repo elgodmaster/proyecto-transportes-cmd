@@ -177,10 +177,11 @@
     <Content Include="intranet\wsVehiculo.asmx" />
     <Content Include="intranet\wsVentaPasaje.asmx" />
     <Content Include="SQL y Recursos\ControlValidaciones.aspx" />
-    <Content Include="SQL y Recursos\PSTransCMD - bd, tablas.sql" />
+    <Content Include="SQL y Recursos\PSTransCMD - 01bd, tablas.sql" />
+    <Content Include="SQL y Recursos\PSTransCMD - 02sp, fn.sql" />
+    <Content Include="SQL y Recursos\PSTransCMD - 03SP, CARLOS.sql" />
+    <Content Include="SQL y Recursos\PSTransCMD - 04spTalento.sql" />
     <Content Include="SQL y Recursos\PSTransCMD - No Ejecutar%28Pruebas%29.sql" />
-    <Content Include="SQL y Recursos\PSTRANSCMD - SP, CARLOS.sql" />
-    <Content Include="SQL y Recursos\PSTransCMD - sp, fn.sql" />
     <Content Include="SQL y Recursos\Recursos Internet\004-busbillet-Antezana-Lima-Ayacucho-2007-02-18.jpg" />
     <Content Include="SQL y Recursos\Recursos Internet\23423 %282%29.jpg" />
     <Content Include="SQL y Recursos\Recursos Internet\23423.jpg" />
@@ -196,7 +197,6 @@
     <Content Include="SQL y Recursos\Recursos Internet\Sistema-Venta-De-Pasajes-Encomiendasgiros-Phpmysq-Codigo-Fuente-Lambayeque.jpg" />
     <Content Include="SQL y Recursos\Recursos Internet\Sistema-Venta-De-Pasajes-Encomiendasgiros-Phpmysq-Codigo-Fuente-Peru.jpg" />
     <Content Include="SQL y Recursos\Recursos Internet\Sistema-Venta-De-Pasajes-Encomiendasgiros-Phpmysq-Codigo-Fuente-Servicios.jpg" />
-    <Content Include="SQL y Recursos\spTalento.sql" />
     <Content Include="SQL y Recursos\Venta_Pasaje %282%29.png" />
     <Content Include="Web.config" />
   </ItemGroup>

@@ -1,13 +1,12 @@
 use bdTransportesCMD
 go
-
 CREATE PROCEDURE spVehiculoListar
 as
 SELECT C.veh_placa, C.veh_modelo,C.veh_marca,C.veh_numAsiPrimer,C.veh_numAsiSegundo,C.veh_estado,
 		S.serEsp_nombre,c.veh_id
 FROM vehiculo C, servicioEspecial S
 WHERE C.serEspecial_id = S.serEsp_id
-and c.veh_estado = 'a'
+and c.veh_estado = 1
 go
 
 CREATE PROCEDURE spVehiculoXid(@veh_id int)
@@ -38,12 +37,11 @@ as begin
 end
 go
 
-
 create procedure spVehiculoEliminar(
 @veh_id int)
 
 as begin
-	update vehiculo set veh_estado='e'
+	update vehiculo set veh_estado=0
 	where veh_id = @veh_id
 end
 go

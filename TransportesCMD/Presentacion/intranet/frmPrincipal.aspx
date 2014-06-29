@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cuerpo" runat="server">
         <div class="header">            
-            <h1 class="page-title">Resumen</h1>
+            <h1 class="page-title">Resumen - En Mantenimiento</h1>
         </div>
         <ul class="breadcrumb">
             <li><a href="frmPrincipal.aspx">Principal</a> <span class="divider">/</span></li>

@@ -7,6 +7,10 @@
     <div class="header">
         <h1 class="page-title">Venta de Pasajes</h1>
     </div>
+    <ul class="breadcrumb">
+        <li><a href="#">Pasajes</a> <span class="divider">/</span></li>
+        <li class="active">Venta de Pasajes</li>
+    </ul>
     <div class="container-fluid">
         <div class="row-fluid">
             <div class="block">
@@ -41,7 +45,7 @@
                         </thead>
                         <tbody id="tbBodyItinerario">
                             <%-- Aqui Javascript JSON --%>
-                        </tbody>                        
+                        </tbody>
                     </table>
                     <label class="lblMensaje" id="lblItinerario"></label>
                 </div>
@@ -56,7 +60,7 @@
                         <br />
                         <div class="well">
                             <form name="frmRegistraVentaPasaje">
-                                <div class="hiddens">
+                                <div class="hidden">
                                     <input type="text" id="tamNumDocIdentidad" value="" />
                                     <input type="text" id="idItinerario" name="idItinerario" value="" />
                                     <input type="text" id="idPersona" name="idPersona" value="" />
@@ -77,6 +81,7 @@
                                 <div class="control-group">
                                     <input class="span12" name="apellidos" id="apellidos" />
                                     <label class="lblMensaje" id="lblApellidos"></label>
+                                    <%--<asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Solo Letras" ControlToValidate="apellidos" ValidationExpression="@numDocIden" ValidationGroup="VALIDACION"></asp:RegularExpressionValidator>--%>
                                 </div>
                                 <div>Nombres:</div>
                                 <div class="control-group">
@@ -101,14 +106,14 @@
                                     <div>Número de Asiento:</div>
                                     <div class="control-group">
                                         <input type="text" id="numAsiento" class="span12" name="numAsiento" disabled="disabled" />
-
+                                        <label class="lblMensaje" id="lblMensajeNumAsiento"></label>
                                     </div>
                                 </div>
                             </form>
                         </div>
 
                         <div class="btn-toolbar">
-                            <div class="span6">                                
+                            <div class="span6">
                                 <label class="lblMensaje" id="lblMsjVentaPasaje"></label>
                             </div>
                             <div class="span6">
@@ -117,7 +122,7 @@
                                     Aceptar
                                 </button>
                                 <button class="btn btn-ser" name="action" value="Cancelar" onclick="cancelarVenta()">Cancel</button>
-                                
+
                             </div>
 
 
@@ -129,14 +134,29 @@
             <div class="block span6">
                 <a href="#widget2container" class="block-heading" data-toggle="collapse">Réplica de Bus </a>
                 <div id="widget2container" class="block-body collapse in">
-                    <label class="lblMensaje" id="lblMensajeNumAsiento"></label>     
                     <div id="replicaBus">
                         <%--Aquí va Javascript y JSON--%>
                     </div>
                 </div>
             </div>
         </div>
-    </div>    
+    </div>
+    <div class="modal small hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="myModalLabel">Mensaje</h3>
+        </div>
+        <div class="modal-body">
+
+            <p class="error-text"><i class="icon-warning-sign modal-icon"></i><span id="mensajeBoleto"></span>
+
+            </p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">Aceptar</button>
+            <%--<button class="btn btn-danger" data-dismiss="modal">Delete</button>--%>
+        </div>
+    </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="javascript" runat="server">
     <script src="assets/lib/ventaPasaje.js"></script>

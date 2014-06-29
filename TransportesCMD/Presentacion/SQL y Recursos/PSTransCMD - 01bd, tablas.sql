@@ -4,11 +4,20 @@ create database bdTransportesCMD
 go
 use bdTransportesCMD
 go
+create table generales(
+gen_id int primary key identity not null,
+gen_clase int,
+gen_correlativo int,
+gen_descripcion varchar(200),
+gen_valor text,
+gen_estado int)
+go
 --Pasaporte, DNI, Libreta Militar
 create table documentoIdentidad(
 docIde_id int primary key identity not null,
 docIde_longitud int,
-docIde_descripcion varchar(25))
+docIde_descripcion varchar(25),
+docIde_valor varchar(50))
 go
 --Todo se registrarán
 create table persona(
@@ -23,7 +32,7 @@ per_direccion varchar(80),
 per_email varchar(50),
 per_img varchar(50),
 per_fecRegistro datetime, --Para Control Interno
-per_estado char, --Para Control Interno
+per_estado int, --Para Control Interno
 docIdentidad_id int)
 go
 alter table persona add constraint fk_persona_docIdentidad foreign key (docIdentidad_id) references documentoIdentidad(docIde_id)
@@ -33,21 +42,15 @@ usu_id int primary key identity not null,
 usu_user varchar(50) unique,
 usu_pass varbinary(8000),
 usu_fecRegistro datetime,
-usu_estado char(1),
+usu_estado int,
 persona_id int)
 alter table usuario add constraint fk_usuario_persona foreign key (persona_id) references persona(per_id)
-go
-create table departamento(
-dep_id int primary key identity not null,
-dep_nombre varchar(35))
 go
 --Registro de ciudades 
 create table ciudad(
 ciu_id int primary key identity not null,
-ciu_nomCiudad varchar(35),
-departamento_id int)
-go
-alter table ciudad add constraint fk_ciudad_departamento foreign key (departamento_id) references departamento(dep_id)
+ciu_departamento varchar(35),
+ciu_ciudad varchar(35))
 go
 create table sucursal(
 suc_id int primary key identity not null,
@@ -69,7 +72,7 @@ per_estCivil char(1),
 per_fecContrato date,
 per_fecFinContrato date,
 per_fecRegistro datetime,
-per_estado char(1),
+per_estado int,
 cargo_id int,
 persona_id int,
 sucursal_id int)
@@ -82,7 +85,7 @@ serEsp_id int primary key identity not null,
 serEsp_nombre varchar(35),
 serEsp_caracteristicas varchar(85),
 serEsp_fecRegistro datetime,
-serEsp_estado char(1))
+serEsp_estado int)
 go
 create table vehiculo(
 veh_id int primary key identity not null,
@@ -93,31 +96,39 @@ veh_numAsiPrimer int,
 veh_numAsiSegundo int,
 veh_img varchar(50),
 veh_fecRegistro datetime,
-veh_estado char(1),
+veh_estado int,
 serEspecial_id int)
 go
 alter table vehiculo add constraint fk_vehiculo_serEspecial foreign key (serEspecial_id) references servicioEspecial(serEsp_id)
 go
+create table ruta(
+rut_id int primary key identity not null,
+rut_horSalida varchar(15),
+rut_horViaje int,
+rut_estado int,
+sucOrigen_id int,
+sucDestino_id int)
+go
+alter table ruta add constraint fk_rutaOrigen_sucursal foreign key (sucOrigen_id) references sucursal(suc_id)
+alter table ruta add constraint fk_rutaDestino_sucursal foreign key (sucDestino_id) references sucursal(suc_id)
+go
 create table itinerario(
 iti_id int primary key identity not null,
-iti_horSalida datetime,
-iti_horLlegada datetime,
-iti_fecRegistro datetime,
+iti_fecSalida date,
+iti_fecRegistro date,
 iti_precio decimal(4,2),
-iti_estado char(1),
-sucursal_origen_id int,
-sucursal_destino_id int,
+iti_estado int,
+ruta_id int,
 vehiculo_id int,
 personal_id int)
-alter table itinerario add constraint fk_itiOrigen_sucursal foreign key (sucursal_origen_id) references sucursal(suc_id)
-alter table itinerario add constraint fk_itiDestino_sucursal foreign key (sucursal_destino_id) references sucursal(suc_id)
+alter table itinerario add constraint fk_itinerario_ruta foreign key (ruta_id) references ruta(rut_id)
 alter table itinerario add constraint fk_itinerario_vehiculo foreign key (vehiculo_id) references vehiculo(veh_id)
 alter table itinerario add constraint fk_itinerario_personal foreign key (personal_id) references personal(per_id)
 go
 create table itinerarioPersonal(
 itiPer_id int primary key identity not null,
 itiPer_fecRegistro datetime,
-itiPer_estado char(1),
+itiPer_estado int,
 personal_id int,
 itinerario_id int)
 go
@@ -140,8 +151,8 @@ go
 create table comprobanteSerie(
 comSer_id int primary key identity not null,
 comSer_serie int,
-comSer_numero int,
-comSer_estado char(1),
+comSer_correlativo int,
+comSer_estado int,
 comprobante_id int,
 sucursal_id int)
 alter table comprobanteSerie add constraint fk_comSerie_sucursal foreign key (sucursal_id) references sucursal(suc_id)
@@ -150,7 +161,7 @@ go
 create table boletoViaje(
 bolVia_id int primary key identity not null,
 bolVia_fecha datetime,
-bolVia_estado char(1),
+bolVia_estado int,
 bolVia_asiento int,
 persona_id int,
 personal_id int,
@@ -166,7 +177,7 @@ ordTra_id int primary key identity not null,
 ordTra_fecEnvio datetime,
 ordTra_fecEntrega datetime,
 ordTra_fecRegistro datetime,
-ordTra_estado char(1),
+ordTra_estado int,
 sucursal_origen_id  int,
 sucursal_destino_id  int,
 remitente_id int,
@@ -192,33 +203,60 @@ ordTra_id int)
 go
 alter table ordenTrasladoDetalle add constraint fk_ordTraDetalle_ordTraslado foreign key (ordTra_id) references ordenTraslado(ordTra_id)
 go
-
 --OTRA POSIBLES TABLAS
-create table mensajes(
+/*create table mensajes(
 men_id int primary key identity not null,
 men_codigo char(7) unique,
 men_descripcion text,
-men_fecRegistro datetime)
+men_fecRegistro datetime)*/
 go
-
 create trigger trCrearSerieXComprobante
 on comprobante after insert
 as 
-begin
-	declare @idNueComprobante int,@idSucursal int,@serie int
-	set @idNueComprobante = (select com_id from INSERTED)
-	declare curSucursal cursor for select suc_id from sucursal	
-	open curSucursal 
-	fetch curSucursal into @idSucursal
-	set @serie =1
-	while @@FETCH_STATUS=0		
+begin	
+	declare @contador int, @idNueComprobante int,@idSucursal int,@serie int
+	select @contador=count(*) from sucursal
+	if @contador>0 	
 		begin
-			insert into comprobanteSerie(comSer_serie,comSer_numero,comprobante_id,sucursal_id,comSer_estado) 
-			values(@serie,0,@idNueComprobante,@idSucursal,'a')			
+			set @idNueComprobante = (select com_id from INSERTED)
+			declare curSucursal cursor for select suc_id from sucursal	
+			open curSucursal 
 			fetch curSucursal into @idSucursal
-			set @serie+=1
-		end	
-	close curSucursal
-	DEALLOCATE curSucursal
+			set @serie =1
+			while @@FETCH_STATUS=0		
+				begin
+					insert into comprobanteSerie(comSer_serie,comSer_correlativo,comprobante_id,sucursal_id,comSer_estado) 
+					values(@serie,0,@idNueComprobante,@idSucursal,1)			
+					fetch curSucursal into @idSucursal
+					set @serie+=1
+				end	
+			close curSucursal
+			DEALLOCATE curSucursal	
+		end 
+	
 end
 go
+create trigger trCrearSerieXSucursal
+on sucursal after insert
+as 
+begin
+	declare @contador int, @idNueSucursal int,@idComprabante int,@serie int
+	select @contador=count(*) from sucursal
+	if @contador>0 
+		begin	
+			set @idNueSucursal = (select suc_id from INSERTED)
+			declare curComprobante cursor for select com_id from comprobante	
+			open curComprobante 
+			fetch curComprobante into @idComprabante
+			set @serie =1
+			while @@FETCH_STATUS=0		
+				begin
+					insert into comprobanteSerie(comSer_serie,comSer_correlativo,comprobante_id,sucursal_id,comSer_estado) 
+					values(@serie,0,@idComprabante,@idNueSucursal,1)			
+					fetch curComprobante into @idComprabante
+					set @serie+=1
+				end	
+			close curComprobante
+			DEALLOCATE curComprobante
+		end
+end
