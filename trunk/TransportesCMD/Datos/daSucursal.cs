@@ -10,7 +10,6 @@ using Entidades;
 namespace Datos
 {
     public class daSucursal
-
     {
         #region singleton
         private static readonly daSucursal _instancia = new daSucursal();
@@ -76,7 +75,7 @@ namespace Datos
                 {
                     sucursal = new enSucursal();
                     sucursal.suc_id = Convert.ToInt32(dr[0].ToString());
-                    sucursal.suc_nombre = dr[1].ToString();
+                    sucursal.suc_nombre = dr[2].ToString();
                     lstSucursalSalida.Add(sucursal);
                 }
 
@@ -104,7 +103,7 @@ namespace Datos
             {
                 cn = Conexion.ConexionSQL();
                 cmd = new SqlCommand("spIntinerarioDestinoXIdOrigen", cn);
-                cmd.Parameters.AddWithValue("@sucursal_origen_id", prmIdOrigen);
+                cmd.Parameters.AddWithValue("@sucOrigen_id", prmIdOrigen);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cn.Open();
                 dr = cmd.ExecuteReader();
@@ -130,7 +129,52 @@ namespace Datos
 
         }
 
+
+        public static List<enSucursal> spListaSucursaAll()
+        {
+
+            SqlConnection cn = null;
+            SqlCommand cmd = null;
+            SqlDataReader dr = null;
+            List<enSucursal> lstsucursal = null;
+            try
+            {
+                cn = Conexion.ConexionSQL();
+                cmd = new SqlCommand("select suc_id, suc_nombre,suc_direccion,ciu_id,ciu_ciudad,ciu_departamento   from sucursal s inner join ciudad c on c.ciu_id=s.ciudad_id", cn);
+                cmd.CommandType = CommandType.Text;
+                cn.Open();
+                dr = cmd.ExecuteReader();
+                lstsucursal = new List<enSucursal>();
+                while (dr.Read())
+                {
+                    enSucursal sucursal = new enSucursal();
+                    sucursal.suc_id = Convert.ToInt32(dr[0].ToString());
+                    sucursal.suc_nombre = dr[1].ToString() + " , " + dr[4].ToString();
+                    sucursal.suc_direccion = dr[2].ToString();
+
+                    enCiudad ciudad = new enCiudad();
+                    ciudad.ciu_id = Convert.ToInt32(dr[3].ToString());
+                    ciudad.ciu_ciudad = dr[4].ToString();
+                    ciudad.ciu_departamento = dr[5].ToString();
+
+                    lstsucursal.Add(sucursal);
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                dr.Close();
+                cn.Close();
+            }
+            return lstsucursal;
+
+        }
+
+
         #endregion
-        
+
     }
 }

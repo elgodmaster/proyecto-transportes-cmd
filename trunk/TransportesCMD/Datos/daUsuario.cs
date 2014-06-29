@@ -11,7 +11,8 @@ namespace Datos
 {
     public class daUsuario
     {
-        public static enUsuario spUsuarioLogin(enUsuario prmUsuario) {
+        public static enUsuario spUsuarioLogin(enUsuario prmUsuario)
+        {
             SqlConnection cn = null;
             SqlCommand cmd = null;
             SqlDataReader dr = null;
@@ -29,20 +30,24 @@ namespace Datos
                 {
                     usuario = new enUsuario();
                     usuario.usu_id = Convert.ToInt32(dr[0].ToString());
-                            enPersona persona = new enPersona();
-                            persona.per_nombres = dr[1].ToString();
-                            persona.per_apellidos = dr[2].ToString();
-                    usuario.usu_user = dr[3].ToString();                        
-                        enPersonal personal = new enPersonal();
-                        personal.per_id = Convert.ToInt32(dr[4].ToString());
-                        personal.persona = persona;                       
-                    usuario.personal = personal;                    
+                    usuario.usu_user = dr[1].ToString();
+                    enPersona persona = new enPersona();
+                    persona.per_id = Convert.ToInt32(dr[2].ToString());
+                    persona.per_nombres = dr[3].ToString();
+                    persona.per_apellidos = dr[4].ToString();
+                    enPersonal personal = new enPersonal();
+                    personal.per_id = Convert.ToInt32(dr[5].ToString());
+                    enCargo cargo = new enCargo();
+                    cargo.car_id = Convert.ToInt32(dr[6].ToString());
+                    cargo.car_nomCargo = dr[7].ToString();
+                    personal.persona = persona;
+                    usuario.personal = personal;
                 }
 
             }
             catch (Exception e)
             {
-                
+
             }
             finally
             {

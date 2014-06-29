@@ -8,11 +8,11 @@ namespace Entidades
 {
     public class enControlAsiento
     {
-        public int conAsi_id {get;set;}
-        public int conAsi_control {get;set;}
-        public int conAsi_piso  {get;set;}
-        public int conAsi_numAsiento  {get;set;}
-        public String conAsi_estAsiento  {get;set;}
+        public int conAsi_id { get; set; }
+        public int conAsi_control { get; set; }
+        public int conAsi_piso { get; set; }
+        public int conAsi_numAsiento { get; set; }
+        public String conAsi_estAsiento { get; set; }
         public enItinerario itinerario { get; set; }
     }
 }

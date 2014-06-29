@@ -95,6 +95,9 @@
     <Content Include="assets\js\Myriad_Pro_italic_400.font.js" />
     <Content Include="assets\js\Myriad_Pro_italic_600.font.js" />
     <Content Include="assets\js\PIE.htc" />
+    <Content Include="intranet\assets\css\cmxform.css" />
+    <Content Include="intranet\assets\css\cmxformTemplate.css" />
+    <Content Include="intranet\assets\css\core.css" />
     <Content Include="intranet\assets\css\images\animated-overlay.gif" />
     <Content Include="intranet\assets\css\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
     <Content Include="intranet\assets\css\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
@@ -110,6 +113,23 @@
     <Content Include="intranet\assets\css\images\ui-icons_ef8c08_256x240.png" />
     <Content Include="intranet\assets\css\images\ui-icons_ffd27a_256x240.png" />
     <Content Include="intranet\assets\css\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="intranet\assets\css\reset.css" />
+    <Content Include="intranet\assets\css\screen.css" />
+    <Content Include="intranet\assets\datatable\css\jquery.dataTables.min.css" />
+    <Content Include="intranet\assets\datatable\css\jquery.dataTables_themeroller.min.css" />
+    <Content Include="intranet\assets\datatable\images\back_disabled.png" />
+    <Content Include="intranet\assets\datatable\images\back_enabled.png" />
+    <Content Include="intranet\assets\datatable\images\back_enabled_hover.png" />
+    <Content Include="intranet\assets\datatable\images\favicon.ico" />
+    <Content Include="intranet\assets\datatable\images\forward_disabled.png" />
+    <Content Include="intranet\assets\datatable\images\forward_enabled.png" />
+    <Content Include="intranet\assets\datatable\images\forward_enabled_hover.png" />
+    <Content Include="intranet\assets\datatable\images\sort_asc.png" />
+    <Content Include="intranet\assets\datatable\images\sort_asc_disabled.png" />
+    <Content Include="intranet\assets\datatable\images\sort_both.png" />
+    <Content Include="intranet\assets\datatable\images\sort_desc.png" />
+    <Content Include="intranet\assets\datatable\images\sort_desc_disabled.png" />
+    <Content Include="intranet\assets\datatable\js\jquery.dataTables.min.js" />
     <Content Include="intranet\assets\images\140x140.gif" />
     <Content Include="intranet\assets\images\170x170.gif" />
     <Content Include="intranet\assets\images\background.png" />
@@ -127,6 +147,7 @@
     <Content Include="intranet\assets\lib\font-awesome\css\font-awesome-ie7.css" />
     <Content Include="intranet\assets\lib\font-awesome\css\font-awesome.css" />
     <Content Include="intranet\assets\lib\gestionItinerario.js" />
+    <Content Include="intranet\assets\lib\jquery.maskedinput.min.js" />
     <Content Include="intranet\assets\lib\jquery\calendar.png" />
     <Content Include="intranet\assets\lib\jquery\jquery-1.10.2.js" />
     <Content Include="intranet\assets\lib\jquery\jquery-ui-1.10.4.min.js" />
@@ -148,6 +169,7 @@
     <Content Include="intranet\frmVentaPasaje.aspx" />
     <Content Include="intranet\index.aspx" />
     <Content Include="intranet\wsMDI.asmx" />
+    <Content Include="intranet\wsRuta.asmx" />
     <Content Include="intranet\wsServicio.asmx" />
     <Content Include="intranet\wsVehiculo.asmx" />
     <Content Include="intranet\wsVentaPasaje.asmx" />
@@ -236,6 +258,10 @@
       <DependentUpon>wsMDI.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="intranet\wsRuta.asmx.cs">
+      <DependentUpon>wsRuta.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="intranet\wsServicio.asmx.cs">
       <DependentUpon>wsServicio.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -276,6 +302,7 @@
     <Content Include="intranet\assets\lib\font-awesome\sass\font-awesome.sass" />
     <Content Include="intranet\assets\lib\font-awesome\sass\font-awesome.scss" />
     <Content Include="SQL y Recursos\TRANSPORTES CMD.doc" />
+    <Content Include="intranet\assets\datatable\images\Sorting icons.psd" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

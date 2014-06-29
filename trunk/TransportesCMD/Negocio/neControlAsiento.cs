@@ -10,9 +10,10 @@ namespace Negocio
 {
     public class neControlAsiento
     {
-        public static List<enControlAsiento> spControlAsientoXIdItinerario(int prmIdItinerario) {
+        public static List<enControlAsiento> spControlAsientoXIdItinerario(int prmIdItinerario)
+        {
             return daControlAsiento.spControlAsientoXIdItinerario(prmIdItinerario);
         }
-       
+
     }
 }

@@ -8,8 +8,8 @@ namespace Entidades
 {
     public class enPersona
     {
-        public int per_id {get;set;}
-        public String per_nombres {get;set;}
+        public int per_id { get; set; }
+        public String per_nombres { get; set; }
         public String per_apellidos { get; set; }
         public String per_numDocIdentidad { get; set; }
         public String per_fecNacimiento { get; set; }
@@ -19,8 +19,8 @@ namespace Entidades
         public String per_direccion { get; set; }
         public String per_email { get; set; }
         public String per_img { get; set; }
-        public DateTime per_fecRegistro {get;set;}
-        public String per_estado { get; set; }
+        public DateTime per_fecRegistro { get; set; }
+        public int per_estado { get; set; }
         public enDocumentoIdentidad documentoIdentidad { get; set; }
 
         public String personaMensaje { get; set; }

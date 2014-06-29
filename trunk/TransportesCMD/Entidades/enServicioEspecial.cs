@@ -8,10 +8,10 @@ namespace Entidades
 {
     public class enServicioEspecial
     {
-        public int serEsp_id {get;set;}
+        public int serEsp_id { get; set; }
         public String serEsp_nombre { get; set; }
-        public String serEsp_caracteristicas {get;set;}
-        public String serEsp_fecRegistro {get;set;}
-        public String serEsp_estado { get; set; }
+        public String serEsp_caracteristicas { get; set; }
+        public String serEsp_fecRegistro { get; set; }
+        public int serEsp_estado { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 ﻿
 $(document).ready(function () {
-    limpiarImputText(true,true,true,true,true,true,true,true, true);
-    ocultarComponente(true,true);
+    limpiarImputText(true, true, true, true, true, true, true, true, true);
+    ocultarComponente(true, true);
 
     spIntinerarioOrigenXNombre();
     spDocumentoIdentidadLista();
@@ -19,19 +19,19 @@ $(document).ready(function () {
             if (m < 0 || (m == 0 && fecActual.getDate() < fecSeleccionada.getDate())) {
                 edad--;
             }
-            document.getElementById("edad").value = edad;           
+            document.getElementById("edad").value = edad;
         }
 
     });
     //$(".asiento-o option[value=" + enPersona.documentoIdentidad.docIde_id + "]").attr("selected", true);
 
-    
-    
+
+
     //$(".asiento-o").unbind("click", handler);
-   
+
 });
 
-function limpiarImputText(numDocIdentidad, nombres, apellidos, fecNacimiento, edad, numAsiento,idPersona, idItinerario,tamNumDocIdentidad) {   
+function limpiarImputText(numDocIdentidad, nombres, apellidos, fecNacimiento, edad, numAsiento, idPersona, idItinerario, tamNumDocIdentidad) {
     if (numDocIdentidad) { document.getElementById("numDocIdentidad").value = ""; }
     if (nombres) { document.getElementById("nombres").value = ""; }
     if (apellidos) { document.getElementById("apellidos").value = ""; }
@@ -43,7 +43,7 @@ function limpiarImputText(numDocIdentidad, nombres, apellidos, fecNacimiento, ed
     if (tamNumDocIdentidad) { document.getElementById("tamNumDocIdentidad").value = ""; }
 }
 
-function ocultarComponente( tbItinerario, replicaBus) {
+function ocultarComponente(tbItinerario, replicaBus) {
     if (tbItinerario) { document.getElementById("tbItinerario").style.display = "none"; }
     else { document.getElementById("tbItinerario").style.display = "block"; }
 
@@ -66,11 +66,11 @@ function removerSpan(lblMsjVentaPasaje) {
     if (lblMsjVentaPasaje) { $("#lblMsjVentaPasaje").find("span").remove(); }
 }
 
-$("#salidaOrigen").change(function () { 
+$("#salidaOrigen").change(function () {
     spIntinerarioDestinoXIdOrigen($('#salidaOrigen').val());
 });
 
-$("#salidaDestino").change(function () { 
+$("#salidaDestino").change(function () {
     spIntinerarioFechaSalidaXIdOrigenIdDestino($('#salidaOrigen').val(), $('#salidaDestino').val());
 });
 
@@ -81,7 +81,7 @@ $("#itinerarioFecha").change(function () {
 function spIntinerarioOrigenXNombre() {
     //limpiarImputText(true, true, true, true, true, true, true,true,true);
     removerOptions(false, true, true, false);
-    ocultarComponente( true, true);
+    ocultarComponente(true, true);
     removerTr(true);
     document.getElementById("numAsiento").value = "";
 
@@ -120,7 +120,7 @@ function spIntinerarioDestinoXIdOrigen(prmIdOrigen) {
         dataType: "json",
         success: function (response) {
             //salDestino.append('<option value="0">Seleccione Destino</option>');
-            var sucursales = response.d; 
+            var sucursales = response.d;
             $.each(sucursales, function (index, enSucursal) {
                 etiqueta.append('<option value="' + enSucursal.suc_id + '">' + enSucursal.suc_nombre + '</option>');
             });
@@ -136,7 +136,7 @@ function spIntinerarioDestinoXIdOrigen(prmIdOrigen) {
 function spIntinerarioFechaSalidaXIdOrigenIdDestino(prmIdOrigen, prmIdDestino) {
     //limpiarImputText(true, true, true, true, true, true, true, true, true);
     removerOptions(false, false, true, false);
-    ocultarComponente( true, true);
+    ocultarComponente(true, true);
     removerTr(true);
     document.getElementById("numAsiento").value = "";
     var etiqueta = $("#itinerarioFecha");
@@ -150,7 +150,7 @@ function spIntinerarioFechaSalidaXIdOrigenIdDestino(prmIdOrigen, prmIdDestino) {
             //itiFecha.append('<option value="0">Seleccione Fecha</option>');
             var itinerarios = response.d;
             $.each(itinerarios, function (index, enItinerario) {
-                etiqueta.append('<option value="' + enItinerario.iti_horSalida + '">' + enItinerario.iti_horSalida + '</option>');
+                etiqueta.append('<option value="' + enItinerario.iti_fecSalida + '">' + enItinerario.iti_fecSalida + '</option>');
             });
             spIntinerarioResumenXIdOrigenIdDestinoFecha($('#salidaOrigen').val(), $('#salidaDestino').val(), $('#itinerarioFecha').val());
         },
@@ -164,7 +164,7 @@ function spIntinerarioFechaSalidaXIdOrigenIdDestino(prmIdOrigen, prmIdDestino) {
 function spIntinerarioResumenXIdOrigenIdDestinoFecha(prmIdOrigen, prmIdDestino, prmFecha) {
     //limpiarImputText(true, true, true, true, true, true, true, true);
     removerOptions(false, false, false, false);
-    ocultarComponente( false, true);
+    ocultarComponente(false, true);
     removerTr(true);
     document.getElementById("numAsiento").value = "";
     var etiqueta = $("#tbBodyItinerario");
@@ -177,15 +177,15 @@ function spIntinerarioResumenXIdOrigenIdDestinoFecha(prmIdOrigen, prmIdDestino, 
         success: function (response) {
             var itinerarios = response.d;
             var i = 1;
-            $.each(itinerarios, function (index, enItinerario) {                
-                etiqueta.append('<tr onclick="spControlAsientoXIdItinerario(' + enItinerario.iti_id +')">'
+            $.each(itinerarios, function (index, enItinerario) {
+                etiqueta.append('<tr onclick="spControlAsientoXIdItinerario(' + enItinerario.iti_id + ')">'
                     + '<td>' + i + '</td>'
-                    + '<td>' + enItinerario.iti_horSalida + '</td>'                    
+                    + '<td>' + enItinerario.ruta.rut_horSalida + '</td>'
                     + '<td> S/. ' + enItinerario.iti_precio + '</td>'
                     + '<td>' + enItinerario.vehiculo.veh_totAsientos + ' Asientos</td>'
                     + '<td>' + enItinerario.vehiculo.servicioEspecial.serEsp_nombre + '</td></tr>');
                 i++;
-            });            
+            });
         },
         failure: function (msg) {
             alert(msg);
@@ -205,7 +205,7 @@ jQuery('#tbBodyItinerario').on('click', 'tr', function (evt) {
     $(this).addClass("trSeleccionado");
 });
 
-function spControlAsientoXIdItinerario(prmIdItinerario) { 
+function spControlAsientoXIdItinerario(prmIdItinerario) {
     document.getElementById("idItinerario").value = prmIdItinerario;
     document.getElementById("numAsiento").value = "";
     var etiqueta = $("#replicaBus");
@@ -217,24 +217,24 @@ function spControlAsientoXIdItinerario(prmIdItinerario) {
         dataType: "json",
         success: function (response) {
             etiqueta.find("div").remove();
-            ocultarComponente( false, false);
+            ocultarComponente(false, false);
 
             var controlAsiento = response.d;
             etiqueta.append('<div><h4>Primer Piso</h4></div>');
             var contSeg = 1;
             var contPri = 1;
-            for (var i = 0; i < controlAsiento.length; ++i) {                 
-                if (controlAsiento[i + 3].conAsi_piso == 1) {                   
+            for (var i = 0; i < controlAsiento.length; ++i) {
+                if (controlAsiento[i + 3].conAsi_piso == 1) {
                     if (controlAsiento.length > 60) {
                         etiqueta.append('<div class="fila">'
                        + '<div class="asiento"><a onfocus="this.blur()" class="asiento-' + controlAsiento[i].conAsi_estAsiento + '"   onclick="asignarAsiento(' + controlAsiento[i].conAsi_numAsiento + ')">' + controlAsiento[i].conAsi_numAsiento + '</a></div>'
-                       + '<div class="asiento"><a class="asiento-' + controlAsiento[i + 1].conAsi_estAsiento + '" onclick="asignarAsiento(' + controlAsiento[i+1].conAsi_numAsiento + ')">' + controlAsiento[i + 1].conAsi_numAsiento + '</a></div>'
+                       + '<div class="asiento"><a class="asiento-' + controlAsiento[i + 1].conAsi_estAsiento + '" onclick="asignarAsiento(' + controlAsiento[i + 1].conAsi_numAsiento + ')">' + controlAsiento[i + 1].conAsi_numAsiento + '</a></div>'
                        + '<div class="asiento"></div>'
-                       + '<div class="asiento"><a class="asiento-' + controlAsiento[i + 2].conAsi_estAsiento + '" onclick="asignarAsiento(' + controlAsiento[i+2].conAsi_numAsiento + ')">' + controlAsiento[i + 2].conAsi_numAsiento + '</a></div>'
-                       + '<div class="asiento"><a class="asiento-' + controlAsiento[i + 3].conAsi_estAsiento + '" onclick="asignarAsiento(' + controlAsiento[i+3].conAsi_numAsiento + ')">' + controlAsiento[i + 3].conAsi_numAsiento + '</a></div>'
+                       + '<div class="asiento"><a class="asiento-' + controlAsiento[i + 2].conAsi_estAsiento + '" onclick="asignarAsiento(' + controlAsiento[i + 2].conAsi_numAsiento + ')">' + controlAsiento[i + 2].conAsi_numAsiento + '</a></div>'
+                       + '<div class="asiento"><a class="asiento-' + controlAsiento[i + 3].conAsi_estAsiento + '" onclick="asignarAsiento(' + controlAsiento[i + 3].conAsi_numAsiento + ')">' + controlAsiento[i + 3].conAsi_numAsiento + '</a></div>'
                        + '</div>');
                         i += 3;
-                        
+
                     } else {
                         if (contPri == 3 || contPri == 4) {
                             etiqueta.append('<div class="fila">'
@@ -248,10 +248,10 @@ function spControlAsientoXIdItinerario(prmIdItinerario) {
                         } else {
                             etiqueta.append('<div class="fila">'
                       + '<div class="asiento"><a class="asiento-' + controlAsiento[i].conAsi_estAsiento + '"  onclick="asignarAsiento(' + controlAsiento[i].conAsi_numAsiento + ')">' + controlAsiento[i].conAsi_numAsiento + '</a></div>'
-                      + '<div class="asiento"><a class="asiento-' + controlAsiento[i + 1].conAsi_estAsiento + '"  onclick="asignarAsiento(' + controlAsiento[i+1].conAsi_numAsiento + ')">' + controlAsiento[i + 1].conAsi_numAsiento + '</a></div>'
+                      + '<div class="asiento"><a class="asiento-' + controlAsiento[i + 1].conAsi_estAsiento + '"  onclick="asignarAsiento(' + controlAsiento[i + 1].conAsi_numAsiento + ')">' + controlAsiento[i + 1].conAsi_numAsiento + '</a></div>'
                       + '<div class="asiento"></div>'
-                      + '<div class="asiento"><a class="asiento-' + controlAsiento[i + 2].conAsi_estAsiento + '"  onclick="asignarAsiento(' + controlAsiento[i+2].conAsi_numAsiento + ')">' + controlAsiento[i + 2].conAsi_numAsiento + '</a></div>'
-                      + '<div class="asiento"><a class="asiento-' + controlAsiento[i + 3].conAsi_estAsiento + '"   onclick="asignarAsiento(' + controlAsiento[i+3].conAsi_numAsiento + ')">' + controlAsiento[i + 3].conAsi_numAsiento + '</a></div>'
+                      + '<div class="asiento"><a class="asiento-' + controlAsiento[i + 2].conAsi_estAsiento + '"  onclick="asignarAsiento(' + controlAsiento[i + 2].conAsi_numAsiento + ')">' + controlAsiento[i + 2].conAsi_numAsiento + '</a></div>'
+                      + '<div class="asiento"><a class="asiento-' + controlAsiento[i + 3].conAsi_estAsiento + '"   onclick="asignarAsiento(' + controlAsiento[i + 3].conAsi_numAsiento + ')">' + controlAsiento[i + 3].conAsi_numAsiento + '</a></div>'
                       + '</div>');
                             i += 3;
                         }
@@ -260,11 +260,11 @@ function spControlAsientoXIdItinerario(prmIdItinerario) {
                 } else if (controlAsiento[i + 3].conAsi_piso == 2) {
                     if (contSeg == 1) {
                         etiqueta.append('<div><h4>Segundo Piso</h4></div>');
-                    }                   
+                    }
                     if (contSeg == 3 || contSeg == 4) {
                         etiqueta.append('<div class="fila">'
                             + '<div class="asiento"><a class="asiento-' + controlAsiento[i].conAsi_estAsiento + '" onclick="asignarAsiento(' + controlAsiento[i].conAsi_numAsiento + ')">' + controlAsiento[i].conAsi_numAsiento + '</a></div>'
-                            + '<div class="asiento"><a class="asiento-' + controlAsiento[i + 1].conAsi_estAsiento + '"   onclick="asignarAsiento(' + controlAsiento[i+1].conAsi_numAsiento + ')">' + controlAsiento[i + 1].conAsi_numAsiento + '</a></div>'
+                            + '<div class="asiento"><a class="asiento-' + controlAsiento[i + 1].conAsi_estAsiento + '"   onclick="asignarAsiento(' + controlAsiento[i + 1].conAsi_numAsiento + ')">' + controlAsiento[i + 1].conAsi_numAsiento + '</a></div>'
                             + '<div class="asiento"></div>'
                             + '<div class="asiento"></div>'
                             + '<div class="asiento"></div>'
@@ -273,18 +273,18 @@ function spControlAsientoXIdItinerario(prmIdItinerario) {
                     } else {
                         etiqueta.append('<div class="fila">'
                         + '<div class="asiento"><a class="asiento-' + controlAsiento[i].conAsi_estAsiento + '"  onclick="asignarAsiento(' + controlAsiento[i].conAsi_numAsiento + ')">' + controlAsiento[i].conAsi_numAsiento + '</a></div>'
-                        + '<div class="asiento"><a class="asiento-' + controlAsiento[i + 1].conAsi_estAsiento + '"  onclick="asignarAsiento(' + controlAsiento[i+1].conAsi_numAsiento + ')">' + controlAsiento[i + 1].conAsi_numAsiento + '</a></div>'
+                        + '<div class="asiento"><a class="asiento-' + controlAsiento[i + 1].conAsi_estAsiento + '"  onclick="asignarAsiento(' + controlAsiento[i + 1].conAsi_numAsiento + ')">' + controlAsiento[i + 1].conAsi_numAsiento + '</a></div>'
                         + '<div class="asiento"></div>'
-                        + '<div class="asiento"><a class="asiento-' + controlAsiento[i + 2].conAsi_estAsiento + '" onclick="asignarAsiento(' + controlAsiento[i+2].conAsi_numAsiento + ')">' + controlAsiento[i + 2].conAsi_numAsiento + '</a></div>'
-                        + '<div class="asiento"><a class="asiento-' + controlAsiento[i + 3].conAsi_estAsiento + '"   onclick="asignarAsiento(' + controlAsiento[i+3].conAsi_numAsiento + ')">' + controlAsiento[i + 3].conAsi_numAsiento + '</a></div>'
+                        + '<div class="asiento"><a class="asiento-' + controlAsiento[i + 2].conAsi_estAsiento + '" onclick="asignarAsiento(' + controlAsiento[i + 2].conAsi_numAsiento + ')">' + controlAsiento[i + 2].conAsi_numAsiento + '</a></div>'
+                        + '<div class="asiento"><a class="asiento-' + controlAsiento[i + 3].conAsi_estAsiento + '"   onclick="asignarAsiento(' + controlAsiento[i + 3].conAsi_numAsiento + ')">' + controlAsiento[i + 3].conAsi_numAsiento + '</a></div>'
                         + '</div>');
                         i += 3;
                     }
                     contSeg++;
                 }
-                 
+
             }
-            
+
             //document.getElementsByClassName('asiento-o').removeAttr("onclick");
             $(".asiento-o").removeAttr("onclick");
             //scroll();
@@ -292,12 +292,12 @@ function spControlAsientoXIdItinerario(prmIdItinerario) {
         failure: function (msg) {
             alert(msg);
         }
-    });    
+    });
 }
 
 function asignarAsiento(numAsiento) {
     document.getElementById("numAsiento").value = "";
-    ocultarComponente( false, false);
+    ocultarComponente(false, false);
     document.getElementById("numAsiento").value = numAsiento;
 }
 
@@ -311,11 +311,11 @@ function spDocumentoIdentidadLista() {
         dataType: "json",
         success: function (response) {
             var numDocIdentidad = response.d;
-            document.getElementById("tamNumDocIdentidad").value=numDocIdentidad[0].docIde_longitud;
+            document.getElementById("tamNumDocIdentidad").value = numDocIdentidad[0].docIde_longitud;
             $.each(numDocIdentidad, function (index, enDocumentoIdentidad) {
                 etiqueta.append('<option value="' + enDocumentoIdentidad.docIde_id + '">' + enDocumentoIdentidad.docIde_descripcion + '</option>');
-            });            
-            
+            });
+
         },
         failure: function (msg) {
             alert(msg);
@@ -325,21 +325,21 @@ function spDocumentoIdentidadLista() {
 
 
 function mostrarTamanioNumeroDocumentoIdentidad() {
-$.ajax({
-    type: "POST",
-    url: "wsVentaPasaje.asmx/longitudNumeroDocumentoIdentidad",
-    data: "{ 'prmIdDocIdentidad': '" + $("#tipDocIdentidad").val() + "'}",
-    contentType: "application/json; charset=utf-8",
-    dataType: "json",
-    success: function (response) {
-        $.each(response.d, function (index, enDocumentoIdentidad) {
-            document.getElementById("tamNumDocIdentidad").value = enDocumentoIdentidad.docIde_longitud;
-        });
-    },
-    failure: function (msg) {
-        alert(msg);
-    }
-});
+    $.ajax({
+        type: "POST",
+        url: "wsVentaPasaje.asmx/longitudNumeroDocumentoIdentidad",
+        data: "{ 'prmIdDocIdentidad': '" + $("#tipDocIdentidad").val() + "'}",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (response) {
+            $.each(response.d, function (index, enDocumentoIdentidad) {
+                document.getElementById("tamNumDocIdentidad").value = enDocumentoIdentidad.docIde_longitud;
+            });
+        },
+        failure: function (msg) {
+            alert(msg);
+        }
+    });
 }
 
 $("#tipDocIdentidad").change(function () {
@@ -348,7 +348,7 @@ $("#tipDocIdentidad").change(function () {
 
 
 function spPersonaXNumeroDocumentoIdentidad(prmNumDocIde) {
-    limpiarImputText(false, false, false, false, false, false, true, false,false);
+    limpiarImputText(false, false, false, false, false, false, true, false, false);
     $.ajax({
         type: "POST",
         url: "wsVentaPasaje.asmx/spPersonaXNumeroDocumentoIdentidad",
@@ -356,27 +356,27 @@ function spPersonaXNumeroDocumentoIdentidad(prmNumDocIde) {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (response) {
-            
+
             var persona = response.d;
-            $.each(persona, function (index, enPersona) { 
-                    document.getElementById("nombres").value = enPersona.per_nombres;
-                    document.getElementById("apellidos").value = enPersona.per_apellidos;
-                    document.getElementById("fecNacimiento").value = enPersona.per_fecNacimiento;
-                    document.getElementById("edad").value = enPersona.edad;
-                    document.getElementById("idPersona").value = enPersona.per_id;                
-                    if (enPersona.per_sexo == 'm') {
-                        document.frmRegistraVentaPasaje.sexo[0].checked = true;
-                    } else if (enPersona.per_sexo == 'f') {
-                        document.frmRegistraVentaPasaje.sexo[1].checked = true;
-                    } 
-                    removerSpan(true);
-                    $('#lblMsjVentaPasaje').append("<span>" + enPersona.personaMensaje + ".</span>");
-                    $("#tipDocIdentidad option[value=" + enPersona.documentoIdentidad.docIde_id + "]").attr("selected", true);
-                    mostrarTamanioNumeroDocumentoIdentidad();
-                
+            $.each(persona, function (index, enPersona) {
+                document.getElementById("nombres").value = enPersona.per_nombres;
+                document.getElementById("apellidos").value = enPersona.per_apellidos;
+                document.getElementById("fecNacimiento").value = enPersona.per_fecNacimiento;
+                document.getElementById("edad").value = enPersona.edad;
+                document.getElementById("idPersona").value = enPersona.per_id;
+                if (enPersona.per_sexo == 'm') {
+                    document.frmRegistraVentaPasaje.sexo[0].checked = true;
+                } else if (enPersona.per_sexo == 'f') {
+                    document.frmRegistraVentaPasaje.sexo[1].checked = true;
+                }
+                removerSpan(true);
+                $('#lblMsjVentaPasaje').append("<span>" + enPersona.personaMensaje + ".</span>");
+                $("#tipDocIdentidad option[value=" + enPersona.documentoIdentidad.docIde_id + "]").attr("selected", true);
+                mostrarTamanioNumeroDocumentoIdentidad();
+
             });
         },
-        failure: function (msg) {           
+        failure: function (msg) {
             alert(msg);
         }
     });
@@ -389,11 +389,11 @@ function buscarPersonaPorNic() {
 
     } else {
         //limpiarImputText(numDocIdentidad, nombres, apellidos, fecNacimiento, edad, numAsiento, idPersona, idItinerario, tamNumDocIdentidad)
-        limpiarImputText(false, true, true, true, true, false, true, false,false);
+        limpiarImputText(false, true, true, true, true, false, true, false, false);
         removerSpanLabel("lblNDocumento");
         $('#lblNDocumento').append("<span>La longitud de \"Número de Documento\" debe ser de " + $('#tamNumDocIdentidad').val() + "</span>");
     }
-    
+
 }
 $("#numDocIdentidad").keyup(function () {
     validarInt("numDocIdentidad");
@@ -407,7 +407,7 @@ $("#numDocIdentidad").keydown(function () {
         mostrarAlerta("lblNDocumento", "Ingrese solo enteros");
     }
     if (validarTeclaPresionada(event, 13) == true) {
-        
+
     }
 });
 
@@ -467,16 +467,19 @@ function spBoletoViajeRegistro() {
         url: "wsVentaPasaje.asmx/spBoletoViajeRegistro",
         data: "{ 'prmAsiento': '" + $('#numAsiento').val()
             + "', 'prmIdPersona': '" + $('#idPersona').val()
-            + "', 'prmIdItinerario': '" + $('#idItinerario').val()+ "'}",
+            + "', 'prmIdItinerario': '" + $('#idItinerario').val() + "'}",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (response) {
-            var lstBolViaje = response.d;            
+            var lstBolViaje = response.d;
             $.each(lstBolViaje, function (index, enBoletoViaje) {
-                alert("Proceso Correcto ");
+                $("#mensajeBoleto").html('');
+                $("#mensajeBoleto").html(enBoletoViaje.mensaje.mensaje);
+                $('#myModal').modal('show');
+                //alert(enBoletoViaje.mensaje.mensaje);
             });
-           spControlAsientoXIdItinerario($('#idItinerario').val());
-            limpiarImputText(true, true, true, true, true, true, true, false,false);
+            spControlAsientoXIdItinerario($('#idItinerario').val());
+            limpiarImputText(true, true, true, true, true, true, true, false, false);
             removerSpan(true);
         },
         failure: function (msg) {
@@ -486,14 +489,6 @@ function spBoletoViajeRegistro() {
 }
 
 function spBoletoViajeRegistroPersona() {
-    //int prmAsiento, 
-    //       String per_nombres, 
-    //       String per_apellidos, 
-    //       String per_numDocIdentidad,
-    //       String per_fecNacimiento, 
-    //       String per_sexo, 
-    //       int docIdentidad_id, 
-    //       int prmIdItinerario)
 
     for (i = 0; i < document.frmRegistraVentaPasaje.sexo.length; i++) {
         if (document.frmRegistraVentaPasaje.sexo[i].checked) {
@@ -533,16 +528,16 @@ function removerSpanLabel(etiqueta) {
     $("#" + etiqueta).find("span").remove();
 }
 
-function mostrarAlerta(etiqueta, mensaje) {    
+function mostrarAlerta(etiqueta, mensaje) {
     removerSpanLabel(etiqueta);
-    $("#"+etiqueta).append("<span>"+mensaje+"</span>");
+    $("#" + etiqueta).append("<span>" + mensaje + "</span>");
 }
 
 
 
 //$("#apellidos").keyup(function () {
 //    if (validarTexto("apellidos")==false) {
-        
+
 //    mostrarAlerta("lblApellidos", "Sólo Letras");
 //    res = false;
 //} else {
@@ -582,7 +577,7 @@ function mostrarAlerta(etiqueta, mensaje) {
 //    }
 //});
 
-function registrarVenta() {  
+function registrarVenta() {
     var res = true;
     if ($('#numDocIdentidad').val() == "") {
         mostrarAlerta("lblNDocumento", "Ingresar un número de documento");
@@ -622,18 +617,18 @@ function registrarVenta() {
     }
     if (res) {
         if ($('#idPersona').val() == 0 || $('#idPersona').val() == "") {
-spBoletoViajeRegistroPersona();
+            spBoletoViajeRegistroPersona();
         } else {
-spBoletoViajeRegistro();
+            spBoletoViajeRegistro();
         }
-            
-        
-        
+
+
+
     }
 }
 
 function cancelarVenta() {
-    
+
     alert("El valor seleccionado es: " + sexo);
     //location.href = "frmVentaPasaje.aspx?s=canceled";
 }

@@ -19,26 +19,20 @@ namespace Presentacion.intranet
                 listaSucursales = neSucursal.Instancia.sucursalLista();
                 if (listaSucursales != null)
                 {
-
-
                     idOrigen.DataSource = listaSucursales;
                     idOrigen.DataTextField = "suc_nombre";
                     idOrigen.DataValueField = "suc_id";
                     idOrigen.DataBind();
 
-                    idDestino.DataSource = listaSucursales;
-                    idDestino.DataTextField = "suc_nombre";
-                    idDestino.DataValueField = "suc_id";
-                    idDestino.DataBind();
                 }
             }
             catch (Exception)
             {
-                
+
                 throw;
             }
 
-           
+
         }
     }
 }

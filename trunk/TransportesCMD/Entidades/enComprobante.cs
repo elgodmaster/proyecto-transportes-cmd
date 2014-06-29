@@ -8,7 +8,7 @@ namespace Entidades
 {
     public class enComprobante
     {
-        public int com_id {get;set;}
+        public int com_id { get; set; }
         public String com_descripcion { get; set; }
     }
 }

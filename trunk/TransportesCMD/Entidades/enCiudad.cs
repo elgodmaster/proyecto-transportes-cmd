@@ -8,8 +8,11 @@ namespace Entidades
 {
     public class enCiudad
     {
-        public int ciu_id {get;set;}
-        public String ciu_nomCiudad {get;set;}
-        public enDepartamento departamento { get; set; }
+        public int ciu_id { get; set; }
+        public String ciu_departamento { get; set; }
+        public String ciu_ciudad { get; set; }
+
+
     }
+
 }

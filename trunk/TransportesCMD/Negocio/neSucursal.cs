@@ -19,18 +19,23 @@ namespace Negocio
         #endregion
 
         #region Métodos
-        public List<enSucursal> sucursalLista() {
+        public List<enSucursal> sucursalLista()
+        {
             return daSucursal.sucursalLista();
         }
-        
-        public static List<enSucursal> spIntinerarioOrigenXNombre(String prmNomSucursal) {
+
+        public static List<enSucursal> spIntinerarioOrigenXNombre(String prmNomSucursal)
+        {
             return daSucursal.spIntinerarioOrigenXNombre(prmNomSucursal);
         }
         public static List<enSucursal> spIntinerarioDestinoXIdOrigen(int prmIdOrigen)
         {
             return daSucursal.spIntinerarioDestinoXIdOrigen(prmIdOrigen);
         }
-
+        public List<enSucursal> spListaSucursaAll()
+        {
+            return daSucursal.spListaSucursaAll();
+        }
         #endregion
     }
 }
