@@ -138,6 +138,7 @@
     <Content Include="intranet\assets\images\extra_clean_paper.png" />
     <Content Include="intranet\assets\images\furley_bg.png" />
     <Content Include="intranet\assets\images\subtle_surface.png" />
+    <Content Include="intranet\assets\lib\jquery\jquery.validate.min.js" />
     <Content Include="intranet\assets\lib\bootstrap\css\bootstrap.css" />
     <Content Include="intranet\assets\lib\bootstrap\css\bootstrap.min.css" />
     <Content Include="intranet\assets\lib\bootstrap\img\glyphicons-halflings-white.png" />
@@ -165,7 +166,9 @@
     <Content Include="intranet\frmMantenedorBus.aspx" />
     <Content Include="index.aspx" />
     <Content Include="intranet\frmMantenedorServicios.aspx" />
+    <Content Include="intranet\frmPasajerosItinerarios.aspx" />
     <Content Include="intranet\frmPrincipal.aspx" />
+    <Content Include="intranet\frmRuta.aspx" />
     <Content Include="intranet\frmVentaPasaje.aspx" />
     <Content Include="intranet\index.aspx" />
     <Content Include="intranet\wsMDI.asmx" />
@@ -226,12 +229,26 @@
     <Compile Include="intranet\frmMantenedorServicios.aspx.designer.cs">
       <DependentUpon>frmMantenedorServicios.aspx</DependentUpon>
     </Compile>
+    <Compile Include="intranet\frmPasajerosItinerarios.aspx.cs">
+      <DependentUpon>frmPasajerosItinerarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="intranet\frmPasajerosItinerarios.aspx.designer.cs">
+      <DependentUpon>frmPasajerosItinerarios.aspx</DependentUpon>
+    </Compile>
     <Compile Include="intranet\frmPrincipal.aspx.cs">
       <DependentUpon>frmPrincipal.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="intranet\frmPrincipal.aspx.designer.cs">
       <DependentUpon>frmPrincipal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="intranet\frmRuta.aspx.cs">
+      <DependentUpon>frmRuta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="intranet\frmRuta.aspx.designer.cs">
+      <DependentUpon>frmRuta.aspx</DependentUpon>
     </Compile>
     <Compile Include="intranet\frmVentaPasaje.aspx.cs">
       <DependentUpon>frmVentaPasaje.aspx</DependentUpon>
