@@ -93,17 +93,17 @@
         <a href="#dashboard-menu" class="nav-header" data-toggle="collapse"><i class="icon-dashboard"></i>Pasajes<i class="icon-chevron-up"></i></a>
         <ul id="dashboard-menu" class="nav nav-list collapse in">
             <li><a href="frmVentaPasaje.aspx">Venta de Pasajes</a></li>
-            <li><a href="frmPasajerosItinerarios.aspx">Itinerarios/Pasajeros</a></li>
+            <%--<li><a href="frmPasajerosItinerarios.aspx">Itinerarios/Pasajeros</a></li>--%>
             <%--<li><a href="frmVentaPasaje.aspx">Lista de Pasajeros por Itinerario</a></li>
             <li><a href="users.html">Lista de Pasajeros</a></li>--%>
             <%--<li><a href="user.html">Reporte de Pasajeros</a></li>--%>
         </ul>       
         <a href="#error-menu" class="nav-header" data-toggle="collapse"><i class="icon-cogs"></i>Administración <i class="icon-chevron-up"></i></a>
         <ul id="error-menu" class="nav nav-list in collapse">
-            <li><a href="frmItinerarios.aspx">Gestión de Itinerarios</a></li>
-            <li><a href="frmMantenedorBus.aspx">Buses</a></li>
+            <%--<li><a href="frmItinerarios.aspx">Gestión de Itinerarios</a></li>--%>
+            <li><a href="frmMantenedorBus.aspx">Vehículos</a></li>
             <li><a href="frmMantenedorServicios.aspx">Servicios</a></li>
-            <li><a href="frmRuta.aspx">Rutas</a></li>
+            <%--<li><a href="frmRuta.aspx">Rutas</a></li>--%>
         </ul>
 
         <%--<a href="#legal-menu" class="nav-header" data-toggle="collapse"><i class="icon-legal"></i>Reportes</a>

@@ -47,15 +47,15 @@ go
 
 go
 --Consultas frecuentes
-select CONVERT(CHAR(10), iti_horSalida, 103)
-+' ' +RIGHT(CONVERT(CHAR(17), iti_horSalida, 109), 5)
-+' ' +RIGHT(CONVERT(CHAR(26), iti_horSalida, 109), 2) 'Fecha y Horario de itinerario'
-from itinerario
-go
-select 
- +' ' +RIGHT(CONVERT(CHAR(17), iti_horSalida, 109), 5)
- +' ' +RIGHT(CONVERT(CHAR(26), iti_horSalida, 109), 2) 'Horario de itinerario'
-from itinerario
+--select CONVERT(CHAR(10), iti_horSalida, 103)
+--+' ' +RIGHT(CONVERT(CHAR(17), iti_horSalida, 109), 5)
+--+' ' +RIGHT(CONVERT(CHAR(26), iti_horSalida, 109), 2) 'Fecha y Horario de itinerario'
+--from itinerario
+--go
+--select 
+-- +' ' +RIGHT(CONVERT(CHAR(17), iti_horSalida, 109), 5)
+-- +' ' +RIGHT(CONVERT(CHAR(26), iti_horSalida, 109), 2) 'Horario de itinerario'
+--from itinerario
 --------------------------------------------------------------------------------------
 
 declare @var varchar(100)  
@@ -118,7 +118,7 @@ as begin
 			set @sex='m'			
 			insert into persona(per_nombres,per_apellidos,per_numDocIdentidad,per_fecNacimiento,per_telefono,per_sexo,per_direccion,
 			per_email,per_img,per_fecRegistro,per_estado,docIdentidad_id ) 
-				values(@nom,@ape,cast(dbo.fnGetNumeroAleatorioEntre(19000000,99999999) as int),dbo.fnGenerarFechaAleatoriaEntre('1970-01-01', '2013-12-31'),'n',@sex,'n','n','n',GETDATE(),'a',2 )
+				values(@nom,@ape,cast(dbo.fnGetNumeroAleatorioEntre(19000000,99999999) as int),dbo.fnGenerarFechaAleatoriaEntre('1970-01-01', '2013-12-31'),'n',@sex,'n','n','n',GETDATE(),1,2 )
 			fetch curPersona into @nom, @ape, @ema
 		end	
 	close curPersona
