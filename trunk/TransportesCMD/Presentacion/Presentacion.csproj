@@ -275,6 +275,7 @@
     <Content Include="intranet\assets\lib\font-awesome\less\font-awesome.less" />
     <Content Include="intranet\assets\lib\font-awesome\sass\font-awesome.sass" />
     <Content Include="intranet\assets\lib\font-awesome\sass\font-awesome.scss" />
+    <Content Include="SQL y Recursos\TRANSPORTES CMD.doc" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
