@@ -55,7 +55,7 @@ namespace Presentacion.intranet
                 {
                     //int serv = Convert.ToInt32(select_estad.Value);
                     Boolean resultado = false;
-                    resultado = neServicioEspecial.RegistrarServicioEspecial(nom, carac);
+                    resultado = neServicioEspecial.Instancia.RegistrarServicioEspecial(nom, carac);
                     //CleanControl(this.Controls);
                     if (resultado)
                     {

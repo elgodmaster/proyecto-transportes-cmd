@@ -26,10 +26,10 @@ namespace Presentacion.intranet
 
                 }
             }
-            catch (Exception)
+            catch (Exception x)
             {
 
-                throw;
+                throw x;
             }
 
 

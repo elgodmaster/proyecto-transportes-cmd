@@ -21,28 +21,72 @@ namespace Negocio
         #region Métodos
         public Boolean RegistrarVehiculo(String modelo, String placa, int numasi1, int numasi2, String marca, int serviespe)
         {
-            return daVehiculo.RegistrarVehiculo(modelo, placa, numasi1, numasi2, marca, serviespe);
+            try
+            {
+ return daVehiculo.RegistrarVehiculo(modelo, placa, numasi1, numasi2, marca, serviespe);
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+           
         }
 
         public List<enVehiculo> spVehiculoListar()
         {
-            return daVehiculo.spVehiculoListar();
+            try
+            {
+return daVehiculo.spVehiculoListar();
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+            
         }
 
         public List<enVehiculo> spVehiculoXid(int id)
         {
-            return daVehiculo.spVehiculoXid(id);
+            try
+            {
+return daVehiculo.spVehiculoXid(id);
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+            
         }
 
         public Boolean spVehiculoEliminar(int id)
         {
-            return daVehiculo.spVehiculoEliminar(id);
+            try
+            {return daVehiculo.spVehiculoEliminar(id);
+
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+            
         }
 
         public Boolean spVehiculoModificar(int id, String modelo, String placa, int numasi1, int numasi2, String marca, String estado, int serviespe)
         {
+            try
+            {
+return daVehiculo.spVehiculoModificar(id, modelo, placa, numasi1, numasi2, marca, estado, serviespe);
+            }
+            catch (Exception e)
+            {
 
-            return daVehiculo.spVehiculoModificar(id, modelo, placa, numasi1, numasi2, marca, estado, serviespe);
+                throw e;
+            }
+            
 
         }
         #endregion

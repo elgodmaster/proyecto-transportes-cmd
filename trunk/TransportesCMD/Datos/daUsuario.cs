@@ -10,7 +10,16 @@ using Entidades;
 namespace Datos
 {
     public class daUsuario
-    {
+    { 
+        #region singleton
+        private static readonly daUsuario _instancia = new daUsuario();
+        public static daUsuario Instancia
+        {
+            get { return daUsuario._instancia; }
+        }
+        #endregion
+
+        #region métodos
         public static enUsuario spUsuarioLogin(enUsuario prmUsuario)
         {
             SqlConnection cn = null;
@@ -47,13 +56,14 @@ namespace Datos
             }
             catch (Exception e)
             {
-
+                throw e;
             }
             finally
             {
-                cn.Close();
+                cmd.Connection.Close();
             }
             return usuario;
         }
+#endregion
     }
 }

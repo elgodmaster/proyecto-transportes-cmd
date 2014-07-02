@@ -43,14 +43,13 @@ namespace Datos
                     lstSucursal.Add(sucursal);
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                throw;
+                throw e;
             }
             finally
             {
-                dr.Close();
-                cn.Close();
+                cmd.Connection.Close();
             }
             return lstSucursal;
         }
@@ -82,11 +81,11 @@ namespace Datos
             }
             catch (Exception e)
             {
-                System.Console.Write("Error Itinerario Salida " + e.Message);
+                throw e;
             }
             finally
             {
-                cn.Close();
+                cmd.Connection.Close();
             }
             return lstSucursalSalida;
 
@@ -119,11 +118,11 @@ namespace Datos
             }
             catch (Exception e)
             {
-
+                throw e;
             }
             finally
             {
-                cn.Close();
+                cmd.Connection.Close();
             }
             return lstSucursalSalida;
 
@@ -166,8 +165,7 @@ namespace Datos
             }
             finally
             {
-                dr.Close();
-                cn.Close();
+                cmd.Connection.Close();
             }
             return lstsucursal;
 

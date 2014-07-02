@@ -49,14 +49,14 @@ namespace Datos
                     ruta.mensaje = mensaje;
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 resultado = false;
+                throw e;
             }
             finally
             {
                 cmd.Connection.Close();
-                cn.Close();
             }
             return ruta;
         }
@@ -108,7 +108,7 @@ namespace Datos
             }
             finally
             {
-                cn.Close();
+                cmd.Connection.Close();
             }
             return lstRuta;
 

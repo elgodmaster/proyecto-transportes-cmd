@@ -13,15 +13,6 @@ namespace Presentacion.intranet {
     public partial class frmRuta {
         
         /// <summary>
-        /// Control divAlert.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divAlert;
-        
-        /// <summary>
         /// Control Form1.
         /// </summary>
         /// <remarks>
@@ -83,5 +74,14 @@ namespace Presentacion.intranet {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMensajeGraba;
+        
+        /// <summary>
+        /// Control divScript.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divScript;
     }
 }

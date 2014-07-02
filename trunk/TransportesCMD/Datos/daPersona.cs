@@ -11,7 +11,16 @@ namespace Datos
 {
     public class daPersona
     {
+        #region singleton
+        private static readonly daPersona _instancia = new daPersona();
+        //private datCliente();
+        public static daPersona Instancia
+        {
+            get { return daPersona._instancia; }
+        }
+        #endregion
 
+        #region Métodos
         public static List<enPersona> spPersonaXNumeroDocumentoIdentidad(String prmNumDocIde)
         {
             SqlConnection cn = null;
@@ -51,7 +60,7 @@ namespace Datos
             }
             finally
             {
-                cn.Close();
+                cmd.Connection.Close();
             }
             return lstpersona;
         }
@@ -94,9 +103,10 @@ namespace Datos
             }
             finally
             {
-                cn.Close();
+                cmd.Connection.Close();
             }
             return lstpersona;
         }
+        #endregion
     }
 }

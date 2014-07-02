@@ -19,14 +19,32 @@ namespace Negocio
         }
         #endregion
 
-        #region Metodos
+        #region Métodos
         public List<enBoletoViaje> spBoletoViajeRegistro(int prmAsiento, int prmIdPersona, int prmIdPersonal, int prmIdItinerario)
         {
-            return daBoletoViaje.Instancia.spBoletoViajeRegistro(prmAsiento, prmIdPersona, prmIdPersonal, prmIdItinerario);
+            try
+            {
+return daBoletoViaje.Instancia.spBoletoViajeRegistro(prmAsiento, prmIdPersona, prmIdPersonal, prmIdItinerario);
+            }
+            catch (Exception e)
+            {
+                
+                throw e;
+            }
+            
         }
         public List<enBoletoViaje> spBoletoViajeRegistroPersona(int prmAsiento, int prmIdItinerario, int prmIdPersonal, enPersona prmPersona)
         {
-            return daBoletoViaje.Instancia.spBoletoViajeRegistroPersona(prmAsiento, prmIdItinerario, prmIdPersonal, prmPersona);
+            try
+            {
+return daBoletoViaje.Instancia.spBoletoViajeRegistroPersona(prmAsiento, prmIdItinerario, prmIdPersonal, prmPersona);
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+            
         }
         #endregion
     }

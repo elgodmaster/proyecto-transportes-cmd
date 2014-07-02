@@ -35,8 +35,6 @@
         <h1 class="page-title">Rutas</h1>
     </div>
    
-    <div id="divAlert" runat="server"></div>
-
     <ul class="breadcrumb">
         <li><a href="#">Administración</a> <span class="divider">/</span></li>
         <li class="active">Rutas</li>
@@ -106,24 +104,8 @@
             </div>
         </div>
 
-    </div>
-    <div class="modal small hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="myModalLabel">Mensaje</h3>
-        </div>
-        <div class="modal-body">
-
-            <p class="error-text">
-                <i class="icon-warning-sign modal-icon"></i><span id="mensajeRuta"></span>
-
-            </p>
-        </div>
-        <div class="modal-footer">
-            <button class="btn" data-dismiss="modal" aria-hidden="true">Aceptar</button>
-            <%--<button class="btn btn-danger" data-dismiss="modal">Delete</button>--%>
-        </div>
-    </div>
+    </div>    
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="javascript" runat="server">
+    <div id="divScript" runat="server"></div>
 </asp:Content>

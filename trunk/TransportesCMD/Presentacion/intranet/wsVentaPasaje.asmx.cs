@@ -24,7 +24,7 @@ namespace Presentacion.intranet
         {
             List<enSucursal> lstSucursal = new List<enSucursal>();
             //enviar vacio "" significa que va a devolver todo
-            lstSucursal = neSucursal.spIntinerarioOrigenXNombre("");
+            lstSucursal = neSucursal.Instancia.spIntinerarioOrigenXNombre("");
             return lstSucursal;
         }
 
@@ -33,7 +33,7 @@ namespace Presentacion.intranet
         {
             List<enSucursal> lstSucursal = new List<enSucursal>();
             //enviar la id de la sucursal que se selecciono como origen
-            lstSucursal = neSucursal.spIntinerarioDestinoXIdOrigen(prmIdOrigen);
+            lstSucursal = neSucursal.Instancia.spIntinerarioDestinoXIdOrigen(prmIdOrigen);
             return lstSucursal;
         }
 
@@ -42,7 +42,7 @@ namespace Presentacion.intranet
         {
             List<enItinerario> lstItinerario = new List<enItinerario>();
             //enviar las fechas del itinerario
-            lstItinerario = neItinerario.spIntinerarioFechaSalidaXIdOrigenIdDestino(prmIdOrigen, prmIdDestino);
+            lstItinerario = neItinerario.Instancia.spIntinerarioFechaSalidaXIdOrigenIdDestino(prmIdOrigen, prmIdDestino);
             return lstItinerario;
         }
         [WebMethod]
@@ -50,7 +50,7 @@ namespace Presentacion.intranet
         {
             List<enItinerario> lstItinerario = new List<enItinerario>();
             // enviar la id de la sucursal que se selecciono como origen
-            lstItinerario = neItinerario.spIntinerarioHoraSalidaXIdOrigenIdDestinoFecha(prmIdOrigen, prmIdDestino, prmFecha);
+            lstItinerario = neItinerario.Instancia.spIntinerarioHoraSalidaXIdOrigenIdDestinoFecha(prmIdOrigen, prmIdDestino, prmFecha);
             return lstItinerario;
         }
 
@@ -59,7 +59,7 @@ namespace Presentacion.intranet
         {
             List<enItinerario> lstItinerario = new List<enItinerario>();
             // enviar la id de la sucursal que se selecciono como origen
-            lstItinerario = neItinerario.spIntinerarioResumenXIdOrigenIdDestinoFecha(prmIdOrigen, prmIdDestino, prmFecha);
+            lstItinerario = neItinerario.Instancia.spIntinerarioResumenXIdOrigenIdDestinoFecha(prmIdOrigen, prmIdDestino, prmFecha);
             return lstItinerario;
         }
 
@@ -67,7 +67,7 @@ namespace Presentacion.intranet
         public List<enControlAsiento> spControlAsientoXIdItinerario(int prmIdItinerario)
         {
             List<enControlAsiento> lstControlAsiento = new List<enControlAsiento>();
-            lstControlAsiento = neControlAsiento.spControlAsientoXIdItinerario(prmIdItinerario);
+            lstControlAsiento = neControlAsiento.Instancia.spControlAsientoXIdItinerario(prmIdItinerario);
             return lstControlAsiento;
         }
 
@@ -75,7 +75,7 @@ namespace Presentacion.intranet
         public List<enDocumentoIdentidad> spDocumentoIdentidadLista()
         {
             List<enDocumentoIdentidad> lstDocIdentidad = new List<enDocumentoIdentidad>();
-            lstDocIdentidad = neDocumentoIdentidad.spDocumentoIdentidadLista();
+            lstDocIdentidad = neDocumentoIdentidad.Instancia.spDocumentoIdentidadLista();
             return lstDocIdentidad;
         }
 
@@ -84,7 +84,7 @@ namespace Presentacion.intranet
         {
             List<enDocumentoIdentidad> lstDocIdentidad = new List<enDocumentoIdentidad>();
             List<enDocumentoIdentidad> lstReturn = new List<enDocumentoIdentidad>();
-            lstDocIdentidad = neDocumentoIdentidad.spDocumentoIdentidadLista();
+            lstDocIdentidad = neDocumentoIdentidad.Instancia.spDocumentoIdentidadLista();
             for (int i = 0; i < lstDocIdentidad.Count; i++)
             {
                 if (lstDocIdentidad[i].docIde_id == prmIdDocIdentidad)
@@ -103,7 +103,7 @@ namespace Presentacion.intranet
         public List<enPersona> spPersonaXNumeroDocumentoIdentidad(String prmNumDocIde)
         {
             List<enPersona> lsPersona = new List<enPersona>();
-            lsPersona = nePersona.spPersonaXNumeroDocumentoIdentidad(prmNumDocIde);
+            lsPersona = nePersona.Instancia.spPersonaXNumeroDocumentoIdentidad(prmNumDocIde);
             if (lsPersona.Count > 0)
             {
                 lsPersona[0].personaMensaje = "¡Cliente Nuestro!";
@@ -122,7 +122,7 @@ namespace Presentacion.intranet
         public List<enPersona> spPersonaXApellidos(String apellidos)
         {
             List<enPersona> lsPersona = new List<enPersona>();
-            lsPersona = nePersona.spPersonaXApellidos(apellidos);
+            lsPersona = nePersona.Instancia.spPersonaXApellidos(apellidos);
             return lsPersona;
         }
 

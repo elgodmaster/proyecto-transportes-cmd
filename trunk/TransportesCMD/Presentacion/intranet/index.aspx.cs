@@ -57,7 +57,7 @@ namespace Presentacion
             else
             {
                 enUsuario usuLogueado = new enUsuario();
-                usuLogueado = neUsuario.spUsuarioLogin(usuario);
+                usuLogueado = neUsuario.Instancia.spUsuarioLogin(usuario);
                 if (usuLogueado != null)
                 {
                     usuLogueado.personal.sucursal = sucursal;

@@ -20,7 +20,7 @@ namespace Datos
         }
         #endregion
 
-        #region Metodos
+        #region Métodos
         public List<enBoletoViaje> spBoletoViajeRegistro(int prmAsiento, int prmIdPersona, int prmIdPersonal, int prmIdItinerario)
         {
             SqlConnection cn = null;
@@ -57,7 +57,7 @@ namespace Datos
             }
             finally
             {
-                cn.Close();
+                cmd.Connection.Close();
             }
             return lstBolViaje;
         }
@@ -103,7 +103,7 @@ namespace Datos
             }
             finally
             {
-                cn.Close();
+                cmd.Connection.Close();
             }
             return lstBolViaje;
         }

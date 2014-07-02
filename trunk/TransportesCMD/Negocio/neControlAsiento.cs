@@ -10,10 +10,30 @@ namespace Negocio
 {
     public class neControlAsiento
     {
-        public static List<enControlAsiento> spControlAsientoXIdItinerario(int prmIdItinerario)
+        #region singleton
+        private static readonly neControlAsiento _instancia = new neControlAsiento();
+
+        public static neControlAsiento Instancia
         {
-            return daControlAsiento.spControlAsientoXIdItinerario(prmIdItinerario);
+            get { return neControlAsiento._instancia; }
         }
+        #endregion
+
+        #region Métodos
+        public List<enControlAsiento> spControlAsientoXIdItinerario(int prmIdItinerario)
+        {
+            try
+            {
+return daControlAsiento.Instancia.spControlAsientoXIdItinerario(prmIdItinerario);
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+            
+        }
+        #endregion
 
     }
 }
