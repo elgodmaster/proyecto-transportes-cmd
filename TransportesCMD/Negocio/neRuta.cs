@@ -21,12 +21,30 @@ namespace Negocio
         #region Métodos
         public enRuta registrarRuta(enRuta prmRuta)
         {
-            return daRuta.Instancia.registrarRuta(prmRuta);
+            try
+            {
+return daRuta.Instancia.registrarRuta(prmRuta);
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+            
         }
 
         public List<enRuta> spRutasListarXIdSucursalOrigen(int prmIdSucursal)
         {
-            return daRuta.Instancia.spRutasListarXIdSucursalOrigen(prmIdSucursal);
+            try
+            {
+return daRuta.Instancia.spRutasListarXIdSucursalOrigen(prmIdSucursal);
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+            
         }
 
         #endregion

@@ -93,17 +93,14 @@
         <a href="#dashboard-menu" class="nav-header" data-toggle="collapse"><i class="icon-dashboard"></i>Pasajes<i class="icon-chevron-up"></i></a>
         <ul id="dashboard-menu" class="nav nav-list collapse in">
             <li><a href="frmVentaPasaje.aspx">Venta de Pasajes</a></li>
-            <%--<li><a href="frmPasajerosItinerarios.aspx">Itinerarios/Pasajeros</a></li>--%>
-            <%--<li><a href="frmVentaPasaje.aspx">Lista de Pasajeros por Itinerario</a></li>
-            <li><a href="users.html">Lista de Pasajeros</a></li>--%>
-            <%--<li><a href="user.html">Reporte de Pasajeros</a></li>--%>
+            <li><a href="frmPasajerosItinerarios.aspx">Itinerarios/Pasajeros</a></li>
         </ul>       
         <a href="#error-menu" class="nav-header" data-toggle="collapse"><i class="icon-cogs"></i>Administración <i class="icon-chevron-up"></i></a>
         <ul id="error-menu" class="nav nav-list in collapse">
-            <%--<li><a href="frmItinerarios.aspx">Gestión de Itinerarios</a></li>--%>
+            <li><a href="frmItinerarios.aspx">Gestión de Itinerarios</a></li>
             <li><a href="frmMantenedorBus.aspx">Vehículos</a></li>
             <li><a href="frmMantenedorServicios.aspx">Servicios</a></li>
-            <%--<li><a href="frmRuta.aspx">Rutas</a></li>--%>
+            <li><a href="frmRuta.aspx">Rutas</a></li>
         </ul>
 
         <%--<a href="#legal-menu" class="nav-header" data-toggle="collapse"><i class="icon-legal"></i>Reportes</a>
@@ -120,6 +117,22 @@
             Este es el cuerpo de la aplicación
         </asp:ContentPlaceHolder>
     </div>
+    <div class="modal small hide fade" id="modalMensaje" tabindex="-1" role="dialog" aria-labelledby="modalMensaje" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="modalMensajeTitulo"></h3>
+        </div>
+        <div class="modal-body">
+
+            <p class="error-text">
+                <i id="modalMensajeIcon"></i><span id="modalMensajeDescripcion"></span>
+            </p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">Aceptar</button>
+            <%--<button class="btn btn-danger" data-dismiss="modal">Delete</button>--%>
+        </div>
+    </div>
     <footer>
         <hr />
         <p class="pull-right"><a href="#">Instituto Tecnológico del Norte</a></p>
@@ -132,8 +145,9 @@
             $('.demo-cancel-click').click(function () { return false; });
         });
     </script>
-
+    
     <asp:ContentPlaceHolder ID="javascript" runat="server">
+        
     </asp:ContentPlaceHolder>
 </body>
 </html>

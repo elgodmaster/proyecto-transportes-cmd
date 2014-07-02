@@ -10,12 +10,23 @@ namespace Negocio
 {
     public class nePersona
     {
-        public static List<enPersona> spPersonaXNumeroDocumentoIdentidad(String prmNumDocIde)
+
+        #region singleton
+        private static readonly nePersona _instancia = new nePersona();
+
+        public static nePersona Instancia
+        {
+            get { return nePersona._instancia; }
+        }
+        #endregion
+
+        #region Métodos
+        public List<enPersona> spPersonaXNumeroDocumentoIdentidad(String prmNumDocIde)
         {
             return daPersona.spPersonaXNumeroDocumentoIdentidad(prmNumDocIde);
         }
 
-        public static List<enPersona> spPersonaXApellidos(String nomApellidos)
+        public List<enPersona> spPersonaXApellidos(String nomApellidos)
         {
             try
             {
@@ -27,5 +38,6 @@ namespace Negocio
             }
 
         }
+        #endregion
     }
 }

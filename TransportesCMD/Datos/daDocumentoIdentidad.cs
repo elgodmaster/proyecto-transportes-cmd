@@ -11,7 +11,17 @@ namespace Datos
 {
     public class daDocumentoIdentidad
     {
-        public static List<enDocumentoIdentidad> spDocumentoIdentidadLista()
+        #region singleton
+        private static readonly daDocumentoIdentidad _instancia = new daDocumentoIdentidad();
+        //private datCliente();
+        public static daDocumentoIdentidad Instancia
+        {
+            get { return daDocumentoIdentidad._instancia; }
+        }
+        #endregion
+
+        #region Métodos
+        public List<enDocumentoIdentidad> spDocumentoIdentidadLista()
         {
             SqlConnection cn = null;
             SqlCommand cmd = null;
@@ -38,13 +48,14 @@ namespace Datos
             }
             catch (Exception e)
             {
-
+                throw e;
             }
             finally
             {
-                cn.Close();
+                cmd.Connection.Close();
             }
             return lstDocIdentidad;
         }
+        #endregion
     }
 }

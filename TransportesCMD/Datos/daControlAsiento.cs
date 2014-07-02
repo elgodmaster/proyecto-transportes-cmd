@@ -11,7 +11,19 @@ namespace Datos
 {
     public class daControlAsiento
     {
-        public static List<enControlAsiento> spControlAsientoXIdItinerario(int prmIdItinerario)
+
+        #region singleton
+        private static readonly daControlAsiento _instancia = new daControlAsiento();
+        //private datCliente();
+        public static daControlAsiento Instancia
+        {
+            get { return daControlAsiento._instancia; }
+        }
+        #endregion
+
+        #region Métodos
+
+        public List<enControlAsiento> spControlAsientoXIdItinerario(int prmIdItinerario)
         {
             SqlConnection cn = null;
             SqlCommand cmd = null;
@@ -38,13 +50,14 @@ namespace Datos
             }
             catch (Exception e)
             {
-
+                throw e;
             }
             finally
             {
-                cn.Close();
+                cmd.Connection.Close();
             }
             return lstConAsiento;
         }
+        #endregion
     }
 }

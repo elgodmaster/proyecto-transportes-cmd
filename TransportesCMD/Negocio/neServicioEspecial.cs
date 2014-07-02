@@ -21,30 +21,74 @@ namespace Negocio
         #endregion
 
         #region metodos
-        public static Boolean RegistrarServicioEspecial(String nombre, String caracteristicas)
+        public Boolean RegistrarServicioEspecial(String nombre, String caracteristicas)
         {
-            return daServicio.RegistrarServicioEspecial(nombre, caracteristicas);
+            try
+            {
+return daServicio.RegistrarServicioEspecial(nombre, caracteristicas);
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+            
         }
 
         public List<enServicioEspecial> spServicioListar()
         {
-            return daServicio.spServicioListar();
+            try
+            {
+return daServicio.spServicioListar();
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+            
         }
 
         public List<enServicioEspecial> spServicioXid(int id)
         {
-            return daServicio.spServicioXid(id);
+            try
+            {return daServicio.spServicioXid(id);
+
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+            
         }
 
         public Boolean spServicioEliminar(int id)
         {
-            return daServicio.spServicioEliminar(id);
+            try
+            {
+ return daServicio.spServicioEliminar(id);
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+           
         }
 
         public Boolean spServicioModificar(int id, String nombre, String caracteristicas, String estado)
         {
+            try
+            {
+return daServicio.spServicioModificar(id, nombre, caracteristicas, estado);
+            }
+            catch (Exception e)
+            {
 
-            return daServicio.spServicioModificar(id, nombre, caracteristicas, estado);
+                throw e;
+            }
+            
 
         }
         #endregion

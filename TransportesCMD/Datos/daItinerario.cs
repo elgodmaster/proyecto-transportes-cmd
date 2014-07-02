@@ -11,8 +11,17 @@ namespace Datos
 {
     public class daItinerario
     {
+        #region singleton
+        private static readonly daItinerario _instancia = new daItinerario();
+        //private datCliente();
+        public static daItinerario Instancia
+        {
+            get { return daItinerario._instancia; }
+        }
+        #endregion
 
-        public static List<enItinerario> spIntinerarioFechaSalidaXIdOrigenIdDestino(int prmIdOrigen, int prmIdDestino)
+        #region Métodos
+        public List<enItinerario> spIntinerarioFechaSalidaXIdOrigenIdDestino(int prmIdOrigen, int prmIdDestino)
         {
             SqlConnection cn = null;
             SqlCommand cmd = null;
@@ -39,16 +48,16 @@ namespace Datos
             }
             catch (Exception e)
             {
-
+                throw e;
             }
             finally
             {
-                cn.Close();
+                cmd.Connection.Close();
             }
             return lstItinerarioLista;
 
         }
-        public static List<enItinerario> spIntinerarioHoraSalidaXIdOrigenIdDestinoFecha(int prmIdOrigen, int prmIdDestino, String prmFecha)
+        public List<enItinerario> spIntinerarioHoraSalidaXIdOrigenIdDestinoFecha(int prmIdOrigen, int prmIdDestino, String prmFecha)
         {
             SqlConnection cn = null;
             SqlCommand cmd = null;
@@ -80,17 +89,17 @@ namespace Datos
             }
             catch (Exception e)
             {
-
+                throw e;
             }
             finally
             {
-                cn.Close();
+                cmd.Connection.Close();
             }
             return lstItinerarioLista;
 
         }
 
-        public static List<enItinerario> spIntinerarioResumenXIdOrigenIdDestinoFecha(int prmIdOrigen, int prmIdDestino, String prmFecha)
+        public List<enItinerario> spIntinerarioResumenXIdOrigenIdDestinoFecha(int prmIdOrigen, int prmIdDestino, String prmFecha)
         {
             SqlConnection cn = null;
             SqlCommand cmd = null;
@@ -127,15 +136,16 @@ namespace Datos
             }
             catch (Exception e)
             {
-
+                throw e;
             }
             finally
             {
-                cn.Close();
+                cmd.Connection.Close();
             }
             return lstItinerarioLista;
 
         }
+        #endregion
 
     }
 }

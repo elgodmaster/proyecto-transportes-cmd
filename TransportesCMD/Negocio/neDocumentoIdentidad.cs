@@ -9,10 +9,31 @@ namespace Negocio
 {
     public class neDocumentoIdentidad
     {
-        public static List<enDocumentoIdentidad> spDocumentoIdentidadLista()
+        #region singleton
+        private static readonly neDocumentoIdentidad _instancia = new neDocumentoIdentidad();
+
+        public static neDocumentoIdentidad Instancia
         {
-            return daDocumentoIdentidad.spDocumentoIdentidadLista();
+            get { return neDocumentoIdentidad._instancia; }
+        }
+        #endregion
+
+        #region Métodos
+        public List<enDocumentoIdentidad> spDocumentoIdentidadLista()
+        { try
+            {
+return daDocumentoIdentidad.Instancia.spDocumentoIdentidadLista();
+            }
+            catch (Exception e)
+            {
+                
+                throw e;
+            }
+            
 
         }
+     #endregion
+    
+   
     }
 }

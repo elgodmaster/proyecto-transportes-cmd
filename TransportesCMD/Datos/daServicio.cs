@@ -40,14 +40,14 @@ namespace Datos
                 cmd.ExecuteNonQuery();
                 resultado = true;
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 resultado = false;
+                throw e;
             }
             finally
             {
                 cmd.Connection.Close();
-                cn.Close();
             }
             return resultado;
         }
@@ -81,11 +81,11 @@ namespace Datos
             }
             catch (Exception e)
             {
-
+                throw e;
             }
             finally
             {
-                cn.Close();
+                cmd.Connection.Close();
             }
             return lstServicio;
         }
@@ -118,11 +118,11 @@ namespace Datos
             }
             catch (Exception e)
             {
-
+                throw e;
             }
             finally
             {
-                cn.Close();
+                cmd.Connection.Close();
             }
             return lstServicio;
         }
@@ -148,7 +148,7 @@ namespace Datos
             }
             finally
             {
-                cn.Close();
+                cmd.Connection.Close();
             }
             return resultado;
         }
@@ -172,14 +172,14 @@ namespace Datos
                 cmd.ExecuteNonQuery();
                 resultado = true;
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 resultado = false;
+                throw e;
             }
             finally
             {
                 cmd.Connection.Close();
-                cn.Close();
             }
             return resultado;
 

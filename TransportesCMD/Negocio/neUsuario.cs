@@ -10,9 +10,28 @@ namespace Negocio
 {
     public class neUsuario
     {
-        public static enUsuario spUsuarioLogin(enUsuario prmUsuario)
+        #region singleton
+        private static readonly neUsuario _instancia = new neUsuario();
+        public static neUsuario Instancia
         {
-            return daUsuario.spUsuarioLogin(prmUsuario);
+            get { return neUsuario._instancia; }
         }
+        #endregion
+
+        #region Métodos
+        public enUsuario spUsuarioLogin(enUsuario prmUsuario)
+        {
+            try
+            {
+return daUsuario.spUsuarioLogin(prmUsuario);
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+            
+        }
+        #endregion
     }
 }

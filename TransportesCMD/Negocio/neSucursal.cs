@@ -21,20 +21,56 @@ namespace Negocio
         #region Métodos
         public List<enSucursal> sucursalLista()
         {
-            return daSucursal.sucursalLista();
+            try
+            {
+return daSucursal.sucursalLista();
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+            
         }
 
-        public static List<enSucursal> spIntinerarioOrigenXNombre(String prmNomSucursal)
+        public List<enSucursal> spIntinerarioOrigenXNombre(String prmNomSucursal)
         {
-            return daSucursal.spIntinerarioOrigenXNombre(prmNomSucursal);
+            try
+            {
+return daSucursal.spIntinerarioOrigenXNombre(prmNomSucursal);
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+            
         }
-        public static List<enSucursal> spIntinerarioDestinoXIdOrigen(int prmIdOrigen)
+        public List<enSucursal> spIntinerarioDestinoXIdOrigen(int prmIdOrigen)
         {
-            return daSucursal.spIntinerarioDestinoXIdOrigen(prmIdOrigen);
+            try
+            {
+return daSucursal.spIntinerarioDestinoXIdOrigen(prmIdOrigen);
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+            
         }
         public List<enSucursal> spListaSucursaAll()
         {
-            return daSucursal.spListaSucursaAll();
+            try
+            {
+return daSucursal.spListaSucursaAll();
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+            
         }
         #endregion
     }

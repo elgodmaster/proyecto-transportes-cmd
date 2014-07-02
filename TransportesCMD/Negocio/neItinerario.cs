@@ -10,18 +10,56 @@ namespace Negocio
 {
     public class neItinerario
     {
-        public static List<enItinerario> spIntinerarioFechaSalidaXIdOrigenIdDestino(int prmIdOrigen, int prmIdDestino)
+        #region singleton
+        private static readonly neItinerario _instancia = new neItinerario();
+
+        public static neItinerario Instancia
         {
-            return daItinerario.spIntinerarioFechaSalidaXIdOrigenIdDestino(prmIdOrigen, prmIdDestino);
+            get { return neItinerario._instancia; }
+        }
+        #endregion
+
+        #region Métodos
+        public  List<enItinerario> spIntinerarioFechaSalidaXIdOrigenIdDestino(int prmIdOrigen, int prmIdDestino)
+        {
+            try
+            {
+return daItinerario.Instancia.spIntinerarioFechaSalidaXIdOrigenIdDestino(prmIdOrigen, prmIdDestino);
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+            
         }
 
-        public static List<enItinerario> spIntinerarioHoraSalidaXIdOrigenIdDestinoFecha(int prmIdOrigen, int prmIdDestino, String prmFecha)
+        public  List<enItinerario> spIntinerarioHoraSalidaXIdOrigenIdDestinoFecha(int prmIdOrigen, int prmIdDestino, String prmFecha)
         {
-            return daItinerario.spIntinerarioHoraSalidaXIdOrigenIdDestinoFecha(prmIdOrigen, prmIdDestino, prmFecha);
+            try
+            {
+ return daItinerario.Instancia.spIntinerarioHoraSalidaXIdOrigenIdDestinoFecha(prmIdOrigen, prmIdDestino, prmFecha);
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+           
         }
-        public static List<enItinerario> spIntinerarioResumenXIdOrigenIdDestinoFecha(int prmIdOrigen, int prmIdDestino, String prmFecha)
+        public  List<enItinerario> spIntinerarioResumenXIdOrigenIdDestinoFecha(int prmIdOrigen, int prmIdDestino, String prmFecha)
         {
-            return daItinerario.spIntinerarioResumenXIdOrigenIdDestinoFecha(prmIdOrigen, prmIdDestino, prmFecha);
+            try
+            {
+return daItinerario.Instancia.spIntinerarioResumenXIdOrigenIdDestinoFecha(prmIdOrigen, prmIdDestino, prmFecha);
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+            
         }
+        #endregion
     }
 }

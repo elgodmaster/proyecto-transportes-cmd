@@ -58,13 +58,12 @@ namespace Presentacion.intranet
                 enRuta ruta = new enRuta();
                 ruta = neRuta.Instancia.registrarRuta(prmRuta);
 
-                divAlert.InnerHtml = "<script languaje='javascript'>$(document).ready(function () { $('#mensajeRuta').html(''); $('#mensajeRuta').html('" + ruta.mensaje.mensaje + "'); $('#myModal').modal('show'); });</script> ";
+                divScript.InnerHtml = "<script>fnMostrarAlertMessage('Mensaje','icon-warning-sign','" +ruta.mensaje.mensaje + "')</script> ";
 
             }
             catch (Exception x)
             {
-
-                Response.Write(@"<script languaje='javascript'>alert('" + x.Message + "');</script>");
+                divScript.InnerHtml = "<script>fnMostrarAlertMessage('Error Inesperado','icon-bolt','" + x.Message + " Por favor informe este error al webmaster.')</script> ";
             }
 
 

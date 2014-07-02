@@ -66,4 +66,14 @@ function validarTexto(etiqueta) {
     }
 }
 
+//############################## ---------------Nuevos---------------- ##############
+function fnMostrarAlertMessage(modalTitulo, modalIcon, modalMensaje) {
 
+    $(document).ready(function () {
+
+    $('#modalMensaje').modal('show');
+    $('#modalMensajeTitulo').html(modalTitulo);
+    $('#modalMensajeIcon').addClass("modal-icon " + modalIcon);
+    $('#modalMensajeDescripcion').html(modalMensaje);
+    });
+}
